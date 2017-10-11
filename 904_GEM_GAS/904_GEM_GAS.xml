@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component>
+  <name>904_GEM_GAS</name>
+  <version>1.0.0</version>
+  <date>15/08/2017</date>
+  <required>fwConfigurationDB=5.1.1</required>
+  <required>fwCore=5.1.0</required>
+  <required>fwDIP=5.1.0</required>
+  <required>fwFSMConfDB=5.1.0</required>
+  <required>fwRDBArchiver=5.2.0</required>
+  <required>fwRDBArchiving=1.1.4</required>
+  <required>fwTrending=5.2.0</required>
+  <required>fwXML=5.0.2</required>
+  <required>fwInstallationUtils=2.0</required>
+  <required>CMSfwAlertSystem=1.7.1</required>
+  <required>fwAccessControl=5.2.1</required>
+  <required>CMSfwClass=1.4.1</required>
+  <required>CMSfwDip=1.0.0</required>
+  <required>CMSfwInstallUtils=2.2.5</required>
+  <required>CMSfwFsmXml=1.0.1</required>
+  <dplist>./dplist/904_GEM_GAS/904_mixer_dpt.dpl</dplist>
+  <file>./panels/904_GEM_GAS/CMS_GEM_904Mixer.pnl</file>
+  <file>./panels/904_GEM_GAS/CMS_GEM_904MixerTrending.pnl</file>
+  <file>./scripts/libs/904_GEM_GAS/CMS_GEMfwGeneral.ctl</file>
+  <postInstall>./scripts/904_GEM_GAS/904_GEM_GAS.postinstall</postInstall>
+  <file>./904_GEM_GAS.xml</file>
+</component>

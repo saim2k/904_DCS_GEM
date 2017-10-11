@@ -1,0 +1,200 @@
+V 14
+1
+LANG:1 0 
+PANEL,-1 -1 942 700 N "_3DFace" 0
+E E E E E 1 -1 -1 0  21 27
+""0  1
+E E 3
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:1 0 
+1 164 0 "9" 73
+0
+1 244 1 "9" 73
+0
+13 161
+"close_button"
+""
+1 731 639.0000000000001 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+1
+LANG:1 35 MS Shell Dlg 2,-1,19,5,50,0,0,0,0,0
+0  729 618 873 672
+
+T 
+1
+LANG:1 5 Close
+"// SimpleCtrlScriptStart {valid}
+main()
+{
+  EP_panelOff();
+}
+
+void EP_panelOff()
+{
+  PanelOff();
+}
+
+// SimpleCtrlScript {EP_panelOff}
+// Function {PanelOff}
+// Panel {}
+// Module {}
+// SimpleCtrlScriptEnd {EP_panelOff}
+" 0
+ E E E
+2 162
+"PRIMITIVE_TEXT1"
+""
+1 720 130 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 1 0 0.9999999999999999 0 7.105427357601002e-015 0 E 720 130 930 200
+0 2 2 "0s" 0 0 0 64 0 0  720 130 3
+1
+LANG:1 35 MS Shell Dlg 2,-1,21,5,75,1,0,0,0,0
+0 1
+LANG:1 12 Ar & CO2 FSR
+1
+LANG:1 35 MS Shell Dlg 2,-1,21,5,75,1,0,0,0,0
+0 1
+LANG:1 10 Total Flow
+1
+LANG:1 35 MS Shell Dlg 2,-1,21,5,75,1,0,0,0,0
+0 1
+LANG:1 0 
+2 163
+"PRIMITIVE_TEXT2"
+""
+1 720 480 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 1 0 0.9999999999999999 0 350 0 E 720 130 930 200
+0 2 2 "0s" 0 0 0 64 0 0  720 130 3
+1
+LANG:1 35 MS Shell Dlg 2,-1,21,5,75,1,0,0,0,0
+0 1
+LANG:1 10 Ar & CO2 %
+1
+LANG:1 35 MS Shell Dlg 2,-1,21,5,75,1,0,0,0,0
+0 1
+LANG:1 0 
+1
+LANG:1 35 MS Shell Dlg 2,-1,21,5,75,1,0,0,0,0
+0 1
+LANG:1 0 
+0
+LAYER, 1 
+1
+LANG:1 0 
+0
+LAYER, 2 
+1
+LANG:1 0 
+0
+LAYER, 3 
+1
+LANG:1 0 
+0
+LAYER, 4 
+1
+LANG:1 0 
+0
+LAYER, 5 
+1
+LANG:1 0 
+0
+LAYER, 6 
+1
+LANG:1 0 
+0
+LAYER, 7 
+1
+LANG:1 0 
+0
+3 0 "904Mixer_FSR" -1
+"layoutAlignment" "AlignCenter"
+"" ""
+"objects/fwTrending/fwTrendingFaceplate.pnl" 21 27 T 0 1.313346228239845 0 1.362869198312236 -6.580270793036753 -9.797468354430365
+22
+"$ZoomWindowTitle"""
+"$bShowGrid"""
+"$bShowLegend"""
+"$bTrendLog"""
+"$dsCurveColor"""
+"$dsCurveDPE"""
+"$dsCurveLegend"""
+"$dsCurveRange"""
+"$dsCurveScaleVisible"""
+"$dsCurveToolTipText"""
+"$dsCurveVisible"""
+"$dsCurvesType"""
+"$dsUnit"""
+"$fMaxPercentageForLog"""
+"$fMinForLog"""
+"$iMarkerType"""
+"$sBackColor"""
+"$sDpName""904Mixer_FSR"
+"$sForeColor"""
+"$sRefName""904Mixer_FSR."
+"$sTimeRange"""
+"$templateParameters"""
+3 1 "904Mixer_Percentage" -1
+"layoutAlignment" "AlignCenter"
+"" ""
+"objects/fwTrending/fwTrendingFaceplate.pnl" 21 372 T 1 1.313346228239845 0 1.257383966244726 -6.580270793036753 -95.74683544303802
+22
+"$ZoomWindowTitle"""
+"$bShowGrid"""
+"$bShowLegend"""
+"$bTrendLog"""
+"$dsCurveColor"""
+"$dsCurveDPE"""
+"$dsCurveLegend"""
+"$dsCurveRange"""
+"$dsCurveScaleVisible"""
+"$dsCurveToolTipText"""
+"$dsCurveVisible"""
+"$dsCurvesType"""
+"$dsUnit"""
+"$fMaxPercentageForLog"""
+"$fMinForLog"""
+"$iMarkerType"""
+"$sBackColor"""
+"$sDpName""904Mixer_Percentage"
+"$sForeColor"""
+"$sRefName""904Mixer_Percentage."
+"$sTimeRange"""
+"$templateParameters"""
+0
