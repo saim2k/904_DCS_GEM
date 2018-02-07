@@ -1,0 +1,4341 @@
+V 14
+2
+LANG:1 0 
+LANG:10001 0 
+PANEL,-1 -1 1344 1027 N "_3DFace" 0
+"main()
+{
+  
+//=================== Access Control ===================================================  
+dyn_string exceptionInfo;
+BUTTON_MaskUnmask.visible = false ;
+fwAccessControl_setupPanel( \"ApplyPanelAccessControl\", exceptionInfo);
+
+//======================= Update Summary dpes ==========================================
+updateChamberSummary();
+}
+
+
+updateChamberSummary()
+{
+  dyn_string SC01L1 = makeDynString
+            (//status
+            \"CAEN/GEM_CAEN_HV/board12/channel000.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel001.actual.status\",
+            \"CAEN/GEM_CAEN_HV/board12/channel002.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel003.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel004.actual.status\",
+            \"CAEN/GEM_CAEN_HV/board12/channel005.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel006.actual.status\",
+            //Vmon            
+            \"CAEN/GEM_CAEN_HV/board12/channel000.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel001.actual.vMon\",
+            \"CAEN/GEM_CAEN_HV/board12/channel002.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel003.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel004.actual.vMon\",
+            \"CAEN/GEM_CAEN_HV/board12/channel005.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel006.actual.vMon\"
+            );
+  dpConnect(\"update_McScOverviewSC01L1\" , SC01L1 );
+  
+  dyn_string SC01L2 = makeDynString
+            (//status
+            \"CAEN/GEM_CAEN_HV/board12/channel007.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel008.actual.status\",
+            \"CAEN/GEM_CAEN_HV/board12/channel009.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel010.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel011.actual.status\",
+            \"CAEN/GEM_CAEN_HV/board12/channel012.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel013.actual.status\",
+            //Vmon
+            \"CAEN/GEM_CAEN_HV/board12/channel007.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel008.actual.vMon\",
+            \"CAEN/GEM_CAEN_HV/board12/channel009.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel010.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel011.actual.vMon\",
+            \"CAEN/GEM_CAEN_HV/board12/channel012.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel013.actual.vMon\"
+            );
+  dpConnect(\"update_McScOverviewSC01L2\" , SC01L2 );  
+  
+  for (int i=1; i<=14; i++)
+  {
+  if(!dpExists(SC01L1[i])) DebugTN(\"SC01L1[\",i,\"] doesn't exist!!\");
+  if(!dpExists(SC01L2[i])) DebugTN(\"SC01L2[\",i,\"] doesn't exist!!\");
+  }
+}
+
+
+
+
+
+
+
+
+
+void ApplyPanelAccessControl(string s1, string s2)
+{
+  
+bool hasControl, hasModify;
+
+dyn_string exceptionInfo;
+
+BUTTON_MaskUnmask.enabled = false ;
+Button_AlarmScreen.enabled = false;
+
+// check privileges:
+fwAccessControl_isGranted( \"CMS_GEM:Control\", hasControl, exceptionInfo);
+fwAccessControl_isGranted( \"CMS_GEM:Modify\", hasModify, exceptionInfo);
+
+if (dynlen(exceptionInfo)) { fwExceptionHandling_display(exceptionInfo); return;}
+
+// enable/disable panel functionality:
+
+  if (hasControl) 
+  {
+    Button_AlarmScreen.enabled = true;
+  }  
+  if (hasModify) 
+  {
+    BUTTON_MaskUnmask.enabled = false ;
+    Button_AlarmScreen.enabled = true;
+  }
+}
+
+
+/*
+main()
+{
+dyn_string exceptionInfo;
+fwAccessControl_setupPanel( \"ApplyPanelAccessControl\", exceptionInfo);
+}
+
+
+
+
+void ApplyPanelAccessControl(string s1, string s2)
+{
+  
+bool hasControl, hasModify;
+
+dyn_string exceptionInfo;
+
+// revoke all previous rights:
+DisableAllInPanel();
+
+// check privileges:
+fwAccessControl_isGranted( \"CMS_GEM:Control\", hasControl, exceptionInfo);
+fwAccessControl_isGranted( \"CMS_GEM:Modify\", hasModify, exceptionInfo);
+
+if (dynlen(exceptionInfo)) { fwExceptionHandling_display(exceptionInfo); return;}
+
+// enable/disable panel functionality:
+
+  if (hasControl) setOperatorRights();
+  if (hasModify) setExpertRights();
+}
+
+
+void DisableAllInPanel()
+{
+  setAllInPanel(false);
+}
+
+void setExpertRights()
+{
+  setAllInPanel(true);
+}
+
+void setOperatorRights()
+{
+   bool set = true;
+   
+   CASCADE_DriftOnOff.enabled = set;
+   CASCADE_G1TopOnOff.enabled = set;
+   CASCADE_G1BotOnOff.enabled = set;
+   CASCADE_G2TopOnOff.enabled = set;
+   CASCADE_G2BotOnOff.enabled = set;
+   CASCADE_G3TopOnOff.enabled = set;
+   CASCADE_G3BotOnOff.enabled = set;
+   
+   CASCADE2_DriftOnOff.enabled = set;
+   CASCADE2_G1TopOnOff.enabled = set;
+   CASCADE2_G1BotOnOff.enabled = set;
+   CASCADE2_G2TopOnOff.enabled = set;
+   CASCADE2_G2BotOnOff.enabled = set;
+   CASCADE2_G3TopOnOff.enabled = set;
+   CASCADE2_G3BotOnOff.enabled = set;
+   
+   ALL_ON_BUTTON.enabled = set;
+   ALL_OFF_BUTTON.enabled = set;
+   
+   ALL_ON_BUTTON2.enabled = set;
+   ALL_OFF_BUTTON2.enabled = set;
+   
+   BUTTON_APPLY_CONFIGS.enabled = set;
+   BUTTON2_APPLY_CONFIGS.enabled = set;
+}
+
+void setAllInPanel(bool set)
+{
+  //board Settings
+ CASCADE_OpMode.enabled = set;
+ BUTTON_applyOpMode.enabled = set; 
+  
+ //layer1
+ CASCADE_DriftOnOff.enabled = set;
+ TEXT_DriftV0.enabled = set;
+ TEXT_DriftV1.enabled = set;
+ TEXT_DriftI0.enabled = set;
+ TEXT_DriftI1.enabled = set;
+ TEXT_DriftRUP.enabled = set;
+ TEXT_DriftRDWN.enabled = set;
+ TEXT_DriftTrip.enabled = set; 
+ 
+  CASCADE_G1TopOnOff.enabled = set;
+ TEXT_G1TopV0.enabled = set;
+ TEXT_G1TopV1.enabled = set;
+ TEXT_G1TopI0.enabled = set;
+ TEXT_G1TopI1.enabled = set;
+ TEXT_G1TopRUP.enabled = set;
+ TEXT_G1TopRDWN.enabled = set;
+ TEXT_G1TopTrip.enabled = set; 
+ 
+  CASCADE_G1BotOnOff.enabled = set;
+ TEXT_G1BotV0.enabled = set;
+ TEXT_G1BotV1.enabled = set;
+ TEXT_G1BotI0.enabled = set;
+ TEXT_G1BotI1.enabled = set;
+ TEXT_G1BotRUP.enabled = set;
+ TEXT_G1BotRDWN.enabled = set;
+ TEXT_G1BotTrip.enabled = set; 
+ 
+  CASCADE_G2TopOnOff.enabled = set;
+ TEXT_G2TopV0.enabled = set;
+ TEXT_G2TopV1.enabled = set;
+ TEXT_G2TopI0.enabled = set;
+ TEXT_G2TopI1.enabled = set;
+ TEXT_G2TopRUP.enabled = set;
+ TEXT_G2TopRDWN.enabled = set;
+ TEXT_G2TopTrip.enabled = set; 
+ 
+  CASCADE_G2BotOnOff.enabled = set;
+ TEXT_G2BotV0.enabled = set;
+ TEXT_G2BotV1.enabled = set;
+ TEXT_G2BotI0.enabled = set;
+ TEXT_G2BotI1.enabled = set;
+ TEXT_G2BotRUP.enabled = set;
+ TEXT_G2BotRDWN.enabled = set;
+ TEXT_G2BotTrip.enabled = set; 
+ 
+  CASCADE_G3TopOnOff.enabled = set;
+ TEXT_G3TopV0.enabled = set;
+ TEXT_G3TopV1.enabled = set;
+ TEXT_G3TopI0.enabled = set;
+ TEXT_G3TopI1.enabled = set;
+ TEXT_G3TopRUP.enabled = set;
+ TEXT_G3TopRDWN.enabled = set;
+ TEXT_G3TopTrip.enabled = set; 
+ 
+  CASCADE_G3BotOnOff.enabled = set;
+ TEXT_G3BotV0.enabled = set;
+ TEXT_G3BotV1.enabled = set;
+ TEXT_G3BotI0.enabled = set;
+ TEXT_G3BotI1.enabled = set;
+ TEXT_G3BotRUP.enabled = set;
+ TEXT_G3BotRDWN.enabled = set;
+ TEXT_G3BotTrip.enabled = set;
+ 
+ ALL_ON_BUTTON.enabled = set;
+ ALL_OFF_BUTTON.enabled = set;
+ BUTTON_SAVE_CONFIGS.enabled = set;
+ BUTTON_LOAD_CONFIGS.enabled = set;
+ load_default_button.enabled = set;
+ 
+ TEXT_DivCurr_top.enabled = set;
+ set_all_DivCurr_button.enabled = set;
+ TEXT_DivVolt_top.enabled = set;
+ set_all_DivVolt_button.enabled = set;
+ TEXT_AllI0.enabled = set;
+ set_all_i0_button.enabled = set;
+ BUTTON_APPLY_CONFIGS.enabled = set;
+ 
+ //layer2
+ CASCADE2_DriftOnOff.enabled = set;
+ TEXT2_DriftV0.enabled = set;
+ TEXT2_DriftV1.enabled = set;
+ TEXT2_DriftI0.enabled = set;
+ TEXT2_DriftI1.enabled = set;
+ TEXT2_DriftRUP.enabled = set;
+ TEXT2_DriftRDWN.enabled = set;
+ TEXT2_DriftTrip.enabled = set; 
+ 
+  CASCADE2_G1TopOnOff.enabled = set;
+ TEXT2_G1TopV0.enabled = set;
+ TEXT2_G1TopV1.enabled = set;
+ TEXT2_G1TopI0.enabled = set;
+ TEXT2_G1TopI1.enabled = set;
+ TEXT2_G1TopRUP.enabled = set;
+ TEXT2_G1TopRDWN.enabled = set;
+ TEXT2_G1TopTrip.enabled = set; 
+ 
+  CASCADE2_G1BotOnOff.enabled = set;
+ TEXT2_G1BotV0.enabled = set;
+ TEXT2_G1BotV1.enabled = set;
+ TEXT2_G1BotI0.enabled = set;
+ TEXT2_G1BotI1.enabled = set;
+ TEXT2_G1BotRUP.enabled = set;
+ TEXT2_G1BotRDWN.enabled = set;
+ TEXT2_G1BotTrip.enabled = set; 
+ 
+  CASCADE2_G2TopOnOff.enabled = set;
+ TEXT2_G2TopV0.enabled = set;
+ TEXT2_G2TopV1.enabled = set;
+ TEXT2_G2TopI0.enabled = set;
+ TEXT2_G2TopI1.enabled = set;
+ TEXT2_G2TopRUP.enabled = set;
+ TEXT2_G2TopRDWN.enabled = set;
+ TEXT2_G2TopTrip.enabled = set; 
+ 
+  CASCADE2_G2BotOnOff.enabled = set;
+ TEXT2_G2BotV0.enabled = set;
+ TEXT2_G2BotV1.enabled = set;
+ TEXT2_G2BotI0.enabled = set;
+ TEXT2_G2BotI1.enabled = set;
+ TEXT2_G2BotRUP.enabled = set;
+ TEXT2_G2BotRDWN.enabled = set;
+ TEXT2_G2BotTrip.enabled = set; 
+ 
+  CASCADE2_G3TopOnOff.enabled = set;
+ TEXT2_G3TopV0.enabled = set;
+ TEXT2_G3TopV1.enabled = set;
+ TEXT2_G3TopI0.enabled = set;
+ TEXT2_G3TopI1.enabled = set;
+ TEXT2_G3TopRUP.enabled = set;
+ TEXT2_G3TopRDWN.enabled = set;
+ TEXT2_G3TopTrip.enabled = set; 
+ 
+  CASCADE2_G3BotOnOff.enabled = set;
+ TEXT2_G3BotV0.enabled = set;
+ TEXT2_G3BotV1.enabled = set;
+ TEXT2_G3BotI0.enabled = set;
+ TEXT2_G3BotI1.enabled = set;
+ TEXT2_G3BotRUP.enabled = set;
+ TEXT2_G3BotRDWN.enabled = set;
+ TEXT2_G3BotTrip.enabled = set;
+ 
+ ALL_ON_BUTTON2.enabled = set;
+ ALL_OFF_BUTTON2.enabled = set;
+ BUTTON2_SAVE_CONFIGS.enabled = set;
+ BUTTON2_LOAD_CONFIGS.enabled = set;
+ load_default_value_bot.enabled = set;
+ 
+ TEXT_DivCurr_bot.enabled = set;
+ set_all_DivCurr_button_bot.enabled = set;
+ TEXT_DivVolt_bot.enabled = set;
+ set_all_DivVolt_button_bot.enabled = set;
+ TEXT_AllI0_Bot.enabled = set;
+ set_all_i0_button_bot.enabled = set;
+ BUTTON2_APPLY_CONFIGS.enabled = set;
+ 
+}
+*/" 0
+ E E E E 1 -1 -1 0  110 160
+""0  1
+E "update_McScOverviewSC01L1( dyn_string dp_CaenChannels ,  dyn_anytype values ) {
+  
+  //update vMonSum
+  dyn_string vMonDpes = makeDynString(\"CAEN/GEM_CAEN_HV/board12/channel000.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel001.actual.vMon\",
+                                      \"CAEN/GEM_CAEN_HV/board12/channel002.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel003.actual.vMon\",
+                                      \"CAEN/GEM_CAEN_HV/board12/channel004.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel005.actual.vMon\",
+                                      \"CAEN/GEM_CAEN_HV/board12/channel006.actual.vMon\");
+  dyn_float vMonFloats;
+  dpGet( vMonDpes , vMonFloats);
+  float new_VmonSum = 0;
+  int i=1;
+  for(i=1; i<=7; i++)
+  {
+    new_VmonSum = new_VmonSum + vMonFloats[i];
+  }
+  
+  dpSet(\"MC_SC1top_overview.actual.VmonSum\", new_VmonSum);
+  
+  //update status
+  dyn_string statusDpes = makeDynString(\"CAEN/GEM_CAEN_HV/board12/channel000.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel001.actual.status\",
+                                      \"CAEN/GEM_CAEN_HV/board12/channel002.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel003.actual.status\",
+                                      \"CAEN/GEM_CAEN_HV/board12/channel004.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel005.actual.status\",
+                                      \"CAEN/GEM_CAEN_HV/board12/channel006.actual.status\");
+  dyn_int statusInts;
+  dpGet( statusDpes , statusInts);
+  int new_status = 0;
+  i=1;
+  for (int i=1; i<=7 ; i++)
+  {
+    new_status = new_status | statusInts[i];
+  }
+  dpSet(\"MC_SC1top_overview.actual.status\", new_status);
+}
+
+//================================================================================================================================================
+update_McScOverviewSC01L2( dyn_string dp_CaenChannels ,  dyn_anytype values ) {
+  
+  //update vMonSum
+  dyn_string vMonDpes = makeDynString(\"CAEN/GEM_CAEN_HV/board12/channel007.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel008.actual.vMon\",
+                                      \"CAEN/GEM_CAEN_HV/board12/channel009.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel010.actual.vMon\",
+                                      \"CAEN/GEM_CAEN_HV/board12/channel011.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel012.actual.vMon\",
+                                      \"CAEN/GEM_CAEN_HV/board12/channel013.actual.vMon\");
+  dyn_float vMonFloats;
+  dpGet( vMonDpes , vMonFloats);
+  float new_VmonSum = 0;
+  int i=1;
+  for(i=1; i<=7; i++)
+  {
+    new_VmonSum = new_VmonSum + vMonFloats[i];
+  }
+
+  dpSet(\"MC_SC1bot_overview.actual.VmonSum\", new_VmonSum);
+  
+  //update status
+  dyn_string statusDpes = makeDynString(\"CAEN/GEM_CAEN_HV/board12/channel007.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel008.actual.status\",
+                                        \"CAEN/GEM_CAEN_HV/board12/channel009.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel010.actual.status\",
+                                        \"CAEN/GEM_CAEN_HV/board12/channel011.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel012.actual.status\",
+                                        \"CAEN/GEM_CAEN_HV/board12/channel013.actual.status\");
+  dyn_int statusInts;
+  dpGet( statusDpes , statusInts);
+  int new_status = 0;
+  i=1;
+  for (int i=1; i<=7 ; i++)
+  {
+    new_status = new_status | statusInts[i];
+  }
+  
+  dpSet(\"MC_SC1bot_overview.actual.status\", new_status);
+}" 0
+ 3
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:1 0 
+2 67
+"PRIMITIVE_TEXT177"
+""
+1 30.125 10 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+67 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 5 1 2 1 E U  0 E 30.125 10 317 38
+0 2 2 "0s" 0 0 0 192 0 0  30.125 10 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,24,5,75,1,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,16,5,75,0,0,0,0,0
+0 2
+LANG:1 21 Cosmic Stand Overview
+LANG:10001 21 SUPERCHAMBER OVERVIEW
+6 99
+"RECTANGLE1"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+99 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board12/channel006.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board12/channel005.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board12/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board12/channel003.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board12/channel002.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board12/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board12/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board12\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 47.00000000000003 -46 1 E 170 220 340 260
+6 100
+"RECTANGLE2"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+100 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board12/channel013.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board12/channel012.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board12/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board12/channel010.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board12/channel009.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board12/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board12/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board12\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 47.00000000000003 -6 1 E 170 220 340 260
+6 101
+"RECTANGLE3"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+101 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board13/channel006.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board13/channel005.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board13/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board13/channel003.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board13/channel002.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board13/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board13/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board13\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 258 -46 1 E 170 220 340 260
+6 102
+"RECTANGLE4"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+102 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board13/channel013.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board13/channel012.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board13/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board13/channel010.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board13/channel009.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board13/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board13/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board13\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 258 -6 1 E 170 220 340 260
+6 103
+"RECTANGLE5"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+103 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board14/channel006.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board14/channel005.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board14/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board14/channel003.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board14/channel002.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board14/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board14/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board14\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 469 -46 1 E 170 220 340 260
+6 104
+"RECTANGLE6"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+104 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board14/channel013.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board14/channel012.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board14/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board14/channel010.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board14/channel009.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board14/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board14/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board14\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 469 -6 1 E 170 220 340 260
+6 105
+"RECTANGLE7"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+105 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board09/channel006.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board09/channel005.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board09/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board09/channel003.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board09/channel002.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board09/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board09/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board09\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 47.00000000000006 82 1 E 170 220 340 260
+6 106
+"RECTANGLE8"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+106 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board09/channel013.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board09/channel012.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board09/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board09/channel010.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board09/channel009.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board09/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board09/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board09\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 47.00000000000006 122 1 E 170 220 340 260
+6 107
+"RECTANGLE9"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+107 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board10/channel006.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board10/channel005.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board10/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board10/channel003.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board10/channel002.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board10/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board10/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board10\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 258 82 1 E 170 220 340 260
+6 108
+"RECTANGLE10"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+108 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board10/channel013.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board10/channel012.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board10/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board10/channel010.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board10/channel009.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board10/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board10/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board10\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 258 122 1 E 170 220 340 260
+6 109
+"RECTANGLE11"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+109 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board11/channel006.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board11/channel005.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board11/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board11/channel003.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board11/channel002.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board11/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board11/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board11\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 469 82 1 E 170 220 340 260
+6 110
+"RECTANGLE12"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+110 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board11/channel013.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board11/channel012.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board11/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board11/channel010.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board11/channel009.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board11/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board11/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board11\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 469 122 1 E 170 220 340 260
+6 111
+"RECTANGLE13"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+111 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board06/channel006.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board06/channel005.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board06/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board06/channel003.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board06/channel002.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board06/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board06/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board06\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 47 221 1 E 170 220 340 260
+6 112
+"RECTANGLE14"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+112 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board06/channel013.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board06/channel012.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board06/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board06/channel010.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board06/channel009.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board06/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board06/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board06\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 47 261 1 E 170 220 340 260
+6 113
+"RECTANGLE15"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+113 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board07/channel006.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board07/channel005.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board07/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board07/channel003.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board07/channel002.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board07/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board07/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board07\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 258 221 1 E 170 220 340 260
+6 114
+"RECTANGLE16"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+114 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board07/channel013.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board07/channel012.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board07/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board07/channel010.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board07/channel009.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board07/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board07/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board07\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 258 261 1 E 170 220 340 260
+6 115
+"RECTANGLE17"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+115 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board08/channel006.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board08/channel005.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board08/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board08/channel003.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board08/channel002.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board08/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board08/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board08\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 469 221 1 E 170 220 340 260
+6 116
+"RECTANGLE18"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+116 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board08/channel013.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board08/channel012.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board08/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board08/channel010.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board08/channel009.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board08/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board08/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board08\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 469 261 1 E 170 220 340 260
+6 117
+"RECTANGLE19"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+117 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board03/channel006.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board03/channel005.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board03/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board03/channel003.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board03/channel002.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board03/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board03/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board03\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 47.00000000000006 349 1 E 170 220 340 260
+6 118
+"RECTANGLE20"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+118 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board03/channel013.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board03/channel012.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board03/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board03/channel010.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board03/channel009.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board03/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board03/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board03\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 47.00000000000006 389 1 E 170 220 340 260
+6 119
+"RECTANGLE21"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+119 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board04/channel006.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board04/channel005.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board04/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board04/channel003.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board04/channel002.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board04/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board04/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board04\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 258 349 1 E 170 220 340 260
+6 120
+"RECTANGLE22"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+120 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board04/channel013.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board04/channel012.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board04/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board04/channel010.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board04/channel009.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board04/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board04/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board04\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 258 389 1 E 170 220 340 260
+6 121
+"RECTANGLE23"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+121 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board05/channel006.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board05/channel005.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board05/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board05/channel003.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board05/channel002.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board05/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board05/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board05\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 469 349 1 E 170 220 340 260
+6 122
+"RECTANGLE24"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+122 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board05/channel013.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board05/channel012.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board05/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board05/channel010.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board05/channel009.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board05/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board05/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board05\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 469 389 1 E 170 220 340 260
+6 123
+"RECTANGLE25"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+123 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board00/channel006.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board00/channel005.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board00/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board00/channel003.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board00/channel002.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board00/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board00/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board00\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 47.00000000000003 477 1 E 170 220 340 260
+6 124
+"RECTANGLE26"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+124 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board00/channel013.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board00/channel012.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board00/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board00/channel010.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board00/channel009.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board00/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board00/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"Chamber settings\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board00\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {Chamber settings}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 47.00000000000003 517 1 E 170 220 340 260
+6 125
+"RECTANGLE27"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+125 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board01/channel006.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board01/channel005.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board01/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board01/channel003.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board01/channel002.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board01/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board01/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board01\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 258 477 1 E 170 220 340 260
+6 126
+"RECTANGLE28"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+126 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board01/channel013.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board01/channel012.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board01/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board01/channel010.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board01/channel009.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board01/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board01/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board01\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 258 517 1 E 170 220 340 260
+6 127
+"RECTANGLE29"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+127 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board02/channel006.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board02/channel005.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board02/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board02/channel003.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board02/channel002.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board02/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board02/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board02\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 469 477 1 E 170 220 340 260
+6 128
+"RECTANGLE30"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+128 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board02/channel013.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board02/channel012.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board02/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board02/channel010.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board02/channel009.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board02/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board02/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board02\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 469 517 1 E 170 220 340 260
+2 129
+"PRIMITIVE_TEXT179"
+""
+1 240 620 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+129 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 240 620 320 690
+0 2 2 "0s" 0 0 0 64 0 0  240 620 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 1/1
+2 130
+"PRIMITIVE_TEXT180"
+""
+1 460 620 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+130 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 460 620 540 690
+0 2 2 "0s" 0 0 0 64 0 0  460 620 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 1/2
+2 131
+"PRIMITIVE_TEXT181"
+""
+1 655.8125010989595 620 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+131 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 655.8125010989595 620 735.8125010989595 690
+0 2 2 "0s" 0 0 0 64 0 0  655.8125010989595 620 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 1/3
+2 133
+"PRIMITIVE_TEXT182"
+""
+1 240 492 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+133 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 240 492 320 562
+0 2 2 "0s" 0 0 0 64 0 0  240 492 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 2/1
+2 134
+"PRIMITIVE_TEXT183"
+""
+1 460 492 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+134 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 460 492 540 562
+0 2 2 "0s" 0 0 0 64 0 0  460 492 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 2/2
+2 135
+"PRIMITIVE_TEXT184"
+""
+1 655.8125010989595 492 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+135 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 655.8125010989595 492 735.8125010989595 562
+0 2 2 "0s" 0 0 0 64 0 0  655.8125010989595 492 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 2/3
+2 141
+"PRIMITIVE_TEXT188"
+""
+1 240 364 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+141 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 240 364 320 434
+0 2 2 "0s" 0 0 0 64 0 0  240 364 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 3/1
+2 142
+"PRIMITIVE_TEXT189"
+""
+1 460 364 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+142 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 460 364 540 434
+0 2 2 "0s" 0 0 0 64 0 0  460 364 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 3/2
+2 143
+"PRIMITIVE_TEXT190"
+""
+1 655.8125010989595 364 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+143 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 655.8125010989595 364 735.8125010989595 434
+0 2 2 "0s" 0 0 0 64 0 0  655.8125010989595 364 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 3/3
+2 145
+"PRIMITIVE_TEXT191"
+""
+1 240 225 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+145 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 240 225 320 295
+0 2 2 "0s" 0 0 0 64 0 0  240 225 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 4/1
+2 146
+"PRIMITIVE_TEXT192"
+""
+1 460 225 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+146 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 460 225 540 295
+0 2 2 "0s" 0 0 0 64 0 0  460 225 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 4/2
+2 147
+"PRIMITIVE_TEXT193"
+""
+1 655.8125010989595 225 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+147 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 655.8125010989595 225 735.8125010989595 295
+0 2 2 "0s" 0 0 0 64 0 0  655.8125010989595 225 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 4/3
+2 149
+"PRIMITIVE_TEXT194"
+""
+1 240 97 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+149 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 240 97 320 167
+0 2 2 "0s" 0 0 0 64 0 0  240 97 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 5/1
+2 150
+"PRIMITIVE_TEXT195"
+""
+1 460 97 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+150 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 460 97 540 167
+0 2 2 "0s" 0 0 0 64 0 0  460 97 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 5/2
+2 151
+"PRIMITIVE_TEXT196"
+""
+1 655.8125010989595 97 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+151 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 655.8125010989595 97 735.8125010989595 167
+0 2 2 "0s" 0 0 0 64 0 0  655.8125010989595 97 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 5/3
+2 152
+"PRIMITIVE_TEXT197"
+""
+1 778.0000010989595 124 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+152 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 778.0000010989595 124 988.0000010989595 214
+0 2 2 "0s" 0 0 0 64 0 0  778.0000010989595 124 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 Top
+2 153
+"PRIMITIVE_TEXT198"
+""
+1 778.0000010989595 171 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+153 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 778.0000010989595 171 988.0000010989595 261
+0 2 2 "0s" 0 0 0 64 0 0  778.0000010989595 171 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 6 Bottom
+2 154
+"PRIMITIVE_TEXT199"
+""
+1 776 247 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+154 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 776 247 986 337
+0 2 2 "0s" 0 0 0 64 0 0  776 247 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 Top
+2 155
+"PRIMITIVE_TEXT200"
+""
+1 776 294 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+155 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 776 294 986 384
+0 2 2 "0s" 0 0 0 64 0 0  776 294 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 6 Bottom
+2 156
+"PRIMITIVE_TEXT201"
+""
+1 776.0000010989595 388 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+156 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 776.0000010989595 388 986.0000010989595 478
+0 2 2 "0s" 0 0 0 64 0 0  776.0000010989595 388 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 Top
+2 157
+"PRIMITIVE_TEXT202"
+""
+1 776.0000010989595 435 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+157 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 776.0000010989595 435 986.0000010989595 525
+0 2 2 "0s" 0 0 0 64 0 0  776.0000010989595 435 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 6 Bottom
+2 158
+"PRIMITIVE_TEXT203"
+""
+1 776.0000010989595 514 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+158 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 776.0000010989595 514 986.0000010989595 604
+0 2 2 "0s" 0 0 0 64 0 0  776.0000010989595 514 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 Top
+2 159
+"PRIMITIVE_TEXT204"
+""
+1 776.0000010989595 561 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+159 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 776.0000010989595 561 986.0000010989595 651
+0 2 2 "0s" 0 0 0 64 0 0  776.0000010989595 561 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 6 Bottom
+2 160
+"PRIMITIVE_TEXT205"
+""
+1 774 653 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+160 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 774 653 984 743
+0 2 2 "0s" 0 0 0 64 0 0  774 653 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 Top
+2 161
+"PRIMITIVE_TEXT206"
+""
+1 774 700 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+161 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 774 700 984 790
+0 2 2 "0s" 0 0 0 64 0 0  774 700 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 6 Bottom
+0
+LAYER, 1 
+1
+LANG:1 0 
+0
+LAYER, 2 
+1
+LANG:1 0 
+0
+LAYER, 3 
+1
+LANG:1 0 
+0
+LAYER, 4 
+1
+LANG:1 0 
+0
+LAYER, 5 
+1
+LANG:1 0 
+0
+LAYER, 6 
+1
+LANG:1 0 
+0
+LAYER, 7 
+1
+LANG:1 0 
+0
+0
