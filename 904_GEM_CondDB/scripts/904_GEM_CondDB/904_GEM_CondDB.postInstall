@@ -1,0 +1,62 @@
+#uses "fwInstallationManager.ctl"
+#uses "fwRDBArchiving/fwRDBConfig.ctl"
+#uses "fwAccessControl/fwAccessControl" 
+
+main(){
+  
+	dyn_string exc;
+
+
+//Creation of _UI DPs to allow connection of up to 100 remote uis
+	
+	for(int i=1; i<=100; i++) {
+		If (!dpExists (“_Ui_” + i))  dpCreate (“_Ui_”+I,”_Ui”);
+	}
+
+	
+
+//RDB Configuration
+  
+		fwRDBConfig_setUser("cms_gem_904_pvss");
+		fwRDBConfig_setHost("int2r");
+		fwRDBConfig_setPassword("904ConfDB"); 
+
+		  
+
+
+//This below sets default values for ".buffer.maxEntries",".buffer.maxBlocks",".buffer.retentionPeriod", ".buffer.flushInterval",".dbConfig.dbWriteDelay" as in Pt5
+
+	string dp;
+	int res;
+	int dpvalue;
+	dp = getSystemName() +"_RDBArchive";
+	reduActive(res, getSystemName());
+
+	dyn_string dpElem = makeDynString(".buffer.maxEntries",".buffer.maxBlocks",".buffer.retentionPeriod", ".buffer.flushInterval",".dbConfig.dbWriteDelay");
+
+	dyn_int values = makeDynInt(500,500,3600,3000,2000);
+
+
+	if(res >0 )
+	{
+		for(int i = 1;i<=dynlen(dpElem);i++){
+			dpGet(dp+"_2"+dpElem[i],dpvalue);
+			if(dpvalue !=values[i])
+			dpSet(dp+"_2"+dpElem[i],values[i]);
+		}
+
+	}
+
+	for(int i = 1;i<=dynlen(dpElem);i++){
+		dpGet(dp+dpElem[i],dpvalue);
+		if(dpvalue !=values[i])
+		dpSet(dp+dpElem[i],values[i]);
+	}
+
+
+DebugN("904_GEM_CondDB has been installed", exc);
+
+fwInstallationUtils_endPostInstall("904_GEM_CondDB");
+
+
+}

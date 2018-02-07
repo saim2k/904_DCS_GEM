@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component>
+  <name>904_GEM_CondDB</name>
+  <version>1.0.1</version>
+  <date>07/02/2018</date>
+  <required>fwCore=5.1.0</required>
+  <required>fwRDBArchiving=1.1.4</required>
+  <required>fwInstallationUtils=2.0</required>
+  <required>fwAccessControl=5.2.1</required>
+  <postInstall>./scripts/904_GEM_CondDB/904_GEM_CondDB.postinstall</postInstall>
+  <file>./904_GEM_CondDB.xml</file>
+</component>
