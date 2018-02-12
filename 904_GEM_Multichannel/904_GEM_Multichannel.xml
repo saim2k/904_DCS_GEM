@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <component>
   <name>904_GEM_Multichannel</name>
-  <version>1.0.0</version>
-  <date>07/02/2018</date>
+  <version>1.0.1</version>
+  <date>12/02/2018</date>
   <required>fwCaen=8.0.0</required>
   <required>fwCore=8.0.6</required>
   <required>fwDeviceComment=8.0.0</required>
@@ -19,10 +19,17 @@
   <required>majority_treeCache=1.2.17</required>
   <required>CMSfwRedundancy=1.1.5</required>
   <file>./panels/904_GEM_Multichannel/904_GEM_Overview.pnl</file>
-  <file>./panels/904_GEM_Multichannel/904_GEM_Multichannel_monitoring.pnl</file>
-  <file>./panels/904_GEM_Multichannel/904_GEM_Multichannel_settings.pnl</file>
-  <file>./panels/904_GEM_Multichannel/904_GEM_Multichannel_settings_1.pnl</file>
-  <file>./panels/904_GEM_Multichannel/904_GEM_Multichannel_settings_2.pnl</file>
+  <file>./panels/904_GEM_Multichannel/904_GEM_multichannel_monitoring.pnl</file>
+  <file>./panels/904_GEM_Multichannel/904_GEM_multichannel_settings.pnl</file>
+  <file>./panels/904_GEM_Multichannel/904_GEM_multichannel_settings_1.pnl</file>
+  <file>./panels/904_GEM_Multichannel/904_GEM_multichannel_settings_2.pnl</file>
+  <file>./panels/904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl</file>
+  <file>./panels/904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl</file>
+  <file>./panels/904_GEM_Multichannel/904_GEM_multichannel_selection.pnl</file>
+  <file>./panels/904_GEM_Multichannel/904_GEM_multichannel_settings_all.pnl</file>
+  <file>./panels/904_GEM_Multichannel/904_GEM_multichannel_trendBoard.pnl</file>
+  <file>./panels/904_GEM_Multichannel/904_GEM_multichannel_trendTop.pnl</file>
+  <file>./panels/904_GEM_Multichannel/904_GEM_multichannel_trendBottom.pnl</file>
   <postInstall>./scripts/904_GEM_Multichannel/904_GEM_Multichannel.postinstall</postInstall>
   <file>./904_GEM_Multichannel.xml</file>
 </component>

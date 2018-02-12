@@ -2,399 +2,400 @@ V 14
 2
 LANG:1 0 
 LANG:10001 0 
-PANEL,-1 -1 1344 1027 N "_3DFace" 0
-"main()
-{
-  
+PANEL,-1 -1 1344 878 N "_3DFace" 1
+"$Board"
+"// main()
+// {
+//   
 //=================== Access Control ===================================================  
-dyn_string exceptionInfo;
-BUTTON_MaskUnmask.visible = false ;
-fwAccessControl_setupPanel( \"ApplyPanelAccessControl\", exceptionInfo);
-
+// dyn_string exceptionInfo;
+// BUTTON_MaskUnmask.visible = false ;
+// fwAccessControl_setupPanel( \"ApplyPanelAccessControl\", exceptionInfo);
+// 
 //======================= Update Summary dpes ==========================================
-updateChamberSummary();
-}
-
-
-updateChamberSummary()
-{
-  dyn_string SC01L1 = makeDynString
-            (//status
-            \"CAEN/GEM_CAEN_HV/board12/channel000.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel001.actual.status\",
-            \"CAEN/GEM_CAEN_HV/board12/channel002.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel003.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel004.actual.status\",
-            \"CAEN/GEM_CAEN_HV/board12/channel005.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel006.actual.status\",
+// updateChamberSummary();
+// }
+// 
+// 
+// updateChamberSummary()
+// {
+//   dyn_string SC01L1 = makeDynString
+//             (//status
+//             \"CAEN/GEM_CAEN_HV/board12/channel000.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel001.actual.status\",
+//             \"CAEN/GEM_CAEN_HV/board12/channel002.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel003.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel004.actual.status\",
+//             \"CAEN/GEM_CAEN_HV/board12/channel005.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel006.actual.status\",
             //Vmon            
-            \"CAEN/GEM_CAEN_HV/board12/channel000.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel001.actual.vMon\",
-            \"CAEN/GEM_CAEN_HV/board12/channel002.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel003.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel004.actual.vMon\",
-            \"CAEN/GEM_CAEN_HV/board12/channel005.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel006.actual.vMon\"
-            );
-  dpConnect(\"update_McScOverviewSC01L1\" , SC01L1 );
-  
-  dyn_string SC01L2 = makeDynString
-            (//status
-            \"CAEN/GEM_CAEN_HV/board12/channel007.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel008.actual.status\",
-            \"CAEN/GEM_CAEN_HV/board12/channel009.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel010.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel011.actual.status\",
-            \"CAEN/GEM_CAEN_HV/board12/channel012.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel013.actual.status\",
+//             \"CAEN/GEM_CAEN_HV/board12/channel000.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel001.actual.vMon\",
+//             \"CAEN/GEM_CAEN_HV/board12/channel002.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel003.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel004.actual.vMon\",
+//             \"CAEN/GEM_CAEN_HV/board12/channel005.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel006.actual.vMon\"
+//             );
+//   dpConnect(\"update_McScOverviewSC01L1\" , SC01L1 );
+//   
+//   dyn_string SC01L2 = makeDynString
+//             (//status
+//             \"CAEN/GEM_CAEN_HV/board12/channel007.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel008.actual.status\",
+//             \"CAEN/GEM_CAEN_HV/board12/channel009.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel010.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel011.actual.status\",
+//             \"CAEN/GEM_CAEN_HV/board12/channel012.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel013.actual.status\",
             //Vmon
-            \"CAEN/GEM_CAEN_HV/board12/channel007.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel008.actual.vMon\",
-            \"CAEN/GEM_CAEN_HV/board12/channel009.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel010.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel011.actual.vMon\",
-            \"CAEN/GEM_CAEN_HV/board12/channel012.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel013.actual.vMon\"
-            );
-  dpConnect(\"update_McScOverviewSC01L2\" , SC01L2 );  
-  
-  for (int i=1; i<=14; i++)
-  {
-  if(!dpExists(SC01L1[i])) DebugTN(\"SC01L1[\",i,\"] doesn't exist!!\");
-  if(!dpExists(SC01L2[i])) DebugTN(\"SC01L2[\",i,\"] doesn't exist!!\");
-  }
-}
-
-
-
-
-
-
-
-
-
-void ApplyPanelAccessControl(string s1, string s2)
-{
-  
-bool hasControl, hasModify;
-
-dyn_string exceptionInfo;
-
-BUTTON_MaskUnmask.enabled = false ;
-Button_AlarmScreen.enabled = false;
-
+//             \"CAEN/GEM_CAEN_HV/board12/channel007.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel008.actual.vMon\",
+//             \"CAEN/GEM_CAEN_HV/board12/channel009.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel010.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel011.actual.vMon\",
+//             \"CAEN/GEM_CAEN_HV/board12/channel012.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel013.actual.vMon\"
+//             );
+//   dpConnect(\"update_McScOverviewSC01L2\" , SC01L2 );  
+//   
+//   for (int i=1; i<=14; i++)
+//   {
+//   if(!dpExists(SC01L1[i])) DebugTN(\"SC01L1[\",i,\"] doesn't exist!!\");
+//   if(!dpExists(SC01L2[i])) DebugTN(\"SC01L2[\",i,\"] doesn't exist!!\");
+//   }
+// }
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// void ApplyPanelAccessControl(string s1, string s2)
+// {
+//   
+// bool hasControl, hasModify;
+// 
+// dyn_string exceptionInfo;
+// 
+// BUTTON_MaskUnmask.enabled = false ;
+// Button_AlarmScreen.enabled = false;
+// 
 // check privileges:
-fwAccessControl_isGranted( \"CMS_GEM:Control\", hasControl, exceptionInfo);
-fwAccessControl_isGranted( \"CMS_GEM:Modify\", hasModify, exceptionInfo);
-
-if (dynlen(exceptionInfo)) { fwExceptionHandling_display(exceptionInfo); return;}
-
+// fwAccessControl_isGranted( \"CMS_GEM:Control\", hasControl, exceptionInfo);
+// fwAccessControl_isGranted( \"CMS_GEM:Modify\", hasModify, exceptionInfo);
+// 
+// if (dynlen(exceptionInfo)) { fwExceptionHandling_display(exceptionInfo); return;}
+// 
 // enable/disable panel functionality:
-
-  if (hasControl) 
-  {
-    Button_AlarmScreen.enabled = true;
-  }  
-  if (hasModify) 
-  {
-    BUTTON_MaskUnmask.enabled = false ;
-    Button_AlarmScreen.enabled = true;
-  }
-}
-
-
-/*
-main()
-{
-dyn_string exceptionInfo;
-fwAccessControl_setupPanel( \"ApplyPanelAccessControl\", exceptionInfo);
-}
-
-
-
-
-void ApplyPanelAccessControl(string s1, string s2)
-{
-  
-bool hasControl, hasModify;
-
-dyn_string exceptionInfo;
-
+// 
+//   if (hasControl) 
+//   {
+//     Button_AlarmScreen.enabled = true;
+//   }  
+//   if (hasModify) 
+//   {
+//     BUTTON_MaskUnmask.enabled = false ;
+//     Button_AlarmScreen.enabled = true;
+//   }
+// }
+// 
+// 
+// /*
+// main()
+// {
+// dyn_string exceptionInfo;
+// fwAccessControl_setupPanel( \"ApplyPanelAccessControl\", exceptionInfo);
+// }
+// 
+// 
+// 
+// 
+// void ApplyPanelAccessControl(string s1, string s2)
+// {
+//   
+// bool hasControl, hasModify;
+// 
+// dyn_string exceptionInfo;
+// 
 // revoke all previous rights:
-DisableAllInPanel();
-
+// DisableAllInPanel();
+// 
 // check privileges:
-fwAccessControl_isGranted( \"CMS_GEM:Control\", hasControl, exceptionInfo);
-fwAccessControl_isGranted( \"CMS_GEM:Modify\", hasModify, exceptionInfo);
-
-if (dynlen(exceptionInfo)) { fwExceptionHandling_display(exceptionInfo); return;}
-
+// fwAccessControl_isGranted( \"CMS_GEM:Control\", hasControl, exceptionInfo);
+// fwAccessControl_isGranted( \"CMS_GEM:Modify\", hasModify, exceptionInfo);
+// 
+// if (dynlen(exceptionInfo)) { fwExceptionHandling_display(exceptionInfo); return;}
+// 
 // enable/disable panel functionality:
-
-  if (hasControl) setOperatorRights();
-  if (hasModify) setExpertRights();
-}
-
-
-void DisableAllInPanel()
-{
-  setAllInPanel(false);
-}
-
-void setExpertRights()
-{
-  setAllInPanel(true);
-}
-
-void setOperatorRights()
-{
-   bool set = true;
-   
-   CASCADE_DriftOnOff.enabled = set;
-   CASCADE_G1TopOnOff.enabled = set;
-   CASCADE_G1BotOnOff.enabled = set;
-   CASCADE_G2TopOnOff.enabled = set;
-   CASCADE_G2BotOnOff.enabled = set;
-   CASCADE_G3TopOnOff.enabled = set;
-   CASCADE_G3BotOnOff.enabled = set;
-   
-   CASCADE2_DriftOnOff.enabled = set;
-   CASCADE2_G1TopOnOff.enabled = set;
-   CASCADE2_G1BotOnOff.enabled = set;
-   CASCADE2_G2TopOnOff.enabled = set;
-   CASCADE2_G2BotOnOff.enabled = set;
-   CASCADE2_G3TopOnOff.enabled = set;
-   CASCADE2_G3BotOnOff.enabled = set;
-   
-   ALL_ON_BUTTON.enabled = set;
-   ALL_OFF_BUTTON.enabled = set;
-   
-   ALL_ON_BUTTON2.enabled = set;
-   ALL_OFF_BUTTON2.enabled = set;
-   
-   BUTTON_APPLY_CONFIGS.enabled = set;
-   BUTTON2_APPLY_CONFIGS.enabled = set;
-}
-
-void setAllInPanel(bool set)
-{
+// 
+//   if (hasControl) setOperatorRights();
+//   if (hasModify) setExpertRights();
+// }
+// 
+// 
+// void DisableAllInPanel()
+// {
+//   setAllInPanel(false);
+// }
+// 
+// void setExpertRights()
+// {
+//   setAllInPanel(true);
+// }
+// 
+// void setOperatorRights()
+// {
+//    bool set = true;
+//    
+//    CASCADE_DriftOnOff.enabled = set;
+//    CASCADE_G1TopOnOff.enabled = set;
+//    CASCADE_G1BotOnOff.enabled = set;
+//    CASCADE_G2TopOnOff.enabled = set;
+//    CASCADE_G2BotOnOff.enabled = set;
+//    CASCADE_G3TopOnOff.enabled = set;
+//    CASCADE_G3BotOnOff.enabled = set;
+//    
+//    CASCADE2_DriftOnOff.enabled = set;
+//    CASCADE2_G1TopOnOff.enabled = set;
+//    CASCADE2_G1BotOnOff.enabled = set;
+//    CASCADE2_G2TopOnOff.enabled = set;
+//    CASCADE2_G2BotOnOff.enabled = set;
+//    CASCADE2_G3TopOnOff.enabled = set;
+//    CASCADE2_G3BotOnOff.enabled = set;
+//    
+//    ALL_ON_BUTTON.enabled = set;
+//    ALL_OFF_BUTTON.enabled = set;
+//    
+//    ALL_ON_BUTTON2.enabled = set;
+//    ALL_OFF_BUTTON2.enabled = set;
+//    
+//    BUTTON_APPLY_CONFIGS.enabled = set;
+//    BUTTON2_APPLY_CONFIGS.enabled = set;
+// }
+// 
+// void setAllInPanel(bool set)
+// {
   //board Settings
- CASCADE_OpMode.enabled = set;
- BUTTON_applyOpMode.enabled = set; 
-  
+//  CASCADE_OpMode.enabled = set;
+//  BUTTON_applyOpMode.enabled = set; 
+//   
  //layer1
- CASCADE_DriftOnOff.enabled = set;
- TEXT_DriftV0.enabled = set;
- TEXT_DriftV1.enabled = set;
- TEXT_DriftI0.enabled = set;
- TEXT_DriftI1.enabled = set;
- TEXT_DriftRUP.enabled = set;
- TEXT_DriftRDWN.enabled = set;
- TEXT_DriftTrip.enabled = set; 
- 
-  CASCADE_G1TopOnOff.enabled = set;
- TEXT_G1TopV0.enabled = set;
- TEXT_G1TopV1.enabled = set;
- TEXT_G1TopI0.enabled = set;
- TEXT_G1TopI1.enabled = set;
- TEXT_G1TopRUP.enabled = set;
- TEXT_G1TopRDWN.enabled = set;
- TEXT_G1TopTrip.enabled = set; 
- 
-  CASCADE_G1BotOnOff.enabled = set;
- TEXT_G1BotV0.enabled = set;
- TEXT_G1BotV1.enabled = set;
- TEXT_G1BotI0.enabled = set;
- TEXT_G1BotI1.enabled = set;
- TEXT_G1BotRUP.enabled = set;
- TEXT_G1BotRDWN.enabled = set;
- TEXT_G1BotTrip.enabled = set; 
- 
-  CASCADE_G2TopOnOff.enabled = set;
- TEXT_G2TopV0.enabled = set;
- TEXT_G2TopV1.enabled = set;
- TEXT_G2TopI0.enabled = set;
- TEXT_G2TopI1.enabled = set;
- TEXT_G2TopRUP.enabled = set;
- TEXT_G2TopRDWN.enabled = set;
- TEXT_G2TopTrip.enabled = set; 
- 
-  CASCADE_G2BotOnOff.enabled = set;
- TEXT_G2BotV0.enabled = set;
- TEXT_G2BotV1.enabled = set;
- TEXT_G2BotI0.enabled = set;
- TEXT_G2BotI1.enabled = set;
- TEXT_G2BotRUP.enabled = set;
- TEXT_G2BotRDWN.enabled = set;
- TEXT_G2BotTrip.enabled = set; 
- 
-  CASCADE_G3TopOnOff.enabled = set;
- TEXT_G3TopV0.enabled = set;
- TEXT_G3TopV1.enabled = set;
- TEXT_G3TopI0.enabled = set;
- TEXT_G3TopI1.enabled = set;
- TEXT_G3TopRUP.enabled = set;
- TEXT_G3TopRDWN.enabled = set;
- TEXT_G3TopTrip.enabled = set; 
- 
-  CASCADE_G3BotOnOff.enabled = set;
- TEXT_G3BotV0.enabled = set;
- TEXT_G3BotV1.enabled = set;
- TEXT_G3BotI0.enabled = set;
- TEXT_G3BotI1.enabled = set;
- TEXT_G3BotRUP.enabled = set;
- TEXT_G3BotRDWN.enabled = set;
- TEXT_G3BotTrip.enabled = set;
- 
- ALL_ON_BUTTON.enabled = set;
- ALL_OFF_BUTTON.enabled = set;
- BUTTON_SAVE_CONFIGS.enabled = set;
- BUTTON_LOAD_CONFIGS.enabled = set;
- load_default_button.enabled = set;
- 
- TEXT_DivCurr_top.enabled = set;
- set_all_DivCurr_button.enabled = set;
- TEXT_DivVolt_top.enabled = set;
- set_all_DivVolt_button.enabled = set;
- TEXT_AllI0.enabled = set;
- set_all_i0_button.enabled = set;
- BUTTON_APPLY_CONFIGS.enabled = set;
- 
+//  CASCADE_DriftOnOff.enabled = set;
+//  TEXT_DriftV0.enabled = set;
+//  TEXT_DriftV1.enabled = set;
+//  TEXT_DriftI0.enabled = set;
+//  TEXT_DriftI1.enabled = set;
+//  TEXT_DriftRUP.enabled = set;
+//  TEXT_DriftRDWN.enabled = set;
+//  TEXT_DriftTrip.enabled = set; 
+//  
+//   CASCADE_G1TopOnOff.enabled = set;
+//  TEXT_G1TopV0.enabled = set;
+//  TEXT_G1TopV1.enabled = set;
+//  TEXT_G1TopI0.enabled = set;
+//  TEXT_G1TopI1.enabled = set;
+//  TEXT_G1TopRUP.enabled = set;
+//  TEXT_G1TopRDWN.enabled = set;
+//  TEXT_G1TopTrip.enabled = set; 
+//  
+//   CASCADE_G1BotOnOff.enabled = set;
+//  TEXT_G1BotV0.enabled = set;
+//  TEXT_G1BotV1.enabled = set;
+//  TEXT_G1BotI0.enabled = set;
+//  TEXT_G1BotI1.enabled = set;
+//  TEXT_G1BotRUP.enabled = set;
+//  TEXT_G1BotRDWN.enabled = set;
+//  TEXT_G1BotTrip.enabled = set; 
+//  
+//   CASCADE_G2TopOnOff.enabled = set;
+//  TEXT_G2TopV0.enabled = set;
+//  TEXT_G2TopV1.enabled = set;
+//  TEXT_G2TopI0.enabled = set;
+//  TEXT_G2TopI1.enabled = set;
+//  TEXT_G2TopRUP.enabled = set;
+//  TEXT_G2TopRDWN.enabled = set;
+//  TEXT_G2TopTrip.enabled = set; 
+//  
+//   CASCADE_G2BotOnOff.enabled = set;
+//  TEXT_G2BotV0.enabled = set;
+//  TEXT_G2BotV1.enabled = set;
+//  TEXT_G2BotI0.enabled = set;
+//  TEXT_G2BotI1.enabled = set;
+//  TEXT_G2BotRUP.enabled = set;
+//  TEXT_G2BotRDWN.enabled = set;
+//  TEXT_G2BotTrip.enabled = set; 
+//  
+//   CASCADE_G3TopOnOff.enabled = set;
+//  TEXT_G3TopV0.enabled = set;
+//  TEXT_G3TopV1.enabled = set;
+//  TEXT_G3TopI0.enabled = set;
+//  TEXT_G3TopI1.enabled = set;
+//  TEXT_G3TopRUP.enabled = set;
+//  TEXT_G3TopRDWN.enabled = set;
+//  TEXT_G3TopTrip.enabled = set; 
+//  
+//   CASCADE_G3BotOnOff.enabled = set;
+//  TEXT_G3BotV0.enabled = set;
+//  TEXT_G3BotV1.enabled = set;
+//  TEXT_G3BotI0.enabled = set;
+//  TEXT_G3BotI1.enabled = set;
+//  TEXT_G3BotRUP.enabled = set;
+//  TEXT_G3BotRDWN.enabled = set;
+//  TEXT_G3BotTrip.enabled = set;
+//  
+//  ALL_ON_BUTTON.enabled = set;
+//  ALL_OFF_BUTTON.enabled = set;
+//  BUTTON_SAVE_CONFIGS.enabled = set;
+//  BUTTON_LOAD_CONFIGS.enabled = set;
+//  load_default_button.enabled = set;
+//  
+//  TEXT_DivCurr_top.enabled = set;
+//  set_all_DivCurr_button.enabled = set;
+//  TEXT_DivVolt_top.enabled = set;
+//  set_all_DivVolt_button.enabled = set;
+//  TEXT_AllI0.enabled = set;
+//  set_all_i0_button.enabled = set;
+//  BUTTON_APPLY_CONFIGS.enabled = set;
+//  
  //layer2
- CASCADE2_DriftOnOff.enabled = set;
- TEXT2_DriftV0.enabled = set;
- TEXT2_DriftV1.enabled = set;
- TEXT2_DriftI0.enabled = set;
- TEXT2_DriftI1.enabled = set;
- TEXT2_DriftRUP.enabled = set;
- TEXT2_DriftRDWN.enabled = set;
- TEXT2_DriftTrip.enabled = set; 
- 
-  CASCADE2_G1TopOnOff.enabled = set;
- TEXT2_G1TopV0.enabled = set;
- TEXT2_G1TopV1.enabled = set;
- TEXT2_G1TopI0.enabled = set;
- TEXT2_G1TopI1.enabled = set;
- TEXT2_G1TopRUP.enabled = set;
- TEXT2_G1TopRDWN.enabled = set;
- TEXT2_G1TopTrip.enabled = set; 
- 
-  CASCADE2_G1BotOnOff.enabled = set;
- TEXT2_G1BotV0.enabled = set;
- TEXT2_G1BotV1.enabled = set;
- TEXT2_G1BotI0.enabled = set;
- TEXT2_G1BotI1.enabled = set;
- TEXT2_G1BotRUP.enabled = set;
- TEXT2_G1BotRDWN.enabled = set;
- TEXT2_G1BotTrip.enabled = set; 
- 
-  CASCADE2_G2TopOnOff.enabled = set;
- TEXT2_G2TopV0.enabled = set;
- TEXT2_G2TopV1.enabled = set;
- TEXT2_G2TopI0.enabled = set;
- TEXT2_G2TopI1.enabled = set;
- TEXT2_G2TopRUP.enabled = set;
- TEXT2_G2TopRDWN.enabled = set;
- TEXT2_G2TopTrip.enabled = set; 
- 
-  CASCADE2_G2BotOnOff.enabled = set;
- TEXT2_G2BotV0.enabled = set;
- TEXT2_G2BotV1.enabled = set;
- TEXT2_G2BotI0.enabled = set;
- TEXT2_G2BotI1.enabled = set;
- TEXT2_G2BotRUP.enabled = set;
- TEXT2_G2BotRDWN.enabled = set;
- TEXT2_G2BotTrip.enabled = set; 
- 
-  CASCADE2_G3TopOnOff.enabled = set;
- TEXT2_G3TopV0.enabled = set;
- TEXT2_G3TopV1.enabled = set;
- TEXT2_G3TopI0.enabled = set;
- TEXT2_G3TopI1.enabled = set;
- TEXT2_G3TopRUP.enabled = set;
- TEXT2_G3TopRDWN.enabled = set;
- TEXT2_G3TopTrip.enabled = set; 
- 
-  CASCADE2_G3BotOnOff.enabled = set;
- TEXT2_G3BotV0.enabled = set;
- TEXT2_G3BotV1.enabled = set;
- TEXT2_G3BotI0.enabled = set;
- TEXT2_G3BotI1.enabled = set;
- TEXT2_G3BotRUP.enabled = set;
- TEXT2_G3BotRDWN.enabled = set;
- TEXT2_G3BotTrip.enabled = set;
- 
- ALL_ON_BUTTON2.enabled = set;
- ALL_OFF_BUTTON2.enabled = set;
- BUTTON2_SAVE_CONFIGS.enabled = set;
- BUTTON2_LOAD_CONFIGS.enabled = set;
- load_default_value_bot.enabled = set;
- 
- TEXT_DivCurr_bot.enabled = set;
- set_all_DivCurr_button_bot.enabled = set;
- TEXT_DivVolt_bot.enabled = set;
- set_all_DivVolt_button_bot.enabled = set;
- TEXT_AllI0_Bot.enabled = set;
- set_all_i0_button_bot.enabled = set;
- BUTTON2_APPLY_CONFIGS.enabled = set;
- 
-}
-*/" 0
+//  CASCADE2_DriftOnOff.enabled = set;
+//  TEXT2_DriftV0.enabled = set;
+//  TEXT2_DriftV1.enabled = set;
+//  TEXT2_DriftI0.enabled = set;
+//  TEXT2_DriftI1.enabled = set;
+//  TEXT2_DriftRUP.enabled = set;
+//  TEXT2_DriftRDWN.enabled = set;
+//  TEXT2_DriftTrip.enabled = set; 
+//  
+//   CASCADE2_G1TopOnOff.enabled = set;
+//  TEXT2_G1TopV0.enabled = set;
+//  TEXT2_G1TopV1.enabled = set;
+//  TEXT2_G1TopI0.enabled = set;
+//  TEXT2_G1TopI1.enabled = set;
+//  TEXT2_G1TopRUP.enabled = set;
+//  TEXT2_G1TopRDWN.enabled = set;
+//  TEXT2_G1TopTrip.enabled = set; 
+//  
+//   CASCADE2_G1BotOnOff.enabled = set;
+//  TEXT2_G1BotV0.enabled = set;
+//  TEXT2_G1BotV1.enabled = set;
+//  TEXT2_G1BotI0.enabled = set;
+//  TEXT2_G1BotI1.enabled = set;
+//  TEXT2_G1BotRUP.enabled = set;
+//  TEXT2_G1BotRDWN.enabled = set;
+//  TEXT2_G1BotTrip.enabled = set; 
+//  
+//   CASCADE2_G2TopOnOff.enabled = set;
+//  TEXT2_G2TopV0.enabled = set;
+//  TEXT2_G2TopV1.enabled = set;
+//  TEXT2_G2TopI0.enabled = set;
+//  TEXT2_G2TopI1.enabled = set;
+//  TEXT2_G2TopRUP.enabled = set;
+//  TEXT2_G2TopRDWN.enabled = set;
+//  TEXT2_G2TopTrip.enabled = set; 
+//  
+//   CASCADE2_G2BotOnOff.enabled = set;
+//  TEXT2_G2BotV0.enabled = set;
+//  TEXT2_G2BotV1.enabled = set;
+//  TEXT2_G2BotI0.enabled = set;
+//  TEXT2_G2BotI1.enabled = set;
+//  TEXT2_G2BotRUP.enabled = set;
+//  TEXT2_G2BotRDWN.enabled = set;
+//  TEXT2_G2BotTrip.enabled = set; 
+//  
+//   CASCADE2_G3TopOnOff.enabled = set;
+//  TEXT2_G3TopV0.enabled = set;
+//  TEXT2_G3TopV1.enabled = set;
+//  TEXT2_G3TopI0.enabled = set;
+//  TEXT2_G3TopI1.enabled = set;
+//  TEXT2_G3TopRUP.enabled = set;
+//  TEXT2_G3TopRDWN.enabled = set;
+//  TEXT2_G3TopTrip.enabled = set; 
+//  
+//   CASCADE2_G3BotOnOff.enabled = set;
+//  TEXT2_G3BotV0.enabled = set;
+//  TEXT2_G3BotV1.enabled = set;
+//  TEXT2_G3BotI0.enabled = set;
+//  TEXT2_G3BotI1.enabled = set;
+//  TEXT2_G3BotRUP.enabled = set;
+//  TEXT2_G3BotRDWN.enabled = set;
+//  TEXT2_G3BotTrip.enabled = set;
+//  
+//  ALL_ON_BUTTON2.enabled = set;
+//  ALL_OFF_BUTTON2.enabled = set;
+//  BUTTON2_SAVE_CONFIGS.enabled = set;
+//  BUTTON2_LOAD_CONFIGS.enabled = set;
+//  load_default_value_bot.enabled = set;
+//  
+//  TEXT_DivCurr_bot.enabled = set;
+//  set_all_DivCurr_button_bot.enabled = set;
+//  TEXT_DivVolt_bot.enabled = set;
+//  set_all_DivVolt_button_bot.enabled = set;
+//  TEXT_AllI0_Bot.enabled = set;
+//  set_all_i0_button_bot.enabled = set;
+//  BUTTON2_APPLY_CONFIGS.enabled = set;
+//  
+// }
+// */" 0
  E E E E 1 -1 -1 0  110 160
 ""0  1
-E "update_McScOverviewSC01L1( dyn_string dp_CaenChannels ,  dyn_anytype values ) {
-  
+E "// update_McScOverviewSC01L1( dyn_string dp_CaenChannels ,  dyn_anytype values ) {
+//   
   //update vMonSum
-  dyn_string vMonDpes = makeDynString(\"CAEN/GEM_CAEN_HV/board12/channel000.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel001.actual.vMon\",
-                                      \"CAEN/GEM_CAEN_HV/board12/channel002.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel003.actual.vMon\",
-                                      \"CAEN/GEM_CAEN_HV/board12/channel004.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel005.actual.vMon\",
-                                      \"CAEN/GEM_CAEN_HV/board12/channel006.actual.vMon\");
-  dyn_float vMonFloats;
-  dpGet( vMonDpes , vMonFloats);
-  float new_VmonSum = 0;
-  int i=1;
-  for(i=1; i<=7; i++)
-  {
-    new_VmonSum = new_VmonSum + vMonFloats[i];
-  }
-  
-  dpSet(\"MC_SC1top_overview.actual.VmonSum\", new_VmonSum);
-  
+//   dyn_string vMonDpes = makeDynString(\"CAEN/GEM_CAEN_HV/board12/channel000.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel001.actual.vMon\",
+//                                       \"CAEN/GEM_CAEN_HV/board12/channel002.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel003.actual.vMon\",
+//                                       \"CAEN/GEM_CAEN_HV/board12/channel004.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel005.actual.vMon\",
+//                                       \"CAEN/GEM_CAEN_HV/board12/channel006.actual.vMon\");
+//   dyn_float vMonFloats;
+//   dpGet( vMonDpes , vMonFloats);
+//   float new_VmonSum = 0;
+//   int i=1;
+//   for(i=1; i<=7; i++)
+//   {
+//     new_VmonSum = new_VmonSum + vMonFloats[i];
+//   }
+//   
+//   dpSet(\"MC_SC1top_overview.actual.VmonSum\", new_VmonSum);
+//   
   //update status
-  dyn_string statusDpes = makeDynString(\"CAEN/GEM_CAEN_HV/board12/channel000.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel001.actual.status\",
-                                      \"CAEN/GEM_CAEN_HV/board12/channel002.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel003.actual.status\",
-                                      \"CAEN/GEM_CAEN_HV/board12/channel004.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel005.actual.status\",
-                                      \"CAEN/GEM_CAEN_HV/board12/channel006.actual.status\");
-  dyn_int statusInts;
-  dpGet( statusDpes , statusInts);
-  int new_status = 0;
-  i=1;
-  for (int i=1; i<=7 ; i++)
-  {
-    new_status = new_status | statusInts[i];
-  }
-  dpSet(\"MC_SC1top_overview.actual.status\", new_status);
-}
-
+//   dyn_string statusDpes = makeDynString(\"CAEN/GEM_CAEN_HV/board12/channel000.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel001.actual.status\",
+//                                       \"CAEN/GEM_CAEN_HV/board12/channel002.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel003.actual.status\",
+//                                       \"CAEN/GEM_CAEN_HV/board12/channel004.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel005.actual.status\",
+//                                       \"CAEN/GEM_CAEN_HV/board12/channel006.actual.status\");
+//   dyn_int statusInts;
+//   dpGet( statusDpes , statusInts);
+//   int new_status = 0;
+//   i=1;
+//   for (int i=1; i<=7 ; i++)
+//   {
+//     new_status = new_status | statusInts[i];
+//   }
+//   dpSet(\"MC_SC1top_overview.actual.status\", new_status);
+// }
+// 
 //================================================================================================================================================
-update_McScOverviewSC01L2( dyn_string dp_CaenChannels ,  dyn_anytype values ) {
-  
+// update_McScOverviewSC01L2( dyn_string dp_CaenChannels ,  dyn_anytype values ) {
+//   
   //update vMonSum
-  dyn_string vMonDpes = makeDynString(\"CAEN/GEM_CAEN_HV/board12/channel007.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel008.actual.vMon\",
-                                      \"CAEN/GEM_CAEN_HV/board12/channel009.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel010.actual.vMon\",
-                                      \"CAEN/GEM_CAEN_HV/board12/channel011.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel012.actual.vMon\",
-                                      \"CAEN/GEM_CAEN_HV/board12/channel013.actual.vMon\");
-  dyn_float vMonFloats;
-  dpGet( vMonDpes , vMonFloats);
-  float new_VmonSum = 0;
-  int i=1;
-  for(i=1; i<=7; i++)
-  {
-    new_VmonSum = new_VmonSum + vMonFloats[i];
-  }
-
-  dpSet(\"MC_SC1bot_overview.actual.VmonSum\", new_VmonSum);
-  
+//   dyn_string vMonDpes = makeDynString(\"CAEN/GEM_CAEN_HV/board12/channel007.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel008.actual.vMon\",
+//                                       \"CAEN/GEM_CAEN_HV/board12/channel009.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel010.actual.vMon\",
+//                                       \"CAEN/GEM_CAEN_HV/board12/channel011.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel012.actual.vMon\",
+//                                       \"CAEN/GEM_CAEN_HV/board12/channel013.actual.vMon\");
+//   dyn_float vMonFloats;
+//   dpGet( vMonDpes , vMonFloats);
+//   float new_VmonSum = 0;
+//   int i=1;
+//   for(i=1; i<=7; i++)
+//   {
+//     new_VmonSum = new_VmonSum + vMonFloats[i];
+//   }
+// 
+//   dpSet(\"MC_SC1bot_overview.actual.VmonSum\", new_VmonSum);
+//   
   //update status
-  dyn_string statusDpes = makeDynString(\"CAEN/GEM_CAEN_HV/board12/channel007.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel008.actual.status\",
-                                        \"CAEN/GEM_CAEN_HV/board12/channel009.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel010.actual.status\",
-                                        \"CAEN/GEM_CAEN_HV/board12/channel011.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel012.actual.status\",
-                                        \"CAEN/GEM_CAEN_HV/board12/channel013.actual.status\");
-  dyn_int statusInts;
-  dpGet( statusDpes , statusInts);
-  int new_status = 0;
-  i=1;
-  for (int i=1; i<=7 ; i++)
-  {
-    new_status = new_status | statusInts[i];
-  }
-  
-  dpSet(\"MC_SC1bot_overview.actual.status\", new_status);
-}" 0
+//   dyn_string statusDpes = makeDynString(\"CAEN/GEM_CAEN_HV/board12/channel007.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel008.actual.status\",
+//                                         \"CAEN/GEM_CAEN_HV/board12/channel009.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel010.actual.status\",
+//                                         \"CAEN/GEM_CAEN_HV/board12/channel011.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel012.actual.status\",
+//                                         \"CAEN/GEM_CAEN_HV/board12/channel013.actual.status\");
+//   dyn_int statusInts;
+//   dpGet( statusDpes , statusInts);
+//   int new_status = 0;
+//   i=1;
+//   for (int i=1; i<=7 ; i++)
+//   {
+//     new_status = new_status | statusInts[i];
+//   }
+//   
+//   dpSet(\"MC_SC1bot_overview.actual.status\", new_status);
+// }" 0
  3
 "CBRef" "1"
 "EClose" E
@@ -521,25 +522,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board12\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board12\",\"$Chamber:5/1 Top\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 47.00000000000003 -46 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999999 6.888888888888943 1 E 170 220 340 260
 6 100
 "RECTANGLE2"
 ""
@@ -632,25 +631,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board12\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board12\", \"$Chamber:5/1 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 47.00000000000003 -6 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999999 46.88888888888894 1 E 170 220 340 260
 6 101
 "RECTANGLE3"
 ""
@@ -743,25 +740,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board13\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board13\", \"$Chamber:5/2 Top\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 258 -46 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 6.888888888888943 1 E 170 220 340 260
 6 102
 "RECTANGLE4"
 ""
@@ -854,25 +849,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board13\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board13\", \"$Chamber:5/2 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 258 -6 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 46.88888888888894 1 E 170 220 340 260
 6 103
 "RECTANGLE5"
 ""
@@ -965,25 +958,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board14\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board14\", \"$Chamber:5/1 Top\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 469 -46 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 6.888888888888943 1 E 170 220 340 260
 6 104
 "RECTANGLE6"
 ""
@@ -1076,25 +1067,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board14\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board14\", \"$Chamber:5/1 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 469 -6 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 46.88888888888894 1 E 170 220 340 260
 6 105
 "RECTANGLE7"
 ""
@@ -1187,25 +1176,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board09\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board09\", \"$Chamber:4/1 Top\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 47.00000000000006 82 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999996 134.8888888888889 1 E 170 220 340 260
 6 106
 "RECTANGLE8"
 ""
@@ -1298,25 +1285,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board09\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board09\", \"$Chamber:4/1 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 47.00000000000006 122 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999996 174.8888888888889 1 E 170 220 340 260
 6 107
 "RECTANGLE9"
 ""
@@ -1409,25 +1394,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board10\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board10\", \"$Chamber:4/2 Top\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 258 82 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 134.8888888888889 1 E 170 220 340 260
 6 108
 "RECTANGLE10"
 ""
@@ -1520,25 +1503,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board10\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board10\", \"$Chamber:4/2 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 258 122 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 174.8888888888889 1 E 170 220 340 260
 6 109
 "RECTANGLE11"
 ""
@@ -1631,25 +1612,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board11\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board11\", \"$Chamber:4/3 Top\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 469 82 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 134.8888888888889 1 E 170 220 340 260
 6 110
 "RECTANGLE12"
 ""
@@ -1742,25 +1721,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board11\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board11\", \"$Chamber:4/3 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 469 122 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 174.8888888888889 1 E 170 220 340 260
 6 111
 "RECTANGLE13"
 ""
@@ -1853,25 +1830,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board06\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board06\", \"$Chamber:3/1 Top\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 47 221 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43750000000001 273.8888888888889 1 E 170 220 340 260
 6 112
 "RECTANGLE14"
 ""
@@ -1964,25 +1939,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board06\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board06\", \"$Chamber:3/1 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 47 261 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43750000000001 313.8888888888889 1 E 170 220 340 260
 6 113
 "RECTANGLE15"
 ""
@@ -2075,25 +2048,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board07\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board07\", \"$Chamber:3/2 Top\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 258 221 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 273.8888888888889 1 E 170 220 340 260
 6 114
 "RECTANGLE16"
 ""
@@ -2186,25 +2157,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board07\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bot.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board07\", \"$Chamber:3/2 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 258 261 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 313.8888888888889 1 E 170 220 340 260
 6 115
 "RECTANGLE17"
 ""
@@ -2297,25 +2266,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board08\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board08\", \"$Chamber:3/3 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 469 221 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 273.8888888888889 1 E 170 220 340 260
 6 116
 "RECTANGLE18"
 ""
@@ -2408,25 +2375,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board08\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board08\", \"$Chamber:3/3 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 469 261 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 313.8888888888889 1 E 170 220 340 260
 6 117
 "RECTANGLE19"
 ""
@@ -2519,25 +2484,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board03\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board03\", \"$Chamber:2/1 Top\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 47.00000000000006 349 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999996 401.8888888888889 1 E 170 220 340 260
 6 118
 "RECTANGLE20"
 ""
@@ -2630,25 +2593,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board03\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board03\", \"$Chamber:2/1 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 47.00000000000006 389 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999996 441.8888888888889 1 E 170 220 340 260
 6 119
 "RECTANGLE21"
 ""
@@ -2741,25 +2702,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board04\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board04\",\"$Chamber:2/2 Top\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 258 349 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 401.8888888888889 1 E 170 220 340 260
 6 120
 "RECTANGLE22"
 ""
@@ -2852,25 +2811,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board04\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board04\", \"$Chamber:2/2 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 258 389 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 441.8888888888889 1 E 170 220 340 260
 6 121
 "RECTANGLE23"
 ""
@@ -2963,25 +2920,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board05\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board05\", \"$Chamber:2/3 Top\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 469 349 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 401.8888888888889 1 E 170 220 340 260
 6 122
 "RECTANGLE24"
 ""
@@ -3074,25 +3029,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board05\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board05\",\"$Chamber:2/3 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 469 389 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 441.8888888888889 1 E 170 220 340 260
 6 123
 "RECTANGLE25"
 ""
@@ -3185,25 +3138,24 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board00\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00\", \"$Chamber:1/1 Top\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
+// PanelPara2 {$Chamber:1/1 Top}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 47.00000000000003 477 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999999 529.8888888888888 1 E 170 220 340 260
 6 124
 "RECTANGLE26"
 ""
@@ -3296,25 +3248,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"Chamber settings\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board00\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00\", \"$Chamber:1/1 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {Chamber settings}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 47.00000000000003 517 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999999 569.8888888888888 1 E 170 220 340 260
 6 125
 "RECTANGLE27"
 ""
@@ -3407,25 +3357,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board01\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board01\", \"$Chamber:1/2 Top\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 258 477 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 529.8888888888888 1 E 170 220 340 260
 6 126
 "RECTANGLE28"
 ""
@@ -3518,25 +3466,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board01\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board01\", \"$Chamber:1/2 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 258 517 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 569.8888888888888 1 E 170 220 340 260
 6 127
 "RECTANGLE29"
 ""
@@ -3629,25 +3575,23 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board02\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board02\", \"$Chamber:1/3 Top\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 469 477 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 529.8888888888888 1 E 170 220 340 260
 6 128
 "RECTANGLE30"
 ""
@@ -3740,29 +3684,27 @@ main()
 
 void EP_childPanelOn()
 {
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
-      \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board02\"));
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board02\", \"$Chamber:1/3 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
-// Panel {}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
-
-
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 469 517 1 E 170 220 340 260
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 569.8888888888888 1 E 170 220 340 260
 2 129
 "PRIMITIVE_TEXT179"
 ""
-1 240 620 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 133.5625 672.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 129 0 0 0 0 0
 E E E
@@ -3775,8 +3717,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 240 620 320 690
-0 2 2 "0s" 0 0 0 64 0 0  240 620 1
+E E 0 1 1 2 1 E U  0 E 133.5625 672.8888888888889 213.5625 742.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  133.5625 672.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -3784,7 +3726,7 @@ LANG:1 3 1/1
 2 130
 "PRIMITIVE_TEXT180"
 ""
-1 460 620 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 353.5625 672.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 130 0 0 0 0 0
 E E E
@@ -3797,8 +3739,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 460 620 540 690
-0 2 2 "0s" 0 0 0 64 0 0  460 620 1
+E E 0 1 1 2 1 E U  0 E 353.5625 672.8888888888889 433.5625 742.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  353.5625 672.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -3806,7 +3748,7 @@ LANG:1 3 1/2
 2 131
 "PRIMITIVE_TEXT181"
 ""
-1 655.8125010989595 620 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 549.3750010989595 672.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 131 0 0 0 0 0
 E E E
@@ -3819,8 +3761,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 655.8125010989595 620 735.8125010989595 690
-0 2 2 "0s" 0 0 0 64 0 0  655.8125010989595 620 1
+E E 0 1 1 2 1 E U  0 E 549.3750010989595 672.8888888888889 629.3750010989595 742.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  549.3750010989595 672.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -3828,7 +3770,7 @@ LANG:1 3 1/3
 2 133
 "PRIMITIVE_TEXT182"
 ""
-1 240 492 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 133.5625 544.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 133 0 0 0 0 0
 E E E
@@ -3841,8 +3783,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 240 492 320 562
-0 2 2 "0s" 0 0 0 64 0 0  240 492 1
+E E 0 1 1 2 1 E U  0 E 133.5625 544.8888888888889 213.5625 614.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  133.5625 544.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -3850,7 +3792,7 @@ LANG:1 3 2/1
 2 134
 "PRIMITIVE_TEXT183"
 ""
-1 460 492 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 353.5625 544.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 134 0 0 0 0 0
 E E E
@@ -3863,8 +3805,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 460 492 540 562
-0 2 2 "0s" 0 0 0 64 0 0  460 492 1
+E E 0 1 1 2 1 E U  0 E 353.5625 544.8888888888889 433.5625 614.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  353.5625 544.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -3872,7 +3814,7 @@ LANG:1 3 2/2
 2 135
 "PRIMITIVE_TEXT184"
 ""
-1 655.8125010989595 492 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 549.3750010989595 544.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 135 0 0 0 0 0
 E E E
@@ -3885,8 +3827,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 655.8125010989595 492 735.8125010989595 562
-0 2 2 "0s" 0 0 0 64 0 0  655.8125010989595 492 1
+E E 0 1 1 2 1 E U  0 E 549.3750010989595 544.8888888888889 629.3750010989595 614.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  549.3750010989595 544.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -3894,7 +3836,7 @@ LANG:1 3 2/3
 2 141
 "PRIMITIVE_TEXT188"
 ""
-1 240 364 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 133.5625 416.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 141 0 0 0 0 0
 E E E
@@ -3907,8 +3849,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 240 364 320 434
-0 2 2 "0s" 0 0 0 64 0 0  240 364 1
+E E 0 1 1 2 1 E U  0 E 133.5625 416.8888888888889 213.5625 486.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  133.5625 416.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -3916,7 +3858,7 @@ LANG:1 3 3/1
 2 142
 "PRIMITIVE_TEXT189"
 ""
-1 460 364 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 353.5625 416.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 142 0 0 0 0 0
 E E E
@@ -3929,8 +3871,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 460 364 540 434
-0 2 2 "0s" 0 0 0 64 0 0  460 364 1
+E E 0 1 1 2 1 E U  0 E 353.5625 416.8888888888889 433.5625 486.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  353.5625 416.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -3938,7 +3880,7 @@ LANG:1 3 3/2
 2 143
 "PRIMITIVE_TEXT190"
 ""
-1 655.8125010989595 364 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 549.3750010989595 416.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 143 0 0 0 0 0
 E E E
@@ -3951,8 +3893,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 655.8125010989595 364 735.8125010989595 434
-0 2 2 "0s" 0 0 0 64 0 0  655.8125010989595 364 1
+E E 0 1 1 2 1 E U  0 E 549.3750010989595 416.8888888888889 629.3750010989595 486.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  549.3750010989595 416.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -3960,7 +3902,7 @@ LANG:1 3 3/3
 2 145
 "PRIMITIVE_TEXT191"
 ""
-1 240 225 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 133.5625 277.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 145 0 0 0 0 0
 E E E
@@ -3973,8 +3915,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 240 225 320 295
-0 2 2 "0s" 0 0 0 64 0 0  240 225 1
+E E 0 1 1 2 1 E U  0 E 133.5625 277.8888888888889 213.5625 347.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  133.5625 277.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -3982,7 +3924,7 @@ LANG:1 3 4/1
 2 146
 "PRIMITIVE_TEXT192"
 ""
-1 460 225 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 353.5625 277.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 146 0 0 0 0 0
 E E E
@@ -3995,8 +3937,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 460 225 540 295
-0 2 2 "0s" 0 0 0 64 0 0  460 225 1
+E E 0 1 1 2 1 E U  0 E 353.5625 277.8888888888889 433.5625 347.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  353.5625 277.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -4004,7 +3946,7 @@ LANG:1 3 4/2
 2 147
 "PRIMITIVE_TEXT193"
 ""
-1 655.8125010989595 225 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 549.3750010989595 277.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 147 0 0 0 0 0
 E E E
@@ -4017,8 +3959,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 655.8125010989595 225 735.8125010989595 295
-0 2 2 "0s" 0 0 0 64 0 0  655.8125010989595 225 1
+E E 0 1 1 2 1 E U  0 E 549.3750010989595 277.8888888888889 629.3750010989595 347.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  549.3750010989595 277.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -4026,7 +3968,7 @@ LANG:1 3 4/3
 2 149
 "PRIMITIVE_TEXT194"
 ""
-1 240 97 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 133.5625 149.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 149 0 0 0 0 0
 E E E
@@ -4039,8 +3981,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 240 97 320 167
-0 2 2 "0s" 0 0 0 64 0 0  240 97 1
+E E 0 1 1 2 1 E U  0 E 133.5625 149.8888888888889 213.5625 219.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  133.5625 149.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -4048,7 +3990,7 @@ LANG:1 3 5/1
 2 150
 "PRIMITIVE_TEXT195"
 ""
-1 460 97 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 353.5625 149.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 150 0 0 0 0 0
 E E E
@@ -4061,8 +4003,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 460 97 540 167
-0 2 2 "0s" 0 0 0 64 0 0  460 97 1
+E E 0 1 1 2 1 E U  0 E 353.5625 149.8888888888889 433.5625 219.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  353.5625 149.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -4070,7 +4012,7 @@ LANG:1 3 5/2
 2 151
 "PRIMITIVE_TEXT196"
 ""
-1 655.8125010989595 97 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 549.3750010989595 149.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 151 0 0 0 0 0
 E E E
@@ -4083,8 +4025,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 655.8125010989595 97 735.8125010989595 167
-0 2 2 "0s" 0 0 0 64 0 0  655.8125010989595 97 1
+E E 0 1 1 2 1 E U  0 E 549.3750010989595 149.8888888888889 629.3750010989595 219.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  549.3750010989595 149.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -4092,7 +4034,7 @@ LANG:1 3 5/3
 2 152
 "PRIMITIVE_TEXT197"
 ""
-1 778.0000010989595 124 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 671.5625010989595 176.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 152 0 0 0 0 0
 E E E
@@ -4105,8 +4047,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 778.0000010989595 124 988.0000010989595 214
-0 2 2 "0s" 0 0 0 64 0 0  778.0000010989595 124 1
+E E 0 1 1 2 1 E U  0 E 671.5625010989595 176.8888888888889 881.5625010989595 266.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  671.5625010989595 176.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -4114,7 +4056,7 @@ LANG:1 3 Top
 2 153
 "PRIMITIVE_TEXT198"
 ""
-1 778.0000010989595 171 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 671.5625010989595 223.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 153 0 0 0 0 0
 E E E
@@ -4127,8 +4069,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 778.0000010989595 171 988.0000010989595 261
-0 2 2 "0s" 0 0 0 64 0 0  778.0000010989595 171 1
+E E 0 1 1 2 1 E U  0 E 671.5625010989595 223.8888888888889 881.5625010989595 313.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  671.5625010989595 223.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -4136,7 +4078,7 @@ LANG:1 6 Bottom
 2 154
 "PRIMITIVE_TEXT199"
 ""
-1 776 247 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 669.5625 299.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 154 0 0 0 0 0
 E E E
@@ -4149,8 +4091,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 776 247 986 337
-0 2 2 "0s" 0 0 0 64 0 0  776 247 1
+E E 0 1 1 2 1 E U  0 E 669.5625 299.8888888888889 879.5625 389.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  669.5625 299.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -4158,7 +4100,7 @@ LANG:1 3 Top
 2 155
 "PRIMITIVE_TEXT200"
 ""
-1 776 294 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 669.5625 346.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 155 0 0 0 0 0
 E E E
@@ -4171,8 +4113,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 776 294 986 384
-0 2 2 "0s" 0 0 0 64 0 0  776 294 1
+E E 0 1 1 2 1 E U  0 E 669.5625 346.8888888888889 879.5625 436.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  669.5625 346.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -4180,7 +4122,7 @@ LANG:1 6 Bottom
 2 156
 "PRIMITIVE_TEXT201"
 ""
-1 776.0000010989595 388 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 669.5625010989595 440.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 156 0 0 0 0 0
 E E E
@@ -4193,8 +4135,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 776.0000010989595 388 986.0000010989595 478
-0 2 2 "0s" 0 0 0 64 0 0  776.0000010989595 388 1
+E E 0 1 1 2 1 E U  0 E 669.5625010989595 440.8888888888889 879.5625010989595 530.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  669.5625010989595 440.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -4202,7 +4144,7 @@ LANG:1 3 Top
 2 157
 "PRIMITIVE_TEXT202"
 ""
-1 776.0000010989595 435 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 669.5625010989595 487.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 157 0 0 0 0 0
 E E E
@@ -4215,8 +4157,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 776.0000010989595 435 986.0000010989595 525
-0 2 2 "0s" 0 0 0 64 0 0  776.0000010989595 435 1
+E E 0 1 1 2 1 E U  0 E 669.5625010989595 487.8888888888889 879.5625010989595 577.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  669.5625010989595 487.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -4224,7 +4166,7 @@ LANG:1 6 Bottom
 2 158
 "PRIMITIVE_TEXT203"
 ""
-1 776.0000010989595 514 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 669.5625010989595 566.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 158 0 0 0 0 0
 E E E
@@ -4237,8 +4179,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 776.0000010989595 514 986.0000010989595 604
-0 2 2 "0s" 0 0 0 64 0 0  776.0000010989595 514 1
+E E 0 1 1 2 1 E U  0 E 669.5625010989595 566.8888888888889 879.5625010989595 656.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  669.5625010989595 566.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -4246,7 +4188,7 @@ LANG:1 3 Top
 2 159
 "PRIMITIVE_TEXT204"
 ""
-1 776.0000010989595 561 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 669.5625010989595 613.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 159 0 0 0 0 0
 E E E
@@ -4259,8 +4201,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 776.0000010989595 561 986.0000010989595 651
-0 2 2 "0s" 0 0 0 64 0 0  776.0000010989595 561 1
+E E 0 1 1 2 1 E U  0 E 669.5625010989595 613.8888888888889 879.5625010989595 703.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  669.5625010989595 613.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -4268,7 +4210,7 @@ LANG:1 6 Bottom
 2 160
 "PRIMITIVE_TEXT205"
 ""
-1 774 653 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 667.5625 705.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 160 0 0 0 0 0
 E E E
@@ -4281,8 +4223,8 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 774 653 984 743
-0 2 2 "0s" 0 0 0 64 0 0  774 653 1
+E E 0 1 1 2 1 E U  0 E 667.5625 705.8888888888889 877.5625 795.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  667.5625 705.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
@@ -4290,7 +4232,7 @@ LANG:1 3 Top
 2 161
 "PRIMITIVE_TEXT206"
 ""
-1 774 700 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 667.5625 752.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 161 0 0 0 0 0
 E E E
@@ -4303,12 +4245,103 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 774 700 984 790
-0 2 2 "0s" 0 0 0 64 0 0  774 700 1
+E E 0 1 1 2 1 E U  0 E 667.5625 752.8888888888889 877.5625 842.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  667.5625 752.8888888888889 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
 0 1
 LANG:1 6 Bottom
+13 163
+"GeneralHV_Button"
+""
+1 840.5625 190.8888888888889 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+163 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  838.5624999999999 169.8888888888889 992.5624999999999 223.8888888888889
+
+T 
+1
+LANG:1 33 Fast HV settings
+to ALL detectors
+"// SimpleCtrlScriptStart {valid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings_all.pnl\",
+      \"\",
+      makeDynString(\"$Board:\" + $Board));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings_all.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:$Board}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ E E E
+13 164
+"CompleteHV_Button"
+""
+1 840.5625 270.8888888888889 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+164 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  838.5625000000001 249.8888888888889 992.5625000000001 303.888888888889
+
+T 
+1
+LANG:1 21 Complete HV 
+settings
+"// SimpleCtrlScriptStart {valid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_selection.pnl\",
+      \"Multichannel HV Full Settings\",
+      makeDynString(\"\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_selection.pnl}
+// Panel {Multichannel HV Full Settings}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ E E E
 0
 LAYER, 1 
 1
