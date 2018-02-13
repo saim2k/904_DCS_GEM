@@ -456,54 +456,6 @@ LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 0 2
 LANG:1 8 OverTemp
 LANG:10001 8 OverTemp
-13 1282
-"PUSH_BUTTON3"
-""
-1 180 70 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
- E E
-1282 0 0 0 0 0
-E E E
-0
-2
-LANG:1 0 
-LANG:10001 0 
-
-1
-"layoutAlignment" "AlignCenter"
-2
-LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
-LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
-0  179 61 343 95
-
-T 
-2
-LANG:1 14 Show Trendpage
-LANG:10001 14 Show Trendpage
-"main()
-{
-   //ChildPanelOn(\"904_GEM_Multichannel/904_GEM_multichannel_trendBoard.pnl\", \"Board trendpage\", \"\", 0, 0); 
-  EP_childPanelOn();
-}
-void EP_childPanelOn()
-{
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_trendBoard.pnl\",
-      \"Board Trending\",
-      makeDynString(\"$Board:\" + $Board));
-  //DebugTN(\"Board\", $Board);
-}
-
-// SimpleCtrlScript {EP_childPanelOn}
-// Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_trendBoard.pnl}
-// Panel {Board Trending}
-// Parent {}
-// Module {}
-// OffsetX {0}
-// OffsetY {0}
-// PanelPara1 {$Board:$Board}
-// SimpleCtrlScriptEnd {EP_childPanelOn}
-" 0
- E E E
 2 1283
 "PRIMITIVE_TEXT217"
 ""
@@ -9249,34 +9201,6 @@ EP_textFieldInCB(string dp, float fNewValue)
 
 " 0
  E
-13 1729
-"BUTTON_CLOSE"
-""
-1 170.7142880999924 290.7500007423969 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
- E E
-1729 0 0 0 0 0
-E E E
-0
-2
-LANG:1 0 
-LANG:10001 0 
-
-1
-"layoutAlignment" "AlignCenter"
-2
-LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
-LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
-0  169.7142880999924 281.7500007423969 333.7142880999924 315.7500007423969
-
-T 
-2
-LANG:1 14 Show Trendpage
-LANG:10001 14 Show Trendpage
-"main()
-{
-   ChildPanelOn(\"CMS_GEM_multichannel/CMS_GEM_multichannel_trendpageCommon_Top.pnl\", \"Trendpage Top Chamber - common\", \"\", 0, 0); 
-}" 0
- E E E
 2 1730
 "PRIMITIVE_TEXT218"
 ""
@@ -13849,6 +13773,54 @@ void EP_panelOff()
 // SimpleCtrlScriptEnd {EP_panelOff}
 " 0
  E E E
+1 2010 0 "" 2
+0
+2 2005
+"PRIMITIVE_TEXT230"
+""
+1 320 80 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+2005 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 270 80 370 97
+0 2 2 "0s" 0 0 0 193 0 0  320 80 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 1
+LANG:1 14 Board Trending
+1 2011 1 "" 2
+0
+2 2009
+"PRIMITIVE_TEXT231"
+""
+1 412.2142880999921 290.0000014847936 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+2007 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 352 290.0000014847936 472 307
+0 2 2 "0s" 0 0 0 193 0 0  412.2142880999921 290.0000014847936 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 1
+LANG:1 17 Channels Trending
 0
 LAYER, 1 
 1
@@ -13878,4 +13850,18 @@ LAYER, 7
 1
 LANG:1 0 
 0
+3 0 "Board Trending" -1
+"layoutAlignment" "AlignNone"
+"" ""
+"objects/fwTrending/fwTrendingPlotOpenButton.pnl" 388.7142880999924 78 T 2004 1 0 1 -39.85714404999629 -8
+2
+"$plotName""cms_gem_dcs_1:904_Board_Trending"
+"$templateParameters""board=$Board,"
+3 1 "Channel Trending Top" -1
+"layoutAlignment" "AlignNone"
+"" ""
+"objects/fwTrending/fwTrendingPageOpenButton.pnl" 447.4285761999848 283.5000014847936 T 2006 U 
+2
+"$pageName""cms_gem_dcs_1:904_Channel_Top_Trending"
+"$templateParameters""board=$Board,"
 0

@@ -2,12 +2,15 @@ V 14
 2
 LANG:1 0 
 LANG:10001 12 TEXT_DriftV0
-PANEL,-1 -1 1102 908 N "_3DFace" 1
+PANEL,-1 -1 1102 908 N "_3DFace" 2
 "$Board"
+"$Superchamber"
 "main()
 {
 dyn_string exceptionInfo;
 //fwAccessControl_setupPanel( \"ApplyPanelAccessControl\", exceptionInfo);
+
+Title_Text.text = \"SETTINGS Chamber \" + $Superchamber;
 }
 
 
@@ -271,7 +274,7 @@ LAYER, 0
 1
 LANG:1 0 
 2 0
-"PRIMITIVE_TEXT1"
+"Title_Text"
 ""
 1 30 10 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E

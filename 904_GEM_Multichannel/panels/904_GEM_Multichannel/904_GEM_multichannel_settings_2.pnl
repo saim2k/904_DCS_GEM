@@ -2,13 +2,17 @@ V 14
 2
 LANG:1 0 
 LANG:10001 0 
-PANEL,-1 -1 863 640 N "_3DFace" 1
+PANEL,-1 -1 863 640 N "_3DFace" 2
 "$Board"
+"$Superchamber"
 "
 main()
 {
 dyn_string exceptionInfo;
 //fwAccessControl_setupPanel( \"ApplyPanelAccessControl\", exceptionInfo);
+
+Title_Text.text = \"SETTINGS Chamber \" + $Superchamber;
+
 }
 
 
@@ -14069,6 +14073,30 @@ LANG:10001 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
 0 2
 LANG:1 7 (Volts)
 LANG:10001 7 (Volts)
+2 480
+"Title_Text"
+""
+1 36.75 23.75 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+480 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 36.75 23.75 204.75 45.75
+0 2 2 "0s" 0 0 0 192 0 0  36.75 23.75 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,19,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,19,5,50,0,0,0,0,0
+0 2
+LANG:1 15 CHANGE SETTINGS
+LANG:10001 15 CHANGE SETTINGS
 0
 LAYER, 1 
 1

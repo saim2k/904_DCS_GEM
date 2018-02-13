@@ -456,34 +456,6 @@ LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 0 2
 LANG:1 8 OverTemp
 LANG:10001 8 OverTemp
-13 1282
-"PUSH_BUTTON3"
-""
-1 180 70 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
- E E
-1282 0 0 0 0 0
-E E E
-0
-2
-LANG:1 0 
-LANG:10001 0 
-
-1
-"layoutAlignment" "AlignCenter"
-2
-LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
-LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
-0  179 61 343 95
-
-T 
-2
-LANG:1 14 Show Trendpage
-LANG:10001 14 Show Trendpage
-"main()
-{
-   ChildPanelOn(\"CMS_GEM_multichannel/CMS_GEM_multichannel_trendpageBoard.pnl\", \"Board trendpage\", \"\", 0, 0); 
-}" 0
- E E E
 2 1283
 "PRIMITIVE_TEXT217"
 ""
@@ -9043,34 +9015,6 @@ EP_textFieldInCB(string dp, float fNewValue)
 
 " 0
  E
-13 1886
-"PUSH_BUTTON2"
-""
-1 180.0000000000001 300.0000000000002 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
- E E
-1886 0 0 0 0 0
-E E E
-0
-2
-LANG:1 0 
-LANG:10001 0 
-
-1
-"layoutAlignment" "AlignCenter"
-2
-LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
-LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
-0  179.0000000000001 291.0000000000002 343.0000000000001 325.0000000000002
-
-T 
-2
-LANG:1 14 Show Trendpage
-LANG:10001 14 Show Trendpage
-"main()
-{
-   ChildPanelOn(\"CMS_GEM_multichannel/CMS_GEM_multichannel_trendpageCommon_Bot.pnl\", \"Trendpage Bottom Chamber - common\", \"\", 0, 0); 
-}" 0
- E E E
 2 1891
 "PRIMITIVE_TEXT106"
 ""
@@ -13902,6 +13846,54 @@ void EP_panelOff()
 // SimpleCtrlScriptEnd {EP_panelOff}
 " 0
  E E E
+1 2025 1 "" 2
+0
+2 2026
+"PRIMITIVE_TEXT250"
+""
+1 313.1428559500039 80 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+2026 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 263.1428559500039 80 363.1428559500039 97
+0 2 2 "0s" 0 0 0 193 0 0  313.1428559500039 80 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 1
+LANG:1 14 Board Trending
+1 2027 2 "" 2
+0
+2 2028
+"PRIMITIVE_TEXT251"
+""
+1 340 300 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+2028 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 279.8571440499961 300 399.8571440499961 317
+0 2 2 "0s" 0 0 0 193 0 0  340 300 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 1
+LANG:1 17 Channels Trending
 0
 LAYER, 1 
 1
@@ -13931,4 +13923,18 @@ LAYER, 7
 1
 LANG:1 0 
 0
+3 1 "Board Trending" -1
+"layoutAlignment" "AlignNone"
+"" ""
+"objects/fwTrending/fwTrendingPlotOpenButton.pnl" 388.7142880999924 78 T 2025 1 0 1 -46.71428809999242 -8
+2
+"$plotName""cms_gem_dcs_1:904_Board_Trending"
+"$templateParameters""board=$Board,"
+3 2 "Channel Trending Bot" -1
+"layoutAlignment" "AlignNone"
+"" ""
+"objects/fwTrending/fwTrendingPageOpenButton.pnl" 376 294 T 2027 U 
+2
+"$pageName""cms_gem_dcs_1:904_Channel_Bot_Trending"
+"$templateParameters""board=$Board,"
 0
