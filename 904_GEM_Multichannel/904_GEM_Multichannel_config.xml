@@ -27,16 +27,23 @@
   <target>
     <system_name>cms_gem_dcs_1:</system_name>
     <configuration>
+      <tag>904_mainframes_v0</tag>
+      <hardware>true</hardware>
+      <logical>false</logical>
+      <pattern>*</pattern>
+      <force_reinstall>true</force_reinstall>
+    </configuration>
+    <configuration>
       <tag>904_multichannel_dp_v0</tag>
       <hardware>true</hardware>
-      <logical>true</logical>
+      <logical>false</logical>
       <pattern>*</pattern>
       <force_reinstall>true</force_reinstall>
     </configuration>
     <configuration>
       <tag>904_multichannel_trending_v0</tag>
       <hardware>true</hardware>
-      <logical>true</logical>
+      <logical>false</logical>
       <pattern>*</pattern>
       <force_reinstall>true</force_reinstall>
     </configuration>
