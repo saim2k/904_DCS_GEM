@@ -1,0 +1,811 @@
+V 14
+1
+LANG:1 0 
+PANEL,-1 -1 724 457 N "_3DFace" 0
+E E E E E 1 -1 -1 0  680 69
+""0  1
+E E 3
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:1 0 
+13 0
+"Close_Button"
+""
+1 608 390.95 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  606 373.75 680 417.75
+
+T 
+1
+LANG:1 5 Close
+"// SimpleCtrlScriptStart {valid}
+main()
+{
+  EP_panelOff();
+}
+
+void EP_panelOff()
+{
+  PanelOff();
+}
+
+// SimpleCtrlScript {EP_panelOff}
+// Function {PanelOff}
+// Panel {}
+// Module {}
+// SimpleCtrlScriptEnd {EP_panelOff}
+" 0
+ E E E
+13 1
+"PUSH_BUTTON2"
+""
+1 26 389.75 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  24 368.75 158 422.75
+
+T 
+1
+LANG:1 3 1/1
+"// SimpleCtrlScriptStart {invalid}
+main(mapping event)
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board00\", \"$Superchamber:1/1\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ E E E
+13 2
+"PUSH_BUTTON3"
+""
+1 207 389.75 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  205 368.75 339 422.75
+
+T 
+1
+LANG:1 3 1/2
+"// SimpleCtrlScriptStart {invalid}
+main(mapping event)
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board01\",\"$Superchamber:1/2\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ E E E
+13 3
+"PUSH_BUTTON4"
+""
+1 388 389.75 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  386 368.75 520 422.75
+
+T 
+1
+LANG:1 3 1/3
+"// SimpleCtrlScriptStart {invalid}
+main(mapping event)
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board02\",\"$Superchamber:1/3\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ E E E
+13 4
+"PUSH_BUTTON5"
+""
+1 26 318.75 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  24 297.75 158 351.75
+
+T 
+1
+LANG:1 3 2/1
+"// SimpleCtrlScriptStart {invalid}
+main(mapping event)
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board03\", \"$Superchamber:2/1\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ E E E
+13 5
+"PUSH_BUTTON6"
+""
+1 207 318.75 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  205 297.75 339 351.75
+
+T 
+1
+LANG:1 3 2/2
+"// SimpleCtrlScriptStart {invalid}
+main(mapping event)
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board04\",\"$Superchamber:2/2\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ E E E
+13 6
+"PUSH_BUTTON7"
+""
+1 388 318.75 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  386 297.75 520 351.75
+
+T 
+1
+LANG:1 3 2/3
+"// SimpleCtrlScriptStart {invalid}
+main(mapping event)
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board05\",\"$Superchamber:2/3\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ E E E
+13 7
+"PUSH_BUTTON8"
+""
+1 26 247.25 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  24 226.25 158 280.25
+
+T 
+1
+LANG:1 3 3/1
+"// SimpleCtrlScriptStart {invalid}
+main(mapping event)
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board06\",\"$Superchamber:3/1\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ E E E
+13 8
+"PUSH_BUTTON9"
+""
+1 207 247.25 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  205 226.25 339 280.25
+
+T 
+1
+LANG:1 3 3/2
+"// SimpleCtrlScriptStart {invalid}
+main(mapping event)
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board07\",\"$Superchamber:3/2\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ E E E
+13 9
+"PUSH_BUTTON10"
+""
+1 388 247.25 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+9 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  386 226.25 520 280.25
+
+T 
+1
+LANG:1 3 3/3
+"// SimpleCtrlScriptStart {invalid}
+main(mapping event)
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board08\",\"$Superchamber:3/3\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ E E E
+13 10
+"PUSH_BUTTON11"
+""
+1 26 176.75 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  24 155.75 158 209.75
+
+T 
+1
+LANG:1 3 4/1
+"// SimpleCtrlScriptStart {invalid}
+main(mapping event)
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board09\",\"$Superchamber:4/1\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ E E E
+13 11
+"PUSH_BUTTON12"
+""
+1 207 176.75 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  205 155.75 339 209.75
+
+T 
+1
+LANG:1 3 4/2
+"// SimpleCtrlScriptStart {invalid}
+main(mapping event)
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board10\",\"$Superchamber:4/2\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ E E E
+13 12
+"PUSH_BUTTON13"
+""
+1 388 176.75 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+12 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  386 155.75 520 209.75
+
+T 
+1
+LANG:1 3 4/3
+"// SimpleCtrlScriptStart {invalid}
+main(mapping event)
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board11\",\"$Superchamber:4/3\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ E E E
+13 13
+"PUSH_BUTTON14"
+""
+1 26 105.75 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+13 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  24 84.75 158 138.75
+
+T 
+1
+LANG:1 3 5/1
+"// SimpleCtrlScriptStart {invalid}
+main(mapping event)
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board12\",\"$Superchamber:5/1\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ E E E
+13 14
+"PUSH_BUTTON15"
+""
+1 207 105.75 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+14 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  205 84.75 339 138.75
+
+T 
+1
+LANG:1 3 5/2
+"// SimpleCtrlScriptStart {invalid}
+main(mapping event)
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board13\", \"$Superchamber:5/2\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ E E E
+13 15
+"PUSH_BUTTON16"
+""
+1 388 105.75 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+15 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  386 84.75 520 138.75
+
+T 
+1
+LANG:1 3 5/3
+"// SimpleCtrlScriptStart {invalid}
+main(mapping event)
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/904_HV_mainframe/board14\",\"$Superchamber:5/3\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_settings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/904_HV_mainframe/board00}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ E E E
+2 16
+"PRIMITIVE_TEXT1"
+""
+1 148 31.75 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+16 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 28 31.75 268 50
+0 2 2 "0s" 0 0 0 193 0 0  148 31.75 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 29 Multichannel HV Full Settings
+0
+LAYER, 1 
+1
+LANG:1 0 
+0
+LAYER, 2 
+1
+LANG:1 0 
+0
+LAYER, 3 
+1
+LANG:1 0 
+0
+LAYER, 4 
+1
+LANG:1 0 
+0
+LAYER, 5 
+1
+LANG:1 0 
+0
+LAYER, 6 
+1
+LANG:1 0 
+0
+LAYER, 7 
+1
+LANG:1 0 
+0
+0

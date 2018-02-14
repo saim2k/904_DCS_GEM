@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component_configuration>
+  <stop_drivers>
+    <manager>
+      <driver>OPC DA Client</driver>
+    </manager>
+  </stop_drivers>
+  <stop_drivers>
+    <manager>
+      <driver>RDB Archive Manager</driver>
+      <num>99</num>
+    </manager>
+  </stop_drivers>
+  <append_managers>
+    <manager>
+      <type>OPC DA Client</type>
+      <num>6</num>
+      <options></options>
+      <mode>always</mode>
+      <restart>2</restart>
+      <counter>2</counter>
+      <sec_kill>30</sec_kill>
+      <isDriver>false</isDriver>
+      <restartManager>false</restartManager>
+    </manager>
+  </append_managers>
+  <target>
+    <system_name>cms_gem_dcs_1:</system_name>
+    <configuration>
+      <tag>904_mainframes_v0</tag>
+      <hardware>true</hardware>
+      <logical>false</logical>
+      <pattern>*</pattern>
+      <force_reinstall>true</force_reinstall>
+    </configuration>
+    <configuration>
+      <tag>904_multichannel_dp_v0</tag>
+      <hardware>true</hardware>
+      <logical>false</logical>
+      <pattern>*</pattern>
+      <force_reinstall>true</force_reinstall>
+    </configuration>
+    <configuration>
+      <tag>904_multichannel_trending_v0</tag>
+      <hardware>true</hardware>
+      <logical>false</logical>
+      <pattern>*</pattern>
+      <force_reinstall>true</force_reinstall>
+    </configuration>
+  </target>
+</component_configuration>
