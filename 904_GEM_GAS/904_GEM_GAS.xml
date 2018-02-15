@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <component>
   <name>904_GEM_GAS</name>
-  <version>1.0.1</version>
-  <date>17/01/2017</date>
+  <version>1.0.2</version>
+  <date>15/02/2018</date>
   <required>fwConfigurationDB=5.1.1</required>
   <required>fwCore=5.1.0</required>
   <required>fwDIP=5.1.0</required>
