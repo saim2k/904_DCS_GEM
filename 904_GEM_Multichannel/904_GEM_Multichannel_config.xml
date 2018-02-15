@@ -27,7 +27,7 @@
   <target>
     <system_name>cms_gem_dcs_1:</system_name>
     <configuration>
-      <tag>904_mainframes_v0</tag>
+      <tag>904_mainframes_V001</tag>
       <hardware>true</hardware>
       <logical>false</logical>
       <pattern>*</pattern>
