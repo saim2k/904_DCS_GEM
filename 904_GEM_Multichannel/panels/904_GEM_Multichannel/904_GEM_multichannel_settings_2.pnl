@@ -16,155 +16,155 @@ Title_Text.text = \"SETTINGS Chamber \" + $Superchamber;
 }
 
 
-
-
-void ApplyPanelAccessControl(string s1, string s2)
-{
-  
-bool hasControl, hasModify;
-
-dyn_string exceptionInfo;
-
+// 
+// 
+// void ApplyPanelAccessControl(string s1, string s2)
+// {
+//   
+// bool hasControl, hasModify;
+// 
+// dyn_string exceptionInfo;
+// 
 // revoke all previous rights:
-DisableAllInPanel();
-
+// DisableAllInPanel();
+// 
 // check privileges:
-fwAccessControl_isGranted( \"CMS_GEM:Control\", hasControl, exceptionInfo);
-fwAccessControl_isGranted( \"CMS_GEM:Modify\", hasModify, exceptionInfo);
-
-if (dynlen(exceptionInfo)) { fwExceptionHandling_display(exceptionInfo); return;}
-
+// fwAccessControl_isGranted( \"CMS_GEM:Control\", hasControl, exceptionInfo);
+// fwAccessControl_isGranted( \"CMS_GEM:Modify\", hasModify, exceptionInfo);
+// 
+// if (dynlen(exceptionInfo)) { fwExceptionHandling_display(exceptionInfo); return;}
+// 
 // enable/disable panel functionality:
-
-  if (hasControl) setOperatorRights();
-  if (hasModify) setExpertRights();
-}
-
-void DisableAllInPanel()
-{
-  setAllInPanel(false);
-}
-
-void setExpertRights()
-{
-  setAllInPanel(true);
-}
-
-void setOperatorRights()
-{
-  setAllInPanel(false);
-}
-
-void setAllInPanel(bool set)
-{
+// 
+//   if (hasControl) setOperatorRights();
+//   if (hasModify) setExpertRights();
+// }
+// 
+// void DisableAllInPanel()
+// {
+//   setAllInPanel(false);
+// }
+// 
+// void setExpertRights()
+// {
+//   setAllInPanel(true);
+// }
+// 
+// void setOperatorRights()
+// {
+//   setAllInPanel(false);
+// }
+// 
+// void setAllInPanel(bool set)
+// {
  //layer1
- TEXT_DriftonOrder.enabled = set;
- TEXT_DriftoffOrder.enabled = set;
- TEXT_DriftiMRange.enabled = set;
- TEXT_DriftZCAdjust.enabled = set;
- TEXT_DriftZCDetect.enabled = set;
- TEXT_DriftvMaxSoftValue.enabled = set;
-
- TEXT_G1ToponOrder.enabled = set;
- TEXT_G1TopoffOrder.enabled = set;
- TEXT_G1TopiMRange.enabled = set;
- TEXT_G1TopZCAdjust.enabled = set;
- TEXT_G1TopZCDetect.enabled = set;
- TEXT_G1TopvMaxSoftValue.enabled = set; 
- 
- TEXT_G1BotonOrder.enabled = set;
- TEXT_G1BotoffOrder.enabled = set;
- TEXT_G1BotiMRange.enabled = set;
- TEXT_G1BotZCAdjust.enabled = set;
- TEXT_G1BotZCDetect.enabled = set;
- TEXT_G1BotvMaxSoftValue.enabled = set;
- 
- TEXT_G2ToponOrder.enabled = set;
- TEXT_G2TopoffOrder.enabled = set;
- TEXT_G2TopiMRange.enabled = set;
- TEXT_G2TopZCAdjust.enabled = set;
- TEXT_G2TopZCDetect.enabled = set;
- TEXT_G2TopvMaxSoftValue.enabled = set;
- 
- TEXT_G2BotonOrder.enabled = set;
- TEXT_G2BotoffOrder.enabled = set;
- TEXT_G2BotiMRange.enabled = set;
- TEXT_G2BotZCAdjust.enabled = set;
- TEXT_G2BotZCDetect.enabled = set;
- TEXT_G2BotvMaxSoftValue.enabled = set;
- 
- TEXT_G3ToponOrder.enabled = set;
- TEXT_G3TopoffOrder.enabled = set;
- TEXT_G3TopiMRange.enabled = set;
- TEXT_G3TopZCAdjust.enabled = set;
- TEXT_G3TopZCDetect.enabled = set;
- TEXT_G3TopvMaxSoftValue.enabled = set;
- 
- TEXT_G3BotonOrder.enabled = set;
- TEXT_G3BotoffOrder.enabled = set;
- TEXT_G3BotiMRange.enabled = set;
- TEXT_G3BotZCAdjust.enabled = set;
- TEXT_G3BotZCDetect.enabled = set;
- TEXT_G3BotvMaxSoftValue.enabled = set;
- 
- load_default_2_button.enabled = set;
- BUTTON_APPLY_CONFIGS.enabled = set;
- 
+//  TEXT_DriftonOrder.enabled = set;
+//  TEXT_DriftoffOrder.enabled = set;
+//  TEXT_DriftiMRange.enabled = set;
+//  TEXT_DriftZCAdjust.enabled = set;
+//  TEXT_DriftZCDetect.enabled = set;
+//  TEXT_DriftvMaxSoftValue.enabled = set;
+// 
+//  TEXT_G1ToponOrder.enabled = set;
+//  TEXT_G1TopoffOrder.enabled = set;
+//  TEXT_G1TopiMRange.enabled = set;
+//  TEXT_G1TopZCAdjust.enabled = set;
+//  TEXT_G1TopZCDetect.enabled = set;
+//  TEXT_G1TopvMaxSoftValue.enabled = set; 
+//  
+//  TEXT_G1BotonOrder.enabled = set;
+//  TEXT_G1BotoffOrder.enabled = set;
+//  TEXT_G1BotiMRange.enabled = set;
+//  TEXT_G1BotZCAdjust.enabled = set;
+//  TEXT_G1BotZCDetect.enabled = set;
+//  TEXT_G1BotvMaxSoftValue.enabled = set;
+//  
+//  TEXT_G2ToponOrder.enabled = set;
+//  TEXT_G2TopoffOrder.enabled = set;
+//  TEXT_G2TopiMRange.enabled = set;
+//  TEXT_G2TopZCAdjust.enabled = set;
+//  TEXT_G2TopZCDetect.enabled = set;
+//  TEXT_G2TopvMaxSoftValue.enabled = set;
+//  
+//  TEXT_G2BotonOrder.enabled = set;
+//  TEXT_G2BotoffOrder.enabled = set;
+//  TEXT_G2BotiMRange.enabled = set;
+//  TEXT_G2BotZCAdjust.enabled = set;
+//  TEXT_G2BotZCDetect.enabled = set;
+//  TEXT_G2BotvMaxSoftValue.enabled = set;
+//  
+//  TEXT_G3ToponOrder.enabled = set;
+//  TEXT_G3TopoffOrder.enabled = set;
+//  TEXT_G3TopiMRange.enabled = set;
+//  TEXT_G3TopZCAdjust.enabled = set;
+//  TEXT_G3TopZCDetect.enabled = set;
+//  TEXT_G3TopvMaxSoftValue.enabled = set;
+//  
+//  TEXT_G3BotonOrder.enabled = set;
+//  TEXT_G3BotoffOrder.enabled = set;
+//  TEXT_G3BotiMRange.enabled = set;
+//  TEXT_G3BotZCAdjust.enabled = set;
+//  TEXT_G3BotZCDetect.enabled = set;
+//  TEXT_G3BotvMaxSoftValue.enabled = set;
+//  
+//  load_default_2_button.enabled = set;
+//  BUTTON_APPLY_CONFIGS.enabled = set;
+//  
  //layer2
- TEXT2_DriftonOrder.enabled = set;
- TEXT2_DriftoffOrder.enabled = set;
- TEXT2_DriftiMRange.enabled = set;
- TEXT2_DriftZCAdjust.enabled = set;
- TEXT2_DriftZCDetect.enabled = set;
- TEXT2_DriftvMaxSoftValue.enabled = set;
-
- TEXT2_G1ToponOrder.enabled = set;
- TEXT2_G1TopoffOrder.enabled = set;
- TEXT2_G1TopiMRange.enabled = set;
- TEXT2_G1TopZCAdjust.enabled = set;
- TEXT2_G1TopZCDetect.enabled = set;
- TEXT2_G1TopvMaxSoftValue.enabled = set; 
- 
- TEXT2_G1BotonOrder.enabled = set;
- TEXT2_G1BotoffOrder.enabled = set;
- TEXT2_G1BotiMRange.enabled = set;
- TEXT2_G1BotZCAdjust.enabled = set;
- TEXT2_G1BotZCDetect.enabled = set;
- TEXT2_G1BotvMaxSoftValue.enabled = set;
- 
- TEXT2_G2ToponOrder.enabled = set;
- TEXT2_G2TopoffOrder.enabled = set;
- TEXT2_G2TopiMRange.enabled = set;
- TEXT2_G2TopZCAdjust.enabled = set;
- TEXT2_G2TopZCDetect.enabled = set;
- TEXT2_G2TopvMaxSoftValue.enabled = set;
- 
- TEXT2_G2BotonOrder.enabled = set;
- TEXT2_G2BotoffOrder.enabled = set;
- TEXT2_G2BotiMRange.enabled = set;
- TEXT2_G2BotZCAdjust.enabled = set;
- TEXT2_G2BotZCDetect.enabled = set;
- TEXT2_G2BotvMaxSoftValue.enabled = set;
- 
- TEXT2_G3ToponOrder.enabled = set;
- TEXT2_G3TopoffOrder.enabled = set;
- TEXT2_G3TopiMRange.enabled = set;
- TEXT2_G3TopZCAdjust.enabled = set;
- TEXT2_G3TopZCDetect.enabled = set;
- TEXT2_G3TopvMaxSoftValue.enabled = set;
- 
- TEXT2_G3BotonOrder.enabled = set;
- TEXT2_G3BotoffOrder.enabled = set;
- TEXT2_G3BotiMRange.enabled = set;
- TEXT2_G3BotZCAdjust.enabled = set;
- TEXT2_G3BotZCDetect.enabled = set;
- TEXT2_G3BotvMaxSoftValue.enabled = set;
- 
- load_default_2_top.enabled = set;
- BUTTON2_APPLY_CONFIGS.enabled = set;
- 
-}
-" 0
+//  TEXT2_DriftonOrder.enabled = set;
+//  TEXT2_DriftoffOrder.enabled = set;
+//  TEXT2_DriftiMRange.enabled = set;
+//  TEXT2_DriftZCAdjust.enabled = set;
+//  TEXT2_DriftZCDetect.enabled = set;
+//  TEXT2_DriftvMaxSoftValue.enabled = set;
+// 
+//  TEXT2_G1ToponOrder.enabled = set;
+//  TEXT2_G1TopoffOrder.enabled = set;
+//  TEXT2_G1TopiMRange.enabled = set;
+//  TEXT2_G1TopZCAdjust.enabled = set;
+//  TEXT2_G1TopZCDetect.enabled = set;
+//  TEXT2_G1TopvMaxSoftValue.enabled = set; 
+//  
+//  TEXT2_G1BotonOrder.enabled = set;
+//  TEXT2_G1BotoffOrder.enabled = set;
+//  TEXT2_G1BotiMRange.enabled = set;
+//  TEXT2_G1BotZCAdjust.enabled = set;
+//  TEXT2_G1BotZCDetect.enabled = set;
+//  TEXT2_G1BotvMaxSoftValue.enabled = set;
+//  
+//  TEXT2_G2ToponOrder.enabled = set;
+//  TEXT2_G2TopoffOrder.enabled = set;
+//  TEXT2_G2TopiMRange.enabled = set;
+//  TEXT2_G2TopZCAdjust.enabled = set;
+//  TEXT2_G2TopZCDetect.enabled = set;
+//  TEXT2_G2TopvMaxSoftValue.enabled = set;
+//  
+//  TEXT2_G2BotonOrder.enabled = set;
+//  TEXT2_G2BotoffOrder.enabled = set;
+//  TEXT2_G2BotiMRange.enabled = set;
+//  TEXT2_G2BotZCAdjust.enabled = set;
+//  TEXT2_G2BotZCDetect.enabled = set;
+//  TEXT2_G2BotvMaxSoftValue.enabled = set;
+//  
+//  TEXT2_G3ToponOrder.enabled = set;
+//  TEXT2_G3TopoffOrder.enabled = set;
+//  TEXT2_G3TopiMRange.enabled = set;
+//  TEXT2_G3TopZCAdjust.enabled = set;
+//  TEXT2_G3TopZCDetect.enabled = set;
+//  TEXT2_G3TopvMaxSoftValue.enabled = set;
+//  
+//  TEXT2_G3BotonOrder.enabled = set;
+//  TEXT2_G3BotoffOrder.enabled = set;
+//  TEXT2_G3BotiMRange.enabled = set;
+//  TEXT2_G3BotZCAdjust.enabled = set;
+//  TEXT2_G3BotZCDetect.enabled = set;
+//  TEXT2_G3BotvMaxSoftValue.enabled = set;
+//  
+//  load_default_2_top.enabled = set;
+//  BUTTON2_APPLY_CONFIGS.enabled = set;
+//  
+// }
+// " 0
  E E E E 1 -1 -1 0  33.99999999999989 87
 ""0  1
 E E 3
@@ -14089,7 +14089,7 @@ LANG:10001 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  0 E 36.75 23.75 204.75 45.75
+E E 0 1 1 2 1 E U  0 E 36.75 23.75 204 46
 0 2 2 "0s" 0 0 0 192 0 0  36.75 23.75 1
 2
 LANG:1 35 MS Shell Dlg 2,-1,19,5,50,0,0,0,0,0
