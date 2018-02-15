@@ -17,7 +17,7 @@ main(){
 
 //RDB Configuration
   
-		fwRDBConfig_setUser("cms_gem_904_pvss");
+		fwRDBConfig_setUser("gem_904_cond");
 		fwRDBConfig_setHost("int2r");
 		fwRDBConfig_setPassword("904ConfDB"); 
 
