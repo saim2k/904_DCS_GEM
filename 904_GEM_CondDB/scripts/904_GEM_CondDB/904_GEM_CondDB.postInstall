@@ -9,9 +9,9 @@ main(){
 
 //Creation of _UI DPs to allow connection of up to 100 remote uis
 	
-	for(int i=1; i<=100; i++) {
-		If (!dpExists (“_Ui_” + i))  dpCreate (“_Ui_”+I,”_Ui”);
-	}
+//	for(int i=1; i<=100; i++) {
+//		If (!dpExists (“_Ui_” + i))  dpCreate (“_Ui_”+I,”_Ui”);
+//	}
 
 	
 
