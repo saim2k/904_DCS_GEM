@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <component>
   <name>904_GEM_Multichannel</name>
-  <version>1.0.3</version>
-  <date>14/02/2018</date>
+  <version>1.0.4</version>
+  <date>15/02/2018</date>
   <required>fwCaen=8.0.0</required>
   <required>fwCore=8.0.6</required>
   <required>fwTrending=8.0.0</required>
