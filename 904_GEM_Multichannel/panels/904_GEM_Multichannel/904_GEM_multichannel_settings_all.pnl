@@ -2,8 +2,7 @@ V 14
 2
 LANG:1 0 
 LANG:10001 12 TEXT_DriftV0
-PANEL,-1 -1 759 343 N "_3DFace" 1
-"$Board"
+PANEL,-1 -1 759 343 N "_3DFace" 0
 "// main()
 // {
 // dyn_string exceptionInfo;
@@ -247,19 +246,19 @@ PANEL,-1 -1 759 343 N "_3DFace" 1
 // " 0
  E E E E 1 -1 -1 0  30 20
 ""0  1
-E "updateSum()
-{
- float val = (float)TEXT_DriftV0.text + (float)TEXT_G1TopV0.text + (float)TEXT_G1BotV0.text + (float)TEXT_G2TopV0.text
-             + (float)TEXT_G2BotV0.text + (float)TEXT_G3BotV0.text + (float)TEXT_G3TopV0.text; 
- TEXT_Sum.text = val;
-}
-
-updateSum2()
-{
- float val = (float)TEXT2_DriftV0.text + (float)TEXT2_G1TopV0.text + (float)TEXT2_G1BotV0.text + (float)TEXT2_G2TopV0.text
-             + (float)TEXT2_G2BotV0.text + (float)TEXT2_G3BotV0.text + (float)TEXT2_G3TopV0.text; 
- TEXT_Sum2.text = val;
-}" 0
+E "// updateSum()
+// {
+//  float val = (float)TEXT_DriftV0.text + (float)TEXT_G1TopV0.text + (float)TEXT_G1BotV0.text + (float)TEXT_G2TopV0.text
+//              + (float)TEXT_G2BotV0.text + (float)TEXT_G3BotV0.text + (float)TEXT_G3TopV0.text; 
+//  TEXT_Sum.text = val;
+// }
+// 
+// updateSum2()
+// {
+//  float val = (float)TEXT2_DriftV0.text + (float)TEXT2_G1TopV0.text + (float)TEXT2_G1BotV0.text + (float)TEXT2_G2TopV0.text
+//              + (float)TEXT2_G2BotV0.text + (float)TEXT2_G3BotV0.text + (float)TEXT2_G3TopV0.text; 
+//  TEXT_Sum2.text = val;
+// }" 0
  3
 "CBRef" "1"
 "EClose" E
@@ -304,7 +303,6 @@ dyn_string exceptionInfo;
   if (answ)
   {
     applyChanges();
-    //DebugTN(\"board\", $Board);
   }
 }
 
@@ -399,7 +397,6 @@ main()
   if (answ)
   {
     applyChanges();
-    //DebugTN(\"board\", $Board);
   }
 }
 
@@ -451,113 +448,7 @@ for(int i=1; i< dynlen(boards); i++){
  
    }
 }  
-  
-// 
-// 
-// 
-// 
-// 
-// 
-// SimpleCtrlScriptStart {invalid}
-// main()
-// {
- // EP_setDP();  //uncomment this to immediately apply changes when button is pushed
-//   
-//   CASCADE_DriftOnOff.text=\"Off\";
-//   CASCADE_G1TopOnOff.text=\"Off\";
-//   CASCADE_G1BotOnOff.text=\"Off\";
-//   CASCADE_G2TopOnOff.text=\"Off\";
-//   CASCADE_G2BotOnOff.text=\"Off\";
-//   CASCADE_G3TopOnOff.text=\"Off\";
-//   CASCADE_G3BotOnOff.text=\"Off\";
-//   
-// Check if some loaded values have changed w.r.t. previous values. If so change \"apply\" button color.
-// 
-// 
-//   bool changecolor=Crosscheck_table_dpesettings();
- // DebugTN(changecolor);
-//   if (changecolor)  
-//     {
-//      
-//     setValue(\"BUTTON_APPLY_CONFIGS\",\"foreCol\",\"_ButtonText\");
-//     }
-// 
-// }
-// 
-// bool Crosscheck_table_dpesettings()
-// {
-// dyn_string cascades , sDp_cascades ;
-// dyn_bool settings_cascades;
-// 
-// 
-// cascades = makeDynString( 
-// /*top chamber*/           \"CASCADE_DriftOnOff\" , \"CASCADE_G1TopOnOff\" , \"CASCADE_G1BotOnOff\" , \"CASCADE_G2TopOnOff\" , \"CASCADE_G2BotOnOff\" ,
-//                           \"CASCADE_G3TopOnOff\" , \"CASCADE_G3BotOnOff\" );
-//       
-// sDp_cascades = makeDynString( 
-// /*TOP chamber*/               $Board+\"/channel006.settings.onOff\" , $Board+\"/channel005.settings.onOff\" , $Board+\"/channel004.settings.onOff\" ,
-//                               $Board+\"/channel003.settings.onOff\" , $Board+\"/channel002.settings.onOff\" , $Board+\"/channel001.settings.onOff\" , 
-//                               $Board+\"/channel000.settings.onOff\" );
-//   
-// settings_cascades = makeDynBool( -1 , -1 , -1 , -1 , -1 , -1 , -1 );
-// 
-// dpGet(sDp_cascades , settings_cascades);
-// 
-//DebugTN(\"settings_cascades=\", settings_cascades);
-// 
-// int j=1;
-// bool changecolor=0;
-// float tmp=-1;
-// bool tmpbool=-1;
-// string tmpstring=\"\";
-// 
-// for (j=1; j<=dynlen(cascades); j++)
-//   {
-//   getValue(cascades[j],\"text\",tmpstring);
-//   if ( tmpstring == \"On\" ) tmpbool=1;
-//   if ( tmpstring == \"Off\" ) tmpbool=0;
-//   if (settings_cascades[j] != tmpbool) changecolor=1;
-//   tmp=-1;
-//   tmpbool=-1;
-//   tmpstring=\"\";
- // DebugTN(\"changecolor=\",changecolor,\"   j=\",j);
-//   }
-// 
-// return changecolor;
-// }
-// 
-// EP_setDP()
-// {
-// dyn_errClass err;
-// 
-//   dpSetWait($Board+\"/channel006.settings.onOff:_original.._value\", 0,
-//             $Board+\"/channel005.settings.onOff:_original.._value\", 0, $Board+\"/channel004.settings.onOff:_original.._value\", 0,
-//             $Board+\"/channel003.settings.onOff:_original.._value\", 0, $Board+\"/channel002.settings.onOff:_original.._value\", 0,
-//             $Board+\"/channel001.settings.onOff:_original.._value\", 0, $Board+\"/channel000.settings.onOff:_original.._value\", 0);
-//   err = getLastError();
-//   if (dynlen(err) > 0)
-//     errorDialog(err);
-// }
-// 
-// SimpleCtrlScript {EP_setDP}
-// DP1 {dist_1:Drift.settings.onOff}
-// Config1 {:_original.._value}
-// Type1 {bool}
-// Value1 {1}
-// SimpleCtrlScriptEnd {EP_setDP}
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// " 0
+" 0
  E E E
 13 181
 "BUTTON_CLOSE"
@@ -582,189 +473,22 @@ T
 2
 LANG:1 5 Close
 LANG:10001 5 Close
-"
-
+"// SimpleCtrlScriptStart {valid}
 main()
 {
-  bool showmessage=Crosscheck_table_dpesettings();
-  //DebugTN(showmessage);
-  if (showmessage)  { sdOpenPopup(\"\",\"CMS_GEM_multichannel/message_closeSettings\", \"Warning - not applied\", 30, 30, 0, \"\"); }
-  else  { PanelOff(\"CMS_GEM_multichannel/CMS_GEM_multichannel_ChangeSettings.pnl\"); }
+  EP_panelOff();
 }
 
-bool Crosscheck_table_dpesettings()
+void EP_panelOff()
 {
-dyn_string texts, cascades , sDp_texts , sDp_cascades ;
-dyn_float settings_texts;
-dyn_bool settings_cascades;
-
-texts = makeDynString(
-/*top chamber*/    \"TEXT_DriftV0\" , \"TEXT_DriftV1\" , \"TEXT_DriftI0\" , \"TEXT_DriftI1\" , \"TEXT_DriftRUP\" , \"TEXT_DriftRDWN\" , \"TEXT_DriftTrip\" ,
-                       \"TEXT_G1TopV0\" , \"TEXT_G1TopV1\" , \"TEXT_G1TopI0\" , \"TEXT_G1TopI1\" , \"TEXT_G1TopRUP\" , \"TEXT_G1TopRDWN\" , \"TEXT_G1TopTrip\" ,
-                       \"TEXT_G1BotV0\" , \"TEXT_G1BotV1\" , \"TEXT_G1BotI0\" , \"TEXT_G1BotI1\" , \"TEXT_G1BotRUP\" , \"TEXT_G1BotRDWN\" , \"TEXT_G1BotTrip\" ,
-                       \"TEXT_G2TopV0\" , \"TEXT_G2TopV1\" , \"TEXT_G2TopI0\" , \"TEXT_G2TopI1\" , \"TEXT_G2TopRUP\" , \"TEXT_G2TopRDWN\" , \"TEXT_G2TopTrip\" ,
-                       \"TEXT_G2BotV0\" , \"TEXT_G2BotV1\" , \"TEXT_G2BotI0\" , \"TEXT_G2BotI1\" , \"TEXT_G2BotRUP\" , \"TEXT_G2BotRDWN\" , \"TEXT_G2BotTrip\" ,
-                       \"TEXT_G3TopV0\" , \"TEXT_G3TopV1\" , \"TEXT_G3TopI0\" , \"TEXT_G3TopI1\" , \"TEXT_G3TopRUP\" , \"TEXT_G3TopRDWN\" , \"TEXT_G3TopTrip\" ,
-                       \"TEXT_G3BotV0\" , \"TEXT_G3BotV1\" , \"TEXT_G3BotI0\" , \"TEXT_G3BotI1\" , \"TEXT_G3BotRUP\" , \"TEXT_G3BotRDWN\" , \"TEXT_G3BotTrip\" ,
-/*bottom chamber*/     \"TEXT2_DriftV0\" , \"TEXT2_DriftV1\" , \"TEXT2_DriftI0\" , \"TEXT2_DriftI1\" , \"TEXT2_DriftRUP\" , \"TEXT2_DriftRDWN\" , \"TEXT2_DriftTrip\" ,
-                       \"TEXT2_G1TopV0\" , \"TEXT2_G1TopV1\" , \"TEXT2_G1TopI0\" , \"TEXT2_G1TopI1\" , \"TEXT2_G1TopRUP\" , \"TEXT2_G1TopRDWN\" , \"TEXT2_G1TopTrip\" ,
-                       \"TEXT2_G1BotV0\" , \"TEXT2_G1BotV1\" , \"TEXT2_G1BotI0\" , \"TEXT2_G1BotI1\" , \"TEXT2_G1BotRUP\" , \"TEXT2_G1BotRDWN\" , \"TEXT2_G1BotTrip\" ,
-                       \"TEXT2_G2TopV0\" , \"TEXT2_G2TopV1\" , \"TEXT2_G2TopI0\" , \"TEXT2_G2TopI1\" , \"TEXT2_G2TopRUP\" , \"TEXT2_G2TopRDWN\" , \"TEXT2_G2TopTrip\" ,
-                       \"TEXT2_G2BotV0\" , \"TEXT2_G2BotV1\" , \"TEXT2_G2BotI0\" , \"TEXT2_G2BotI1\" , \"TEXT2_G2BotRUP\" , \"TEXT2_G2BotRDWN\" , \"TEXT2_G2BotTrip\" ,
-                       \"TEXT2_G3TopV0\" , \"TEXT2_G3TopV1\" , \"TEXT2_G3TopI0\" , \"TEXT2_G3TopI1\" , \"TEXT2_G3TopRUP\" , \"TEXT2_G3TopRDWN\" , \"TEXT2_G3TopTrip\" ,
-                       \"TEXT2_G3BotV0\" , \"TEXT2_G3BotV1\" , \"TEXT2_G3BotI0\" , \"TEXT2_G3BotI1\" , \"TEXT2_G3BotRUP\" , \"TEXT2_G3BotRDWN\" , \"TEXT2_G3BotTrip\" );
-
-cascades = makeDynString( 
-/*top chamber*/           \"CASCADE_DriftOnOff\" , \"CASCADE_G1TopOnOff\" , \"CASCADE_G1BotOnOff\" , \"CASCADE_G2TopOnOff\" , \"CASCADE_G2BotOnOff\" ,
-                          \"CASCADE_G3TopOnOff\" , \"CASCADE_G3BotOnOff\" ,
-/*bottom chamber*/        \"CASCADE2_DriftOnOff\" , \"CASCADE2_G1TopOnOff\" , \"CASCADE2_G1BotOnOff\" , \"CASCADE2_G2TopOnOff\" , \"CASCADE2_G2BotOnOff\" ,
-                          \"CASCADE2_G3TopOnOff\" , \"CASCADE2_G3BotOnOff\" );
-      
-sDp_texts = makeDynString( 
-/*top chamber*/            $Board+\"/channel006.readBackSettings.v0:_original.._value\" , $Board+\"/channel006.readBackSettings.v1:_original.._value\" , $Board+\"/channel006.readBackSettings.i0:_original.._value\" ,
-                           $Board+\"/channel006.readBackSettings.i1:_original.._value\" , $Board+\"/channel006.readBackSettings.rUp:_original.._value\" , $Board+\"/channel006.readBackSettings.rDwn:_original.._value\" ,
-                           $Board+\"/channel006.readBackSettings.tripTime:_original.._value\" ,
-                           $Board+\"/channel005.readBackSettings.v0:_original.._value\" , $Board+\"/channel005.readBackSettings.v1:_original.._value\" , $Board+\"/channel005.readBackSettings.i0:_original.._value\" ,
-                           $Board+\"/channel005.readBackSettings.i1:_original.._value\" , $Board+\"/channel005.readBackSettings.rUp:_original.._value\" , $Board+\"/channel005.readBackSettings.rDwn:_original.._value\" ,
-                           $Board+\"/channel005.readBackSettings.tripTime:_original.._value\" ,
-                           $Board+\"/channel004.readBackSettings.v0:_original.._value\" , $Board+\"/channel004.readBackSettings.v1:_original.._value\" , $Board+\"/channel004.readBackSettings.i0:_original.._value\" ,
-                           $Board+\"/channel004.readBackSettings.i1:_original.._value\" , $Board+\"/channel004.readBackSettings.rUp:_original.._value\" , $Board+\"/channel004.readBackSettings.rDwn:_original.._value\" ,
-                           $Board+\"/channel004.readBackSettings.tripTime:_original.._value\" ,
-                           $Board+\"/channel003.readBackSettings.v0:_original.._value\" , $Board+\"/channel003.readBackSettings.v1:_original.._value\" , $Board+\"/channel003.readBackSettings.i0:_original.._value\" ,
-                           $Board+\"/channel003.readBackSettings.i1:_original.._value\" , $Board+\"/channel003.readBackSettings.rUp:_original.._value\" , $Board+\"/channel003.readBackSettings.rDwn:_original.._value\" ,
-                           $Board+\"/channel003.readBackSettings.tripTime:_original.._value\" ,
-                           $Board+\"/channel002.readBackSettings.v0:_original.._value\" , $Board+\"/channel002.readBackSettings.v1:_original.._value\" , $Board+\"/channel002.readBackSettings.i0:_original.._value\" ,
-                           $Board+\"/channel002.readBackSettings.i1:_original.._value\" , $Board+\"/channel002.readBackSettings.rUp:_original.._value\" , $Board+\"/channel002.readBackSettings.rDwn:_original.._value\" ,
-                           $Board+\"/channel002.readBackSettings.tripTime:_original.._value\" ,
-                           $Board+\"/channel001.readBackSettings.v0:_original.._value\" , $Board+\"/channel001.readBackSettings.v1:_original.._value\" , $Board+\"/channel001.readBackSettings.i0:_original.._value\" ,
-                           $Board+\"/channel001.readBackSettings.i1:_original.._value\" , $Board+\"/channel001.readBackSettings.rUp:_original.._value\" , $Board+\"/channel001.readBackSettings.rDwn:_original.._value\" ,
-                           $Board+\"/channel001.readBackSettings.tripTime:_original.._value\" ,
-                           $Board+\"/channel000.readBackSettings.v0:_original.._value\" , $Board+\"/channel000.readBackSettings.v1:_original.._value\" , $Board+\"/channel000.readBackSettings.i0:_original.._value\" ,
-                           $Board+\"/channel000.readBackSettings.i1:_original.._value\" , $Board+\"/channel000.readBackSettings.rUp:_original.._value\" , $Board+\"/channel000.readBackSettings.rDwn:_original.._value\" ,
-                           $Board+\"/channel000.readBackSettings.tripTime:_original.._value\" ,
-/*bottom chamber*/         $Board+\"/channel013.readBackSettings.v0:_original.._value\" , $Board+\"/channel013.readBackSettings.v1:_original.._value\" , $Board+\"/channel013.readBackSettings.i0:_original.._value\" ,
-                           $Board+\"/channel013.readBackSettings.i1:_original.._value\" , $Board+\"/channel013.readBackSettings.rUp:_original.._value\" , $Board+\"/channel013.readBackSettings.rDwn:_original.._value\" ,
-                           $Board+\"/channel013.readBackSettings.tripTime:_original.._value\" ,
-                           $Board+\"/channel012.readBackSettings.v0:_original.._value\" , $Board+\"/channel012.readBackSettings.v1:_original.._value\" , $Board+\"/channel012.readBackSettings.i0:_original.._value\" ,
-                           $Board+\"/channel012.readBackSettings.i1:_original.._value\" , $Board+\"/channel012.readBackSettings.rUp:_original.._value\" , $Board+\"/channel012.readBackSettings.rDwn:_original.._value\" ,
-                           $Board+\"/channel012.readBackSettings.tripTime:_original.._value\" ,
-                           $Board+\"/channel011.readBackSettings.v0:_original.._value\" , $Board+\"/channel011.readBackSettings.v1:_original.._value\" , $Board+\"/channel011.readBackSettings.i0:_original.._value\" ,
-                           $Board+\"/channel011.readBackSettings.i1:_original.._value\" , $Board+\"/channel011.readBackSettings.rUp:_original.._value\" , $Board+\"/channel011.readBackSettings.rDwn:_original.._value\" ,
-                           $Board+\"/channel011.readBackSettings.tripTime:_original.._value\" ,
-                           $Board+\"/channel010.readBackSettings.v0:_original.._value\" , $Board+\"/channel010.readBackSettings.v1:_original.._value\" , $Board+\"/channel010.readBackSettings.i0:_original.._value\" ,
-                           $Board+\"/channel010.readBackSettings.i1:_original.._value\" , $Board+\"/channel010.readBackSettings.rUp:_original.._value\" , $Board+\"/channel010.readBackSettings.rDwn:_original.._value\" ,
-                           $Board+\"/channel010.readBackSettings.tripTime:_original.._value\" ,
-                           $Board+\"/channel009.readBackSettings.v0:_original.._value\" , $Board+\"/channel009.readBackSettings.v1:_original.._value\" , $Board+\"/channel009.readBackSettings.i0:_original.._value\" ,
-                           $Board+\"/channel009.readBackSettings.i1:_original.._value\" , $Board+\"/channel009.readBackSettings.rUp:_original.._value\" , $Board+\"/channel009.readBackSettings.rDwn:_original.._value\" ,
-                           $Board+\"/channel009.readBackSettings.tripTime:_original.._value\" ,
-                           $Board+\"/channel008.readBackSettings.v0:_original.._value\" , $Board+\"/channel008.readBackSettings.v1:_original.._value\" , $Board+\"/channel008.readBackSettings.i0:_original.._value\" ,
-                           $Board+\"/channel008.readBackSettings.i1:_original.._value\" , $Board+\"/channel008.readBackSettings.rUp:_original.._value\" , $Board+\"/channel008.readBackSettings.rDwn:_original.._value\" ,
-                           $Board+\"/channel008.readBackSettings.tripTime:_original.._value\" ,
-                           $Board+\"/channel007.readBackSettings.v0:_original.._value\" , $Board+\"/channel007.readBackSettings.v1:_original.._value\" , $Board+\"/channel007.readBackSettings.i0:_original.._value\" ,
-                           $Board+\"/channel007.readBackSettings.i1:_original.._value\" , $Board+\"/channel007.readBackSettings.rUp:_original.._value\" , $Board+\"/channel007.readBackSettings.rDwn:_original.._value\" ,
-                           $Board+\"/channel007.readBackSettings.tripTime:_original.._value\" );
-
-sDp_cascades = makeDynString( 
-/*TOP chamber*/               $Board+\"/channel006.readBackSettings.onOff\" , $Board+\"/channel005.readBackSettings.onOff\" , $Board+\"/channel004.readBackSettings.onOff\" ,
-                              $Board+\"/channel003.readBackSettings.onOff\" , $Board+\"/channel002.readBackSettings.onOff\" , $Board+\"/channel001.readBackSettings.onOff\" , 
-                              $Board+\"/channel000.readBackSettings.onOff\" ,
-/*BOTTOM chamber*/            $Board+\"/channel013.readBackSettings.onOff\" , $Board+\"/channel012.readBackSettings.onOff\" , $Board+\"/channel011.readBackSettings.onOff\" ,
-                              $Board+\"/channel010.readBackSettings.onOff\" , $Board+\"/channel009.readBackSettings.onOff\" , $Board+\"/channel008.readBackSettings.onOff\" , 
-                              $Board+\"/channel007.readBackSettings.onOff\" );
-  
-settings_texts = makeDynFloat( -1 , -1 , -1 , -1 , -1 , -1 , -1 ,
-                               -1 , -1 , -1 , -1 , -1 , -1 , -1 ,
-                               -1 , -1 , -1 , -1 , -1 , -1 , -1 ,
-                               -1 , -1 , -1 , -1 , -1 , -1 , -1 ,
-                               -1 , -1 , -1 , -1 , -1 , -1 , -1 ,
-                               -1 , -1 , -1 , -1 , -1 , -1 , -1 ,
-                               -1 , -1 , -1 , -1 , -1 , -1 , -1 ,
-                               -1 , -1 , -1 , -1 , -1 , -1 , -1 ,
-                               -1 , -1 , -1 , -1 , -1 , -1 , -1 ,
-                               -1 , -1 , -1 , -1 , -1 , -1 , -1 ,
-                               -1 , -1 , -1 , -1 , -1 , -1 , -1 ,
-                               -1 , -1 , -1 , -1 , -1 , -1 , -1 ,
-                               -1 , -1 , -1 , -1 , -1 , -1 , -1 ,
-                               -1 , -1 , -1 , -1 , -1 , -1 , -1 );
-
-settings_cascades = makeDynBool( -1 , -1 , -1 , -1 , -1 , -1 , -1 ,
-                               -1 , -1 , -1 , -1 , -1 , -1 , -1 );
-
-dpGet(sDp_texts , settings_texts);
-dpGet(sDp_cascades , settings_cascades);
-
-//DebugTN(\"settings_texts=\", settings_texts);
-//DebugTN(\"settings_cascades=\", settings_cascades);
-
-int i,j=1;
-bool showmessage=0;
-float tmp=-1;
-bool tmpbool=-1;
-string tmpstring=\"\";
-for (i=1; i<=dynlen(texts); i++)
-  {
-  getValue(texts[i],\"text\",tmp);
-  if (fabs(settings_texts[i]-tmp)>0.01) 
-    {
-    showmessage=1;
-    //DebugTN(\"i=\",i,\" settings_texts[i]=\",settings_texts[i],\" tmp=\",tmp);
-    }
-  tmp=-1;
-  // DebugTN(\"showmessage=\",showmessage,\"   i=\",i);
-  }
-for (j=1; j<=dynlen(cascades); j++)
-  {
-  getValue(cascades[j],\"text\",tmpstring);
-  if ( tmpstring == \"On\" ) tmpbool=1;
-  if ( tmpstring == \"Off\" ) tmpbool=0;
-  if (settings_cascades[j] != tmpbool) 
-    {
-    showmessage=1;
-    //DebugTN(\"j=\",j);
-    }
-  tmp=-1;
-  tmpbool=-1;
-  tmpstring=\"\";
- // DebugTN(\"showmessage=\",showmessage,\"   j=\",j);
-  }
-
-
-
-bool setting_OpMode ;
-string text_OpMode  ;
-dpGet($Board+\".readBackSettings.opMode:_original.._value\" , setting_OpMode);
-getValue(\"CASCADE_OpMode\",\"text\",text_OpMode);
-
-bool tmpbool;
-//DebugTN(\"text_OpMode\",text_OpMode);
-if (text_OpMode == \"FREE\")  tmpbool = FALSE ;
-if (text_OpMode == \"GEM\")  tmpbool = TRUE  ;
-  
-  if (setting_OpMode != tmpbool) 
-    {
-    showmessage = 1;
-    //DebugTN(\"setting_OpMode\",setting_OpMode, \"    tmpobool\",tmpbool);
-    }
-return showmessage;
+  PanelOff();
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// SimpleCtrlScript {EP_panelOff}
+// Function {PanelOff}
+// Panel {}
+// Module {}
+// SimpleCtrlScriptEnd {EP_panelOff}
 " 0
  E E "main()
 {
@@ -805,8 +529,7 @@ dyn_string exceptionInfo;
   if (answ)
   {
     applyChanges();
-    //DebugTN(\"board\", $Board);
-  }
+   }
 }
 
 
@@ -972,8 +695,7 @@ dyn_string exceptionInfo;
   if (answ)
   {
     applyChanges();
-    //DebugTN(\"board\", $Board);
-  }
+     }
 }
 
 
@@ -1189,7 +911,7 @@ dyn_string exceptionInfo;
   if (answ)
   {
     applyChanges();
-    //DebugTN(\"board\", $Board);
+   
   }
 }
 
@@ -1470,7 +1192,7 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 1 2 1 E U  0 E 59.25999999999999 35 308.26 53
+E E 0 1 1 2 1 E U  0 E 59.25999999999999 35 308 53
 0 2 2 "0s" 0 0 0 192 0 0  59.25999999999999 35 1
 1
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0

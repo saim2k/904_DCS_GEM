@@ -2,8 +2,7 @@ V 14
 2
 LANG:1 0 
 LANG:10001 0 
-PANEL,-1 -1 1344 878 N "_3DFace" 1
-"$Board"
+PANEL,-1 -1 1344 878 N "_3DFace" 0
 "// main()
 // {
 //   
@@ -4281,19 +4280,18 @@ main()
 void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings_all.pnl\",
-      \"\",
-      makeDynString(\"$Board:\" + $Board));
+      \"Fast HV settings\",
+      makeDynString(\"\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
 // Function {ChildPanelOnCentralModal}
 // File {904_GEM_Multichannel/904_GEM_multichannel_settings_all.pnl}
-// Panel {}
+// Panel {Fast HV settings}
 // Parent {}
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:$Board}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
 " 0
  E E E
