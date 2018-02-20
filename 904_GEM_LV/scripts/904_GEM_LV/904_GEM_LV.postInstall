@@ -1,0 +1,20 @@
+#uses "CMSfwInstallUtils/CMSfwInstallUtils.ctl"
+#uses "fwInstallationUtils.ctl"
+#uses "CMSfwAlertSystem/CMSfwAlertSystemUtil.ctl"
+
+
+main(){
+  
+  dyn_string exc;
+
+  
+
+ fwInstallationUtils_loadConfigurations("904_GEM_LV",exc);
+ fwInstallationUtils_appendManagers("904_GEM_LV", exc);
+
+ DebugN("904_GEM_LV has been installed", exc);
+
+ fwInstallationUtils_endPostInstall("904_GEM_LV");
+  
+}
+

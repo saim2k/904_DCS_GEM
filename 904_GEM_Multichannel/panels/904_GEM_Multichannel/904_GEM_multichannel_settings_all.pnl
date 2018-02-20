@@ -658,7 +658,13 @@ LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
 {
     setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
 }" 0
- E E
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  this.text(\"(uA)\");
+}
+" 0
+ E
 13 904
 "set_all_DivCurr_button"
 ""
