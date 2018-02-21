@@ -4329,7 +4329,7 @@ LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
 T 
 1
 LANG:1 33 Fast LV settings
-to ALL detectors
+to ALL detector
 "// SimpleCtrlScriptStart {valid}
 main()
 {
@@ -4374,7 +4374,7 @@ LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
 T 
 1
 LANG:1 3 MAO
-"// SimpleCtrlScriptStart {valid}
+"// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_childPanelOn();
@@ -4384,7 +4384,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/powerConverter20/channel000\"));
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/powerConverter22/channel000\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
