@@ -1,0 +1,4431 @@
+V 14
+2
+LANG:1 0 
+LANG:10001 0 
+PANEL,-1 -1 1344 878 N "_3DFace" 0
+"// main()
+// {
+//   
+//=================== Access Control ===================================================  
+// dyn_string exceptionInfo;
+// BUTTON_MaskUnmask.visible = false ;
+// fwAccessControl_setupPanel( \"ApplyPanelAccessControl\", exceptionInfo);
+// 
+//======================= Update Summary dpes ==========================================
+// updateChamberSummary();
+// }
+// 
+// 
+// updateChamberSummary()
+// {
+//   dyn_string SC01L1 = makeDynString
+//             (//status
+//             \"CAEN/GEM_CAEN_HV/board12/channel000.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel001.actual.status\",
+//             \"CAEN/GEM_CAEN_HV/board12/channel002.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel003.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel004.actual.status\",
+//             \"CAEN/GEM_CAEN_HV/board12/channel005.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel006.actual.status\",
+            //Vmon            
+//             \"CAEN/GEM_CAEN_HV/board12/channel000.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel001.actual.vMon\",
+//             \"CAEN/GEM_CAEN_HV/board12/channel002.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel003.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel004.actual.vMon\",
+//             \"CAEN/GEM_CAEN_HV/board12/channel005.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel006.actual.vMon\"
+//             );
+//   dpConnect(\"update_McScOverviewSC01L1\" , SC01L1 );
+//   
+//   dyn_string SC01L2 = makeDynString
+//             (//status
+//             \"CAEN/GEM_CAEN_HV/board12/channel007.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel008.actual.status\",
+//             \"CAEN/GEM_CAEN_HV/board12/channel009.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel010.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel011.actual.status\",
+//             \"CAEN/GEM_CAEN_HV/board12/channel012.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel013.actual.status\",
+            //Vmon
+//             \"CAEN/GEM_CAEN_HV/board12/channel007.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel008.actual.vMon\",
+//             \"CAEN/GEM_CAEN_HV/board12/channel009.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel010.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel011.actual.vMon\",
+//             \"CAEN/GEM_CAEN_HV/board12/channel012.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel013.actual.vMon\"
+//             );
+//   dpConnect(\"update_McScOverviewSC01L2\" , SC01L2 );  
+//   
+//   for (int i=1; i<=14; i++)
+//   {
+//   if(!dpExists(SC01L1[i])) DebugTN(\"SC01L1[\",i,\"] doesn't exist!!\");
+//   if(!dpExists(SC01L2[i])) DebugTN(\"SC01L2[\",i,\"] doesn't exist!!\");
+//   }
+// }
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// void ApplyPanelAccessControl(string s1, string s2)
+// {
+//   
+// bool hasControl, hasModify;
+// 
+// dyn_string exceptionInfo;
+// 
+// BUTTON_MaskUnmask.enabled = false ;
+// Button_AlarmScreen.enabled = false;
+// 
+// check privileges:
+// fwAccessControl_isGranted( \"CMS_GEM:Control\", hasControl, exceptionInfo);
+// fwAccessControl_isGranted( \"CMS_GEM:Modify\", hasModify, exceptionInfo);
+// 
+// if (dynlen(exceptionInfo)) { fwExceptionHandling_display(exceptionInfo); return;}
+// 
+// enable/disable panel functionality:
+// 
+//   if (hasControl) 
+//   {
+//     Button_AlarmScreen.enabled = true;
+//   }  
+//   if (hasModify) 
+//   {
+//     BUTTON_MaskUnmask.enabled = false ;
+//     Button_AlarmScreen.enabled = true;
+//   }
+// }
+// 
+// 
+// /*
+// main()
+// {
+// dyn_string exceptionInfo;
+// fwAccessControl_setupPanel( \"ApplyPanelAccessControl\", exceptionInfo);
+// }
+// 
+// 
+// 
+// 
+// void ApplyPanelAccessControl(string s1, string s2)
+// {
+//   
+// bool hasControl, hasModify;
+// 
+// dyn_string exceptionInfo;
+// 
+// revoke all previous rights:
+// DisableAllInPanel();
+// 
+// check privileges:
+// fwAccessControl_isGranted( \"CMS_GEM:Control\", hasControl, exceptionInfo);
+// fwAccessControl_isGranted( \"CMS_GEM:Modify\", hasModify, exceptionInfo);
+// 
+// if (dynlen(exceptionInfo)) { fwExceptionHandling_display(exceptionInfo); return;}
+// 
+// enable/disable panel functionality:
+// 
+//   if (hasControl) setOperatorRights();
+//   if (hasModify) setExpertRights();
+// }
+// 
+// 
+// void DisableAllInPanel()
+// {
+//   setAllInPanel(false);
+// }
+// 
+// void setExpertRights()
+// {
+//   setAllInPanel(true);
+// }
+// 
+// void setOperatorRights()
+// {
+//    bool set = true;
+//    
+//    CASCADE_DriftOnOff.enabled = set;
+//    CASCADE_G1TopOnOff.enabled = set;
+//    CASCADE_G1BotOnOff.enabled = set;
+//    CASCADE_G2TopOnOff.enabled = set;
+//    CASCADE_G2BotOnOff.enabled = set;
+//    CASCADE_G3TopOnOff.enabled = set;
+//    CASCADE_G3BotOnOff.enabled = set;
+//    
+//    CASCADE2_DriftOnOff.enabled = set;
+//    CASCADE2_G1TopOnOff.enabled = set;
+//    CASCADE2_G1BotOnOff.enabled = set;
+//    CASCADE2_G2TopOnOff.enabled = set;
+//    CASCADE2_G2BotOnOff.enabled = set;
+//    CASCADE2_G3TopOnOff.enabled = set;
+//    CASCADE2_G3BotOnOff.enabled = set;
+//    
+//    ALL_ON_BUTTON.enabled = set;
+//    ALL_OFF_BUTTON.enabled = set;
+//    
+//    ALL_ON_BUTTON2.enabled = set;
+//    ALL_OFF_BUTTON2.enabled = set;
+//    
+//    BUTTON_APPLY_CONFIGS.enabled = set;
+//    BUTTON2_APPLY_CONFIGS.enabled = set;
+// }
+// 
+// void setAllInPanel(bool set)
+// {
+  //board Settings
+//  CASCADE_OpMode.enabled = set;
+//  BUTTON_applyOpMode.enabled = set; 
+//   
+ //layer1
+//  CASCADE_DriftOnOff.enabled = set;
+//  TEXT_DriftV0.enabled = set;
+//  TEXT_DriftV1.enabled = set;
+//  TEXT_DriftI0.enabled = set;
+//  TEXT_DriftI1.enabled = set;
+//  TEXT_DriftRUP.enabled = set;
+//  TEXT_DriftRDWN.enabled = set;
+//  TEXT_DriftTrip.enabled = set; 
+//  
+//   CASCADE_G1TopOnOff.enabled = set;
+//  TEXT_G1TopV0.enabled = set;
+//  TEXT_G1TopV1.enabled = set;
+//  TEXT_G1TopI0.enabled = set;
+//  TEXT_G1TopI1.enabled = set;
+//  TEXT_G1TopRUP.enabled = set;
+//  TEXT_G1TopRDWN.enabled = set;
+//  TEXT_G1TopTrip.enabled = set; 
+//  
+//   CASCADE_G1BotOnOff.enabled = set;
+//  TEXT_G1BotV0.enabled = set;
+//  TEXT_G1BotV1.enabled = set;
+//  TEXT_G1BotI0.enabled = set;
+//  TEXT_G1BotI1.enabled = set;
+//  TEXT_G1BotRUP.enabled = set;
+//  TEXT_G1BotRDWN.enabled = set;
+//  TEXT_G1BotTrip.enabled = set; 
+//  
+//   CASCADE_G2TopOnOff.enabled = set;
+//  TEXT_G2TopV0.enabled = set;
+//  TEXT_G2TopV1.enabled = set;
+//  TEXT_G2TopI0.enabled = set;
+//  TEXT_G2TopI1.enabled = set;
+//  TEXT_G2TopRUP.enabled = set;
+//  TEXT_G2TopRDWN.enabled = set;
+//  TEXT_G2TopTrip.enabled = set; 
+//  
+//   CASCADE_G2BotOnOff.enabled = set;
+//  TEXT_G2BotV0.enabled = set;
+//  TEXT_G2BotV1.enabled = set;
+//  TEXT_G2BotI0.enabled = set;
+//  TEXT_G2BotI1.enabled = set;
+//  TEXT_G2BotRUP.enabled = set;
+//  TEXT_G2BotRDWN.enabled = set;
+//  TEXT_G2BotTrip.enabled = set; 
+//  
+//   CASCADE_G3TopOnOff.enabled = set;
+//  TEXT_G3TopV0.enabled = set;
+//  TEXT_G3TopV1.enabled = set;
+//  TEXT_G3TopI0.enabled = set;
+//  TEXT_G3TopI1.enabled = set;
+//  TEXT_G3TopRUP.enabled = set;
+//  TEXT_G3TopRDWN.enabled = set;
+//  TEXT_G3TopTrip.enabled = set; 
+//  
+//   CASCADE_G3BotOnOff.enabled = set;
+//  TEXT_G3BotV0.enabled = set;
+//  TEXT_G3BotV1.enabled = set;
+//  TEXT_G3BotI0.enabled = set;
+//  TEXT_G3BotI1.enabled = set;
+//  TEXT_G3BotRUP.enabled = set;
+//  TEXT_G3BotRDWN.enabled = set;
+//  TEXT_G3BotTrip.enabled = set;
+//  
+//  ALL_ON_BUTTON.enabled = set;
+//  ALL_OFF_BUTTON.enabled = set;
+//  BUTTON_SAVE_CONFIGS.enabled = set;
+//  BUTTON_LOAD_CONFIGS.enabled = set;
+//  load_default_button.enabled = set;
+//  
+//  TEXT_DivCurr_top.enabled = set;
+//  set_all_DivCurr_button.enabled = set;
+//  TEXT_DivVolt_top.enabled = set;
+//  set_all_DivVolt_button.enabled = set;
+//  TEXT_AllI0.enabled = set;
+//  set_all_i0_button.enabled = set;
+//  BUTTON_APPLY_CONFIGS.enabled = set;
+//  
+ //layer2
+//  CASCADE2_DriftOnOff.enabled = set;
+//  TEXT2_DriftV0.enabled = set;
+//  TEXT2_DriftV1.enabled = set;
+//  TEXT2_DriftI0.enabled = set;
+//  TEXT2_DriftI1.enabled = set;
+//  TEXT2_DriftRUP.enabled = set;
+//  TEXT2_DriftRDWN.enabled = set;
+//  TEXT2_DriftTrip.enabled = set; 
+//  
+//   CASCADE2_G1TopOnOff.enabled = set;
+//  TEXT2_G1TopV0.enabled = set;
+//  TEXT2_G1TopV1.enabled = set;
+//  TEXT2_G1TopI0.enabled = set;
+//  TEXT2_G1TopI1.enabled = set;
+//  TEXT2_G1TopRUP.enabled = set;
+//  TEXT2_G1TopRDWN.enabled = set;
+//  TEXT2_G1TopTrip.enabled = set; 
+//  
+//   CASCADE2_G1BotOnOff.enabled = set;
+//  TEXT2_G1BotV0.enabled = set;
+//  TEXT2_G1BotV1.enabled = set;
+//  TEXT2_G1BotI0.enabled = set;
+//  TEXT2_G1BotI1.enabled = set;
+//  TEXT2_G1BotRUP.enabled = set;
+//  TEXT2_G1BotRDWN.enabled = set;
+//  TEXT2_G1BotTrip.enabled = set; 
+//  
+//   CASCADE2_G2TopOnOff.enabled = set;
+//  TEXT2_G2TopV0.enabled = set;
+//  TEXT2_G2TopV1.enabled = set;
+//  TEXT2_G2TopI0.enabled = set;
+//  TEXT2_G2TopI1.enabled = set;
+//  TEXT2_G2TopRUP.enabled = set;
+//  TEXT2_G2TopRDWN.enabled = set;
+//  TEXT2_G2TopTrip.enabled = set; 
+//  
+//   CASCADE2_G2BotOnOff.enabled = set;
+//  TEXT2_G2BotV0.enabled = set;
+//  TEXT2_G2BotV1.enabled = set;
+//  TEXT2_G2BotI0.enabled = set;
+//  TEXT2_G2BotI1.enabled = set;
+//  TEXT2_G2BotRUP.enabled = set;
+//  TEXT2_G2BotRDWN.enabled = set;
+//  TEXT2_G2BotTrip.enabled = set; 
+//  
+//   CASCADE2_G3TopOnOff.enabled = set;
+//  TEXT2_G3TopV0.enabled = set;
+//  TEXT2_G3TopV1.enabled = set;
+//  TEXT2_G3TopI0.enabled = set;
+//  TEXT2_G3TopI1.enabled = set;
+//  TEXT2_G3TopRUP.enabled = set;
+//  TEXT2_G3TopRDWN.enabled = set;
+//  TEXT2_G3TopTrip.enabled = set; 
+//  
+//   CASCADE2_G3BotOnOff.enabled = set;
+//  TEXT2_G3BotV0.enabled = set;
+//  TEXT2_G3BotV1.enabled = set;
+//  TEXT2_G3BotI0.enabled = set;
+//  TEXT2_G3BotI1.enabled = set;
+//  TEXT2_G3BotRUP.enabled = set;
+//  TEXT2_G3BotRDWN.enabled = set;
+//  TEXT2_G3BotTrip.enabled = set;
+//  
+//  ALL_ON_BUTTON2.enabled = set;
+//  ALL_OFF_BUTTON2.enabled = set;
+//  BUTTON2_SAVE_CONFIGS.enabled = set;
+//  BUTTON2_LOAD_CONFIGS.enabled = set;
+//  load_default_value_bot.enabled = set;
+//  
+//  TEXT_DivCurr_bot.enabled = set;
+//  set_all_DivCurr_button_bot.enabled = set;
+//  TEXT_DivVolt_bot.enabled = set;
+//  set_all_DivVolt_button_bot.enabled = set;
+//  TEXT_AllI0_Bot.enabled = set;
+//  set_all_i0_button_bot.enabled = set;
+//  BUTTON2_APPLY_CONFIGS.enabled = set;
+//  
+// }
+// */" 0
+ E E E E 1 -1 -1 0  110 160
+""0  1
+E "// update_McScOverviewSC01L1( dyn_string dp_CaenChannels ,  dyn_anytype values ) {
+//   
+  //update vMonSum
+//   dyn_string vMonDpes = makeDynString(\"CAEN/GEM_CAEN_HV/board12/channel000.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel001.actual.vMon\",
+//                                       \"CAEN/GEM_CAEN_HV/board12/channel002.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel003.actual.vMon\",
+//                                       \"CAEN/GEM_CAEN_HV/board12/channel004.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel005.actual.vMon\",
+//                                       \"CAEN/GEM_CAEN_HV/board12/channel006.actual.vMon\");
+//   dyn_float vMonFloats;
+//   dpGet( vMonDpes , vMonFloats);
+//   float new_VmonSum = 0;
+//   int i=1;
+//   for(i=1; i<=7; i++)
+//   {
+//     new_VmonSum = new_VmonSum + vMonFloats[i];
+//   }
+//   
+//   dpSet(\"MC_SC1top_overview.actual.VmonSum\", new_VmonSum);
+//   
+  //update status
+//   dyn_string statusDpes = makeDynString(\"CAEN/GEM_CAEN_HV/board12/channel000.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel001.actual.status\",
+//                                       \"CAEN/GEM_CAEN_HV/board12/channel002.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel003.actual.status\",
+//                                       \"CAEN/GEM_CAEN_HV/board12/channel004.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel005.actual.status\",
+//                                       \"CAEN/GEM_CAEN_HV/board12/channel006.actual.status\");
+//   dyn_int statusInts;
+//   dpGet( statusDpes , statusInts);
+//   int new_status = 0;
+//   i=1;
+//   for (int i=1; i<=7 ; i++)
+//   {
+//     new_status = new_status | statusInts[i];
+//   }
+//   dpSet(\"MC_SC1top_overview.actual.status\", new_status);
+// }
+// 
+//================================================================================================================================================
+// update_McScOverviewSC01L2( dyn_string dp_CaenChannels ,  dyn_anytype values ) {
+//   
+  //update vMonSum
+//   dyn_string vMonDpes = makeDynString(\"CAEN/GEM_CAEN_HV/board12/channel007.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel008.actual.vMon\",
+//                                       \"CAEN/GEM_CAEN_HV/board12/channel009.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel010.actual.vMon\",
+//                                       \"CAEN/GEM_CAEN_HV/board12/channel011.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel012.actual.vMon\",
+//                                       \"CAEN/GEM_CAEN_HV/board12/channel013.actual.vMon\");
+//   dyn_float vMonFloats;
+//   dpGet( vMonDpes , vMonFloats);
+//   float new_VmonSum = 0;
+//   int i=1;
+//   for(i=1; i<=7; i++)
+//   {
+//     new_VmonSum = new_VmonSum + vMonFloats[i];
+//   }
+// 
+//   dpSet(\"MC_SC1bot_overview.actual.VmonSum\", new_VmonSum);
+//   
+  //update status
+//   dyn_string statusDpes = makeDynString(\"CAEN/GEM_CAEN_HV/board12/channel007.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel008.actual.status\",
+//                                         \"CAEN/GEM_CAEN_HV/board12/channel009.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel010.actual.status\",
+//                                         \"CAEN/GEM_CAEN_HV/board12/channel011.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel012.actual.status\",
+//                                         \"CAEN/GEM_CAEN_HV/board12/channel013.actual.status\");
+//   dyn_int statusInts;
+//   dpGet( statusDpes , statusInts);
+//   int new_status = 0;
+//   i=1;
+//   for (int i=1; i<=7 ; i++)
+//   {
+//     new_status = new_status | statusInts[i];
+//   }
+//   
+//   dpSet(\"MC_SC1bot_overview.actual.status\", new_status);
+// }" 0
+ 3
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:1 0 
+2 67
+"PRIMITIVE_TEXT177"
+""
+1 82.68749999999997 88 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+67 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 5 1 2 1 E U  0 E 82.68749999999997 88 355 116
+0 2 2 "0s" 0 0 0 192 0 0  82.68749999999997 88 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,24,5,75,1,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,16,5,75,0,0,0,0,0
+0 2
+LANG:1 20 Low Voltage Overview
+LANG:10001 21 SUPERCHAMBER OVERVIEW
+6 99
+"Rect_5/1Top"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+99 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel000.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel000\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999999 6.888888888888943 1 E 170 220 340 260
+6 100
+"Rect_5/1Bot"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+100 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel001.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel001\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999999 46.88888888888894 1 E 170 220 340 260
+6 101
+"Rect_5/2Top"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+101 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel002.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel002\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 6.888888888888943 1 E 170 220 340 260
+6 102
+"Rect_5/2Bot"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+102 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel003.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel003\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 46.88888888888894 1 E 170 220 340 260
+6 103
+"Rect_5/3Top"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+103 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel004.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel004\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 6.888888888888943 1 E 170 220 340 260
+6 104
+"Rect_5/3Bot"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+104 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel005.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel005\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 46.88888888888894 1 E 170 220 340 260
+6 105
+"Rect_4/1Top"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+105 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel000.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel000\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999996 134.8888888888889 1 E 170 220 340 260
+6 106
+"Rect_4/1Bot"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+106 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel001.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel001\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999996 174.8888888888889 1 E 170 220 340 260
+6 107
+"Rect_4/2Top"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+107 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel002.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel002\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 134.8888888888889 1 E 170 220 340 260
+6 108
+"Rect_4/2Bot"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+108 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel003.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel003\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 174.8888888888889 1 E 170 220 340 260
+6 109
+"Rect_4/3Top"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+109 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel004.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel004\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 134.8888888888889 1 E 170 220 340 260
+6 110
+"Rect_4/3Bot"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+110 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel005.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel005\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 174.8888888888889 1 E 170 220 340 260
+6 111
+"Rect_3/1Top"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+111 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel000.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel000\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43750000000001 273.8888888888889 1 E 170 220 340 260
+6 112
+"Rect_3/1Bot"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+112 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel001.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel001\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43750000000001 313.8888888888889 1 E 170 220 340 260
+6 113
+"Rect_3/2Top"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+113 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel002.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel002\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 273.8888888888889 1 E 170 220 340 260
+6 114
+"Rect_3/2Bot"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+114 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel003.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel003\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 313.8888888888889 1 E 170 220 340 260
+6 115
+"Rect_3/3Top"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+115 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel004.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel004\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 273.8888888888889 1 E 170 220 340 260
+6 116
+"Rect_3/3Bot"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+116 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel005.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel005\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 313.8888888888889 1 E 170 220 340 260
+6 117
+"Rect_2/1Top"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+117 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel000.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel000\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999996 401.8888888888889 1 E 170 220 340 260
+6 118
+"Rect_2/1Bot"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+118 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel001.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel001\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999996 441.8888888888889 1 E 170 220 340 260
+6 119
+"Rect_2/2Top"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+119 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel002.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel002\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 401.8888888888889 1 E 170 220 340 260
+6 120
+"Rect_2/2Bot"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+120 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel003.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel003\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 441.8888888888889 1 E 170 220 340 260
+6 121
+"Rect_2/3Top"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+121 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel004.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel004\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 401.8888888888889 1 E 170 220 340 260
+6 122
+"Rect_2/3Bot"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+122 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel005.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel005\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 441.8888888888889 1 E 170 220 340 260
+6 123
+"Rect_1/1Top"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+123 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999999 529.8888888888888 1 E 170 220 340 260
+6 124
+"Rect_1/1Bot"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+124 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel001.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel001\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999999 569.8888888888888 1 E 170 220 340 260
+6 125
+"Rect_1/2Top"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+125 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel002.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel002\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 529.8888888888888 1 E 170 220 340 260
+6 126
+"Rect_1/2Bot"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+126 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel003.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel003\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 569.8888888888888 1 E 170 220 340 260
+6 127
+"Rect_1/3Top"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+127 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel004.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel004\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 529.8888888888888 1 E 170 220 340 260
+6 128
+"Rect_1/3Bot"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+128 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel005.actual.status\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(string dps)
+  {
+    bool exist=1;
+    exist=exist && dpExists(dps);
+    return exist;
+  }
+
+
+GetStatus(string dps, int results)
+  {
+    dyn_errClass err;
+    bool OvC_bit, OvV_bit, UnV_bit, Trip_bit, HVMax_bit, CalErr_bit, ComErr_bit, OVP_bit, PWF_bit, TErr_bit;
+// 
+       if( !checkAllDpsExist(dps) )
+     {
+       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+       return;
+     }
+
+       OvC_bit=(results & 0x008);
+       OvV_bit=(results & 0x010); 
+       UnV_bit=(results & 0x020);      
+       Trip_bit=(results & 0x200);  
+       HVMax_bit=(results & 0x080);
+       CalErr_bit=(results & 0x400); 
+       ComErr_bit=(results & 0x800); 
+       OVP_bit=(results & 0x2000); 
+       PWF_bit=(results & 0x4000);      
+       TErr_bit=(results & 0x8000);  
+  
+//     DebugTN(\"Trip = \", Trip_bit );       
+   
+    
+    if(results==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(OvC_bit==TRUE || OvV_bit==TRUE || UnV_bit==TRUE || Trip_bit==TRUE || HVMax_bit==TRUE || CalErr_bit==TRUE || ComErr_bit==TRUE || OVP_bit==TRUE || PWF_bit==TRUE || TErr_bit==TRUE){
+      setValue(\"\",\"backCol\",\"red\");
+      }
+    else if(results==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else{
+        setValue(\"\",\"backCol\", \"yellow\");    
+    
+    }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"Chamber LV monitoring\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel005\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 569.8888888888888 1 E 170 220 340 260
+2 129
+"PRIMITIVE_TEXT179"
+""
+1 133.5625 672.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+129 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 133.5625 672.8888888888889 213.5625 742.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  133.5625 672.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 1/1
+2 130
+"PRIMITIVE_TEXT180"
+""
+1 349.5625 672.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+130 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 349.5625 672.8888888888889 429.5625 742.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  349.5625 672.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 1/2
+2 131
+"PRIMITIVE_TEXT181"
+""
+1 549.3750010989595 672.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+131 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 549.3750010989595 672.8888888888889 629.3750010989595 742.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  549.3750010989595 672.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 1/3
+2 133
+"PRIMITIVE_TEXT182"
+""
+1 133.5625 544.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+133 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 133.5625 544.8888888888889 213.5625 614.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  133.5625 544.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 2/1
+2 134
+"PRIMITIVE_TEXT183"
+""
+1 349.5625 544.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+134 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 349.5625 544.8888888888889 429.5625 614.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  349.5625 544.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 2/2
+2 135
+"PRIMITIVE_TEXT184"
+""
+1 549.3750010989595 544.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+135 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 549.3750010989595 544.8888888888889 629.3750010989595 614.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  549.3750010989595 544.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 2/3
+2 141
+"PRIMITIVE_TEXT188"
+""
+1 133.5625 416.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+141 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 133.5625 416.8888888888889 213.5625 486.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  133.5625 416.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 3/1
+2 142
+"PRIMITIVE_TEXT189"
+""
+1 349.5625 416.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+142 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 349.5625 416.8888888888889 429.5625 486.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  349.5625 416.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 3/2
+2 143
+"PRIMITIVE_TEXT190"
+""
+1 549.3750010989595 416.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+143 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 549.3750010989595 416.8888888888889 629.3750010989595 486.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  549.3750010989595 416.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 3/3
+2 145
+"PRIMITIVE_TEXT191"
+""
+1 133.5625 277.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+145 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 133.5625 277.8888888888889 213.5625 347.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  133.5625 277.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 4/1
+2 146
+"PRIMITIVE_TEXT192"
+""
+1 349.5625 277.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+146 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 349.5625 277.8888888888889 429.5625 347.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  349.5625 277.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 4/2
+2 147
+"PRIMITIVE_TEXT193"
+""
+1 549.3750010989595 277.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+147 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 549.3750010989595 277.8888888888889 629.3750010989595 347.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  549.3750010989595 277.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 4/3
+2 149
+"PRIMITIVE_TEXT194"
+""
+1 133.5625 149.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+149 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 133.5625 149.8888888888889 213.5625 219.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  133.5625 149.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 5/1
+2 150
+"PRIMITIVE_TEXT195"
+""
+1 349.5625 149.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+150 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 349.5625 149.8888888888889 429.5625 219.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  349.5625 149.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 5/2
+2 151
+"PRIMITIVE_TEXT196"
+""
+1 549.3750010989595 149.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+151 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 549.3750010989595 149.8888888888889 629.3750010989595 219.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  549.3750010989595 149.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 5/3
+2 152
+"PRIMITIVE_TEXT197"
+""
+1 671.5625010989595 176.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+152 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 671.5625010989595 176.8888888888889 881.5625010989595 266.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  671.5625010989595 176.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 Top
+2 153
+"PRIMITIVE_TEXT198"
+""
+1 671.5625010989595 216.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+153 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 671.5625010989595 216.8888888888889 881.5625010989595 306.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  671.5625010989595 216.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 6 Bottom
+2 154
+"PRIMITIVE_TEXT199"
+""
+1 669.5625 304.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+154 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 669.5625 304.8888888888889 879.5625 394.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  669.5625 304.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 Top
+2 155
+"PRIMITIVE_TEXT200"
+""
+1 669.5625 344.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+155 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 669.5625 344.8888888888889 879.5625 434.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  669.5625 344.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 6 Bottom
+2 156
+"PRIMITIVE_TEXT201"
+""
+1 669.5625010989595 443.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+156 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 669.5625010989595 443.8888888888889 879.5625010989595 533.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  669.5625010989595 443.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 Top
+2 157
+"PRIMITIVE_TEXT202"
+""
+1 669.5625010989595 483.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+157 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 669.5625010989595 483.8888888888889 879.5625010989595 573.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  669.5625010989595 483.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 6 Bottom
+2 158
+"PRIMITIVE_TEXT203"
+""
+1 669.5625010989595 571.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+158 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 669.5625010989595 571.8888888888889 879.5625010989595 661.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  669.5625010989595 571.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 Top
+2 159
+"PRIMITIVE_TEXT204"
+""
+1 669.5625010989595 611.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+159 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 669.5625010989595 611.8888888888889 879.5625010989595 701.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  669.5625010989595 611.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 6 Bottom
+2 160
+"PRIMITIVE_TEXT205"
+""
+1 667.5625 699.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+160 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 667.5625 699.8888888888889 877.5625 789.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  667.5625 699.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 Top
+2 161
+"PRIMITIVE_TEXT206"
+""
+1 667.5625 739.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+161 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 667.5625 739.8888888888889 877.5625 829.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  667.5625 739.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 6 Bottom
+13 163
+"GeneralLV_Button"
+""
+1 840.5625 190.8888888888889 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+163 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  838.5624999999999 169.8888888888889 992.5624999999999 223.8888888888889
+
+T 
+1
+LANG:1 33 Fast LV settings
+to ALL detector
+"// SimpleCtrlScriptStart {valid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/904_GEM_LV_settings_all.pnl\",
+      \"Fast LV settings\",
+      makeDynString(\"\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/904_GEM_LV_settings_all.pnl}
+// Panel {Fast LV settings}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ E E E
+13 165
+"MAO_Button"
+""
+1 840 269 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+165 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  838 248 992 302
+
+T 
+1
+LANG:1 3 MAO
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
+      \"\",
+      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/powerConverter22/channel000\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_LV/fwCaenChannelOperationGEM.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/powerConverter20/channel000}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:1 0 
+0
+LAYER, 2 
+1
+LANG:1 0 
+0
+LAYER, 3 
+1
+LANG:1 0 
+0
+LAYER, 4 
+1
+LANG:1 0 
+0
+LAYER, 5 
+1
+LANG:1 0 
+0
+LAYER, 6 
+1
+LANG:1 0 
+0
+LAYER, 7 
+1
+LANG:1 0 
+0
+0
