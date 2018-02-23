@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component>
+  <name>904_GEM_PMTs</name>
+  <version>1.0.0</version>
+  <date>23/02/2018</date>
+  <required>fwCaen=8.0.0</required>
+  <required>fwCore=8.0.6</required>
+  <required>fwTrending=8.0.0</required>
+  <required>fwXML=8.0.0</required>
+  <required>fwAccessControl=8.0.1</required>
+  <required>fwRDBArchiver=8.0.0</required>
+  <required>fwRDBArchiving=1.1.4</required>
+  <required>fwConfigurationDB=8.0.0</required>
+  <required>fwInstallationUtils=2.1</required>
+  <required>CMSfwClass=1.4.1</required>
+  <required>CMSfwInstallUtils=2.2.3</required>
+  <required>CMSfwRedundancy=1.1.5</required>
+  <file>./panels/904_GEM_PMTs/cosmic_HV_Panel.pnl</file>
+  <file>./panels/904_GEM_PMTs/refpmt.pnl</file>
+  <postInstall>./scripts/904_GEM_PMTs/904_GEM_PMTs.postinstall</postInstall>
+  <file>./904_GEM_PMTs.xml</file>
+</component>
