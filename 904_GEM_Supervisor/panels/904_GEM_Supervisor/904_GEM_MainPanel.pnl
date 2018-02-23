@@ -1,7 +1,7 @@
 V 14
 1
 LANG:1 0 
-PANEL,-1 -1 1248 897 N "_3DFace" 0
+PANEL,-1 -1 1747 897 N "_3DFace" 0
 E E E E E 1 -1 -1 0  90 40
 ""0  1
 E E 3
@@ -29,8 +29,8 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 1
 LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
-0  8 18 1242 882.0000000000001
-E3 "MultichannelHV" 1
+0  8 18 1712 882.0000000000001
+E4 "MultichannelHV" 1
 LANG:1 12 High Voltage
 1 "904_GEM_Multichannel/904_GEM_Overview.pnl" 1
 LANG:1 0 
@@ -39,6 +39,12 @@ LANG:1 0
 "LowVoltage" 1
 LANG:1 11 Low Voltage
 1 "904_GEM_LV/904_GEM_LV_Overview.pnl" 1
+LANG:1 0 
+0
+
+"PMTs" 1
+LANG:1 4 PMTs
+1 "904_GEM_PMTs/cosmic_HV_Panel.pnl" 1
 LANG:1 0 
 0
 
