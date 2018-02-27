@@ -13,7 +13,7 @@ main(){
  fwInstallationUtils_loadConfigurations("904_GEM_GAS",exc);
  fwInstallationUtils_appendManagers("904_GEM_GAS", exc);
 
- CMS_GEMfwGeneralInstallation_createSMSnotification("904_not_v2");
+ CMS_GEMfwGeneralInstallation_createSMSnotification("904_not_v3");
 
  DebugN("Notifications installed");
 
