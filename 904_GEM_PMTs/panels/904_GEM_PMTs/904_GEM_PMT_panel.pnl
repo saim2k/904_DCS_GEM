@@ -1,7 +1,7 @@
 V 14
 1
 LANG:1 0 
-PANEL,-1 -1 1700 638 N "_3DFace" 0
+PANEL,-1 -1 1657 638 N "_3DFace" 0
 E E E E E 1 -1 -1 0  102.2177737515632 49.68048671722551
 ""0  1
 E E 3
@@ -16,18 +16,18 @@ LAYER, 0
 LANG:1 0 
 1 149 0 "" 1
 0
-1 172 1 "" 1
+1 173 1 "" 1
 0
-1 195 2 "" 1
+1 197 2 "" 1
 0
-1 218 3 "" 1
+1 221 3 "" 1
 0
-1 241 4 "" 1
+1 245 4 "" 1
 0
 2 139
 "PRIMITIVE_TEXT14"
 ""
-1 20 10 E E E 1 E 1 E N "STD_windows_available" E N "_Window" E E
+1 20 10 E E E 1 E 1 E N {12,12,140,246} E N "_Window" E E
  E E
 7 0 0 0 0 0
 E E E
@@ -40,20 +40,20 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 3 2 1 E 0.5520833333333334 0 1 9.0625 -2.500000000000121 0 E 20 10 400 27
+E E 0 1 3 2 1 E 0.5520833333333334 0 1 3.062499999999984 -0.8148148148146677 0 E 20 10 400 27
 0 2 2 "0s" 0 0 0 64 0 0  20 10 2
 1
-LANG:1 30 Open Sans,-1,16,5,75,0,0,0,0,0
+LANG:1 30 Open Sans,-1,15,5,75,0,0,0,0,0
 0 1
 LANG:1 25 Board 1 Ch. 000 / PMT 001
 1
-LANG:1 30 Open Sans,-1,16,5,75,0,0,0,0,0
+LANG:1 30 Open Sans,-1,15,5,75,0,0,0,0,0
 0 1
 LANG:1 0 
 2 140
 "PRIMITIVE_TEXT15"
 ""
-1 20 10 E E E 1 E 1 E N "STD_windows_available" E N "_Window" E E
+1 20 10 E E E 1 E 1 E N {12,12,140} E N "_Window" E E
  E E
 8 0 0 0 0 0
 E E E
@@ -66,20 +66,20 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 3 2 1 E 0.5520833333333334 0 1 342.5799671502119 -3.499999999999684 0 E 20 10 400 27
+E E 0 1 3 2 1 E 0.5520833333333334 0 1 333.4601215759263 -1.314814814814529 0 E 20 10 400 27
 0 2 2 "0s" 0 0 0 64 0 0  20 10 2
 1
-LANG:1 30 Open Sans,-1,16,5,75,0,0,0,0,0
+LANG:1 30 Open Sans,-1,15,5,75,0,0,0,0,0
 0 1
 LANG:1 25 Board 1 Ch. 001 / PMT 002
 1
-LANG:1 30 Open Sans,-1,16,5,75,0,0,0,0,0
+LANG:1 30 Open Sans,-1,15,5,75,0,0,0,0,0
 0 1
 LANG:1 0 
 2 141
 "PRIMITIVE_TEXT16"
 ""
-1 20 10 E E E 1 E 1 E N "STD_windows_available" E N "_Window" E E
+1 20 10 E E E 1 E 1 E N {12,12,140} E N "_Window" E E
  E E
 9 0 0 0 0 0
 E E E
@@ -92,20 +92,20 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 3 2 1 E 0.5520833333333334 0 1 672.952177298115 -3.000000000000092 0 E 20 10 400 27
+E E 0 1 3 2 1 E 0.5520833333333334 0 1 664.0625 -0.814814814814667 0 E 20 10 400 27
 0 2 2 "0s" 0 0 0 64 0 0  20 10 2
 1
-LANG:1 30 Open Sans,-1,16,5,75,0,0,0,0,0
+LANG:1 30 Open Sans,-1,15,5,75,0,0,0,0,0
 0 1
 LANG:1 25 Board 1 Ch. 002 / PMT 003
 1
-LANG:1 30 Open Sans,-1,16,5,75,0,0,0,0,0
+LANG:1 30 Open Sans,-1,15,5,75,0,0,0,0,0
 0 1
 LANG:1 0 
 2 142
 "PRIMITIVE_TEXT17"
 ""
-1 20 10 E E E 1 E 1 E N "STD_windows_available" E N "_Window" E E
+1 20 10 E E E 1 E 1 E N {12,12,140} E N "_Window" E E
  E E
 10 0 0 0 0 0
 E E E
@@ -118,20 +118,20 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 3 2 1 E 0.5520833333333334 0 1 1004.848010631448 -3.000000000000092 0 E 20 10 400 27
+E E 0 1 3 2 1 E 0.5520833333333334 0 1 993.848010631448 -1.000000000000092 0 E 20 10 400 27
 0 2 2 "0s" 0 0 0 64 0 0  20 10 2
 1
-LANG:1 30 Open Sans,-1,16,5,75,0,0,0,0,0
+LANG:1 30 Open Sans,-1,15,5,75,0,0,0,0,0
 0 1
 LANG:1 24 Board 1 Ch. 003 /PMT 004
 1
-LANG:1 30 Open Sans,-1,16,5,75,0,0,0,0,0
+LANG:1 30 Open Sans,-1,15,5,75,0,0,0,0,0
 0 1
 LANG:1 0 
 2 143
 "PRIMITIVE_TEXT18"
 ""
-1 20 10 E E E 1 E 1 E N "STD_windows_available" E N "_Window" E E
+1 20 10 E E E 1 E 1 E N {12,12,140} E N "_Window" E E
  E E
 11 0 0 0 0 0
 E E E
@@ -144,20 +144,20 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 3 2 1 E 0.5520833333333334 0 1 1347.690289852097 -3.000000000000092 0 E 20 10 400 27
+E E 0 1 3 2 1 E 0.5520833333333334 0 1 1323.690289852097 -3.000000000000092 0 E 20 10 400 27
 0 2 2 "0s" 0 0 0 64 0 0  20 10 2
 1
-LANG:1 30 Open Sans,-1,16,5,75,0,0,0,0,0
+LANG:1 30 Open Sans,-1,15,5,75,0,0,0,0,0
 0 1
 LANG:1 25 Board 1 Ch. 004 / PMT 005
 1
-LANG:1 30 Open Sans,-1,16,5,75,0,0,0,0,0
+LANG:1 30 Open Sans,-1,15,5,75,0,0,0,0,0
 0 1
 LANG:1 0 
 2 144
 "PRIMITIVE_TEXT19"
 ""
-1 20 10 E E E 1 E 1 E N "STD_windows_available" E N "_Window" E E
+1 20 10 E E E 1 E 1 E N {12,12,140} E N "_Window" E E
  E E
 12 0 0 0 0 0
 E E E
@@ -170,20 +170,20 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 3 2 1 E 0.5520833333333334 0 1 13.06865603521845 329.5 0 E 20 10 400 27
+E E 0 1 3 2 1 E 0.5520833333333334 0 1 4.068656035218449 329.5 0 E 20 10 400 27
 0 2 2 "0s" 0 0 0 64 0 0  20 10 2
 1
-LANG:1 30 Open Sans,-1,16,5,75,0,0,0,0,0
+LANG:1 30 Open Sans,-1,15,5,75,0,0,0,0,0
 0 1
 LANG:1 25 Board 2 Ch. 000 / PMT 006
 1
-LANG:1 30 Open Sans,-1,16,5,75,0,0,0,0,0
+LANG:1 30 Open Sans,-1,15,5,75,0,0,0,0,0
 0 1
 LANG:1 0 
 2 145
 "PRIMITIVE_TEXT20"
 ""
-1 20 10 E E E 1 E 1 E N "STD_windows_available" E N "_Window" E E
+1 20 10 E E E 1 E 1 E N {12,12,140} E N "_Window" E E
  E E
 13 0 0 0 0 0
 E E E
@@ -196,20 +196,20 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 3 2 1 E 0.5520833333333334 0 1 342.5799671502119 329.5 0 E 20 10 400 27
+E E 0 1 3 2 1 E 0.5520833333333334 0 1 333.5799671502119 329.5 0 E 20 10 400 27
 0 2 2 "0s" 0 0 0 64 0 0  20 10 2
 1
-LANG:1 30 Open Sans,-1,16,5,75,0,0,0,0,0
+LANG:1 30 Open Sans,-1,15,5,75,0,0,0,0,0
 0 1
 LANG:1 25 Board 2 Ch. 001 / PMT 007
 1
-LANG:1 30 Open Sans,-1,16,5,75,0,0,0,0,0
+LANG:1 30 Open Sans,-1,15,5,75,0,0,0,0,0
 0 1
 LANG:1 0 
 2 146
 "PRIMITIVE_TEXT21"
 ""
-1 20 10 E E E 1 E 1 E N "STD_windows_available" E N "_Window" E E
+1 20 10 E E E 1 E 1 E N {12,12,140} E N "_Window" E E
  E E
 14 0 0 0 0 0
 E E E
@@ -222,20 +222,20 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 3 2 1 E 0.5520833333333334 0 1 672.952177298115 329.5 0 E 20 10 400 27
+E E 0 1 3 2 1 E 0.5520833333333334 0 1 663.952177298115 329.5 0 E 20 10 400 27
 0 2 2 "0s" 0 0 0 64 0 0  20 10 2
 1
-LANG:1 30 Open Sans,-1,16,5,75,0,0,0,0,0
+LANG:1 30 Open Sans,-1,15,5,75,0,0,0,0,0
 0 1
 LANG:1 25 Board 2 Ch. 002 / PMT 008
 1
-LANG:1 30 Open Sans,-1,16,5,75,0,0,0,0,0
+LANG:1 30 Open Sans,-1,15,5,75,0,0,0,0,0
 0 1
 LANG:1 0 
 2 147
 "PRIMITIVE_TEXT22"
 ""
-1 20 10 E E E 1 E 1 E N "STD_windows_available" E N "_Window" E E
+1 20 10 E E E 1 E 1 E N {12,12,140} E N "_Window" E E
  E E
 15 0 0 0 0 0
 E E E
@@ -248,20 +248,20 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 3 2 1 E 0.5520833333333334 0 1 1004.848010631448 329.5 0 E 20 10 400 27
+E E 0 1 3 2 1 E 0.5520833333333334 0 1 993.848010631448 329.5 0 E 20 10 400 27
 0 2 2 "0s" 0 0 0 64 0 0  20 10 2
 1
-LANG:1 30 Open Sans,-1,16,5,75,0,0,0,0,0
+LANG:1 30 Open Sans,-1,15,5,75,0,0,0,0,0
 0 1
 LANG:1 25 Board 2 Ch. 003 / PMT 009
 1
-LANG:1 30 Open Sans,-1,16,5,75,0,0,0,0,0
+LANG:1 30 Open Sans,-1,15,5,75,0,0,0,0,0
 0 1
 LANG:1 0 
 2 148
 "PRIMITIVE_TEXT23"
 ""
-1 20 10 E E E 1 E 1 E N "STD_windows_available" E N "_Window" E E
+1 20 10 E E E 1 E 1 E N {12,12,140} E N "_Window" E E
  E E
 16 0 0 0 0 0
 E E E
@@ -274,25 +274,25 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 3 2 1 E 0.5520833333333334 0 1 1347.690289852097 329.5 0 E 20 10 400 27
+E E 0 1 3 2 1 E 0.5520833333333334 0 1 1323.690289852097 329.5 0 E 20 10 400 27
 0 2 2 "0s" 0 0 0 64 0 0  20 10 2
 1
-LANG:1 30 Open Sans,-1,16,5,75,0,0,0,0,0
+LANG:1 30 Open Sans,-1,15,5,75,0,0,0,0,0
 0 1
 LANG:1 25 Board 2 Ch. 004 / PMT 010
 1
-LANG:1 30 Open Sans,-1,16,5,75,0,0,0,0,0
+LANG:1 30 Open Sans,-1,15,5,75,0,0,0,0,0
 0 1
 LANG:1 0 
-1 264 5 "" 1
+1 269 5 "" 1
 0
-1 287 6 "" 1
+1 293 6 "" 1
 0
-1 310 7 "" 1
+1 317 7 "" 1
 0
-1 333 8 "" 1
+1 341 8 "" 1
 0
-1 356 9 "" 1
+1 365 9 "" 1
 0
 0
 LAYER, 1 
@@ -326,61 +326,61 @@ LANG:1 0
 3 0 "PANEL_REF0" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"904_GEM_PMTs/refpmt.pnl" 135.3078853626942 49.484375 T 1 1 0 1 -59.42773093697977 19.0156249999997
+"Cosmic_GEM_CAEN/904_GEM_PMT_ref.pnl" 135.3078853626942 49.484375 T 1 1 0 1 -60.30788536269421 31.515625
 1
 "$dpChnName""cms_gem_dcs_1:CAEN/904_Shared_mainframe/board02/channel000"
 3 1 "PANEL_REF1" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"904_GEM_PMTs/refpmt.pnl" 497 41.36111111111137 T 2 1 0 1 -87.60237842407366 28.13888888888877
+"Cosmic_GEM_CAEN/904_GEM_PMT_ref.pnl" 497 41.36111111111137 T 2 1 0 1 -92 39.63888888888863
 1
 "$dpChnName""cms_gem_dcs_1:CAEN/904_Shared_mainframe/board02/channel001"
 3 2 "PANEL_REF2" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"904_GEM_PMTs/refpmt.pnl" 940 41.3611111111112 T 3 1 0 1 -200 28.6388888888888
+"Cosmic_GEM_CAEN/904_GEM_PMT_ref.pnl" 940 41.3611111111112 T 3 1 0 1 -204 39.6388888888888
 1
 "$dpChnName""cms_gem_dcs_1:CAEN/904_Shared_mainframe/board02/channel002"
 3 3 "PANEL_REF3" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"904_GEM_PMTs/refpmt.pnl" 1285 42.38888888888906 T 4 1 0 1 -213 27.61111111111094
+"Cosmic_GEM_CAEN/904_GEM_PMT_ref.pnl" 1285 42.38888888888906 T 4 1 0 1 -220 38.61111111111094
 1
 "$dpChnName""cms_gem_dcs_1:CAEN/904_Shared_mainframe/board02/channel003"
 3 4 "PANEL_REF4" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"904_GEM_PMTs/refpmt.pnl" 1693 41.72222222222348 T 5 1 0 1 -278 28.27777777777652
+"Cosmic_GEM_CAEN/904_GEM_PMT_ref.pnl" 1693 41.72222222222348 T 5 1 0 1 -298 39.27777777777652
 1
 "$dpChnName""cms_gem_dcs_1:CAEN/904_Shared_mainframe/board02/channel004"
 3 5 "PANEL_REF5" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"904_GEM_PMTs/refpmt.pnl" 85.00615603521845 452.0000000000001 T 17 1 0 1 -5.119845574285563 -40.5
+"Cosmic_GEM_CAEN/904_GEM_PMT_ref.pnl" 85.00615603521845 452.0000000000001 T 17 1 0 1 -10.00615603521845 -40.00000000000011
 1
 "$dpChnName""cms_gem_dcs_1:CAEN/904_Shared_mainframe/board04/channel000"
 3 6 "PANEL_REF6" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"904_GEM_PMTs/refpmt.pnl" 492.8896772981149 452.0000000000001 T 18 1 0 1 -83.49205572218858 -40.5
+"Cosmic_GEM_CAEN/904_GEM_PMT_ref.pnl" 492.8896772981149 452.0000000000001 T 18 1 0 1 -87.88967729811492 -40.00000000000011
 1
 "$dpChnName""cms_gem_dcs_1:CAEN/904_Shared_mainframe/board04/channel001"
 3 7 "PANEL_REF7" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"904_GEM_PMTs/refpmt.pnl" 894 452.0000000000001 T 19 1 0 1 -154 -40.00000000000011
+"Cosmic_GEM_CAEN/904_GEM_PMT_ref.pnl" 894 452.0000000000001 T 19 1 0 1 -159 -40.00000000000011
 1
 "$dpChnName""cms_gem_dcs_1:CAEN/904_Shared_mainframe/board04/channel002"
 3 8 "PANEL_REF8" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"904_GEM_PMTs/refpmt.pnl" 1300.834515947172 451.4999999999999 T 20 1 0 1 -229.1688508900093 -39.99999999999977
+"Cosmic_GEM_CAEN/904_GEM_PMT_ref.pnl" 1300.834515947172 451.4999999999999 T 20 1 0 1 -235.834515947172 -39.49999999999989
 1
 "$dpChnName""cms_gem_dcs_1:CAEN/904_Shared_mainframe/board04/channel003"
 3 9 "PANEL_REF9" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"904_GEM_PMTs/refpmt.pnl" 1713.895833333333 450.0000000000001 T 21 1 0 1 -299.3878890555216 -38.5
+"Cosmic_GEM_CAEN/904_GEM_PMT_ref.pnl" 1713.895833333333 450.0000000000001 T 21 1 0 1 -318.8958333333331 -38.00000000000011
 1
 "$dpChnName""cms_gem_dcs_1:CAEN/904_Shared_mainframe/board04/channel004"
 0

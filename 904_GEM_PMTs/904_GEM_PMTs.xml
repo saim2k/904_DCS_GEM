@@ -15,8 +15,8 @@
   <required>CMSfwClass=1.4.1</required>
   <required>CMSfwInstallUtils=2.2.3</required>
   <required>CMSfwRedundancy=1.1.5</required>
-  <file>./panels/904_GEM_PMTs/cosmic_HV_Panel.pnl</file>
-  <file>./panels/904_GEM_PMTs/refpmt.pnl</file>
+  <file>./panels/904_GEM_PMTs/904_GEM_PMT_panel.pnl</file>
+  <file>./panels/904_GEM_PMTs/904_GEM_PMT_ref.pnl</file>
   <postInstall>./scripts/904_GEM_PMTs/904_GEM_PMTs.postinstall</postInstall>
   <file>./904_GEM_PMTs.xml</file>
 </component>
