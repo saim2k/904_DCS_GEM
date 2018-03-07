@@ -1,6 +1,7 @@
 #uses "fwInstallationManager.ctl"
 #uses "fwRDBArchiving/fwRDBConfig.ctl"
 #uses "fwAccessControl/fwAccessControl" 
+#uses "fwInstallationUtils.ctl"
 
 main(){
   
