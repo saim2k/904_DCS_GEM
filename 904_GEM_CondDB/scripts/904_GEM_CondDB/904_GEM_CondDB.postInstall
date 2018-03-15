@@ -1,6 +1,7 @@
 #uses "fwInstallationManager.ctl"
 #uses "fwRDBArchiving/fwRDBConfig.ctl"
 #uses "fwAccessControl/fwAccessControl" 
+#uses "fwInstallationUtils.ctl"
 
 main(){
   
@@ -52,6 +53,8 @@ main(){
 		if(dpvalue !=values[i])
 		dpSet(dp+dpElem[i],values[i]);
 	}
+
+fwInstallationUtils_startRdbManager();   // Restarts the RDB Manager in order to get the changes 
 
 
 DebugN("904_GEM_CondDB has been installed", exc);
