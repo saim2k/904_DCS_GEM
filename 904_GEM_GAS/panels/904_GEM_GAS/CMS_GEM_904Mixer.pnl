@@ -2,62 +2,7 @@ V 14
 1
 LANG:1 0 
 PANEL,-1 -1 1107 640 N "_3DFace" 0
-"main()
-{
-  dyn_errClass err;
-    
-  dyn_string Input;
-    Input = makeDynString(\"Ar_FSR.value\",\"CO2_FSR.value\", \"Ar_Capacity.value\", \"CO2_Capacity.value\"); 
-
-      
-  dpConnect(\"Calculate\", Input);
-
-    err = getLastError();
-      if(dynlen(err)>0)
-         DebugTN(err);
-      
-  
-}
-
-Calculate(dyn_string Input, dyn_float value)
-{
-       
-  dyn_errClass errTotal;
-
-  float Ar_Flow, CO2_Flow, TotalFlow, Real_Ar, Real_CO2;  
-  
-    Ar_Flow = value[3]* value[1]/100;
-    CO2_Flow = value[4]* value[2]/100;  
-  
-    TotalFlow = Ar_Flow + CO2_Flow;
-    Real_Ar = Ar_Flow/TotalFlow *100;
-    Real_CO2 = CO2_Flow/TotalFlow *100;
-  
-  dpSet(\"Ar_Flow.value\", Ar_Flow);
-  dpSet(\"CO2_Flow.value\", CO2_Flow);  
-  dpSet(\"TotalFlow.value\", TotalFlow);
-  dpSet(\"Ar_Real.value\", Real_Ar);
-  dpSet(\"CO2_Real.value\", Real_CO2);
-  
-    
-      errTotal = getLastError();
-      if(dynlen(errTotal)>0)
-        DebugTN(errTotal);
-      
-  DebugTN(\"Ar Flow = \", Ar_Flow);
-  DebugTN(\"CO2 Flow = \", CO2_Flow);  
-  DebugTN(\"Total = \", TotalFlow);
-  DebugTN(\"Ar % = \", Real_Ar);
-  DebugTN(\"CO2 % = \", Real_CO2);
-  
-    
-    }
-    
-      
-
-
-" 0
- E E E E 1 -1 -1 0  40 34
+E E E E E 1 -1 -1 0  40 34
 ""0  1
 E E 3
 "CBRef" "1"
