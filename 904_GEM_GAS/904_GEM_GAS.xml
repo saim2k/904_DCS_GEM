@@ -19,7 +19,7 @@
   <required>CMSfwInstallUtils=2.2.5</required>
   <required>CMSfwFsmXml=1.0.1</required>
   <dplist>./dplist/904_GEM_GAS/904_mixer_dpt.dpl</dplist>
-  <dplist>./dplist/904_GEM_GAS/904_GEM_Aliases.dpl</dplist>
+  <dplist>./dplist/904_GEM_GAS/904_GAS_Aliases.dpl</dplist>
   <file>./panels/904_GEM_GAS/CMS_GEM_904Mixer.pnl</file>
   <file>./panels/904_GEM_GAS/CMS_GEM_904MixerTrending.pnl</file>
   <file>./scripts/libs/904_GEM_GAS/CMS_GEMfwGeneral.ctl</file>
