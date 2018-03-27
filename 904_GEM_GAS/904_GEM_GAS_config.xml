@@ -39,7 +39,7 @@
   <target>
     <system_name>cms_gem_dcs_1:</system_name>
     <configuration>
-      <tag>904_gas_dp_V003</tag>
+      <tag>904_gas_dp_V004</tag>
       <hardware>true</hardware>
       <logical>false</logical>
       <pattern>*</pattern>
