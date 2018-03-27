@@ -1,0 +1,26 @@
+# ascii dump of database
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+Ar_FSR.	"904/GasSystem/Ar/FSR"	lt:1 LANG:1 "@%s@"
+Ar_FSR.value	""	lt:1 LANG:1 "@%4.2f@"
+CO2_FSR.	"904/GasSystem/CO2/FSR"	lt:1 LANG:1 "@%s@"
+CO2_FSR.value	""	lt:1 LANG:1 "@%4.2f@"
+Ar_Timestamp.	"904/GasSystem/Ar/Timestamp"	lt:1 LANG:1 "@%s@"
+Ar_Timestamp.value	""	lt:1 LANG:1 "@%4.2f@"
+CO2_Timestamp.	"904/GasSystem/CO2/Timestamp"	lt:1 LANG:1 "@%s@"
+CO2_Timestamp.value	""	lt:1 LANG:1 "@%4.2f@"
+TotalFlow.	"904/GasSystem/TotalFlow"	lt:1 LANG:1 "@%s@"
+TotalFlow.value	""	lt:1 LANG:1 "@%2.4f@"
+Ar_Real.	"904/GasSystem/Ar/RealPercentage"	lt:1 LANG:1 "@%s@"
+Ar_Real.value	""	lt:1 LANG:1 "@%3.2f@"
+CO2_Real.	"904/GasSystem/CO2/RealPercentage"	lt:1 LANG:1 "@%s@"
+CO2_Real.value	""	lt:1 LANG:1 "@%3.2f@"
+Ar_Flow.	"904/GasSystem/Ar/Flow"	lt:1 LANG:1 "@%s@"
+Ar_Flow.value	""	lt:1 LANG:1 "@%1.4f@"
+Ar_Capacity.	"904/GasSystem/Ar/Capacity"	lt:1 LANG:1 "@%s@"
+Ar_Capacity.value	""	lt:1 LANG:1 "@%2.3f@"
+CO2_Flow.	"904/GasSystem/CO2/Flow"	lt:1 LANG:1 "@%s@"
+CO2_Flow.value	""	lt:1 LANG:1 "@%1.4f@"
+CO2_Capacity.	"904/GasSystem/CO2/Capacity"	lt:1 LANG:1 "@%s@"
+CO2_Capacity.value	""	lt:1 LANG:1 "@%2.3f@"

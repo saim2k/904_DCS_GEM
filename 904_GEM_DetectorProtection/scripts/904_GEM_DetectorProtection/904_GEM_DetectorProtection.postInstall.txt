@@ -1,0 +1,18 @@
+#uses "CMSfwInstallUtils/CMSfwInstallUtils.ctl"
+#uses "fwInstallationUtils.ctl"
+#uses "CMSfwDetectorProtection/CMSfwDetectorProtection.ctl"
+
+
+main(){
+  
+ dyn_string exc;
+
+ fwInstallationUtils_loadConfigurations("904_GEM_DetectorProtection",exc);
+ fwInstallationUtils_appendManagers("904_GEM_DetectorProtection", exc);
+
+
+ DebugTN("Detector Protection configured",exc);
+
+ fwInstallationUtils_endPostInstall("904_GEM_DetectorProtection");
+  
+}
