@@ -14,9 +14,9 @@
   </stop_drivers>
   <append_managers>
     <manager>
-      <type>WCCOAdip</type>
-      <num>26</num>
-      <options>-dns dipnsgpn1,dipnsgpn2 -dip_dp_config DIPConfig_904</options>
+      <type>WCCOActrl</type>
+      <num>25</num>
+      <options>-num 25 904_GEM_GAS/904GasConfiguration/904GasConfigurator.ctl</options>
       <mode>always</mode>
       <restart>2</restart>
       <counter>2</counter>
@@ -24,10 +24,12 @@
       <isDriver>false</isDriver>
       <restartManager>false</restartManager>
     </manager>
+  </append_managers>
+  <append_managers>
     <manager>
-      <type>WCCOActrl</type>
-      <num>25</num>
-      <options>-num 25 904_GEM_GAS/904GasConfiguration/904GasConfigurator.ctl</options>
+      <type>WCCOAdip</type>
+      <num>26</num>
+      <options>-dns dipnsgpn1,dipnsgpn2 -dip_dp_config DIPConfig_904</options>
       <mode>always</mode>
       <restart>2</restart>
       <counter>2</counter>
