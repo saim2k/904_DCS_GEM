@@ -89,7 +89,7 @@ ConfigureArPer(string dp, float value)
   if(value<= 69 || value >= 71){
     DebugTN("Ar % = ", value);
     DebugTN("Ar % value out of range, waiting confirmation...");
-      delay(120);
+      delay(180);
       dpGet("Ar_Real.value", arPer);
     DebugTN("arPer = ", arPer);
     if(arPer <= 69 || arPer >= 71){
@@ -136,7 +136,7 @@ ConfigureCO2Per(string dp, float value)
   if(value <= 29 || value >= 31){
     DebugTN("CO2 % = ", value);
     DebugTN("CO2 % value out of range, waiting confirmation...");
-      delay(120);
+      delay(180);
       dpGet("CO2_Real.value", CO2Per);
     DebugTN("CO2Per = ", CO2Per);
     if(CO2Per <= 29 || CO2Per >= 31){
@@ -188,7 +188,7 @@ ConfigureArFlow(string dp, float value)
   if(value <= 0.1){
     DebugTN("Ar Flow = ", value);
     DebugTN("Ar Flow value out of range, waiting confirmation...");
-      delay(120);
+      delay(180);
       dpGet("Ar_Flow.value", arFlow);
     DebugTN("arFlow = ", arFlow);
     if(arFlow <= 0.1){
@@ -237,7 +237,7 @@ ConfigureCO2Flow(string dp, float value)
   if(value <= 0.1){
     DebugTN("CO2 Flow = ", value);
     DebugTN("CO2 Flow value out of range, waiting confirmation...");
-      delay(120);
+      delay(180);
       dpGet("CO2_Flow.value", CO2Flow);
     DebugTN("CO2Flow = ", CO2Flow);
     if(CO2Flow <= 0.1){
@@ -285,7 +285,7 @@ ConfigureTotalFlow(string dp, float value)
   if(value <= 0.1){
     DebugTN("Total Flow = ", value);
     DebugTN("Total Flow value out of range, waiting confirmation...");
-      delay(120);
+      delay(180);
       dpGet("TotalFlow.value", TotalFlow);
     DebugTN("Total Flow = ", TotalFlow);
     if(TotalFlow <= 0.1){
