@@ -1,7 +1,7 @@
 <component>
 	<name>904_GEM_DetectorProtection</name>
-	<version>1.0.0</version>
-	<date>15/03/2018</date>
+	<version>1.0.1</version>
+	<date>24/04/2018</date>
 	<required>fwCaen=8.0.0</required>
 	<required>fwCore=8.0.6</required>
 	<required>fwXML=8.0.0</required>
@@ -15,6 +15,7 @@
 	<required>CMSfwDetectorProtection=1.5.8</required>
 	<required>904_GEM_GAS=1.0.5<\required>
 	<required>904_GEM_Multichannel=1.0.6<\required>
+	<dplist>./dplist/904_GEM_DetectorProtection/904_DetectorProtectionBool.dpl</dplist>
 	<postInstall>./scripts/904_GEM_DetectorProtection/904_GEM_DetectorProtection.postinstall</postInstall>
 	<file>./904_GEM_DetectorProtection.xml</file>
 </component>

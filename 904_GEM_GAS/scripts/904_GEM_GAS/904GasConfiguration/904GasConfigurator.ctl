@@ -97,15 +97,21 @@ ConfigureArPer(string dp, float value)
         fwAlertConfig_set("cms_gem_dcs_1:Ar_Real.value", DPCONFIG_ALERT_NONBINARYSIGNAL, alertText, limits, alertClass, summary, alertPanel, alertPanelParameters, alertHelp, exceptionInfo);   
         fwAlertConfig_activate("cms_gem_dcs_1:Ar_Real.value", exceptionInfo);
       DebugTN("Alert activated");
+	if(arPer >= 72.5){
+		dpSet("cms_gem_dcs_1:WrongMixture.value",1);
+		DebugTN("Detector protection condition activated!");
+	}
     }
     else{
       fwAlertConfig_deactivate("cms_gem_dcs_1:Ar_Real.value", exceptionInfo); 
       DebugTN("Ar % value back to normal = ", arPer);  
+      dpSet("cms_gem_dcs_1:WrongMixture.value",0); //No detector protection condition	
     }
   }
   else{
     DebugTN("Ar % = ", value);  
     DebugTN("Ar % value normal");
+    dpSet("cms_gem_dcs_1:WrongMixture.value",0); //No detector protection condition
   }
 
 }
@@ -245,15 +251,21 @@ ConfigureCO2Flow(string dp, float value)
       fwAlertConfig_set("cms_gem_dcs_1:CO2_Flow.value", DPCONFIG_ALERT_NONBINARYSIGNAL, alertText, limits, alertClass, summary, alertPanel, alertPanelParameters, alertHelp, exceptionInfo);   
       fwAlertConfig_activate("cms_gem_dcs_1:CO2_Flow.value", exceptionInfo);
       DebugTN("Alert activated");
+      if(CO2Flow <= 0.05){
+		dpSet("cms_gem_dcs_1:WrongFlow.value",1);
+		DebugTN("Detector protection condition activated!");
+	}
     }
     else{
       DebugTN("CO2 Flow value back to normal = ", CO2Flow); 
       fwAlertConfig_deactivate("cms_gem_dcs_1:CO2_Flow.value", exceptionInfo);   
+      dpSet("cms_gem_dcs_1:WrongFlow.value",0);  //No detector protection condition
     }
   }
   else{
     DebugTN("CO2 Flow = ", value);  
     DebugTN("CO2 Flow value normal");
+    dpSet("cms_gem_dcs_1:WrongFlow.value",0);  //No detector protection condition
   }
 
 }
@@ -280,7 +292,7 @@ ConfigureTotalFlow(string dp, float value)
   dyn_string summary, alertPanelParameters;
 
   
-//Evaluate CO2 Flow status  
+//Evaluate Total Flow status  
   
   if(value <= 0.1){
     DebugTN("Total Flow = ", value);
