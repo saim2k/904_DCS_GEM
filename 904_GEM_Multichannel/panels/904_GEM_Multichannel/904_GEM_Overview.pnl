@@ -408,7 +408,7 @@ LANG:1 0
 2 67
 "PRIMITIVE_TEXT177"
 ""
-1 30.125 10 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 80.56249999999997 86 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 67 0 0 0 0 0
 E E E
@@ -421,13 +421,13 @@ LANG:10001 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 5 1 2 1 E U  0 E 30.125 10 317 38
-0 2 2 "0s" 0 0 0 192 0 0  30.125 10 1
+E E 0 5 1 2 1 E U  0 E 80.56249999999997 86 358 114
+0 2 2 "0s" 0 0 0 192 0 0  80.56249999999997 86 1
 2
 LANG:1 35 MS Shell Dlg 2,-1,24,5,75,1,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,16,5,75,0,0,0,0,0
 0 2
-LANG:1 21 Cosmic Stand Overview
+LANG:1 21 High Voltage Overview
 LANG:10001 21 SUPERCHAMBER OVERVIEW
 6 99
 "Rect_5/1Top"
@@ -4340,6 +4340,108 @@ void EP_childPanelOn()
 // SimpleCtrlScriptEnd {EP_childPanelOn}
 " 0
  E E E
+13 165
+"Alarm_Screen_Button"
+""
+1 840.78125 349.8888888888889 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+165 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  838.78125 328.8888888888889 992 382.8888888888889
+
+T 
+1
+LANG:1 12 Alarm Screen
+"// SimpleCtrlScriptStart {valid}
+main()
+{
+  EP_childPanelOn();
+}
+
+EP_childPanelOn()
+{
+  ChildPanelOnCentral(\"fwAlarmHandling/fwAlarmScreen.pnl\",
+      \"Alarm Screen\",
+      makeDynString(\"\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentral}
+// File {fwAlarmHandling/fwAlarmScreen.pnl}
+// Panel {Alarm Screen}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ E E E
+2 167
+"PRIMITIVE_TEXT208"
+""
+1 404 22 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+167 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+5
+"hoverbclr" "N \"_Transparent\""
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+"main()
+{
+
+  dyn_string Conditions;
+    Conditions = makeDynString(\"cms_gem_dcs_1:CMSfwDetectorProtection/Input/WrongMixture_value.status\",\"cms_gem_dcs_1:CMSfwDetectorProtection/Input/WrongFlow_value.status\");
+
+
+  dpConnect(\"GetDP\", Conditions);  
+    
+}
+
+GetDP(dyn_string dps, dyn_bool values){
+
+  bool MixtureProtection, FlowProtection;
+  
+  MixtureProtection = values[1];
+  DebugTN(\"Mixture\", MixtureProtection);
+  FlowProtection = values[2];
+  DebugTN(\"Flow\", FlowProtection);
+  
+  
+  if(values[1]){
+    this.text(\"Detector Protection Fired! - Wrong gas mixture!\");
+    this.foreCol(\"STD_value_not_ok\");
+   }  
+  else if(values[2]){
+    this.text(\"Detector Protection Fired! - Low gas flow!\");
+    this.foreCol(\"STD_value_not_ok\");
+  }  
+  else{
+    this.text(\"Detector Protection not fired\");  
+    this.foreCol(\"STD_value_ok\");
+  }
+  
+}" 0
+ E 1 3 3 2 1 E 1.979664832717967 0 0.46875 -546.1485650562223 10.625 0 E 404 22 714 82
+1 2 2 "0s" 0 0 0 65 0 0  404 22 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,19,5,75,1,0,0,0,0
+0 1
+LANG:1 0 
 0
 LAYER, 1 
 1
