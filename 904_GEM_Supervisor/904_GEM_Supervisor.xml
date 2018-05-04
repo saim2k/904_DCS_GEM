@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <component>
   <name>904_GEM_Supervisor</name>
-  <version>1.0.3</version>
-  <date>07/03/2018</date>
-  <required>fwCore=5.1.0</required>
+  <version>1.0.4</version>
+  <date>03/05/2018</date>
+  <required>fwCore=8.0.7</required>
+  <required>fwAccessControl=8.0.1</required>
   <required>CMSfwInstallUtils=2.2.5</required>
   <file>./panels/904_GEM_Supervisor/904_GEM_MainPanel.pnl</file>
   <postInstall>./scripts/904_GEM_Supervisor/904_GEM_Supervisor.postinstall</postInstall>

@@ -64,6 +64,7 @@ fwException_raise(exceptionInfo,"ERROR","Could not apply configuration;"+getErro
 fwInstallationManager_append(TRUE, "AC LDAP Sync", "WCCOActrl", "always", 5, 3, 5, "fwAccessControl/fwAccessControl_EgroupSync.ctc");
 
 
+fwInstallationUtils_loadConfigurations("904_GEM_Supervisor",exc);
 
 
 
