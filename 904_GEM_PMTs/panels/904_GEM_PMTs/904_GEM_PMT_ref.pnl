@@ -1,16 +1,65 @@
 V 14
 1
-LANG:1 7 Button1
+LANG:1 8 RefPanel
 PANEL,-1 -1 323 255 N "_3DFace" 1
 "$dpChnName"
 "main()
 {
-
-
+  dyn_string exceptionInfo;  
+  
+	DisableAllInPanel();
+  fwAccessControl_setupPanel(\"ApplyPanelAccessControl\", exceptionInfo); 
 }" 0
  E E E E 1 -1 -1 0  70 50
 ""0  1
-E E 3
+E "#uses \"fwAccessControl/fwAccessControl.ctc\"
+
+void ApplyPanelAccessControl(string s1, string s2)
+{
+  bool hasDebug, hasControl,hasMonitor,hasVisualize,hasModify;
+  dyn_string exceptionInfo;
+  
+  DisableAllInPanel();  // revoke all previous rights:
+  
+// check privileges:
+  string domain;
+  domain=\"CMS_GEM\";
+
+  fwAccessControl_isGranted( domain+\":Control\", hasControl, exceptionInfo);
+  fwAccessControl_isGranted( domain+\":Debug\",   hasDebug,   exceptionInfo);
+  fwAccessControl_isGranted( domain+\":Monitor\", hasMonitor, exceptionInfo);
+  fwAccessControl_isGranted( domain+\":Modify\",  hasModify,  exceptionInfo);
+  
+  if (dynlen(exceptionInfo)) { fwExceptionHandling_display(exceptionInfo); return;}
+  // enable/disable panel functionality:
+  //if (hasControl) AlcLV.enabled = true;
+  //if (hasDebug) AlcHV.enabled = true;
+  
+	if (hasControl) 
+  { 
+    setValue(\"Button_set\",\"enabled\",TRUE);
+  }
+	if (hasDebug)   
+  { 
+    setValue(\"Button_set\",\"enabled\",TRUE);
+  }
+	if (hasMonitor) 
+  { 
+    setValue(\"Button_set\",\"enabled\",TRUE);
+  }
+	if (hasVisualize) 
+  { 
+    setValue(\"Button_onoff\",\"enabled\",TRUE);
+  }
+  
+}
+
+void DisableAllInPanel()
+{
+	setValue(\"Button_set\",\"enabled\",FALSE);
+}
+" 0
+ 3
 "CBRef" "1"
 "EClose" E
 "dpi" "96"
@@ -131,7 +180,7 @@ LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 0 1
 LANG:1 9 V max (V)
 13 12
-"PUSH_BUTTON3"
+"Button_onoff"
 ""
 1 196.0631085558047 217.6052083333333 E E E 1 E 1 E N "_ButtonText" E N "WF_Info" E E
  E E
@@ -159,9 +208,12 @@ main()
 void EP_toggleDP()
 {
 bool bo;
+ string v0;
 
   dpGet($dpChnName+\".settings.onOff:_online.._value\", bo);
   dpSet($dpChnName+\".settings.onOff:_original.._value\", !bo);
+     DebugN(myModuleName()); 
+     DebugN(myPanelName()); 
 }
 
 // SimpleCtrlScript {EP_toggleDP}
@@ -521,7 +573,7 @@ LANG:1 6 Actual
 13 22
 "Button_set"
 ""
-1 58.00000000000001 207.2104166666667 E E E 1 E 1 E N "_ButtonText" E N "WF_Info" E E
+1 60.46153152510195 207.6052083333333 E E E 1 E 1 E N "_ButtonText" E N "WF_Info" E E
  E E
 21 0 0 0 0 0
 E E E
@@ -533,7 +585,7 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 1
 LANG:1 30 Open Sans,-1,15,5,50,0,0,0,0,0
-0  56.00000000000001 208.2104166666667 140 242.2104166666667
+0  58.46153152510195 208.6052083333333 142.4615315251019 242.6052083333333
 
 T 
 1
@@ -726,7 +778,7 @@ LANG:1 0
 14 27
 "TEXT_FIELD8"
 ""
-1 254.5119818652851 106.0046296296296 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 254.70417746114 106.0949074074074 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 26 0 0 0 0 0
 E E E
@@ -738,7 +790,7 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 1
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  253 95 306 129
+0  253.1921955958549 95.09027777777779 306.1921955958549 129.0902777777778
 3 "0s" 0 0 0 1 0 -1  E "// SimpleCtrlScriptStart {invalid}
 main()
 {
@@ -749,14 +801,14 @@ void EP_textFieldIn()
 {
   dyn_errClass err;
 
-  if( !dpExists($dpChnName+\".actual.rampingDirection:_online.._value\"))
+  if( !dpExists($dpChnName+\".actual.status:_online.._value\"))
   {
     setValue(\"\", \"color\", \"_dpdoesnotexist\");
     return;
   }
 
   dpConnect(\"EP_textFieldInCB\",
-            $dpChnName+\".actual.rampingDirection:_online.._value\");
+            $dpChnName+\".actual.status:_online.._value\");
   err = getLastError();
   if (dynlen(err) > 0)
     setValue(\"\", \"color\", \"_dpdoesnotexist\");
@@ -766,15 +818,22 @@ void EP_textFieldIn()
 void EP_textFieldInCB(string dp, int iNewValue)
 {
  // setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
-  if ( iNewValue == 0 ) 
+
+  if ( getBit(iNewValue,1) == 1 &&  getBit(iNewValue,2) == 0) 
   { 
+     setValue(\"\", \"backCol\", \"yellow\");
      setValue(\"\", \"text\", \"UP\" );
-  } else 
+  } else if ( getBit(iNewValue,1) == 0 &&  getBit(iNewValue,2) == 1) 
   {
+     setValue(\"\", \"backCol\", \"yellow\");
      setValue(\"\", \"text\", \"DOWN\" ); 
   }
+  else
+  { 
+     setValue(\"\", \"backCol\", \"white\");
+     setValue(\"\", \"text\", \"----\" ); 
+  } 
 }
-
 // SimpleCtrlScript {EP_textFieldIn}
 // DP {cms_gem_dcs_1:CAEN/904_Shared_mainframe/board02/channel000.actual.rampingDirection}
 // DPConfig {:_online.._value}
