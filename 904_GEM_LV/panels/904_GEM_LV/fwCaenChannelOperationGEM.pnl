@@ -3,9 +3,15 @@ V 14
 LANG:1 8 (NoName)
 PANEL,-1 -1 699 550 N "_3DFace" 1
 "$sDpName"
-"
-main()
+"main()
 {
+  
+//=================== Access Control ===================================================  
+  dyn_string exceptionInfo;
+  fwAccessControl_setupPanel( \"ApplyPanelAccessControl\", exceptionInfo);
+//======================================================================================
+
+  
   string sDeviceDpType, sDeviceModel;
   dyn_string exceptionInfo;
   dyn_dyn_string ddsDeviceHierarchy;  // Hierarchy object
@@ -137,9 +143,68 @@ main()
 
 }
 
+void ApplyPanelAccessControl(string s1, string s2)
+{
+  
+bool hasControl, hasModify;
+
+dyn_string exceptionInfo;
+DisableAllInPanel();
+
+// check privileges:
+ fwAccessControl_isGranted( \"904_GEM:Control\", hasControl, exceptionInfo);
+ fwAccessControl_isGranted( \"904_GEM:Modify\", hasModify, exceptionInfo);
+
+if (dynlen(exceptionInfo)) { fwExceptionHandling_display(exceptionInfo); return;}
+
+//enable/disable panel functionality:
+
+  if (hasControl) 
+  {
+    setOperatorRights();
+  }  
+  if (hasModify) 
+  {
+    setExpertRights();
+  }
+}
+
+void DisableAllInPanel()
+ {
+   setAllInPanel(false);
+ }
 
 
+void setExpertRights()
+ {
+   setAllInPanel(true);
+ }
 
+void setOperatorRights()
+{
+  TABLE_SETTINGS.enabled(false);
+  PUSH_BUTTON_ON.enabled(true);
+  PUSH_BUTTON_OFF.enabled(true);
+  PUSH_BUTTON_GLOBAL_ON_ENABLE.enabled(false);
+  PUSH_BUTTON_GLOBAL_ON_DISABLE.enabled(false);
+  PUSH_BUTTON_GLOBAL_OFF_ENABLE.enabled(false);
+  PUSH_BUTTON_GLOBAL_OFF_DISABLE.enabled(false);
+  PUSH_BUTTON_LOAD.enabled(false);
+    
+}
+
+void setAllInPanel(bool set)
+{
+  TABLE_SETTINGS.enabled(set);
+  PUSH_BUTTON_ON.enabled(set);
+  PUSH_BUTTON_OFF.enabled(set);
+  PUSH_BUTTON_GLOBAL_ON_ENABLE.enabled(set);
+  PUSH_BUTTON_GLOBAL_ON_DISABLE.enabled(set);
+  PUSH_BUTTON_GLOBAL_OFF_ENABLE.enabled(set);
+  PUSH_BUTTON_GLOBAL_OFF_DISABLE.enabled(set);
+  PUSH_BUTTON_LOAD.enabled(set);
+    
+}
 
 
 
@@ -780,7 +845,7 @@ E E 0 1 1 0 1 E U  0 E 373 444 490 459
 LANG:1 26 Arial,-1,13,5,50,0,0,0,0,0
 0 1
 LANG:1 19 vMon Last Modified:
-1 117 0 "" 19
+1 122 0 "" 19
 0
 30 105
 "FRAME_COMMANDS"
@@ -1044,7 +1109,7 @@ LANG:1 26 Arial,-1,13,5,50,0,0,0,0,0
 25 41
 "TABLE_ACTUAL"
 ""
-1 355 161 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+1 350 160 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
  E E
 40 0 0 0 0 0
 E E E
@@ -1056,7 +1121,7 @@ LANG:1 0
 "layoutAlignment" "AlignCenter"
 1
 LANG:1 26 Arial,-1,13,5,50,0,0,0,0,0
-0  358 159 692 432
+0  353 158 687 431
 "dyn_string gListOfDpElementToConnect;
 
 main()
@@ -1429,7 +1494,7 @@ LANG:1 0
 LANG:1 26 Arial,-1,13,5,50,0,0,0,0,0
 0  307 478 372 505
 2 "0s" 0 0 0 0 0 -1  E E E
-1 119 1 "" 0
+1 124 1 "" 0
 0
 14 33
 "TEXT_FIELD_CHANNEL_NUMBER"
@@ -1496,7 +1561,7 @@ LANG:1 27 Load settings from hardware
 
 " 0
  E E E
-1 120 2 "" 2
+1 125 2 "" 2
 0
 2 121
 "PRIMITIVE_TEXT_TRENDING"

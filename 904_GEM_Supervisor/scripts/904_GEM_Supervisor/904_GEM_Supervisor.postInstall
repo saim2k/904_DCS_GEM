@@ -19,51 +19,6 @@ for(int i=1; i<=100; i++){
 
   
 
-//---------------------------------------------------------------------------------------------------
-//ACCESS CONTROL CONFIGURATION
-//---------------------------------------------------------------------------------------------------
-
-//Set Access Control Settings / This Configures Authentication through LDAP (cern credentials)
-dyn_mixed configuration_;
-dyn_mixed LDAPsettings;
-dyn_string exc_info;
-LDAPsettings = makeDynMixed("_fwAccessControl_LDAPAuthRoutine",
-"DIGEST-MD5",
-"CERNDC.CERN.CH",
-"cn=<USER>;cn=Users;o=cms;dc=cern;dc=ch",
-"FALSE"); 
-string defaultDomain = "SYSTEM:Administration";
-configuration_[fwAccessControl_CONFIG_AccessRight_DomainAdmin]=defaultDomain;
-configuration_[fwAccessControl_CONFIG_AccessRight_GroupAdmin]=defaultDomain;
-configuration_[fwAccessControl_CONFIG_AccessRight_UserAdmin]=defaultDomain;
-configuration_[fwAccessControl_CONFIG_AccessRight_DPType]=defaultDomain;
-configuration_[fwAccessControl_CONFIG_AccessRight_DP]=defaultDomain;
-configuration_[fwAccessControl_CONFIG_AccessRight_DPAlias]=defaultDomain;
-configuration_[fwAccessControl_CONFIG_AccessRight_DPAuth]=defaultDomain;
-configuration_[fwAccessControl_CONFIG_Authentication_OsAutoLogin]= 0;
-configuration_[fwAccessControl_CONFIG_Authentication_ForceLogin]=0;
-configuration_[fwAccessControl_CONFIG_Authorization_StrictRoleChecking]= 1;
-configuration_[fwAccessControl_CONFIG_Authentication_Configuration]=LDAPsettings;
-configuration_[fwAccessControl_CONFIG_Authorization_Configuration] = makeDynMixed();
-
-fwAccessControl_setConfiguration(configuration_,exc_info);
-//Set Sync Configuration Access Control Settings (This will allow to collect all the users/roles etc through the egroupSync Manager) 
-const string configurationsDPE="_fwAccessControl_egroupSync.configurations";
-dyn_string configurations = makeDynString("CMSDCS-ACConfigurationRoot");
-dpSetWait(configurationsDPE, configurations); 
-dyn_errClass err=getLastError();
-if (dynlen(err)) {
-fwException_raise(exceptionInfo,"ERROR","Could not apply configuration;"+getErrorText(err),"");
-}
-dpSetWait("_fwAccessControl_egroupSync.syncDelay", 18000); // This indicates period for synchronisation for egroups
-err=getLastError();
-if (dynlen(err)) {
-fwException_raise(exceptionInfo,"ERROR","Could not apply configuration;"+getErrorText(err),"");
-} 
-
-fwInstallationManager_append(TRUE, "AC LDAP Sync", "WCCOActrl", "always", 5, 3, 5, "fwAccessControl/fwAccessControl_EgroupSync.ctc");
-
-
 //fwInstallationUtils_loadConfigurations("904_GEM_Supervisor",exc);
 
 

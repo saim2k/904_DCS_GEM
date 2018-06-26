@@ -1,7 +1,7 @@
 V 14
 1
 LANG:1 0 
-PANEL,-1 -1 1747 934 N "_3DFace" 0
+PANEL,-1 -1 1747 982 N "_3DFace" 0
 E E E E E 1 -1 -1 0  90 40
 ""0  1
 E E 3
@@ -17,7 +17,7 @@ LANG:1 0
 28 0
 "TAB1"
 ""
-1 10 60 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+1 10 90 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
  E E
 0 0 0 0 0 0
 E E E
@@ -29,7 +29,7 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 1
 LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
-0  8 58 1712 922.0000000000001
+0  8 88 1712 952.0000000000001
 E4 "MultichannelHV" 1
 LANG:1 12 High Voltage
 1 "904_GEM_Multichannel/904_GEM_Overview.pnl" 1
@@ -44,7 +44,7 @@ LANG:1 0
 
 "PMTs" 1
 LANG:1 4 PMTs
-1 "904_GEM_PMTs/cosmic_HV_Panel.pnl" 1
+1 "904_GEM_PMTs/904_GEM_PMT_panel.pnl" 1
 LANG:1 0 
 0
 
@@ -55,7 +55,7 @@ LANG:1 0
 0
 
 
-1 2 0 "" 2
+1 1 0 "" 2
 0
 0
 LAYER, 1 
@@ -89,6 +89,6 @@ LANG:1 0
 3 0 "PANEL_REF0" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"objects/fwAccessControl/fwAccessControl_CurrentUser.pnl" 659 93 T 2 1 0 1.266666666666668 -649 -124.8000000000001
+"objects/fwAccessControl/fwAccessControl_CurrentUser.pnl" 659 93 T 2 1 0 1.266666666666668 -649 -117.8000000000001
 0
 0

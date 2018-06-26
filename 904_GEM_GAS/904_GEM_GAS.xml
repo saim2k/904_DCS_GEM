@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <component>
   <name>904_GEM_GAS</name>
-  <version>1.0.7</version>
-  <date>28/03/2018</date>
+  <version>1.0.8</version>
+  <date>26/06/2018</date>
   <required>fwConfigurationDB=5.1.1</required>
   <required>fwCore=5.1.0</required>
   <required>fwDIP=5.1.0</required>
@@ -24,6 +24,7 @@
   <file>./panels/904_GEM_GAS/CMS_GEM_904MixerTrending.pnl</file>
   <file>./scripts/libs/904_GEM_GAS/CMS_GEMfwGeneral.ctl</file>
   <file>./scripts/904_GEM_GAS/904GasConfiguration/904GasConfigurator.ctl</file>
+  <file>./scripts/904_GEM_GAS/904GasConfiguration/904GasQuality.ctl</file>
   <postInstall>./scripts/904_GEM_GAS/904_GEM_GAS.postinstall</postInstall>
   <file>./904_GEM_GAS.xml</file>
 </component>

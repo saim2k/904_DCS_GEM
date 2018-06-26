@@ -3,247 +3,68 @@ V 14
 LANG:1 0 
 LANG:10001 12 TEXT_DriftV0
 PANEL,-1 -1 759 343 N "_3DFace" 0
-"// main()
-// {
-// dyn_string exceptionInfo;
-//fwAccessControl_setupPanel( \"ApplyPanelAccessControl\", exceptionInfo);
-// }
-// 
-// 
-// 
-// 
-// void ApplyPanelAccessControl(string s1, string s2)
-// {
-//   
-// bool hasControl, hasModify;
-// 
-// dyn_string exceptionInfo;
-// 
-// revoke all previous rights:
-// DisableAllInPanel();
-// 
-// check privileges:
-// fwAccessControl_isGranted( \"CMS_GEM:Control\", hasControl, exceptionInfo);
-// fwAccessControl_isGranted( \"CMS_GEM:Modify\", hasModify, exceptionInfo);
-// 
-// if (dynlen(exceptionInfo)) { fwExceptionHandling_display(exceptionInfo); return;}
-// 
-// enable/disable panel functionality:
-// 
-//   if (hasControl) setOperatorRights();
-//   if (hasModify) setExpertRights();
-// }
-// 
-// void DisableAllInPanel()
-// {
-//   setAllInPanel(false);
-// }
-// 
-// void setExpertRights()
-// {
-//   setAllInPanel(true);
-// }
-// 
-// void setOperatorRights()
-// {
-//    bool set = true;
-//    
-//    CASCADE_DriftOnOff.enabled = set;
-//    CASCADE_G1TopOnOff.enabled = set;
-//    CASCADE_G1BotOnOff.enabled = set;
-//    CASCADE_G2TopOnOff.enabled = set;
-//    CASCADE_G2BotOnOff.enabled = set;
-//    CASCADE_G3TopOnOff.enabled = set;
-//    CASCADE_G3BotOnOff.enabled = set;
-//    
-//    CASCADE2_DriftOnOff.enabled = set;
-//    CASCADE2_G1TopOnOff.enabled = set;
-//    CASCADE2_G1BotOnOff.enabled = set;
-//    CASCADE2_G2TopOnOff.enabled = set;
-//    CASCADE2_G2BotOnOff.enabled = set;
-//    CASCADE2_G3TopOnOff.enabled = set;
-//    CASCADE2_G3BotOnOff.enabled = set;
-//    
-//    ALL_ON_BUTTON.enabled = set;
-//    ALL_OFF_BUTTON.enabled = set;
-//    
-//    ALL_ON_BUTTON2.enabled = set;
-//    ALL_OFF_BUTTON2.enabled = set;
-//    
-//    TEXT_AllI0.enabled = set;
-//    set_all_i0_button.enabled = set;
-//    
-//    TEXT_AllI0_Bot.enabled = set;
-//    set_all_i0_button_bot.enabled = set;
-//    
-//    BUTTON_APPLY_CONFIGS.enabled = set;
-//    BUTTON2_APPLY_CONFIGS.enabled = set;
-// }
-// 
-// void setAllInPanel(bool set)
-// {
-  //board Settings
-//  CASCADE_OpMode.enabled = set;
-//  BUTTON_applyOpMode.enabled = set; 
-//   
- //layer1
-//  CASCADE_DriftOnOff.enabled = set;
-//  TEXT_DriftV0.enabled = set;
-//  TEXT_DriftV1.enabled = set;
-//  TEXT_DriftI0.enabled = set;
-//  TEXT_DriftI1.enabled = set;
-//  TEXT_DriftRUP.enabled = set;
-//  TEXT_DriftRDWN.enabled = set;
-//  TEXT_DriftTrip.enabled = set; 
-//  
-//   CASCADE_G1TopOnOff.enabled = set;
-//  TEXT_G1TopV0.enabled = set;
-//  TEXT_G1TopV1.enabled = set;
-//  TEXT_G1TopI0.enabled = set;
-//  TEXT_G1TopI1.enabled = set;
-//  TEXT_G1TopRUP.enabled = set;
-//  TEXT_G1TopRDWN.enabled = set;
-//  TEXT_G1TopTrip.enabled = set; 
-//  
-//   CASCADE_G1BotOnOff.enabled = set;
-//  TEXT_G1BotV0.enabled = set;
-//  TEXT_G1BotV1.enabled = set;
-//  TEXT_G1BotI0.enabled = set;
-//  TEXT_G1BotI1.enabled = set;
-//  TEXT_G1BotRUP.enabled = set;
-//  TEXT_G1BotRDWN.enabled = set;
-//  TEXT_G1BotTrip.enabled = set; 
-//  
-//   CASCADE_G2TopOnOff.enabled = set;
-//  TEXT_G2TopV0.enabled = set;
-//  TEXT_G2TopV1.enabled = set;
-//  TEXT_G2TopI0.enabled = set;
-//  TEXT_G2TopI1.enabled = set;
-//  TEXT_G2TopRUP.enabled = set;
-//  TEXT_G2TopRDWN.enabled = set;
-//  TEXT_G2TopTrip.enabled = set; 
-//  
-//   CASCADE_G2BotOnOff.enabled = set;
-//  TEXT_G2BotV0.enabled = set;
-//  TEXT_G2BotV1.enabled = set;
-//  TEXT_G2BotI0.enabled = set;
-//  TEXT_G2BotI1.enabled = set;
-//  TEXT_G2BotRUP.enabled = set;
-//  TEXT_G2BotRDWN.enabled = set;
-//  TEXT_G2BotTrip.enabled = set; 
-//  
-//   CASCADE_G3TopOnOff.enabled = set;
-//  TEXT_G3TopV0.enabled = set;
-//  TEXT_G3TopV1.enabled = set;
-//  TEXT_G3TopI0.enabled = set;
-//  TEXT_G3TopI1.enabled = set;
-//  TEXT_G3TopRUP.enabled = set;
-//  TEXT_G3TopRDWN.enabled = set;
-//  TEXT_G3TopTrip.enabled = set; 
-//  
-//   CASCADE_G3BotOnOff.enabled = set;
-//  TEXT_G3BotV0.enabled = set;
-//  TEXT_G3BotV1.enabled = set;
-//  TEXT_G3BotI0.enabled = set;
-//  TEXT_G3BotI1.enabled = set;
-//  TEXT_G3BotRUP.enabled = set;
-//  TEXT_G3BotRDWN.enabled = set;
-//  TEXT_G3BotTrip.enabled = set;
-//  
-//  ALL_ON_BUTTON.enabled = set;
-//  ALL_OFF_BUTTON.enabled = set;
-//  BUTTON_SAVE_CONFIGS.enabled = set;
-//  BUTTON_LOAD_CONFIGS.enabled = set;
-//  load_default_button.enabled = set;
-//  
-//  TEXT_DivCurr_top.enabled = set;
-//  set_all_DivCurr_button.enabled = set;
-//  TEXT_DivVolt_top.enabled = set;
-//  set_all_DivVolt_button.enabled = set;
-//  TEXT_AllI0.enabled = set;
-//  set_all_i0_button.enabled = set;
-//  BUTTON_APPLY_CONFIGS.enabled = set;
-//  
- //layer2
-//  CASCADE2_DriftOnOff.enabled = set;
-//  TEXT2_DriftV0.enabled = set;
-//  TEXT2_DriftV1.enabled = set;
-//  TEXT2_DriftI0.enabled = set;
-//  TEXT2_DriftI1.enabled = set;
-//  TEXT2_DriftRUP.enabled = set;
-//  TEXT2_DriftRDWN.enabled = set;
-//  TEXT2_DriftTrip.enabled = set; 
-//  
-//   CASCADE2_G1TopOnOff.enabled = set;
-//  TEXT2_G1TopV0.enabled = set;
-//  TEXT2_G1TopV1.enabled = set;
-//  TEXT2_G1TopI0.enabled = set;
-//  TEXT2_G1TopI1.enabled = set;
-//  TEXT2_G1TopRUP.enabled = set;
-//  TEXT2_G1TopRDWN.enabled = set;
-//  TEXT2_G1TopTrip.enabled = set; 
-//  
-//   CASCADE2_G1BotOnOff.enabled = set;
-//  TEXT2_G1BotV0.enabled = set;
-//  TEXT2_G1BotV1.enabled = set;
-//  TEXT2_G1BotI0.enabled = set;
-//  TEXT2_G1BotI1.enabled = set;
-//  TEXT2_G1BotRUP.enabled = set;
-//  TEXT2_G1BotRDWN.enabled = set;
-//  TEXT2_G1BotTrip.enabled = set; 
-//  
-//   CASCADE2_G2TopOnOff.enabled = set;
-//  TEXT2_G2TopV0.enabled = set;
-//  TEXT2_G2TopV1.enabled = set;
-//  TEXT2_G2TopI0.enabled = set;
-//  TEXT2_G2TopI1.enabled = set;
-//  TEXT2_G2TopRUP.enabled = set;
-//  TEXT2_G2TopRDWN.enabled = set;
-//  TEXT2_G2TopTrip.enabled = set; 
-//  
-//   CASCADE2_G2BotOnOff.enabled = set;
-//  TEXT2_G2BotV0.enabled = set;
-//  TEXT2_G2BotV1.enabled = set;
-//  TEXT2_G2BotI0.enabled = set;
-//  TEXT2_G2BotI1.enabled = set;
-//  TEXT2_G2BotRUP.enabled = set;
-//  TEXT2_G2BotRDWN.enabled = set;
-//  TEXT2_G2BotTrip.enabled = set; 
-//  
-//   CASCADE2_G3TopOnOff.enabled = set;
-//  TEXT2_G3TopV0.enabled = set;
-//  TEXT2_G3TopV1.enabled = set;
-//  TEXT2_G3TopI0.enabled = set;
-//  TEXT2_G3TopI1.enabled = set;
-//  TEXT2_G3TopRUP.enabled = set;
-//  TEXT2_G3TopRDWN.enabled = set;
-//  TEXT2_G3TopTrip.enabled = set; 
-//  
-//   CASCADE2_G3BotOnOff.enabled = set;
-//  TEXT2_G3BotV0.enabled = set;
-//  TEXT2_G3BotV1.enabled = set;
-//  TEXT2_G3BotI0.enabled = set;
-//  TEXT2_G3BotI1.enabled = set;
-//  TEXT2_G3BotRUP.enabled = set;
-//  TEXT2_G3BotRDWN.enabled = set;
-//  TEXT2_G3BotTrip.enabled = set;
-//  
-//  ALL_ON_BUTTON2.enabled = set;
-//  ALL_OFF_BUTTON2.enabled = set;
-//  BUTTON2_SAVE_CONFIGS.enabled = set;
-//  BUTTON2_LOAD_CONFIGS.enabled = set;
-//  load_default_value_bot.enabled = set;
-//  
-//  TEXT_DivCurr_bot.enabled = set;
-//  set_all_DivCurr_button_bot.enabled = set;
-//  TEXT_DivVolt_bot.enabled = set;
-//  set_all_DivVolt_button_bot.enabled = set;
-//  TEXT_AllI0_Bot.enabled = set;
-//  set_all_i0_button_bot.enabled = set;
-//  BUTTON2_APPLY_CONFIGS.enabled = set;
-//  
-// }
-// " 0
+"main()
+{
+  
+//=================== Access Control ===================================================  
+dyn_string exceptionInfo;
+fwAccessControl_setupPanel( \"ApplyPanelAccessControl\", exceptionInfo);
+//======================================================================================
+}
+
+
+
+void ApplyPanelAccessControl(string s1, string s2)
+{
+  bool hasControl, hasModify;
+  dyn_string exceptionInfo;
+
+    DisableAllInPanel();
+
+  //check privileges:
+  fwAccessControl_isGranted( \"904_GEM:Control\", hasControl, exceptionInfo);
+  fwAccessControl_isGranted( \"904_GEM:Modify\", hasModify, exceptionInfo);
+
+  if (dynlen(exceptionInfo)) { fwExceptionHandling_display(exceptionInfo); return;}
+
+  //enable/disable panel functionality:
+
+    if (hasControl) 
+    {
+      setOperatorRights();
+    }  
+    if (hasModify) 
+    {
+      setExpertRights();
+    }
+  }
+
+
+void DisableAllInPanel()
+{
+  setAllInPanel(false);
+}
+
+void setExpertRights()
+{
+  setAllInPanel(true);
+}
+
+void setOperatorRights()
+{
+  setAllInPanel(true);
+}
+
+
+void setAllInPanel(bool set)
+{
+  set_all_DivCurr_Button.enabled(set);
+  set_all_DivVolt_Button.enabled(set);
+  set_all_i0_button.enabled(set);
+  ALL_ON_BUTTON.enabled(set);
+  ALL_OFF_BUTTON.enabled(set);
+}
+" 0
  E E E E 1 -1 -1 0  30 20
 ""0  1
 E "// updateSum()
@@ -263,7 +84,7 @@ E "// updateSum()
 "CBRef" "1"
 "EClose" E
 "dpi" "96"
-0 0 0
+3 0 0
 ""
 DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
 LAYER, 0 

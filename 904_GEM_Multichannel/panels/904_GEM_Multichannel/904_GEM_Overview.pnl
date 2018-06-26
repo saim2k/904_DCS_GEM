@@ -3,327 +3,72 @@ V 14
 LANG:1 0 
 LANG:10001 0 
 PANEL,-1 -1 1344 878 N "_3DFace" 0
-"// main()
-// {
-//   
+"main()
+{
+  
 //=================== Access Control ===================================================  
-// dyn_string exceptionInfo;
-// BUTTON_MaskUnmask.visible = false ;
-// fwAccessControl_setupPanel( \"ApplyPanelAccessControl\", exceptionInfo);
-// 
-//======================= Update Summary dpes ==========================================
-// updateChamberSummary();
-// }
-// 
-// 
-// updateChamberSummary()
-// {
-//   dyn_string SC01L1 = makeDynString
-//             (//status
-//             \"CAEN/GEM_CAEN_HV/board12/channel000.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel001.actual.status\",
-//             \"CAEN/GEM_CAEN_HV/board12/channel002.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel003.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel004.actual.status\",
-//             \"CAEN/GEM_CAEN_HV/board12/channel005.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel006.actual.status\",
-            //Vmon            
-//             \"CAEN/GEM_CAEN_HV/board12/channel000.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel001.actual.vMon\",
-//             \"CAEN/GEM_CAEN_HV/board12/channel002.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel003.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel004.actual.vMon\",
-//             \"CAEN/GEM_CAEN_HV/board12/channel005.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel006.actual.vMon\"
-//             );
-//   dpConnect(\"update_McScOverviewSC01L1\" , SC01L1 );
-//   
-//   dyn_string SC01L2 = makeDynString
-//             (//status
-//             \"CAEN/GEM_CAEN_HV/board12/channel007.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel008.actual.status\",
-//             \"CAEN/GEM_CAEN_HV/board12/channel009.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel010.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel011.actual.status\",
-//             \"CAEN/GEM_CAEN_HV/board12/channel012.actual.status\",\"CAEN/GEM_CAEN_HV/board12/channel013.actual.status\",
-            //Vmon
-//             \"CAEN/GEM_CAEN_HV/board12/channel007.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel008.actual.vMon\",
-//             \"CAEN/GEM_CAEN_HV/board12/channel009.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel010.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel011.actual.vMon\",
-//             \"CAEN/GEM_CAEN_HV/board12/channel012.actual.vMon\",\"CAEN/GEM_CAEN_HV/board12/channel013.actual.vMon\"
-//             );
-//   dpConnect(\"update_McScOverviewSC01L2\" , SC01L2 );  
-//   
-//   for (int i=1; i<=14; i++)
-//   {
-//   if(!dpExists(SC01L1[i])) DebugTN(\"SC01L1[\",i,\"] doesn't exist!!\");
-//   if(!dpExists(SC01L2[i])) DebugTN(\"SC01L2[\",i,\"] doesn't exist!!\");
-//   }
-// }
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// void ApplyPanelAccessControl(string s1, string s2)
-// {
-//   
-// bool hasControl, hasModify;
-// 
-// dyn_string exceptionInfo;
-// 
-// BUTTON_MaskUnmask.enabled = false ;
-// Button_AlarmScreen.enabled = false;
-// 
-// check privileges:
-// fwAccessControl_isGranted( \"CMS_GEM:Control\", hasControl, exceptionInfo);
-// fwAccessControl_isGranted( \"CMS_GEM:Modify\", hasModify, exceptionInfo);
-// 
-// if (dynlen(exceptionInfo)) { fwExceptionHandling_display(exceptionInfo); return;}
-// 
-// enable/disable panel functionality:
-// 
-//   if (hasControl) 
-//   {
-//     Button_AlarmScreen.enabled = true;
-//   }  
-//   if (hasModify) 
-//   {
-//     BUTTON_MaskUnmask.enabled = false ;
-//     Button_AlarmScreen.enabled = true;
-//   }
-// }
-// 
-// 
-// /*
-// main()
-// {
-// dyn_string exceptionInfo;
-// fwAccessControl_setupPanel( \"ApplyPanelAccessControl\", exceptionInfo);
-// }
-// 
-// 
-// 
-// 
-// void ApplyPanelAccessControl(string s1, string s2)
-// {
-//   
-// bool hasControl, hasModify;
-// 
-// dyn_string exceptionInfo;
-// 
-// revoke all previous rights:
-// DisableAllInPanel();
-// 
-// check privileges:
-// fwAccessControl_isGranted( \"CMS_GEM:Control\", hasControl, exceptionInfo);
-// fwAccessControl_isGranted( \"CMS_GEM:Modify\", hasModify, exceptionInfo);
-// 
-// if (dynlen(exceptionInfo)) { fwExceptionHandling_display(exceptionInfo); return;}
-// 
-// enable/disable panel functionality:
-// 
-//   if (hasControl) setOperatorRights();
-//   if (hasModify) setExpertRights();
-// }
-// 
-// 
-// void DisableAllInPanel()
-// {
-//   setAllInPanel(false);
-// }
-// 
-// void setExpertRights()
-// {
-//   setAllInPanel(true);
-// }
-// 
-// void setOperatorRights()
-// {
-//    bool set = true;
-//    
-//    CASCADE_DriftOnOff.enabled = set;
-//    CASCADE_G1TopOnOff.enabled = set;
-//    CASCADE_G1BotOnOff.enabled = set;
-//    CASCADE_G2TopOnOff.enabled = set;
-//    CASCADE_G2BotOnOff.enabled = set;
-//    CASCADE_G3TopOnOff.enabled = set;
-//    CASCADE_G3BotOnOff.enabled = set;
-//    
-//    CASCADE2_DriftOnOff.enabled = set;
-//    CASCADE2_G1TopOnOff.enabled = set;
-//    CASCADE2_G1BotOnOff.enabled = set;
-//    CASCADE2_G2TopOnOff.enabled = set;
-//    CASCADE2_G2BotOnOff.enabled = set;
-//    CASCADE2_G3TopOnOff.enabled = set;
-//    CASCADE2_G3BotOnOff.enabled = set;
-//    
-//    ALL_ON_BUTTON.enabled = set;
-//    ALL_OFF_BUTTON.enabled = set;
-//    
-//    ALL_ON_BUTTON2.enabled = set;
-//    ALL_OFF_BUTTON2.enabled = set;
-//    
-//    BUTTON_APPLY_CONFIGS.enabled = set;
-//    BUTTON2_APPLY_CONFIGS.enabled = set;
-// }
-// 
-// void setAllInPanel(bool set)
-// {
-  //board Settings
-//  CASCADE_OpMode.enabled = set;
-//  BUTTON_applyOpMode.enabled = set; 
-//   
- //layer1
-//  CASCADE_DriftOnOff.enabled = set;
-//  TEXT_DriftV0.enabled = set;
-//  TEXT_DriftV1.enabled = set;
-//  TEXT_DriftI0.enabled = set;
-//  TEXT_DriftI1.enabled = set;
-//  TEXT_DriftRUP.enabled = set;
-//  TEXT_DriftRDWN.enabled = set;
-//  TEXT_DriftTrip.enabled = set; 
-//  
-//   CASCADE_G1TopOnOff.enabled = set;
-//  TEXT_G1TopV0.enabled = set;
-//  TEXT_G1TopV1.enabled = set;
-//  TEXT_G1TopI0.enabled = set;
-//  TEXT_G1TopI1.enabled = set;
-//  TEXT_G1TopRUP.enabled = set;
-//  TEXT_G1TopRDWN.enabled = set;
-//  TEXT_G1TopTrip.enabled = set; 
-//  
-//   CASCADE_G1BotOnOff.enabled = set;
-//  TEXT_G1BotV0.enabled = set;
-//  TEXT_G1BotV1.enabled = set;
-//  TEXT_G1BotI0.enabled = set;
-//  TEXT_G1BotI1.enabled = set;
-//  TEXT_G1BotRUP.enabled = set;
-//  TEXT_G1BotRDWN.enabled = set;
-//  TEXT_G1BotTrip.enabled = set; 
-//  
-//   CASCADE_G2TopOnOff.enabled = set;
-//  TEXT_G2TopV0.enabled = set;
-//  TEXT_G2TopV1.enabled = set;
-//  TEXT_G2TopI0.enabled = set;
-//  TEXT_G2TopI1.enabled = set;
-//  TEXT_G2TopRUP.enabled = set;
-//  TEXT_G2TopRDWN.enabled = set;
-//  TEXT_G2TopTrip.enabled = set; 
-//  
-//   CASCADE_G2BotOnOff.enabled = set;
-//  TEXT_G2BotV0.enabled = set;
-//  TEXT_G2BotV1.enabled = set;
-//  TEXT_G2BotI0.enabled = set;
-//  TEXT_G2BotI1.enabled = set;
-//  TEXT_G2BotRUP.enabled = set;
-//  TEXT_G2BotRDWN.enabled = set;
-//  TEXT_G2BotTrip.enabled = set; 
-//  
-//   CASCADE_G3TopOnOff.enabled = set;
-//  TEXT_G3TopV0.enabled = set;
-//  TEXT_G3TopV1.enabled = set;
-//  TEXT_G3TopI0.enabled = set;
-//  TEXT_G3TopI1.enabled = set;
-//  TEXT_G3TopRUP.enabled = set;
-//  TEXT_G3TopRDWN.enabled = set;
-//  TEXT_G3TopTrip.enabled = set; 
-//  
-//   CASCADE_G3BotOnOff.enabled = set;
-//  TEXT_G3BotV0.enabled = set;
-//  TEXT_G3BotV1.enabled = set;
-//  TEXT_G3BotI0.enabled = set;
-//  TEXT_G3BotI1.enabled = set;
-//  TEXT_G3BotRUP.enabled = set;
-//  TEXT_G3BotRDWN.enabled = set;
-//  TEXT_G3BotTrip.enabled = set;
-//  
-//  ALL_ON_BUTTON.enabled = set;
-//  ALL_OFF_BUTTON.enabled = set;
-//  BUTTON_SAVE_CONFIGS.enabled = set;
-//  BUTTON_LOAD_CONFIGS.enabled = set;
-//  load_default_button.enabled = set;
-//  
-//  TEXT_DivCurr_top.enabled = set;
-//  set_all_DivCurr_button.enabled = set;
-//  TEXT_DivVolt_top.enabled = set;
-//  set_all_DivVolt_button.enabled = set;
-//  TEXT_AllI0.enabled = set;
-//  set_all_i0_button.enabled = set;
-//  BUTTON_APPLY_CONFIGS.enabled = set;
-//  
- //layer2
-//  CASCADE2_DriftOnOff.enabled = set;
-//  TEXT2_DriftV0.enabled = set;
-//  TEXT2_DriftV1.enabled = set;
-//  TEXT2_DriftI0.enabled = set;
-//  TEXT2_DriftI1.enabled = set;
-//  TEXT2_DriftRUP.enabled = set;
-//  TEXT2_DriftRDWN.enabled = set;
-//  TEXT2_DriftTrip.enabled = set; 
-//  
-//   CASCADE2_G1TopOnOff.enabled = set;
-//  TEXT2_G1TopV0.enabled = set;
-//  TEXT2_G1TopV1.enabled = set;
-//  TEXT2_G1TopI0.enabled = set;
-//  TEXT2_G1TopI1.enabled = set;
-//  TEXT2_G1TopRUP.enabled = set;
-//  TEXT2_G1TopRDWN.enabled = set;
-//  TEXT2_G1TopTrip.enabled = set; 
-//  
-//   CASCADE2_G1BotOnOff.enabled = set;
-//  TEXT2_G1BotV0.enabled = set;
-//  TEXT2_G1BotV1.enabled = set;
-//  TEXT2_G1BotI0.enabled = set;
-//  TEXT2_G1BotI1.enabled = set;
-//  TEXT2_G1BotRUP.enabled = set;
-//  TEXT2_G1BotRDWN.enabled = set;
-//  TEXT2_G1BotTrip.enabled = set; 
-//  
-//   CASCADE2_G2TopOnOff.enabled = set;
-//  TEXT2_G2TopV0.enabled = set;
-//  TEXT2_G2TopV1.enabled = set;
-//  TEXT2_G2TopI0.enabled = set;
-//  TEXT2_G2TopI1.enabled = set;
-//  TEXT2_G2TopRUP.enabled = set;
-//  TEXT2_G2TopRDWN.enabled = set;
-//  TEXT2_G2TopTrip.enabled = set; 
-//  
-//   CASCADE2_G2BotOnOff.enabled = set;
-//  TEXT2_G2BotV0.enabled = set;
-//  TEXT2_G2BotV1.enabled = set;
-//  TEXT2_G2BotI0.enabled = set;
-//  TEXT2_G2BotI1.enabled = set;
-//  TEXT2_G2BotRUP.enabled = set;
-//  TEXT2_G2BotRDWN.enabled = set;
-//  TEXT2_G2BotTrip.enabled = set; 
-//  
-//   CASCADE2_G3TopOnOff.enabled = set;
-//  TEXT2_G3TopV0.enabled = set;
-//  TEXT2_G3TopV1.enabled = set;
-//  TEXT2_G3TopI0.enabled = set;
-//  TEXT2_G3TopI1.enabled = set;
-//  TEXT2_G3TopRUP.enabled = set;
-//  TEXT2_G3TopRDWN.enabled = set;
-//  TEXT2_G3TopTrip.enabled = set; 
-//  
-//   CASCADE2_G3BotOnOff.enabled = set;
-//  TEXT2_G3BotV0.enabled = set;
-//  TEXT2_G3BotV1.enabled = set;
-//  TEXT2_G3BotI0.enabled = set;
-//  TEXT2_G3BotI1.enabled = set;
-//  TEXT2_G3BotRUP.enabled = set;
-//  TEXT2_G3BotRDWN.enabled = set;
-//  TEXT2_G3BotTrip.enabled = set;
-//  
-//  ALL_ON_BUTTON2.enabled = set;
-//  ALL_OFF_BUTTON2.enabled = set;
-//  BUTTON2_SAVE_CONFIGS.enabled = set;
-//  BUTTON2_LOAD_CONFIGS.enabled = set;
-//  load_default_value_bot.enabled = set;
-//  
-//  TEXT_DivCurr_bot.enabled = set;
-//  set_all_DivCurr_button_bot.enabled = set;
-//  TEXT_DivVolt_bot.enabled = set;
-//  set_all_DivVolt_button_bot.enabled = set;
-//  TEXT_AllI0_Bot.enabled = set;
-//  set_all_i0_button_bot.enabled = set;
-//  BUTTON2_APPLY_CONFIGS.enabled = set;
-//  
-// }
-// */" 0
+dyn_string exceptionInfo;
+fwAccessControl_setupPanel( \"ApplyPanelAccessControl\", exceptionInfo);
+//======================================================================================
+}
+
+
+
+void ApplyPanelAccessControl(string s1, string s2)
+{
+  bool hasControl, hasModify;
+  dyn_string exceptionInfo;
+
+    DisableAllInPanel();
+
+  //check privileges:
+  fwAccessControl_isGranted( \"904_GEM:Control\", hasControl, exceptionInfo);
+  fwAccessControl_isGranted( \"904_GEM:Modify\", hasModify, exceptionInfo);
+
+  if (dynlen(exceptionInfo)) { fwExceptionHandling_display(exceptionInfo); return;}
+
+  //enable/disable panel functionality:
+
+    if (hasControl) 
+    {
+      setOperatorRights();
+    }  
+    if (hasModify) 
+    {
+      setExpertRights();
+    }
+  }
+
+
+void DisableAllInPanel()
+{
+  setAllInPanel(false);
+}
+
+void setExpertRights()
+{
+  setAllInPanel(true);
+}
+
+void setOperatorRights()
+{
+  GeneralHV_Button.enabled(true);
+  CompleteHV_Button.enabled(true);
+  Alarm_Screen_Button.enabled(true);
+  Clear_HV_Button.enabled(true);
+  Kill_HV_Button.enabled(false);
+}
+
+
+void setAllInPanel(bool set)
+{
+  GeneralHV_Button.enabled(set);
+  CompleteHV_Button.enabled(set);
+  Alarm_Screen_Button.enabled(set);
+  Clear_HV_Button.enabled(set);
+  Kill_HV_Button.enabled(set);
+}
+" 0
  E E E E 1 -1 -1 0  110 160
 ""0  1
 E "// update_McScOverviewSC01L1( dyn_string dp_CaenChannels ,  dyn_anytype values ) {
@@ -4442,6 +4187,102 @@ GetDP(dyn_string dps, dyn_bool values){
 LANG:1 35 MS Shell Dlg 2,-1,19,5,75,1,0,0,0,0
 0 1
 LANG:1 0 
+13 168
+"Clear_HV_Button"
+""
+1 841 429 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+168 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  839 408 992 462
+
+T 
+1
+LANG:1 15 Clear HV Alarms
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_setDP();
+}
+
+void EP_setDP()
+{
+  dyn_errClass err;
+
+  dpSetWait(\"CAEN/904_HV_mainframe.Commands.ClearAlarm\", 1);
+  err = getLastError();
+  if (dynlen(err) > 0)
+    errorDialog(err);
+  else{
+    dyn_string exceptionInfo;
+    bool answ;
+    fwGeneral_openMessagePanel(\"HV mainframe errors cleared\", answ , exceptionInfo, \"OK\", true );
+    
+  }
+}
+
+// SimpleCtrlScript {EP_setDP}
+// DP1 {CAEN/904_HV_mainframe.Commands.ClearAlarm}
+// Config1 {:_original.._value}
+// Type1 {bool}
+// Value1 {1}
+// SimpleCtrlScriptEnd {EP_setDP}
+" 0
+ E E E
+13 169
+"Kill_HV_Button"
+""
+1 813 904 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+169 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  839 708 992 762
+
+T 
+1
+LANG:1 7 Kill HV
+"main()
+{
+  
+dyn_string exceptionInfo;
+  bool answ;
+  fwGeneral_openMessagePanel(\"You are going to KILL the HV mainframe. Are you sure you really want to do that?\", answ , exceptionInfo, \"Confirm\", false );
+  DebugTN(\"answer\",answ);
+  
+  if (answ)
+  {
+    applyChanges();
+   
+  }
+}
+
+void applyChanges()
+{
+  dyn_errClass err;
+
+  dpSetWait(\"cms_gem_dcs_1:CAEN/904_HV_mainframe.Commands.Kill\", 1);
+  err = getLastError();
+  if (dynlen(err) > 0)
+    errorDialog(err);
+}
+" 0
+ E E E
 0
 LAYER, 1 
 1
