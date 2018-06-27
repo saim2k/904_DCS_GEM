@@ -38,7 +38,7 @@
       <hardware>true</hardware>
       <logical>false</logical>
       <pattern>*</pattern>
-      <force_reinstall>false</force_reinstall>
+      <force_reinstall>true</force_reinstall>
     </configuration>
     <configuration>
       <tag>904_multichannel_trending_v0</tag>

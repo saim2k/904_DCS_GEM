@@ -8,11 +8,16 @@ main()
     
   dpConnect("Calculate", Input);
   
-  dpConnect("ConfigureArPer", "Ar_Real.value");
-  dpConnect("ConfigureCO2Per", "CO2_Real.value");
-  dpConnect("ConfigureArFlow", "Ar_Flow.value");
-  dpConnect("ConfigureCO2Flow", "CO2_Flow.value");
-  dpConnect("ConfigureTotalFlow", "TotalFlow.value");
+  dpConnect("HandleArPer", "Ar_Real.value");
+  	dpConnect("HandleArBoolean", "ArPerBoolean.value");
+  dpConnect("HandleCO2Per", "CO2_Real.value");
+  	dpConnect("HandleCO2Boolean", "CO2PerBoolean.value");
+  dpConnect("HandleArFlow", "Ar_Flow.value");
+  	dpConnect("HandleArFBoolean", "ArFlowBoolean.value");
+  dpConnect("HandleCO2Flow", "CO2_Flow.value");
+  	dpConnect("HandleCO2FBoolean", "CO2FlowBoolean.value");
+  dpConnect("HandleTotalFlow", "TotalFlow.value");
+  	dpConnect("HandleTotalBoolean", "TotalFlowBoolean.value");
 
   
     err = getLastError();
@@ -25,6 +30,8 @@ main()
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Calculate real %
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Calculate(dyn_string Input, dyn_float value)
 {
@@ -64,260 +71,611 @@ Calculate(dyn_string Input, dyn_float value)
 
 //Configure alert Ar %
 
-ConfigureArPer(string dp, float value)
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+HandleArPer(string dp, float value)
+{
+	bool flag;
+	dpGet("cms_gem_dcs_1:ArPerBoolean.value", flag);
+	DebugTN("Ar flag", flag);
+	
+	if((value < 69 || value > 71) && !flag)
+	{
+		dpSet("cms_gem_dcs_1:ArPerBoolean.value",1);
+	}
+}
+
+
+HandleArBoolean(string dp, bool value)
 {
 
-//Deactivating all the alerts  
-  
-  dyn_string exceptionInfo;
-  
-  float arPer;
-  dyn_float limits;
-    limits = makeDynFloat(67.5,69,71,72.5);
-  dyn_string alertClass;
-    alertClass = makeDynString("_fwErrorAck_70.","_fwWarningAck_50.","","_fwWarningAck_50.","_fwErrorAck_70.");  
-  string dpAlias;
-    dpAlias = dpGetAlias("cms_gem_dcs_1:Ar_Real."); 
-  dyn_string alertText;
-    alertText = makeDynString("Error: "+dpAlias+" Too Low Ar %", "Warning: "+dpAlias+" Too Low Ar %", "OK", "Warning: "+dpAlias+" High Ar %", "Error: "+dpAlias+" Too High Ar %");  
-  string alertPanel, alertHelp;
-  dyn_string summary, alertPanelParameters;
-      
-  
-//Evaluate Ar % status  
-  
-  if(value<= 69 || value >= 71){
-    DebugTN("Ar % = ", value);
-    DebugTN("Ar % value out of range, waiting confirmation...");
-      delay(180);
-      dpGet("Ar_Real.value", arPer);
-    DebugTN("arPer = ", arPer);
-    if(arPer <= 69 || arPer >= 71){
-      DebugTN("Confirmation received. Activating alert.");
-        fwAlertConfig_set("cms_gem_dcs_1:Ar_Real.value", DPCONFIG_ALERT_NONBINARYSIGNAL, alertText, limits, alertClass, summary, alertPanel, alertPanelParameters, alertHelp, exceptionInfo);   
-        fwAlertConfig_activate("cms_gem_dcs_1:Ar_Real.value", exceptionInfo);
-      DebugTN("Alert activated");
-	if(arPer >= 72.5){
-		dpSet("cms_gem_dcs_1:WrongMixture.value",1);
-		DebugTN("Detector protection condition activated!");
+string smtp_host = "smtp.cern.ch";
+dyn_string email1,email2,email3,email4,email5,email6,email7,email8;
+int ret;
+string smtp_user = "qc8dcs.administrator@cern.ch";
+string smtp_pass = "CafaXari7";
+bool useTLS = TRUE;
+string sAttachPath =  "";
+
+	if(value)
+	{	
+		int n=0;
+		while(n<6)
+		{
+			DebugTN("Waiting 180 sec..");
+			delay(30);
+			n++;
+		}
+
+		float x; 
+		dpGet("Ar_Real.value", x);
+
+		DebugTN("Ar % = ", x);
+		if(x < 69 || (x > 71 && x < 72.5))
+		{
+
+			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar % value is not optimal - Check it!");
+			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar % value is not optimal - Check it!");
+			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar % value is not optimal - Check it!");
+			sendMail(smtp_host, email3, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar % value is not optimal - Check it!");
+			sendMail(smtp_host, email4, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar % value is not optimal - Check it!");
+			sendMail(smtp_host, email5, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar % value is not optimal - Check it!");
+			sendMail(smtp_host, email6, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar % value is not optimal - Check it!");
+			sendMail(smtp_host, email7, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar % value is not optimal - Check it!");
+			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+				delay(5);
+				dpSet("cms_gem_dcs_1:ArPerBoolean.value",0);
+
+		}
+		else if(x >= 72.5)
+		{
+
+			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar % was > 72.5% for more than 180 sec! The detector protection is being activated!!");
+			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar % was > 72.5% for more than 180 sec! The detector protection is being activated!");
+			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar % was > 72.5% for more than 180 sec! The detector protection is being activated!");
+			sendMail(smtp_host, email3, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar % was > 72.5% for more than 180 sec! The detector protection is being activated!");
+			sendMail(smtp_host, email4, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar % was > 72.5% for more than 180 sec! The detector protection is being activated!");
+			sendMail(smtp_host, email5, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar % was > 72.5% for more than 180 sec! The detector protection is being activated!");
+			sendMail(smtp_host, email6, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar % was > 72.5% for more than 180 sec! The detector protection is being activated!");
+			sendMail(smtp_host, email7, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar % was > 72.5% for more than 180 sec! The detector protection is being activated!");
+			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+				dpSet("cms_gem_dcs_1:WrongMixture.value",1);
+				DebugTN("Detector protection condition activated!"); 
+
+				delay(5);
+				dpSet("cms_gem_dcs_1:ArPerBoolean.value",0);
+		}
+		else
+		{
+			dpSet("cms_gem_dcs_1:ArPerBoolean.value",0);
+		}
 	}
-    }
-    else{
-      fwAlertConfig_deactivate("cms_gem_dcs_1:Ar_Real.value", exceptionInfo); 
-      DebugTN("Ar % value back to normal = ", arPer);  
-      dpSet("cms_gem_dcs_1:WrongMixture.value",0); //No detector protection condition	
-    }
-  }
-  else{
-    DebugTN("Ar % = ", value);  
-    DebugTN("Ar % value normal");
-    dpSet("cms_gem_dcs_1:WrongMixture.value",0); //No detector protection condition
-  }
+	else
+	{
+		DebugTN("Ar % OK");
+	}
 
 }
-  
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Configure alert CO2 %
 
-ConfigureCO2Per(string dp, float value)
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+HandleCO2Per(string dp, float value)
+{
+	bool flag;
+	dpGet("cms_gem_dcs_1:CO2PerBoolean.value", flag);
+	DebugTN("CO2 flag", flag);
+	
+	if((value < 29 || value > 31) && !flag)
+	{
+		dpSet("cms_gem_dcs_1:CO2PerBoolean.value",1);
+	}
+}
+
+
+HandleCO2Boolean(string dp, bool value)
 {
 
-  dyn_string exceptionInfo;
-  
-  float CO2Per;
-  dyn_float limits;
-    limits = makeDynFloat(27.5,29,31,32.5);
-  dyn_string alertClass;
-    alertClass = makeDynString("_fwErrorAck_70.","_fwWarningAck_50.","","_fwWarningAck_50.","_fwErrorAck_70.");  
-  string dpAlias;
-    dpAlias = dpGetAlias("cms_gem_dcs_1:CO2_Real."); 
-  dyn_string alertText;
-    alertText = makeDynString("Error: "+dpAlias+" Too Low CO2 %", "Warning: "+dpAlias+" Too Low CO2 %", "OK", "Warning: "+dpAlias+" High CO2 %", "Error: "+dpAlias+" Too High CO2 %");  
-  string alertPanel, alertHelp;
-  dyn_string summary, alertPanelParameters;
+string smtp_host = "smtp.cern.ch";
+dyn_string email1,email2,email3,email4,email5,email6,email7,email8;
+int ret;
+string smtp_user = "qc8dcs.administrator@cern.ch";
+string smtp_pass = "CafaXari7";
+bool useTLS = TRUE;
+string sAttachPath =  "";
 
-//Evaluate CO2 % status  
-  
-  if(value <= 29 || value >= 31){
-    DebugTN("CO2 % = ", value);
-    DebugTN("CO2 % value out of range, waiting confirmation...");
-      delay(180);
-      dpGet("CO2_Real.value", CO2Per);
-    DebugTN("CO2Per = ", CO2Per);
-    if(CO2Per <= 29 || CO2Per >= 31){
-      DebugTN("Confirmation received. Activating alert.");
-        fwAlertConfig_set("cms_gem_dcs_1:CO2_Real.value", DPCONFIG_ALERT_NONBINARYSIGNAL, alertText, limits, alertClass, summary, alertPanel, alertPanelParameters, alertHelp, exceptionInfo);   
-        fwAlertConfig_activate("cms_gem_dcs_1:CO2_Real.value", exceptionInfo);
-      DebugTN("Alert activated");
-    }
-    else{
-      DebugTN("CO2 % value back to normal = ", CO2Per); 
-      fwAlertConfig_deactivate("cms_gem_dcs_1:CO2_Real.value", exceptionInfo);   
- 
-    }
-  }
-  else{
-    DebugTN("CO2 % = ", value);  
-    DebugTN("CO2 % value normal");
-  }
+	if(value)
+	{	
+		int n=0;
+		while(n<6)
+		{
+			DebugTN("Waiting 180 sec..");
+			delay(30);
+			n++;
+		}
+
+		float x; 
+		dpGet("CO2_Real.value", x);
+
+		DebugTN("CO2 % = ", x);
+		if((x> 27.5 && x < 29) || x > 31 )
+		{
+
+			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 % value is not optimal - Check it!");
+			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 % value is not optimal - Check it!");
+			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 % value is not optimal - Check it!");
+			sendMail(smtp_host, email3, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 % value is not optimal - Check it!");
+			sendMail(smtp_host, email4, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 % value is not optimal - Check it!");
+			sendMail(smtp_host, email5, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 % value is not optimal - Check it!");
+			sendMail(smtp_host, email6, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 % value is not optimal - Check it!");
+			sendMail(smtp_host, email7, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 % value is not optimal - Check it!");
+			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+				delay(5);
+				dpSet("cms_gem_dcs_1:CO2PerBoolean.value",0);
+
+		}
+		else if(x <= 27.5)
+		{
+
+			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 % was < 27.5% for more than 180 sec! Check the gas status immediately!");
+			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 % was < 27.5% for more than 180 sec! Check the gas status immediately!");
+			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 % was < 27.5% for more than 180 sec! Check the gas status immediately!!");
+			sendMail(smtp_host, email3, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 % was < 27.5% for more than 180 sec! Check the gas status immediately!");
+			sendMail(smtp_host, email4, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 % was < 27.5% for more than 180 sec! Check the gas status immediately!");
+			sendMail(smtp_host, email5, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 % was < 27.5% for more than 180 sec! Check the gas status immediately!");
+			sendMail(smtp_host, email6, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 % was < 27.5% for more than 180 sec! Check the gas status immediately!");
+			sendMail(smtp_host, email7, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 % was < 27.5% for more than 180 sec! Check the gas status immediately!");
+			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+				//dpSet("cms_gem_dcs_1:WrongMixture.value",1);
+				//DebugTN("Detector protection condition activated!"); 
+
+				delay(5);
+				dpSet("cms_gem_dcs_1:CO2PerBoolean.value",0);
+		}
+		else
+		{
+			dpSet("cms_gem_dcs_1:CO2PerBoolean.value",0);
+		}
+	}
+	else
+	{
+		DebugTN("CO2 % OK");
+	}
 
 }
 
+
+
+    
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Configure alert Ar Flow
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-ConfigureArFlow(string dp, float value)
+HandleArFlow(string dp, float value)
+{
+	bool flag;
+	dpGet("cms_gem_dcs_1:ArFlowBoolean.value", flag);
+	DebugTN("Ar Flow flag", flag);
+	
+	if(value < 0.1 && !flag)
+	{
+		dpSet("cms_gem_dcs_1:ArFlowBoolean.value",1);
+	}
+}
+
+
+HandleArFBoolean(string dp, bool value)
 {
 
-//Deactivating all the alerts  
-  
-  dyn_string exceptionInfo;
+string smtp_host = "smtp.cern.ch";
+dyn_string email1,email2,email3,email4,email5,email6,email7,email8;
+int ret;
+string smtp_user = "qc8dcs.administrator@cern.ch";
+string smtp_pass = "CafaXari7";
+bool useTLS = TRUE;
+string sAttachPath =  "";
 
-  float arFlow;
-  dyn_float limits;
-    limits = makeDynFloat(0.05,0.1);
-  dyn_string alertClass;
-    alertClass = makeDynString("_fwErrorAck_70.","_fwWarningAck_50.","");  
-  string dpAlias;
-    dpAlias = dpGetAlias("cms_gem_dcs_1:Ar_Flow."); 
-  dyn_string alertText;
-    alertText = makeDynString("Error: "+dpAlias+" Too Low Ar Flow", "Warning: "+dpAlias+" Too Low Ar Flow", "OK");  
-  string alertPanel, alertHelp;
-  dyn_string summary, alertPanelParameters;
+	if(value)
+	{	
+		int n=0;
+		while(n<6)
+		{
+			DebugTN("Waiting 180 sec..");
+			delay(30);
+			n++;
+		}
 
-  
-//Evaluate Ar Flow status  
-  
-  if(value <= 0.1){
-    DebugTN("Ar Flow = ", value);
-    DebugTN("Ar Flow value out of range, waiting confirmation...");
-      delay(180);
-      dpGet("Ar_Flow.value", arFlow);
-    DebugTN("arFlow = ", arFlow);
-    if(arFlow <= 0.1){
-      DebugTN("Confirmation received. Activating alert.");
-      fwAlertConfig_set("cms_gem_dcs_1:Ar_Flow.value", DPCONFIG_ALERT_NONBINARYSIGNAL, alertText, limits, alertClass, summary, alertPanel, alertPanelParameters, alertHelp, exceptionInfo);   
-      fwAlertConfig_activate("cms_gem_dcs_1:Ar_Flow.value", exceptionInfo);
-      DebugTN("Alert activated");
-    }
-    else{
-      DebugTN("Ar Flow value back to normal = ", arFlow); 
-      fwAlertConfig_deactivate("cms_gem_dcs_1:Ar_Flow.value", exceptionInfo); 
- 
-    }
-  }
-  else{
-    DebugTN("Ar Flow = ", value);  
-    DebugTN("Ar Flow value normal");
-  }
+		float x; 
+		dpGet("Ar_Flow.value", x);
+
+		DebugTN("Ar Flow = ", x);
+		if(x > 0.05 && x < 0.1))
+		{
+
+			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email3, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email4, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email5, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email6, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email7, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+				delay(5);
+				dpSet("cms_gem_dcs_1:ArFlowBoolean.value",0);
+
+		}
+		else if(x <= 0.05)
+		{
+
+			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			sendMail(smtp_host, email3, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar Flow was < 0.05 ln/min for more than 180 sec!Check the gas status immediately!");
+			sendMail(smtp_host, email4, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			sendMail(smtp_host, email5, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			sendMail(smtp_host, email6, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			sendMail(smtp_host, email7, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+				//dpSet("cms_gem_dcs_1:WrongMixture.value",1);
+				//DebugTN("Detector protection condition activated!"); 
+
+				delay(5);
+				dpSet("cms_gem_dcs_1:ArFlowBoolean.value",0);
+		}
+		else
+		{
+			dpSet("cms_gem_dcs_1:ArFlowBoolean.value",0);
+		}
+	}
+	else
+	{
+		DebugTN("Ar Flow OK");
+	}
 
 }
-  
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Configure alert CO2 Flow
 
-ConfigureCO2Flow(string dp, float value)
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+HandleCO2Flow(string dp, float value)
+{
+	bool flag;
+	dpGet("cms_gem_dcs_1:CO2FlowBoolean.value", flag);
+	DebugTN("CO2 Flow flag", flag);
+	
+	if(value < 0.1 && !flag)
+	{
+		dpSet("cms_gem_dcs_1:CO2FlowBoolean.value",1);
+	}
+}
+
+
+HandleCO2FBoolean(string dp, bool value)
 {
 
-  dyn_string exceptionInfo;
-  
-  float CO2Flow;
-  dyn_float limits;
-    limits = makeDynFloat(0.05,0.1);
-  dyn_string alertClass;
-    alertClass = makeDynString("_fwErrorAck_70.","_fwWarningAck_50.","");  
-  string dpAlias;
-    dpAlias = dpGetAlias("cms_gem_dcs_1:CO2_Flow."); 
-  dyn_string alertText;
-    alertText = makeDynString("Error: "+dpAlias+" Too Low CO2 Flow", "Warning: "+dpAlias+" Too Low CO2 Flow", "OK");  
-  string alertPanel, alertHelp;
-  dyn_string summary, alertPanelParameters;
+string smtp_host = "smtp.cern.ch";
+dyn_string email1,email2,email3,email4,email5,email6,email7,email8;
+int ret;
+string smtp_user = "qc8dcs.administrator@cern.ch";
+string smtp_pass = "CafaXari7";
+bool useTLS = TRUE;
+string sAttachPath =  "";
 
-  
-//Evaluate CO2 Flow status  
-  
-  if(value <= 0.1){
-    DebugTN("CO2 Flow = ", value);
-    DebugTN("CO2 Flow value out of range, waiting confirmation...");
-      delay(180);
-      dpGet("CO2_Flow.value", CO2Flow);
-    DebugTN("CO2Flow = ", CO2Flow);
-    if(CO2Flow <= 0.1){
-      DebugTN("Confirmation received. Activating alert.");
-      fwAlertConfig_set("cms_gem_dcs_1:CO2_Flow.value", DPCONFIG_ALERT_NONBINARYSIGNAL, alertText, limits, alertClass, summary, alertPanel, alertPanelParameters, alertHelp, exceptionInfo);   
-      fwAlertConfig_activate("cms_gem_dcs_1:CO2_Flow.value", exceptionInfo);
-      DebugTN("Alert activated");
-      if(CO2Flow <= 0.05){
-		dpSet("cms_gem_dcs_1:WrongFlow.value",1);
-		DebugTN("Detector protection condition activated!");
+	if(value)
+	{	
+		int n=0;
+		while(n<6)
+		{
+			DebugTN("Waiting 180 sec..");
+			delay(30);
+			n++;
+		}
+
+		float x; 
+		dpGet("CO2_Flow.value", x);
+
+		DebugTN("CO2 Flow = ", x);
+		if(x > 0.05 && x < 0.1)
+		{
+
+			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email3, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 Flow alue is not optimal - Check it!");
+			sendMail(smtp_host, email4, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email5, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email6, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email7, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+				delay(5);
+				dpSet("cms_gem_dcs_1:CO2FlowBoolean.value",0);
+
+		}
+		else if(x <= 0.05)
+		{
+
+			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 Flow was < 0.05 ln/min for more than 180 sec! The detector protection is being activated!");
+			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 Flow was < 0.05 ln/min for more than 180 sec! The detector protection is being activated!");
+			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 Flow was < 0.05 ln/min for more than 180 sec! The detector protection is being activated!");
+			sendMail(smtp_host, email3, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 Flow was < 0.05 ln/min for more than 180 sec! The detector protection is being activated!");
+			sendMail(smtp_host, email4, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 Flow was < 0.05 ln/min for more than 180 sec! The detector protection is being activated!");
+			sendMail(smtp_host, email5, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 Flow was < 0.05 ln/min for more than 180 sec! The detector protection is being activated!");
+			sendMail(smtp_host, email6, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 Flow was < 0.05 ln/min for more than 180 sec! The detector protection is being activated!");
+			sendMail(smtp_host, email7, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 Flow was < 0.05 ln/min for more than 180 sec! The detector protection is being activated!");
+			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+				dpSet("cms_gem_dcs_1:WrongFlow.value",1);
+				DebugTN("Detector protection condition activated!"); 
+
+				delay(5);
+				dpSet("cms_gem_dcs_1:CO2FlowBoolean.value",0);
+		}
+		else
+		{
+			dpSet("cms_gem_dcs_1:CO2FlowBoolean.value",0);
+		}
 	}
-    }
-    else{
-      DebugTN("CO2 Flow value back to normal = ", CO2Flow); 
-      fwAlertConfig_deactivate("cms_gem_dcs_1:CO2_Flow.value", exceptionInfo);   
-      dpSet("cms_gem_dcs_1:WrongFlow.value",0);  //No detector protection condition
-    }
-  }
-  else{
-    DebugTN("CO2 Flow = ", value);  
-    DebugTN("CO2 Flow value normal");
-    dpSet("cms_gem_dcs_1:WrongFlow.value",0);  //No detector protection condition
-  }
+	else
+	{
+		DebugTN("CO2 Flow OK");
+	}
 
 }
 
+
+    
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//Configure alert Total Flow
+//Configure alert Ar Flow
 
-ConfigureTotalFlow(string dp, float value)
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+HandleTotalFlow(string dp, float value)
+{
+	bool flag;
+	dpGet("cms_gem_dcs_1:TotalFlowBoolean.value", flag);
+	DebugTN("Total Flow flag", flag);
+	
+	if(value < 0.1 && !flag)
+	{
+		dpSet("cms_gem_dcs_1:TotalFlowBoolean.value",1);
+	}
+}
+
+
+HandleTotalBoolean(string dp, bool value)
 {
 
-  dyn_string exceptionInfo;
-  
-  float TotalFlow;
-  dyn_float limits;
-    limits = makeDynFloat(0.05,0.1);
-  dyn_string alertClass;
-    alertClass = makeDynString("_fwErrorAck_70.","_fwWarningAck_50.","");  
-  string dpAlias;
-    dpAlias = dpGetAlias("cms_gem_dcs_1:TotalFlow."); 
-  dyn_string alertText;
-    alertText = makeDynString("Error: "+dpAlias+" Too Low Total Flow", "Warning: "+dpAlias+" Too Low Total Flow", "OK");  
-  string alertPanel, alertHelp;
-  dyn_string summary, alertPanelParameters;
+string smtp_host = "smtp.cern.ch";
+dyn_string email1,email2,email3,email4,email5,email6,email7,email8;
+int ret;
+string smtp_user = "qc8dcs.administrator@cern.ch";
+string smtp_pass = "CafaXari7";
+bool useTLS = TRUE;
+string sAttachPath =  "";
 
-  
-//Evaluate Total Flow status  
-  
-  if(value <= 0.1){
-    DebugTN("Total Flow = ", value);
-    DebugTN("Total Flow value out of range, waiting confirmation...");
-      delay(180);
-      dpGet("TotalFlow.value", TotalFlow);
-    DebugTN("Total Flow = ", TotalFlow);
-    if(TotalFlow <= 0.1){
-      DebugTN("Confirmation received. Activating alert.");
-      fwAlertConfig_set("cms_gem_dcs_1:TotalFlow.value", DPCONFIG_ALERT_NONBINARYSIGNAL, alertText, limits, alertClass, summary, alertPanel, alertPanelParameters, alertHelp, exceptionInfo);   
-      fwAlertConfig_activate("cms_gem_dcs_1:TotalFlow.value", exceptionInfo);
-      DebugTN("Alert activated");
-    }
-    else{
-      DebugTN("Total Flow value back to normal = ", TotalFlow); 
-      fwAlertConfig_deactivate("cms_gem_dcs_1:TotalFlow.value", exceptionInfo);   
-    }
-  }
-  else{
-    DebugTN("Total Flow = ", value);  
-    DebugTN("Total Flow value normal");
-  }
+	if(value)
+	{	
+		int n=0;
+		while(n<6)
+		{
+			DebugTN("Waiting 180 sec..");
+			delay(30);
+			n++;
+		}
+
+		float x; 
+		dpGet("TotalFlow.value", x);
+
+		DebugTN("Total Flow = ", x);
+		if(x > 0.05 && x < 0.1))
+		{
+
+			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Total Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Total Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Total Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email3, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Total Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email4, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Total Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email5, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Total Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email6, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Total Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email7, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Total Flow value is not optimal - Check it!");
+			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+				delay(5);
+				dpSet("cms_gem_dcs_1:TotalFlowBoolean.value",0);
+
+		}
+		else if(x <= 0.05)
+		{
+
+			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Total Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Total Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Total Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			sendMail(smtp_host, email3, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Total Flow was < 0.05 ln/min for more than 180 sec!Check the gas status immediately!");
+			sendMail(smtp_host, email4, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Total Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			sendMail(smtp_host, email5, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Total Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			sendMail(smtp_host, email6, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Total Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			sendMail(smtp_host, email7, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Total Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
+
+				//dpSet("cms_gem_dcs_1:WrongMixture.value",1);
+				//DebugTN("Detector protection condition activated!"); 
+
+				delay(5);
+				dpSet("cms_gem_dcs_1:TotalFlowBoolean.value",0);
+		}
+		else
+		{
+			dpSet("cms_gem_dcs_1:TotalFlowBoolean.value",0);
+		}
+	}
+	else
+	{
+		DebugTN("Total Flow OK");
+	}
 
 }
 
-      
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
 

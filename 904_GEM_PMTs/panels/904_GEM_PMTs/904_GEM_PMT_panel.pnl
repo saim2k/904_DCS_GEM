@@ -15,50 +15,72 @@ E "#uses \"fwAccessControl/fwAccessControl.ctc\"
 
 void ApplyPanelAccessControl(string s1, string s2)
 {
-  bool hasDebug, hasControl,hasMonitor,hasVisualize,hasModify;
+  bool hasControl,hasModify;
   dyn_string exceptionInfo;
   
   DisableAllInPanel();  // revoke all previous rights:
   
 // check privileges:
   string domain;
-  domain=\"CMS_GEM\";
+  domain=\"904_GEM\";
 
   fwAccessControl_isGranted( domain+\":Control\", hasControl, exceptionInfo);
-  fwAccessControl_isGranted( domain+\":Debug\",   hasDebug,   exceptionInfo);
-  fwAccessControl_isGranted( domain+\":Monitor\", hasMonitor, exceptionInfo);
   fwAccessControl_isGranted( domain+\":Modify\",  hasModify,  exceptionInfo);
   
   if (dynlen(exceptionInfo)) { fwExceptionHandling_display(exceptionInfo); return;}
   // enable/disable panel functionality:
-  //if (hasControl) AlcLV.enabled = true;
-  //if (hasDebug) AlcHV.enabled = true;
   
-	if (hasControl) 
-  { 
-    setValue(\"top_all_set\",\"enabled\",TRUE);
-    setValue(\"bottom_all_set\",\"enabled\",TRUE);
-    setValue(\"all_set\",\"enabled\",TRUE);  }
-	if (hasDebug)   
-  { 
-    setValue(\"top_all_set\",\"enabled\",TRUE);
-    setValue(\"bottom_all_set\",\"enabled\",TRUE);
-    setValue(\"all_set\",\"enabled\",TRUE);  }
-
-	if (hasMonitor) 
-  { 
-    setValue(\"top_all_set\",\"enabled\",TRUE);
-    setValue(\"bottom_all_set\",\"enabled\",TRUE);
-    setValue(\"all_set\",\"enabled\",TRUE);  }
-
-  
+  if (hasControl) 
+  {
+    setOperatorRights();
+  }  
+  if (hasModify) 
+  {
+    setExpertRights();
+  }  
 }
 
 void DisableAllInPanel()
 {
-	setValue(\"top_all_set\",\"enabled\",FALSE);
-  setValue(\"bottom_all_set\",\"enabled\",FALSE);
-  setValue(\"all_set\",\"enabled\",FALSE);  
+  setAllInPanel(false);
+}
+
+void setOperatorRights()
+{
+
+  setValue(\"top_all_set\",\"enabled\",false);
+  setValue(\"top_all_on\",\"enabled\",true);
+  setValue(\"top_all_off\",\"enabled\",true);
+    
+  setValue(\"bottom_all_set\",\"enabled\",false);
+  setValue(\"bottom_all_on\",\"enabled\",true);
+  setValue(\"bottom_all_off\",\"enabled\",true);
+  
+  setValue(\"all_set\",\"enabled\",false);  
+  setValue(\"all_on\",\"enabled\",true);
+  setValue(\"all_off\",\"enabled\",true);
+
+}
+
+void setExpertRights()
+{
+  setAllInPanel(true);
+}
+
+void setAllInPanel(bool set)
+{
+	setValue(\"top_all_set\",\"enabled\",set);
+  setValue(\"top_all_on\",\"enabled\",set);
+  setValue(\"top_all_off\",\"enabled\",set);
+    
+  setValue(\"bottom_all_set\",\"enabled\",set);
+  setValue(\"bottom_all_on\",\"enabled\",set);
+  setValue(\"bottom_all_off\",\"enabled\",set);
+  
+  setValue(\"all_set\",\"enabled\",set);  
+  setValue(\"all_on\",\"enabled\",set);
+  setValue(\"all_off\",\"enabled\",set);
+  
 }
 
 
@@ -123,6 +145,7 @@ onoff_channel_bottom(string id)
   dpGet(dpv+id+\".settings.onOff:_online.._value\", bo);  
   dpSet(dpv+id+\".settings.onOff:_original.._value\",bo);  
 }
+
 " 0
  3
 "CBRef" "1"
@@ -212,7 +235,7 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 3 2 1 E 0.789427570093458 0 1 660.2202102803737 22.18518518518533 1 E 20 10 400 27
+E E 0 1 3 2 1 E 0.789427570093458 0 1 660.2202102803738 22.18518518518533 1 E 20 10 400 27
 0 2 2 "0s" 0 0 0 65 0 0  20 10 2
 1
 LANG:1 30 Open Sans,-1,15,5,75,0,0,0,0,0
@@ -634,7 +657,7 @@ on_all_top()
 " 0
  E E E
 13 635
-"bottom_all_onoff"
+"bottom_all_on"
 ""
 1 836.123206790762 643 E E E 1 E 1 E N "_ButtonText" E N "WF_Info" E E
  E E
@@ -681,7 +704,7 @@ on_all_bottom()
 " 0
  E E E
 13 636
-"all_onoff"
+"all_on"
 ""
 1 836.3388186745955 697 E E E 1 E 1 E N "_ButtonText" E N "WF_Info" E E
  E E
@@ -737,7 +760,7 @@ on_al()
 " 0
  E E E
 13 638
-"PUSH_BUTTON4"
+"top_all_off"
 ""
 1 909.8565998749591 303.6666666666665 E E E 1 E 1 E N "_ButtonText" E N "WF_Info" E E
  E E
@@ -825,7 +848,7 @@ LANG:1 31 Sans Serif,-1,13,5,50,0,0,0,0,0
 0 1
 LANG:1 9 channels:
 13 641
-"PUSH_BUTTON5"
+"bottom_all_off"
 ""
 1 910.1757488111293 643 E E E 1 E 1 E N "_ButtonText" E N "WF_Info" E E
  E E
@@ -914,7 +937,7 @@ LANG:1 31 Sans Serif,-1,13,5,50,0,0,0,0,0
 0 1
 LANG:1 9 channels:
 13 644
-"PUSH_BUTTON6"
+"all_off"
 ""
 1 910.1757488111293 697.0000000000001 E E E 1 E 1 E N "_ButtonText" E N "WF_Info" E E
  E E
@@ -1041,61 +1064,61 @@ LANG:1 0
 3 0 "pnlTS1" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"Cosmic_GEM_CAEN/904_GEM_PMT_ref.pnl" 135.3078853626942 49.484375 T 1 1 0 1 -60.30788536269421 52.515625
+"904_GEM_PMTs/904_GEM_PMT_ref.pnl" 135.3078853626942 49.484375 T 1 1 0 1 -60.30788536269421 52.515625
 1
 "$dpChnName""cms_gem_dcs_1:CAEN/904_Shared_mainframe/board02/channel000"
 3 1 "pnlTS2" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"Cosmic_GEM_CAEN/904_GEM_PMT_ref.pnl" 497 41.36111111111137 T 2 1 0 1 -92 60.63888888888863
+"904_GEM_PMTs/904_GEM_PMT_ref.pnl" 497 41.36111111111137 T 2 1 0 1 -92 60.63888888888863
 1
 "$dpChnName""cms_gem_dcs_1:CAEN/904_Shared_mainframe/board02/channel001"
 3 2 "pnlTS3" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"Cosmic_GEM_CAEN/904_GEM_PMT_ref.pnl" 940 41.3611111111112 T 3 1 0 1 -204 60.6388888888888
+"904_GEM_PMTs/904_GEM_PMT_ref.pnl" 940 41.3611111111112 T 3 1 0 1 -204 60.6388888888888
 1
 "$dpChnName""cms_gem_dcs_1:CAEN/904_Shared_mainframe/board02/channel002"
 3 3 "pnlTS4" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"Cosmic_GEM_CAEN/904_GEM_PMT_ref.pnl" 1285 42.38888888888906 T 4 1 0 1 -220 59.61111111111094
+"904_GEM_PMTs/904_GEM_PMT_ref.pnl" 1285 42.38888888888906 T 4 1 0 1 -220 59.61111111111094
 1
 "$dpChnName""cms_gem_dcs_1:CAEN/904_Shared_mainframe/board02/channel003"
 3 4 "pnlTS5" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"Cosmic_GEM_CAEN/904_GEM_PMT_ref.pnl" 1693 41.72222222222348 T 5 1 0 1 -298 60.27777777777652
+"904_GEM_PMTs/904_GEM_PMT_ref.pnl" 1693 41.72222222222348 T 5 1 0 1 -298 60.27777777777652
 1
 "$dpChnName""cms_gem_dcs_1:CAEN/904_Shared_mainframe/board02/channel004"
 3 5 "pnlBS1" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"Cosmic_GEM_CAEN/904_GEM_PMT_ref.pnl" 85.00615603521845 452.0000000000001 T 17 1 0 1 -10.00615603521845 -9.000000000000107
+"904_GEM_PMTs/904_GEM_PMT_ref.pnl" 85.00615603521845 452.0000000000001 T 17 1 0 1 -10.00615603521845 -9.000000000000107
 1
 "$dpChnName""cms_gem_dcs_1:CAEN/904_Shared_mainframe/board04/channel000"
 3 6 "pnlBS2" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"Cosmic_GEM_CAEN/904_GEM_PMT_ref.pnl" 492.8896772981149 452.0000000000001 T 18 1 0 1 -87.88967729811493 -9.000000000000107
+"904_GEM_PMTs/904_GEM_PMT_ref.pnl" 492.8896772981149 452.0000000000001 T 18 1 0 1 -87.88967729811493 -9.000000000000107
 1
 "$dpChnName""cms_gem_dcs_1:CAEN/904_Shared_mainframe/board04/channel001"
 3 7 "pnlBS3" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"Cosmic_GEM_CAEN/904_GEM_PMT_ref.pnl" 894 452.0000000000001 T 19 1 0 1 -159 -9.000000000000107
+"904_GEM_PMTs/904_GEM_PMT_ref.pnl" 894 452.0000000000001 T 19 1 0 1 -159 -9.000000000000107
 1
 "$dpChnName""cms_gem_dcs_1:CAEN/904_Shared_mainframe/board04/channel002"
 3 8 "pnlBS4" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"Cosmic_GEM_CAEN/904_GEM_PMT_ref.pnl" 1300.834515947172 451.4999999999999 T 20 1 0 1 -235.834515947172 -8.499999999999893
+"904_GEM_PMTs/904_GEM_PMT_ref.pnl" 1300.834515947172 451.4999999999999 T 20 1 0 1 -235.834515947172 -8.499999999999893
 1
 "$dpChnName""cms_gem_dcs_1:CAEN/904_Shared_mainframe/board04/channel003"
 3 9 "pnlBS5" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"Cosmic_GEM_CAEN/904_GEM_PMT_ref.pnl" 1713.895833333333 450.0000000000001 T 21 1 0 1 -318.8958333333331 -7.000000000000107
+"904_GEM_PMTs/904_GEM_PMT_ref.pnl" 1713.895833333333 450.0000000000001 T 21 1 0 1 -318.8958333333331 -7.000000000000107
 1
 "$dpChnName""cms_gem_dcs_1:CAEN/904_Shared_mainframe/board04/channel004"
 0

@@ -27,6 +27,19 @@
   </append_managers>
   <append_managers>
     <manager>
+      <type>WCCOActrl</type>
+      <num>27</num>
+      <options>-num 27 904_GEM_GAS/904GasConfiguration/904GasQuality.ctl</options>
+      <mode>always</mode>
+      <restart>2</restart>
+      <counter>2</counter>
+      <sec_kill>30</sec_kill>
+      <isDriver>false</isDriver>
+      <restartManager>false</restartManager>
+    </manager>
+  </append_managers>
+  <append_managers>
+    <manager>
       <type>WCCOAdip</type>
       <num>26</num>
       <options>-dns dipnsgpn1,dipnsgpn2 -dip_dp_config DIPConfig_904</options>
@@ -41,7 +54,7 @@
   <target>
     <system_name>cms_gem_dcs_1:</system_name>
     <configuration>
-      <tag>904_gas_dp_V004</tag>
+      <tag>904_gas_dp_V005</tag>
       <hardware>true</hardware>
       <logical>false</logical>
       <pattern>*</pattern>

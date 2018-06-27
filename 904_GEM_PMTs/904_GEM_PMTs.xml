@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <component>
   <name>904_GEM_PMTs</name>
-  <version>1.0.1</version>
-  <date>06/03/2018</date>
+  <version>1.0.2</version>
+  <date>25/06/2018</date>
   <required>fwCaen=8.0.0</required>
   <required>fwCore=8.0.6</required>
   <required>fwTrending=8.0.0</required>
