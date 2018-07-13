@@ -79,7 +79,7 @@ HandleArPer(string dp, float value)
 	dpGet("cms_gem_dcs_1:ArPerBoolean.value", flag);
 	DebugTN("Ar flag", flag);
 	
-	if((value < 69 || value > 71) && !flag)
+	if((value < 64 || value > 71) && !flag)
 	{
 		dpSet("cms_gem_dcs_1:ArPerBoolean.value",1);
 	}
@@ -111,31 +111,33 @@ string sAttachPath =  "";
 		dpGet("Ar_Real.value", x);
 
 		DebugTN("Ar % = ", x);
-		if(x < 69 || (x > 71 && x < 72.5))
+		if(x < 64 || (x > 71 && x < 72.5))
 		{
+			
+			string textMessage = "The 904 Ar % value is not optimal - Check it! - Actual Ar % = " + x;
 
-			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar % value is not optimal - Check it!");
+			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar % value is not optimal - Check it!");
+			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar % value is not optimal - Check it!");
+			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email3, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar % value is not optimal - Check it!");
+			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email4, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar % value is not optimal - Check it!");
+			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email5, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar % value is not optimal - Check it!");
+			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email6, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar % value is not optimal - Check it!");
+			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email7, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar % value is not optimal - Check it!");
+			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
 				delay(5);
@@ -145,28 +147,30 @@ string sAttachPath =  "";
 		else if(x >= 72.5)
 		{
 
-			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar % was > 72.5% for more than 180 sec! The detector protection is being activated!!");
+			string textMessage = "The 904 Ar % was > 72.5% for more than 180 sec! The detector protection is being activated!! - Actual Ar % = " + x;
+
+			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar % was > 72.5% for more than 180 sec! The detector protection is being activated!");
+			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar % was > 72.5% for more than 180 sec! The detector protection is being activated!");
+			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email3, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar % was > 72.5% for more than 180 sec! The detector protection is being activated!");
+			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email4, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar % was > 72.5% for more than 180 sec! The detector protection is being activated!");
+			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email5, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar % was > 72.5% for more than 180 sec! The detector protection is being activated!");
+			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email6, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar % was > 72.5% for more than 180 sec! The detector protection is being activated!");
+			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email7, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar % was > 72.5% for more than 180 sec! The detector protection is being activated!");
+			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
 				dpSet("cms_gem_dcs_1:WrongMixture.value",1);
@@ -200,7 +204,7 @@ HandleCO2Per(string dp, float value)
 	dpGet("cms_gem_dcs_1:CO2PerBoolean.value", flag);
 	DebugTN("CO2 flag", flag);
 	
-	if((value < 29 || value > 31) && !flag)
+	if((value < 29 || value > 36) && !flag)
 	{
 		dpSet("cms_gem_dcs_1:CO2PerBoolean.value",1);
 	}
@@ -232,31 +236,33 @@ string sAttachPath =  "";
 		dpGet("CO2_Real.value", x);
 
 		DebugTN("CO2 % = ", x);
-		if((x> 27.5 && x < 29) || x > 31 )
+		if((x> 27.5 && x < 29) || x > 36 )
 		{
 
-			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 % value is not optimal - Check it!");
+			string textMessage = "The 904 CO2 % value is not optimal - Check it! - Actual CO2 % = " + x;
+
+			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 % value is not optimal - Check it!");
+			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 % value is not optimal - Check it!");
+			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email3, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 % value is not optimal - Check it!");
+			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email4, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 % value is not optimal - Check it!");
+			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email5, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 % value is not optimal - Check it!");
+			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email6, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 % value is not optimal - Check it!");
+			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email7, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 % value is not optimal - Check it!");
+			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
 				delay(5);
@@ -266,28 +272,30 @@ string sAttachPath =  "";
 		else if(x <= 27.5)
 		{
 
-			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 % was < 27.5% for more than 180 sec! Check the gas status immediately!");
+			string textMessage = "The 904 CO2 % was < 27.5% for more than 180 sec! Check the gas status immediately! - Actual CO2 % = " + x;
+
+			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 % was < 27.5% for more than 180 sec! Check the gas status immediately!");
+			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 % was < 27.5% for more than 180 sec! Check the gas status immediately!!");
+			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email3, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 % was < 27.5% for more than 180 sec! Check the gas status immediately!");
+			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email4, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 % was < 27.5% for more than 180 sec! Check the gas status immediately!");
+			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email5, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 % was < 27.5% for more than 180 sec! Check the gas status immediately!");
+			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email6, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 % was < 27.5% for more than 180 sec! Check the gas status immediately!");
+			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email7, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 % was < 27.5% for more than 180 sec! Check the gas status immediately!");
+			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
 				//dpSet("cms_gem_dcs_1:WrongMixture.value",1);
@@ -358,28 +366,30 @@ string sAttachPath =  "";
 		if(x > 0.05 && x < 0.1))
 		{
 
-			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar Flow value is not optimal - Check it!");
+			string textMessage = "The 904 Ar flow value is not optimal - Check it! - Actual Ar flow = " + x;
+
+			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar Flow value is not optimal - Check it!");
+			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar Flow value is not optimal - Check it!");
+			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email3, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar Flow value is not optimal - Check it!");
+			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email4, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar Flow value is not optimal - Check it!");
+			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email5, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar Flow value is not optimal - Check it!");
+			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email6, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar Flow value is not optimal - Check it!");
+			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email7, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Ar Flow value is not optimal - Check it!");
+			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
 				delay(5);
@@ -389,28 +399,30 @@ string sAttachPath =  "";
 		else if(x <= 0.05)
 		{
 
-			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			string textMessage = "The 904 Ar Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately! - Actual Ar flow = " + x;
+
+			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email3, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar Flow was < 0.05 ln/min for more than 180 sec!Check the gas status immediately!");
+			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email4, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email5, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email6, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email7, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Ar Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
 				//dpSet("cms_gem_dcs_1:WrongMixture.value",1);
@@ -479,28 +491,30 @@ string sAttachPath =  "";
 		if(x > 0.05 && x < 0.1)
 		{
 
-			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 Flow value is not optimal - Check it!");
+			string textMessage = "The 904 CO2 flow value is not optimal - Check it! - Actual CO2 flow = " + x;
+
+			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 Flow value is not optimal - Check it!");
+			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 Flow value is not optimal - Check it!");
+			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email3, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 Flow alue is not optimal - Check it!");
+			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email4, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 Flow value is not optimal - Check it!");
+			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email5, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 Flow value is not optimal - Check it!");
+			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email6, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 Flow value is not optimal - Check it!");
+			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email7, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 CO2 Flow value is not optimal - Check it!");
+			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
 				delay(5);
@@ -510,28 +524,30 @@ string sAttachPath =  "";
 		else if(x <= 0.05)
 		{
 
-			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 Flow was < 0.05 ln/min for more than 180 sec! The detector protection is being activated!");
+			string textMessage = "The 904 CO2 Flow was < 0.05 ln/min for more than 180 sec! The detector protection is being activated! - Actual CO2 flow = " + x;
+
+			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 Flow was < 0.05 ln/min for more than 180 sec! The detector protection is being activated!");
+			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 Flow was < 0.05 ln/min for more than 180 sec! The detector protection is being activated!");
+			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email3, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 Flow was < 0.05 ln/min for more than 180 sec! The detector protection is being activated!");
+			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email4, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 Flow was < 0.05 ln/min for more than 180 sec! The detector protection is being activated!");
+			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email5, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 Flow was < 0.05 ln/min for more than 180 sec! The detector protection is being activated!");
+			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email6, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 Flow was < 0.05 ln/min for more than 180 sec! The detector protection is being activated!");
+			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage");
 			sendMail(smtp_host, email7, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 CO2 Flow was < 0.05 ln/min for more than 180 sec! The detector protection is being activated!");
+			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
 				dpSet("cms_gem_dcs_1:WrongFlow.value",1);
@@ -601,28 +617,30 @@ string sAttachPath =  "";
 		if(x > 0.05 && x < 0.1))
 		{
 
-			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Total Flow value is not optimal - Check it!");
+			string textMessage = "The 904 Total flow value is not optimal - Check it! - Actual Total flow = " + x;
+
+			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Total Flow value is not optimal - Check it!");
+			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Total Flow value is not optimal - Check it!");
+			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email3, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Total Flow value is not optimal - Check it!");
+			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email4, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Total Flow value is not optimal - Check it!");
+			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email5, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Total Flow value is not optimal - Check it!");
+			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email6, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Total Flow value is not optimal - Check it!");
+			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email7, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Total Flow value is not optimal - Check it!");
+			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", textMessage);
 			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
 				delay(5);
@@ -632,28 +650,30 @@ string sAttachPath =  "";
 		else if(x <= 0.05)
 		{
 
-			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Total Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			string textMessage = "The 904 Total Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately! - Actual Total flow = " + x;
+
+			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Total Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Total Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email3, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Total Flow was < 0.05 ln/min for more than 180 sec!Check the gas status immediately!");
+			email4 = makeDynString("+41754110705@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email4, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Total Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			email5 = makeDynString("+41754115722@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email5, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Total Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email6, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Total Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email7, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", "The 904 Total Flow was < 0.05 ln/min for more than 180 sec! Check the gas status immediately!");
+			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
 				//dpSet("cms_gem_dcs_1:WrongMixture.value",1);
