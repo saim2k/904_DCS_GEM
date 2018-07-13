@@ -363,7 +363,7 @@ string sAttachPath =  "";
 		dpGet("Ar_Flow.value", x);
 
 		DebugTN("Ar Flow = ", x);
-		if(x > 0.05 && x < 0.1))
+		if(x > 0.05 && x < 0.1)
 		{
 
 			string textMessage = "The 904 Ar flow value is not optimal - Check it! - Actual Ar flow = " + x;
@@ -544,7 +544,7 @@ string sAttachPath =  "";
 			email6 = makeDynString("+41754117394@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email6, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage");
+			email7 = makeDynString("+41754110307@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
 			sendMail(smtp_host, email7, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
 			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Error", textMessage);
