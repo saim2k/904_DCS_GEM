@@ -598,7 +598,7 @@ string sAttachPath =  "";
 		dpGet("TotalFlow.value", x);
 
 		DebugTN("Total Flow = ", x);
-		if(x > 0.05 && x < 0.1))
+		if(x > 0.05 && x < 0.1)
 		{
 
 			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 Gas Warning", "The 904 Total Flow value is not optimal - Check it!");

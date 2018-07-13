@@ -67,12 +67,5 @@
       <pattern>*</pattern>
       <force_reinstall>true</force_reinstall>
     </configuration>
-    <configuration>
-      <tag>904_gas_bool_V000</tag>
-      <hardware>true</hardware>
-      <logical>false</logical>
-      <pattern>*</pattern>
-      <force_reinstall>true</force_reinstall>
-    </configuration>
   </target>
 </component_configuration>
