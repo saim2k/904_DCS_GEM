@@ -1,0 +1,398 @@
+V 14
+2
+LANG:1 0 
+LANG:10001 0 
+PANEL,-1 -1 500 400 N "_3DFace" 0
+E E E E E 1 -1 -1 0  70 189
+""0  1
+E E 3
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:1 0 
+13 0
+"PUSH_BUTTON1"
+""
+1 68 200 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+2
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  66 129 330 283
+
+T 
+2
+LANG:1 17 Set Alert Configs
+LANG:10001 17 Set Alert Configs
+"main(mapping event)
+{
+  dyn_string MChvchannels = dpNames(\"*:CAEN/904_HV_mainframe/board??/channel???\",\"FwCaenChannelA1515\");
+  dyn_string MCboard = dpNames(\"*:CAEN/904_HV_mainframe/board??\",\"FwCaenBoardSY1527A1515\");
+  
+  for (int i=1; i<=dynlen(MChvchannels); i++)
+  {  
+    //setting channel alerts
+    //string dp = \"CAEN/GEM_CAEN_HV/board12/channel000\";
+    string dp = MChvchannels[i];
+    setTripAlerts_hvchannel(dp);
+    setTemperatureAlerts_hvchannel(dp);
+    setExtdisAlerts_hvchannel(dp);
+    setLocalAlerts_hvchannel(dp);
+    
+    DebugTN(\"Alarms for dp \"+dp+\" set.\");
+  }
+  
+  for (int i=1; i<=dynlen(MCboard); i++)
+  {
+    //setting board alerts
+    //string dp = \"CAEN/GEM_CAEN_HV/board12\";
+    string dp = MCboard[i];
+    setTemperatureAlerts_board(dp);
+     
+    DebugTN(\"Alarms for dp \"+dp+\" set.\");
+  }
+
+}
+
+void setTripAlerts_hvchannel(string dp)
+{
+string dpe = dp+\".actual.Trip\";
+string dpAlias = dpGetAlias(dp+\".\");
+  
+dyn_string aClasses, aTexts, exceptionInfo, summary /*ignored if not summary alert*/, alertPanelParameters;
+dyn_float limits; //used only for analog alerts, otherwise ignored
+string alertPanel, alertHelp; 
+
+dyn_string exceptionInfo;
+
+aTexts = makeDynString(\"OK\", \"Chamber \"+dpAlias+\" tripped!\");
+aClasses = makeDynString(\"\", \"fwErrorAck.\");
+
+
+fwAlertConfig_set( dpe, DPCONFIG_ALERT_BINARYSIGNAL, aTexts, limits, aClasses, 
+                  summary, alertPanel, alertPanelParameters, alertHelp, exceptionInfo);
+fwAlertConfig_activate( dpe, exceptionInfo, TRUE, TRUE); 
+
+DebugTN(\"exceptionInfo: \", exceptionInfo);
+
+}
+
+void setTemperatureAlerts_hvchannel(string dp)
+{
+string dpe = dp+\".actual.Temp\";
+string dpAlias = dpGetAlias(dp+\".\");
+
+dyn_string aClasses, aTexts, exceptionInfo, summary /*ignored if not summary alert*/, alertPanelParameters;
+dyn_float limits = makeDynFloat(40,50,10000); //used only for analog alerts, otherwise ignored
+string alertPanel, alertHelp; 
+
+dyn_string exceptionInfo;
+
+aTexts = makeDynString(\"OK\", \"WARNING: HV channel \"+dpAlias+\" has temperature >40\",
+                       \"ERROR: HV channel \"+dp+\" has temperature >50.\", \"OK. Temperature reading for HV channel\"+dp+\" is probably wrong (>10000).\");
+aClasses = makeDynString(\"\", \"fwWarningAck.\", \"fwErrorAck.\", \"fwWarningNack.\");
+
+
+fwAlertConfig_set( dpe, DPCONFIG_ALERT_NONBINARYSIGNAL, aTexts, limits, aClasses, 
+                  summary, alertPanel, alertPanelParameters, alertHelp, exceptionInfo);
+fwAlertConfig_activate( dpe, exceptionInfo, TRUE, TRUE); 
+
+DebugTN(\"exceptionInfo: \", exceptionInfo);
+
+}
+
+void setExtdisAlerts_hvchannel(string dp)
+{
+string dpe = dp+\".actual.externalDisable\";
+string dpAlias = dpGetAlias(dp+\".\");
+  
+dyn_string aClasses, aTexts, exceptionInfo, summary /*ignored if not summary alert*/, alertPanelParameters;
+dyn_float limits; //used only for analog alerts, otherwise ignored
+string alertPanel, alertHelp; 
+
+dyn_string exceptionInfo;
+
+aTexts = makeDynString(\"OK\", \"Chamber \"+dpAlias+\" External Disabled!\");
+aClasses = makeDynString(\"\", \"fwErrorAck.\");
+
+
+fwAlertConfig_set( dpe, DPCONFIG_ALERT_BINARYSIGNAL, aTexts, limits, aClasses, 
+                  summary, alertPanel, alertPanelParameters, alertHelp, exceptionInfo);
+fwAlertConfig_activate( dpe, exceptionInfo, TRUE, TRUE); 
+
+DebugTN(\"exceptionInfo: \", exceptionInfo);
+
+  
+  
+}
+
+
+void setLocalAlerts_hvchannel(string dp)
+{
+  
+string dpe, dpAlias ;
+dyn_string aClasses, aTexts, exceptionInfo, summary, alertPanelParameters;
+dyn_float limits; //used only for analog alerts, otherwise ignored
+string alertPanel, alertHelp; 
+dyn_string exceptionInfo;
+
+//general channel status
+/*
+string dpe = dp+\".\";
+string dpAlias = dpGetAlias(dp+\".\");
+
+dyn_string aClasses, aTexts, exceptionInfo, summary, alertPanelParameters;
+dyn_float limits; //used only for analog alerts, otherwise ignored
+string alertPanel, alertHelp; 
+
+dyn_string exceptionInfo;
+
+aTexts = makeDynString(\"OK\", \"HV channel \"+dpAlias+\" in False status\");
+aClasses = makeDynString(\"\", \"_fwErrorNack\");
+
+
+fwAlertConfig_set( dpe, DPCONFIG_ALERT_BINARYSIGNAL, aTexts, limits, aClasses, 
+                  summary, alertPanel, alertPanelParameters, alertHelp, exceptionInfo);
+fwAlertConfig_activate( dpe, exceptionInfo, TRUE, TRUE); 
+
+DebugTN(\"exceptionInfo: \", exceptionInfo);
+*/
+  
+//.actual.OvC
+dpe = dp+\".actual.OvC\";
+
+aTexts = makeDynString(\"OK\", \"Chamber \"+dpAlias+\" overcurrent\");
+aClasses = makeDynString(\"\", \"_fwErrorAck.\");
+
+fwAlertConfig_set( dpe, DPCONFIG_ALERT_BINARYSIGNAL, aTexts, limits, aClasses, 
+                  summary, alertPanel, alertPanelParameters, alertHelp, exceptionInfo);
+fwAlertConfig_activate( dpe, exceptionInfo, TRUE, TRUE); 
+
+DebugTN(\"exceptionInfo: \", exceptionInfo);
+
+//.actual.OvV
+dpe = dp+\".actual.OvV\";
+
+aTexts = makeDynString(\"OK\", \"Chamber \"+dpAlias+\" overvoltage\");
+aClasses = makeDynString(\"\", \"_fwErrorNack.\");
+
+fwAlertConfig_set( dpe, DPCONFIG_ALERT_BINARYSIGNAL, aTexts, limits, aClasses, 
+                  summary, alertPanel, alertPanelParameters, alertHelp, exceptionInfo);
+fwAlertConfig_activate( dpe, exceptionInfo, TRUE, TRUE); 
+
+DebugTN(\"exceptionInfo: \", exceptionInfo);
+
+//.actual.UnV
+dpe = dp+\".actual.UnV\";
+
+aTexts = makeDynString(\"OK\", \"Chamber \"+dpAlias+\" undervoltage\");
+aClasses = makeDynString(\"\", \"_fwErrorAck.\");
+
+fwAlertConfig_set( dpe, DPCONFIG_ALERT_BINARYSIGNAL, aTexts, limits, aClasses, 
+                  summary, alertPanel, alertPanelParameters, alertHelp, exceptionInfo);
+fwAlertConfig_activate( dpe, exceptionInfo, TRUE, TRUE); 
+
+DebugTN(\"exceptionInfo: \", exceptionInfo);
+
+//.actual.status
+string dpe = dp+\".actual.status\";
+string dpAlias = dpGetAlias(dp+\".\");
+  
+dyn_string aClasses, aTexts, exceptionInfo, summary /*ignored if not summary alert*/, alertPanelParameters;
+dyn_float limits = makeDynFloat(63); //used only for analog alerts, otherwise ignored
+string alertPanel, alertHelp; 
+
+dyn_string exceptionInfo;
+
+aTexts = makeDynString(\"OK\", \"ERROR: HV channel \"+dpAlias+\" has faulty status (>=64)\");
+aClasses = makeDynString(\"\", \"_fwErrorAck.\");
+
+
+fwAlertConfig_set( dpe, DPCONFIG_ALERT_NONBINARYSIGNAL, aTexts, limits, aClasses, 
+                  summary, alertPanel, alertPanelParameters, alertHelp, exceptionInfo);
+fwAlertConfig_activate( dpe, exceptionInfo, TRUE, TRUE); 
+
+DebugTN(\"exceptionInfo: \", exceptionInfo);
+
+
+}
+
+
+void setTemperatureAlerts_board(string dp)
+{
+//================= under temperature==================
+string dpe = dp+\".Status.underTemperature\";
+string dpAlias = dpGetAlias(dp+\".\");
+  
+dyn_string aClasses, aTexts, exceptionInfo, summary /*ignored if not summary alert*/, alertPanelParameters;
+dyn_float limits; //used only for analog alerts, otherwise ignored
+string alertPanel, alertHelp; 
+
+dyn_string exceptionInfo;
+
+aTexts = makeDynString(\"OK\", \"ERROR: HV board \"+dpAlias+\" underTemperature.\");
+aClasses = makeDynString(\"\", \"_fwErrorAck.\");
+
+
+fwAlertConfig_set( dpe, DPCONFIG_ALERT_BINARYSIGNAL, aTexts, limits, aClasses, 
+                  summary, alertPanel, alertPanelParameters, alertHelp, exceptionInfo);
+fwAlertConfig_activate( dpe, exceptionInfo, TRUE, TRUE); 
+
+DebugTN(\"exceptionInfo: \", exceptionInfo);
+
+
+//================= over temperature==================
+string dpe = dp+\".Status.overTemperature\";
+string dpAlias = dpGetAlias(dp+\".\");
+  
+dyn_string aClasses, aTexts, exceptionInfo, summary /*ignored if not summary alert*/, alertPanelParameters;
+dyn_float limits; //used only for analog alerts, otherwise ignored
+string alertPanel, alertHelp; 
+
+dyn_string exceptionInfo;
+
+aTexts = makeDynString(\"OK\", \"ERROR: HV board \"+dpAlias+\" overTemperature.\");
+aClasses = makeDynString(\"\", \"_fwErrorAck.\");
+
+
+fwAlertConfig_set( dpe, DPCONFIG_ALERT_BINARYSIGNAL, aTexts, limits, aClasses, 
+                  summary, alertPanel, alertPanelParameters, alertHelp, exceptionInfo);
+fwAlertConfig_activate( dpe, exceptionInfo, TRUE, TRUE); 
+
+DebugTN(\"exceptionInfo: \", exceptionInfo);
+}" 0
+ E E E
+13 1
+"PUSH_BUTTON2"
+""
+1 80 49 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+2
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+LANG:10001 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  78 28 212 82
+
+T 
+2
+LANG:1 11 Set Aliases
+LANG:10001 11 Set Aliases
+"main(mapping event)
+{
+    //set the aliases
+  //dyn_string MChvchannels = dpNames(\"*:CAEN/904_HV_mainframe/board??/channel???\",\"FwCaenChannelA1515\");
+  dyn_string MCboard = dpNames(\"*:CAEN/904_HV_mainframe/board??\",\"FwCaenBoardSY1527A1515\");
+
+  dyn_string positions = makeDynString(\"1/1\",\"1/2\",\"1/3\",
+                                       \"2/1\",\"2/2\",\"2/3\",
+                                       \"3/1\",\"3/2\",\"3/3\",
+                                       \"4/1\",\"4/2\",\"4/3\",
+                                       \"5/1\",\"5/2\",\"5/3\"
+                                       );  
+  
+  //DebugTN(MChvchannels);
+  DebugTN(MCboard);  
+/*  
+  dpSetAlias(MChvchannels[1]+\".\",\"GEM_HV/GEMINI01/GEMINI01L1/G3bot\");
+  dpSetAlias(MChvchannels[2]+\".\",\"GEM_HV/GEMINI01/GEMINI01L1/G3top\");
+  dpSetAlias(MChvchannels[3]+\".\",\"GEM_HV/GEMINI01/GEMINI01L1/G2bot\");
+  dpSetAlias(MChvchannels[4]+\".\",\"GEM_HV/GEMINI01/GEMINI01L1/G2top\");  
+  dpSetAlias(MChvchannels[5]+\".\",\"GEM_HV/GEMINI01/GEMINI01L1/G1bot\");
+  dpSetAlias(MChvchannels[6]+\".\",\"GEM_HV/GEMINI01/GEMINI01L1/G1top\");
+  dpSetAlias(MChvchannels[7]+\".\",\"GEM_HV/GEMINI01/GEMINI01L1/Drift\");
+  dpSetAlias(MChvchannels[8]+\".\",\"GEM_HV/GEMINI01/GEMINI01L1/G3bot\");
+  dpSetAlias(MChvchannels[9]+\".\",\"GEM_HV/GEMINI01/GEMINI01L1/G3top\");
+  dpSetAlias(MChvchannels[10]+\".\",\"GEM_HV/GEMINI01/GEMINI01L1/G2bot\");
+  dpSetAlias(MChvchannels[11]+\".\",\"GEM_HV/GEMINI01/GEMINI01L1/G2top\");
+  dpSetAlias(MChvchannels[12]+\".\",\"GEM_HV/GEMINI01/GEMINI01L1/G1bot\");
+  dpSetAlias(MChvchannels[13]+\".\",\"GEM_HV/GEMINI01/GEMINI01L1/G1top\");
+  dpSetAlias(MChvchannels[14]+\".\",\"GEM_HV/GEMINI01/GEMINI01L1/Drift\");
+  
+  dpSetAlias(MCboard[1]+\".\",\"MULTICHANNEL_HV_board12\");
+  */
+  
+  int boards = dynlen(MCboard);
+  
+  for(int i=1; i< boards+1; i++){
+    dyn_string MChvchannels =  dpNames(MCboard[i]+\"/channel???\",\"FwCaenChannelA1515\"); 
+  
+    DebugTN(MCboard[i]);  
+    DebugTN(MChvchannels);
+    
+  dpSetAlias(MChvchannels[1]+\".\",\"904_HV/Chamber/\"+positions[i]+\"/Top/G3Bot\");
+  dpSetAlias(MChvchannels[2]+\".\",\"904_HV/Chamber/\"+positions[i]+\"/Top/G3Top\");
+  dpSetAlias(MChvchannels[3]+\".\",\"904_HV/Chamber/\"+positions[i]+\"/Top/G2Bot\");
+  dpSetAlias(MChvchannels[4]+\".\",\"904_HV/Chamber/\"+positions[i]+\"/Top/G2Top\");  
+  dpSetAlias(MChvchannels[5]+\".\",\"904_HV/Chamber/\"+positions[i]+\"/Top/G1Bot\");
+  dpSetAlias(MChvchannels[6]+\".\",\"904_HV/Chamber/\"+positions[i]+\"/Top/G1Top\");
+  dpSetAlias(MChvchannels[7]+\".\",\"904_HV/Chamber/\"+positions[i]+\"/Top/Drift\");
+  dpSetAlias(MChvchannels[8]+\".\",\"904_HV/Chamber/\"+positions[i]+\"/Bottom/G3Bot\");
+  dpSetAlias(MChvchannels[9]+\".\",\"904_HV/Chamber/\"+positions[i]+\"/Bottom/G3Top\");
+  dpSetAlias(MChvchannels[10]+\".\",\"904_HV/Chamber/\"+positions[i]+\"/Bottom/G2Bot\");
+  dpSetAlias(MChvchannels[11]+\".\",\"904_HV/Chamber/\"+positions[i]+\"/Bottom/G2Top\");
+  dpSetAlias(MChvchannels[12]+\".\",\"904_HV/Chamber/\"+positions[i]+\"/Bottom/G1Bot\");
+  dpSetAlias(MChvchannels[13]+\".\",\"904_HV/Chamber/\"+positions[i]+\"/Bottom/G1Top\");
+  dpSetAlias(MChvchannels[14]+\".\",\"904_HV/Chamber/\"+positions[i]+\"/Bottom/Drift\");
+  
+  dpSetAlias(MCboard[i]+\".\",\"904_HV/Superchamber/\"+positions[i]);   
+    
+    
+    
+    
+    
+  }
+  
+}" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:1 0 
+0
+LAYER, 2 
+1
+LANG:1 0 
+0
+LAYER, 3 
+1
+LANG:1 0 
+0
+LAYER, 4 
+1
+LANG:1 0 
+0
+LAYER, 5 
+1
+LANG:1 0 
+0
+LAYER, 6 
+1
+LANG:1 0 
+0
+LAYER, 7 
+1
+LANG:1 0 
+0
+0
