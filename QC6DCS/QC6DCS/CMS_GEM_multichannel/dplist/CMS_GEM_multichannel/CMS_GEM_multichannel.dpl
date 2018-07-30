@@ -1,0 +1,14 @@
+# ascii dump of database
+
+# DpType (DPT_GEMCaenConfigurator.dpl)
+TypeName
+GEMCaenConfigurator.GEMCaenConfigurator	1#1
+	inValue	21#2
+	outValue	21#3
+
+# DpType (dplistDpTypeMcScOverview.dpl)
+TypeName
+McScOverview.McScOverview	1#1
+	actual	1#2
+		status	21#4
+		VmonSum	22#21

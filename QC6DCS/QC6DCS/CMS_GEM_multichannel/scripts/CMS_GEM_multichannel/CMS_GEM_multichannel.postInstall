@@ -1,0 +1,22 @@
+#uses "CMSfwInstallUtils/CMSfwInstallUtils.ctl"
+#uses "fwInstallationUtils.ctl"
+#uses "CMS_GEM_multichannel/CMS_GEM_MC_fwGeneral.ctl"
+#uses "CMSfwFsmXml/CMSfwFsmXml.ctl"
+#uses "fwFsm.ctl"
+#uses "fwFsmTreeDisplay.ctl"
+
+
+main(){
+  
+ dyn_string exc;
+
+ fwInstallationUtils_loadConfigurations("CMS_GEM_multichannel",exc);
+ fwInstallationUtils_appendManagers("CMS_GEM_multichannel", exc);
+
+ 
+ DebugN("CMS_GEM_multichannel has been installed", exc);
+
+ fwInstallationUtils_endPostInstall("CMS_GEM_multichannel");
+  
+}
+

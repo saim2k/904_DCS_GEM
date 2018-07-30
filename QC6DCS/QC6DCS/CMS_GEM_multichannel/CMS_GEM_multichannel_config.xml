@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component_configuration>
+  <stop_drivers>
+    <manager>
+      <driver>OPC DA Client</driver>
+    </manager>
+</stop_drivers>
+  <append_managers>
+    <manager>
+      <type>OPC DA Client</type>
+      <num>6</num>
+      <options></options>
+      <mode>always</mode>
+      <restart>2</restart>
+      <counter>2</counter>
+      <sec_kill>30</sec_kill>
+      <isDriver>false</isDriver>
+      <restartManager>false</restartManager>
+    </manager>
+</append_managers>
+  <target>
+    <system_name>gem_qc6:</system_name>
+    <configuration>
+      <tag>MC_QC6_datapoints_V001</tag>
+      <hardware>true</hardware>
+      <logical>false</logical>
+      <pattern>*</pattern>
+      <force_reinstall>false</force_reinstall>
+    </configuration>
+    <configuration>
+      <tag>MC_trending_V000</tag>
+      <hardware>true</hardware>
+      <logical>true</logical>
+      <pattern>*</pattern>
+      <force_reinstall>false</force_reinstall>
+    </configuration>
+  </target>
+</component_configuration>
