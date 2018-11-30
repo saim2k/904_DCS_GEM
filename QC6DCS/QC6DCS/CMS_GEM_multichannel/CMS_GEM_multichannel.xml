@@ -1,13 +1,12 @@
 <component>
 <name>CMS_GEM_multichannel</name>
-<version>1.0.0</version>
-<date>2018/7/30</date>
+<version>2.0.0</version>
+<date>2018/11/30</date>
 <required>CMSfwAlertSystem=1.7.1</required>
 <required>CMSfwClass=1.4.1</required>
 <required>CMSfwInstallUtils=2.2.5</required>
 <required>CMSfwRedundancy=1.1.9</required>
 <required>fwConfigurationDB=8.2.1</required>
-<required>fwDIP=8.1.0</required>
 <required>fwInstallationUtils=2.1</required>
 <required>fwRDBArchiving=1.1.5</required>
 <required>fwXML=8.0.0</required>

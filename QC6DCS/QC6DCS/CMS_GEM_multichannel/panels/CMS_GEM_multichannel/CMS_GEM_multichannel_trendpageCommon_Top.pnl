@@ -2,7 +2,9 @@ V 14
 2
 LANG:1 0 
 LANG:10001 0 
-PANEL,-1 -1 1294 611 N "_3DFace" 0
+PANEL,-1 -1 1294 611 N "_3DFace" 2
+"$Board"
+"$BoardName"
 E E E E E 1 -1 -1 0  30 20
 ""0  1
 E E 3
@@ -33,7 +35,7 @@ LANG:10001 0
 "antiAliased" "0"
 "main()
 {
-  this.text(\"LAYER1 - Trendpage (COMMON)\");
+  this.text($BoardName + \" LAYER1 - Trendpage (COMMON)\");
 }" 0
  E 0 5 1 2 1 E U  0 E 10.5 23.87499965541065 320 42
 0 2 2 "0s" 0 0 0 192 0 0  10.5 23.87499965541065 1
@@ -228,7 +230,7 @@ LANG:10001 5 G3Bot
 13 568
 "BUTTON_CLOSE"
 ""
-1 372.5454518798709 24.62500008381903 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 447.0454518798708 28.81250004190952 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 15 0 0 0 0 0
 E E E
@@ -242,7 +244,7 @@ LANG:10001 0
 2
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
-0  371 16 455 50
+0  445.4999999999999 20.18749995809048 529.5 54.18749995809048
 
 T 
 2
@@ -308,7 +310,7 @@ LANG:1 0
 "$sForeColor"""
 "$sRefName""trendCommon_Top_Drift."
 "$sTimeRange"""
-"$templateParameters""channel=CAEN/QC6mainframe/board01/channel006,"
+"$templateParameters""board=$Board,channel=/channel006,"
 3 1 "trendCommon_Top_G1Top" -1
 "layoutAlignment" "AlignCenter"
 "" ""
@@ -335,7 +337,7 @@ LANG:1 0
 "$sForeColor"""
 "$sRefName""trendCommon_Top_G1Top."
 "$sTimeRange"""
-"$templateParameters""channel=CAEN/QC6mainframe/board01/channel005,"
+"$templateParameters""board=$Board,channel=/channel005,"
 3 2 "trendCommon_Top_G1Bot" -1
 "layoutAlignment" "AlignCenter"
 "" ""
@@ -362,7 +364,7 @@ LANG:1 0
 "$sForeColor"""
 "$sRefName""trendCommon_Top_G1Bot."
 "$sTimeRange"""
-"$templateParameters""channel=CAEN/QC6mainframe/board01/channel004,"
+"$templateParameters""board=$Board,channel=/channel004,"
 3 3 "trendCommon_Top_G2Top" -1
 "layoutAlignment" "AlignCenter"
 "" ""
@@ -389,7 +391,7 @@ LANG:1 0
 "$sForeColor"""
 "$sRefName""trendCommon_Top_G2Top."
 "$sTimeRange"""
-"$templateParameters""channel=CAEN/QC6mainframe/board01/channel003,"
+"$templateParameters""board=$Board,channel=/channel003,"
 3 4 "trendCommon_Top_G2Bot" -1
 "layoutAlignment" "AlignCenter"
 "" ""
@@ -416,7 +418,7 @@ LANG:1 0
 "$sForeColor"""
 "$sRefName""trendCommon_Top_G2Bot."
 "$sTimeRange"""
-"$templateParameters""channel=CAEN/QC6mainframe/board01/channel002,"
+"$templateParameters""board=$Board,channel=/channel002,"
 3 5 "trendCommon_Top_G3Top" -1
 "layoutAlignment" "AlignCenter"
 "" ""
@@ -443,7 +445,7 @@ LANG:1 0
 "$sForeColor"""
 "$sRefName""trendCommon_Top_G3Top."
 "$sTimeRange"""
-"$templateParameters""channel=CAEN/QC6mainframe/board01/channel001,"
+"$templateParameters""board=$Board,channel=/channel001,"
 3 6 "trendCommon_Top_G3Bot" -1
 "layoutAlignment" "AlignCenter"
 "" ""
@@ -470,5 +472,5 @@ LANG:1 0
 "$sForeColor"""
 "$sRefName""trendCommon_Top_G3Bot."
 "$sTimeRange"""
-"$templateParameters""channel=CAEN/QC6mainframe/board01/channel000,"
+"$templateParameters""board=$Board,channel=/channel000,"
 0

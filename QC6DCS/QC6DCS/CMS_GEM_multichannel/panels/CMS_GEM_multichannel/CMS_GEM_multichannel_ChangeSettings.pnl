@@ -2,7 +2,8 @@ V 14
 2
 LANG:1 0 
 LANG:10001 0 
-PANEL,-1 -1 1150 777 N "_3DFace" 0
+PANEL,-1 -1 1150 777 N "_3DFace" 1
+"$Board"
 E E E E E 1 -1 -1 0  20 30
 ""0  1
 E E 3
@@ -38,14 +39,16 @@ LANG:1 17 Settings - Common
 LANG:10001 17 Settings - Common
 1 "CMS_GEM_multichannel/Settings1.pnl" 1
 LANG:1 0 
-0
+1
+"$Board""$Board"
 
 "Settings#2" 2
 LANG:1 15 Settings - More
 LANG:10001 15 Settings - More
 1 "CMS_GEM_multichannel/Settings2.pnl" 1
 LANG:1 0 
-0
+1
+"$Board""$Board"
 
 
 0

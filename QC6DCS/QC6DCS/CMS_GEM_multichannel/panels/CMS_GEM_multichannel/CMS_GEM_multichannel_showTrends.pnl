@@ -2,7 +2,9 @@ V 14
 2
 LANG:1 0 
 LANG:10001 0 
-PANEL,-1 -1 666 217 N "_3DFace" 0
+PANEL,-1 -1 666 217 N "_3DFace" 2
+"$Board"
+"$BoardName"
 E E E E E 1 -1 -1 0  61 33
 ""0  1
 E E 3
@@ -40,8 +42,28 @@ LANG:1 14 Show Trendpage
 LANG:10001 20 Top chamber - Common
 "main()
 {
-   ChildPanelOn(\"CMS_GEM_multichannel/CMS_GEM_multichannel_trendpageCommon_Top.pnl\", \"Trendpage Top Chamber - common\", \"\", 0, 0); 
-}" 0
+     EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"CMS_GEM_multichannel/CMS_GEM_multichannel_trendpageCommon_Top.pnl\",
+      \"\",
+      makeDynString(\"$Board:\" + $Board, \"$BoardName:\" + $BoardName));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {CMS_GEM_multichannel/CMS_GEM_multichannel_trendpageCommon_Top.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:$Board}
+// PanelPara2 {$BoardName:$BoardName}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
  E E "main()
 {
   this.text(\"Layer1 Chamber - Common\");
@@ -50,7 +72,7 @@ LANG:10001 20 Top chamber - Common
 13 2
 "PUSH_BUTTON3"
 ""
-1 61 41 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 62 41 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 1 0 0 0 0 0
 E E E
@@ -64,7 +86,7 @@ LANG:10001 0
 2
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
-0  60 32 224 66
+0  61 32 225 66
 
 T 
 2
@@ -72,8 +94,28 @@ LANG:1 14 Show Trendpage
 LANG:10001 15 Board Trendpage
 "main()
 {
-   ChildPanelOn(\"CMS_GEM_multichannel/CMS_GEM_multichannel_trendpageBoard.pnl\", \"Board trendpage\", \"\", 0, 0); 
-}" 0
+    EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"CMS_GEM_multichannel/CMS_GEM_multichannel_trendpageBoard.pnl\",
+      \"\",
+      makeDynString(\"$Board:\" + $Board, \"$BoardName:\" + $BoardName));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {CMS_GEM_multichannel/CMS_GEM_multichannel_trendpageBoard.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:$Board}
+// PanelPara2 {$BoardName:$BoardName}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
  E E "main()
 {
   this.text(\"Board Trendpage\");
@@ -104,8 +146,28 @@ LANG:1 14 Show Trendpage
 LANG:10001 23 Bottom Chamber - Common
 "main()
 {
-   ChildPanelOn(\"CMS_GEM_multichannel/CMS_GEM_multichannel_trendpageCommon_Bot.pnl\", \"Trendpage Bottom Chamber - common\", \"\", 0, 0); 
-}" 0
+    EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"CMS_GEM_multichannel/CMS_GEM_multichannel_trendpageMore_Top.pnl\",
+      \"\",
+      makeDynString(\"$Board:\" + $Board, \"$BoardName:\" + $BoardName));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {CMS_GEM_multichannel/CMS_GEM_multichannel_trendpageMore_Top.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:$Board}
+// PanelPara2 {$BoardName:$BoardName}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
  E E "main()
 {
   this.text(\"Layer2 Chamber - Common\");
@@ -136,8 +198,28 @@ LANG:1 14 Show Trendpage
 LANG:10001 18 Top Chamber - More
 "main()
 {
-   ChildPanelOn(\"CMS_GEM_multichannel/CMS_GEM_multichannel_trendpageMore_Top.pnl\", \"Trendpage Top Chamber - more\", \"\", 0, 0); 
-}" 0
+    EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"CMS_GEM_multichannel/CMS_GEM_multichannel_trendpageCommon_Bot.pnl\",
+      \"\",
+      makeDynString(\"$Board:\" + $Board, \"$BoardName:\" + $BoardName));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {CMS_GEM_multichannel/CMS_GEM_multichannel_trendpageCommon_Bot.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:$Board}
+// PanelPara2 {$BoardName:$BoardName}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
  E E "main()
 {
   this.text(\"Layer1 Chamber - More\");
@@ -168,8 +250,28 @@ LANG:1 14 Show Trendpage
 LANG:10001 21 Bottom Chamber - More
 "main()
 {
-   ChildPanelOn(\"CMS_GEM_multichannel/CMS_GEM_multichannel_trendpageMore_Bot.pnl\", \"Trendpage Bottom Chamber - more\", \"\", 0, 0); 
-}" 0
+     EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"CMS_GEM_multichannel/CMS_GEM_multichannel_trendpageMore_Bot.pnl\",
+      \"\",
+      makeDynString(\"$Board:\" + $Board, \"$BoardName:\" + $BoardName));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {CMS_GEM_multichannel/CMS_GEM_multichannel_trendpageMore_Bot.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:$Board}
+// PanelPara2 {$BoardName:$BoardName}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
  E E "main()
 {
   this.text(\"Layer2 Chamber - More\");
@@ -210,6 +312,32 @@ PanelOff(\"\");
   this.text(\"Close\");
 }" 0
 
+2 7
+"PRIMITIVE_TEXT1"
+""
+1 288 44 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+"main(mapping event)
+{
+  this.text = $BoardName;
+}" 0
+ E 0 1 3 2 1 E U  0 E 288 44 488 84
+0 2 2 "0s" 0 0 0 64 0 0  288 44 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,19,5,50,0,0,0,0,0
+0 1
+LANG:1 7 BoardXX
 0
 LAYER, 1 
 1

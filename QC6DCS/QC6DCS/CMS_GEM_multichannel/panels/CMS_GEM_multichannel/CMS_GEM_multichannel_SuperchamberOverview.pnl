@@ -2,7 +2,7 @@ V 14
 2
 LANG:1 0 
 LANG:10001 0 
-PANEL,-1 -1 829 435 N "_3DFace" 0
+PANEL,-1 -1 1226 662 N "_3DFace" 0
 "main()
 {
   
@@ -413,7 +413,7 @@ LANG:1 0
 13 24
 "BUTTON_ChangeSettings"
 ""
-1 30 310 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 810 150 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 24 0 0 0 0 0
 E E E
@@ -427,7 +427,7 @@ LANG:10001 0
 2
 LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
-0  28 299 130.9999999999999 344
+0  808 139 911 184
 
 T 
 2
@@ -436,8 +436,28 @@ LANG:10001 15 Change
 Settings
 "main()
 {
-  ChildPanelOn(\"CMS_GEM_multichannel/CMS_GEM_multichannel_ChangeSettings.pnl\",\"Settings\", \"\", 0, 0);
-}" 0
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"CMS_GEM_multichannel/CMS_GEM_multichannel_ChangeSettings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/QC6mainframe/board01\", \"$BoardName:Board01\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {CMS_GEM_multichannel/CMS_GEM_multichannel_ChangeSettings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/QC6mainframe/board01}
+// PanelPara2 {$BoardName:Board01}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
  E E "main()
 {
   this.text(\"Change\\nSettings\");
@@ -461,7 +481,7 @@ LANG:10001 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 0 1 0 1 E 0.9111111111111113 0 0.5376344086021505 0.6666666666666465 56.02779239973387 0 E 30 214 121 401
+E E 0 0 1 0 1 E 0.9111111111111113 0 0.5376344086021505 676.6666666666666 -4.972207600266131 0 E 30 214 121 401
 2
 LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
@@ -471,7 +491,7 @@ LANG:10001 5 Board
 2 67
 "PRIMITIVE_TEXT177"
 ""
-1 30.125 10 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 33.0625 21.99999999999998 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 67 0 0 0 0 0
 E E E
@@ -484,18 +504,18 @@ LANG:10001 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 5 1 2 1 E U  0 E 30.125 10 192 28
-0 2 2 "0s" 0 0 0 192 0 0  30.125 10 1
+E E 0 5 1 2 1 E U  0 E 33.0625 21.99999999999998 335 50
+0 2 2 "0s" 0 0 0 192 0 0  33.0625 21.99999999999998 1
 2
-LANG:1 35 MS Shell Dlg 2,-1,16,5,75,0,0,0,0,0
+LANG:1 35 MS Shell Dlg 2,-1,24,5,75,1,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,16,5,75,0,0,0,0,0
 0 2
-LANG:1 15 SYSTEM OVERVIEW
+LANG:1 19 QC6 SYSTEM OVERVIEW
 LANG:10001 21 SUPERCHAMBER OVERVIEW
 13 68
 "BUTTON_Monitor"
 ""
-1 160 310 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 940 150 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 68 0 0 0 0 0
 E E E
@@ -509,7 +529,7 @@ LANG:10001 0
 2
 LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
-0  158 299 261 344
+0  938 139 1041 184
 
 T 
 2
@@ -517,8 +537,28 @@ LANG:1 10 Monitoring
 LANG:10001 7 Monitor
 "main()
 {
-  ChildPanelOn(\"CMS_GEM_multichannel/CMS_GEM_multichannel_monitor.pnl\",\"Monitor\", \"\", 0, 0);
-}" 0
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"CMS_GEM_multichannel/Monitor1.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/QC6mainframe/board01\", \"$BoardName:Board01\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {CMS_GEM_multichannel/Monitor1.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/QC6mainframe/board01}
+// PanelPara2 {$BoardName:Board01}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
  E E "main()
 {
   this.text(\"Monitor\");
@@ -529,7 +569,7 @@ LANG:10001 7 Monitor
 13 69
 "BUTTON_ShowTrends"
 ""
-1 290 310 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 1070 150 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 69 0 0 0 0 0
 E E E
@@ -543,7 +583,7 @@ LANG:10001 0
 2
 LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
-0  288 299 391 344
+0  1068 139 1171 184
 
 T 
 2
@@ -552,8 +592,28 @@ LANG:10001 11 Show
 Trends
 "main()
 {
-  ChildPanelOn(\"CMS_GEM_multichannel/CMS_GEM_multichannel_showTrends.pnl\",\"Show trends\", \"\", 0, 0);
-}" 0
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"CMS_GEM_multichannel/CMS_GEM_multichannel_showTrends.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/QC6mainframe/board01\", \"$BoardName:Board01\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {CMS_GEM_multichannel/CMS_GEM_multichannel_showTrends.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/QC6mainframe/board01}
+// PanelPara2 {$BoardName:Board01}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
  E E "main()
 {
   this.text(\"Show\\nTrends\");
@@ -561,44 +621,10 @@ Trends
   this.foreCol(\"black\");
 }" 0
 
-2 71
-"PRIMITIVE_TEXT178"
-""
-1 37.00000109895956 204.2473262032084 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
- E E
-71 0 0 0 0 0
-E E E
-0
-2
-LANG:1 0 
-LANG:10001 0 
-
-3
-"layoutAlignment" "AlignCenter"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-"main()
-{
-  this.text(\"OpMode\");
-}" 0
- E 0 1 1 2 1 E U  0 E 37.00000109895956 204.2473262032084 110 241
-0 2 2 "0s" 0 0 0 192 0 0  37.00000109895956 204.2473262032084 2
-2
-LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
-LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
-0 2
-LANG:1 8 OverTemp
-LANG:10001 6 OpMode
-2
-LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
-LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
-0 2
-LANG:1 0 
-LANG:10001 0 
 14 72
 "TEXT_FIELD407"
 ""
-1 749.0000010989595 335.2473262032084 E E E 1 E 1 E N "_WindowText" E N "lightgrey" E E
+1 1425.00000109896 274.2473262032084 E E E 1 E 1 E N "_WindowText" E N "lightgrey" E E
  E E
 72 0 0 0 0 0
 E E E
@@ -612,7 +638,7 @@ LANG:10001 0
 2
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
-0  34.99999890104056 218.9973211647537 95.99999890104044 245.9973211647537
+0  710.9999989010406 157.9973211647537 771.9999989010405 184.9973211647537
 2 "0s" 0 0 0 1 0 -1  E "// SimpleCtrlScriptStart {invalid}
 main()
 {
@@ -676,7 +702,7 @@ LANG:10001 0
 {
   this.text(\"Layer1\");
 }" 0
- E 0 0 1 0 1 E 3.244444444444445 0 0.5376344086021505 -67.33333333333334 -65.05376344086021 0 E 30 214 121 401
+ E 0 0 1 0 1 E 3.244444444444445 0 0.5376344086021505 -37.33333333333334 -5.053763440860209 0 E 30 214 121 401
 2
 LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
@@ -850,11 +876,11 @@ GetOvC(dyn_string dps, dyn_int results)
 
 
 " 0
- E 0 2 1 2 1 E 1 0 1 -48.00000000000003 -434 1 E 110 550 10 10
+ E 0 2 1 2 1 E 1 0 1 -18.00000000000003 -374 1 E 110 550 10 10
 2 75
 "PRIMITIVE_TEXT55"
 ""
-1 47.12500000000004 87.00000000000001 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 77.12500000000011 147 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 75 0 0 0 0 0
 E E E
@@ -867,8 +893,8 @@ LANG:10001 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  0 E 47.12500000000004 87.00000000000001 77 104
-0 2 2 "0s" 0 0 0 192 0 0  47.12500000000004 87.00000000000001 1
+E E 0 1 1 2 1 E U  0 E 77.12500000000011 147 107 164
+0 2 2 "0s" 0 0 0 192 0 0  77.12500000000011 147 1
 2
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
@@ -1042,11 +1068,11 @@ GetOvV(dyn_string dps, dyn_int results)
 
 
 " 0
- E 0 2 1 2 1 E 1 0 1 0.5000000000000142 -434 1 E 110 550 10 10
+ E 0 2 1 2 1 E 1 0 1 30.5 -374 1 E 110 550 10 10
 2 77
 "PRIMITIVE_TEXT56"
 ""
-1 95.62500000000004 87.00000000000001 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 125.6250000000001 147 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 77 0 0 0 0 0
 E E E
@@ -1059,8 +1085,8 @@ LANG:10001 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  0 E 95.62500000000004 87.00000000000001 125 104
-0 2 2 "0s" 0 0 0 192 0 0  95.62500000000004 87.00000000000001 1
+E E 0 1 1 2 1 E U  0 E 125.6250000000001 147 155 164
+0 2 2 "0s" 0 0 0 192 0 0  125.6250000000001 147 1
 2
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
@@ -1233,11 +1259,11 @@ GetUnV(dyn_string dps, dyn_int results)
 // 
 
 " 0
- E 0 2 1 2 1 E 1 0 1 47.00000000000004 -434 1 E 110 550 10 10
+ E 0 2 1 2 1 E 1 0 1 77.00000000000011 -374 1 E 110 550 10 10
 2 79
 "PRIMITIVE_TEXT57"
 ""
-1 142.125 87.00000000000001 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 172.125 147 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 79 0 0 0 0 0
 E E E
@@ -1250,8 +1276,8 @@ LANG:10001 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  0 E 142.125 87.00000000000001 171 104
-0 2 2 "0s" 0 0 0 192 0 0  142.125 87.00000000000001 1
+E E 0 1 1 2 1 E U  0 E 172.125 147 201 164
+0 2 2 "0s" 0 0 0 192 0 0  172.125 147 1
 2
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
@@ -1425,11 +1451,11 @@ GetTrip(dyn_string dps, dyn_int results)
 
 
 " 0
- E 0 2 1 2 1 E 1 0 1 91.00000000000004 -434 1 E 110 550 10 10
+ E 0 2 1 2 1 E 1 0 1 121.0000000000001 -374 1 E 110 550 10 10
 2 81
 "PRIMITIVE_TEXT58"
 ""
-1 188 87.00000000000001 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 218 147 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 81 0 0 0 0 0
 E E E
@@ -1442,8 +1468,8 @@ LANG:10001 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  0 E 188 87.00000000000001 215 104
-0 2 2 "0s" 0 0 0 192 0 0  188 87.00000000000001 1
+E E 0 1 1 2 1 E U  0 E 218 147 245 164
+0 2 2 "0s" 0 0 0 192 0 0  218 147 1
 2
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
@@ -1453,7 +1479,7 @@ LANG:10001 4 Trip
 2 82
 "PRIMITIVE_TEXT171"
 ""
-1 230 87 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 260 147 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 82 0 0 0 0 0
 E E E
@@ -1470,8 +1496,8 @@ LANG:10001 0
 {
   this.text(\"Status\");
 }" 0
- E 0 1 1 2 1 E U  0 E 230 87 318 104
-0 2 2 "0s" 0 0 0 192 0 0  230 87 1
+ E 0 1 1 2 1 E U  0 E 260 147 348 164
+0 2 2 "0s" 0 0 0 192 0 0  260 147 1
 2
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
@@ -1498,7 +1524,7 @@ LANG:10001 0
 {
     this.text(\"Layer2\");
 }" 0
- E 0 0 1 0 1 E 3.244444444444445 0 0.5376344086021505 252.6666666666666 -65.05376344086021 0 E 30 214 121 401
+ E 0 0 1 0 1 E 3.244444444444445 0 0.5376344086021505 282.6666666666666 -5.053763440860209 0 E 30 214 121 401
 2
 LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
@@ -1678,11 +1704,11 @@ GetOvC(dyn_string dps, dyn_int results)
 
 
 " 0
- E 0 2 1 2 1 E 1 0 1 272 -434 1 E 110 550 10 10
+ E 0 2 1 2 1 E 1 0 1 302 -374 1 E 110 550 10 10
 2 86
 "PRIMITIVE_TEXT172"
 ""
-1 367.1250000000001 87 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 397.1250000000001 147 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 86 0 0 0 0 0
 E E E
@@ -1695,8 +1721,8 @@ LANG:10001 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  0 E 367.1250000000001 87 397 104
-0 2 2 "0s" 0 0 0 192 0 0  367.1250000000001 87 1
+E E 0 1 1 2 1 E U  0 E 397.1250000000001 147 427 164
+0 2 2 "0s" 0 0 0 192 0 0  397.1250000000001 147 1
 2
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
@@ -1870,11 +1896,11 @@ GetOvV(dyn_string dps, dyn_int results)
 
 
 " 0
- E 0 2 1 2 1 E 1 0 1 320.5 -434 1 E 110 550 10 10
+ E 0 2 1 2 1 E 1 0 1 350.5 -374 1 E 110 550 10 10
 2 88
 "PRIMITIVE_TEXT173"
 ""
-1 415.6250000000001 87 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 445.6250000000001 147 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 88 0 0 0 0 0
 E E E
@@ -1887,8 +1913,8 @@ LANG:10001 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  0 E 415.6250000000001 87 445 104
-0 2 2 "0s" 0 0 0 192 0 0  415.6250000000001 87 1
+E E 0 1 1 2 1 E U  0 E 445.6250000000001 147 475 164
+0 2 2 "0s" 0 0 0 192 0 0  445.6250000000001 147 1
 2
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
@@ -2061,11 +2087,11 @@ GetUnV(dyn_string dps, dyn_int results)
 
 
 " 0
- E 0 2 1 2 1 E 1 0 1 367.0000000000001 -434 1 E 110 550 10 10
+ E 0 2 1 2 1 E 1 0 1 397.0000000000001 -374 1 E 110 550 10 10
 2 90
 "PRIMITIVE_TEXT174"
 ""
-1 462.1250000000001 87 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 492.1250000000001 147 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 90 0 0 0 0 0
 E E E
@@ -2078,8 +2104,8 @@ LANG:10001 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  0 E 462.1250000000001 87 491 104
-0 2 2 "0s" 0 0 0 192 0 0  462.1250000000001 87 1
+E E 0 1 1 2 1 E U  0 E 492.1250000000001 147 521 164
+0 2 2 "0s" 0 0 0 192 0 0  492.1250000000001 147 1
 2
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
@@ -2253,11 +2279,11 @@ GetTrip(dyn_string dps, dyn_int results)
 
 
 " 0
- E 0 2 1 2 1 E 1 0 1 411.0000000000001 -434 1 E 110 550 10 10
+ E 0 2 1 2 1 E 1 0 1 441.0000000000001 -374 1 E 110 550 10 10
 2 92
 "PRIMITIVE_TEXT175"
 ""
-1 508 87 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 538 147 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 92 0 0 0 0 0
 E E E
@@ -2270,8 +2296,8 @@ LANG:10001 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 1 2 1 E U  0 E 508 87 535 104
-0 2 2 "0s" 0 0 0 192 0 0  508 87 1
+E E 0 1 1 2 1 E U  0 E 538 147 565 164
+0 2 2 "0s" 0 0 0 192 0 0  538 147 1
 2
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
@@ -2281,7 +2307,7 @@ LANG:10001 4 Trip
 2 93
 "PRIMITIVE_TEXT176"
 ""
-1 550 87 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 580 147 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 93 0 0 0 0 0
 E E E
@@ -2298,8 +2324,8 @@ LANG:10001 0
 {
   this.text(\"Status\");
 }" 0
- E 0 1 1 2 1 E U  0 E 550 87 638 104
-0 2 2 "0s" 0 0 0 192 0 0  550 87 1
+ E 0 1 1 2 1 E U  0 E 580 147 668 164
+0 2 2 "0s" 0 0 0 192 0 0  580 147 1
 2
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
@@ -2386,7 +2412,7 @@ GetStatus(dyn_string dps, dyn_int results)
 
 
 " 0
- E 0 2 1 2 1 E 1 0 1 140 -434 1 E 110 550 10 10
+ E 0 2 1 2 1 E 1 0 1 170 -374 1 E 110 550 10 10
 7 96
 "ELLIPSE2"
 ""
@@ -2468,36 +2494,11 @@ GetStatus(dyn_string dps, dyn_int results)
 
 
 " 0
- E 0 2 1 2 1 E 1 0 1 460.09375 -434 1 E 110 550 10 10
-2 98
-"Text_Chamber_Name"
-""
-1 660 80 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
- E E
-98 0 0 0 0 0
-E E E
-0
-2
-LANG:1 0 
-LANG:10001 0 
-
-4
-"layoutAlignment" "AlignCenter"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-"transformable" "0"
-E E 0 1 1 2 1 E 1 0 0.8 0 22.59999999999999 0 E 660 80 790 130
-0 2 2 "0s" 0 0 0 64 0 0  660 80 1
-2
-LANG:1 35 MS Shell Dlg 2,-1,27,5,50,1,0,0,0,0
-LANG:10001 35 MS Shell Dlg 2,-1,27,5,50,1,0,0,0,0
-0 2
-LANG:1 3 QC6
-LANG:10001 9 GE-1/1 01
+ E 0 2 1 2 1 E 1 0 1 490.09375 -374 1 E 110 550 10 10
 13 99
 "Button_AlarmScreen"
 ""
-1 30 370 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 40 600 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 99 0 0 0 0 0
 E E E
@@ -2511,7 +2512,7 @@ LANG:10001 0
 2
 LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
-0  28 354 131 399
+0  38 584 140.9999999999999 629
 
 T 
 2
@@ -2541,12 +2542,14 @@ EP_childPanelOn()
   this.text(\"Alarm Screen\");
 }" 0
 
-13 100
-"BUTTON_MaskUnmask"
+1 176 0 "" 2
+0
+13 112
+"Button_ClearAlarm"
 ""
-1 160 370 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 170 600 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
-100 0 0 0 0 0
+104 0 0 0 0 0
 E E E
 0
 2
@@ -2558,33 +2561,13 @@ LANG:10001 0
 2
 LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
-0  158 354 261 399
+0  168 584 271 629
 
 T 
 2
-LANG:1 11 Mask/Unmask
+LANG:1 15 Clear HV alarms
 LANG:10001 11 Mask/Unmask
-"main()
-{
-  EP_childPanelOn();
-}
-
-EP_childPanelOn()
-{
-  ChildPanelOnCentral(\"CMS_GEM_multichannel/MaskUnmaskAlerts.pnl\", \"Mask/Unmask\", makeDynString(\"\"));
-}" 0
- E E "main()
-{
-  this.text(\"Mask/Unmask\");
-}" 0
-
-1 109 0 "" 2
-0
-13 112
-"Button_ClearAlarm"
-""
-1 290 370 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
- E "// SimpleCtrlScriptStart {valid}
+"// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_toggleDP();
@@ -2604,26 +2587,7 @@ bool bo;
 // DPType {bool}
 // SimpleCtrlScriptEnd {EP_toggleDP}
 " 0
-
-104 0 0 0 0 0
-E E E
-0
-2
-LANG:1 0 
-LANG:10001 0 
-
-1
-"layoutAlignment" "AlignNone"
-2
-LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
-LANG:10001 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
-0  288 354 391 399
-
-T 
-2
-LANG:1 15 Clear HV alarms
-LANG:10001 11 Mask/Unmask
-E E E "main()
+ E E "main()
 {
   this.text(\"Clear HV alarms\");
 }" 0
@@ -2631,7 +2595,7 @@ E E E "main()
 13 113
 "PUSH_BUTTON2"
 ""
-1 693 370 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 1101.5625 600 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 105 0 0 0 0 0
 E E E
@@ -2645,7 +2609,7 @@ LANG:10001 0
 2
 LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
-0  691 354 794 399
+0  1099.5625 584 1202.5625 629
 
 T 
 2
@@ -2673,6 +2637,4188 @@ void EP_panelOff()
   this.text(\"Close\");
 }" 0
 
+13 118
+"PUSH_BUTTON3"
+""
+1 809.90625 305 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+107 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  807.90625 294 910.90625 339
+
+T 
+2
+LANG:1 11 Settings...
+LANG:10001 15 Change
+Settings
+"main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"CMS_GEM_multichannel/CMS_GEM_multichannel_ChangeSettings.pnl\",
+      \"\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/QC6mainframe/board02\", \"$BoardName:Board02\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {CMS_GEM_multichannel/CMS_GEM_multichannel_ChangeSettings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/QC6mainframe/board02}
+// PanelPara2 {$BoardName:Board02}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ E E "main()
+{
+  this.text(\"Change\\nSettings\");
+  this.backCol(\"_Button\");
+  this.foreCol(\"black\");
+}" 0
+
+30 119
+"FRAME5"
+""
+1 30 214 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+108 0 0 0 0 0
+E E E
+1
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 0 1 0 1 E 0.9111111111111113 0 0.5376344086021505 676.5729166666665 150.0277923997339 0 E 30 214 121 401
+2
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0 2
+LANG:1 5 Board
+LANG:10001 5 Board
+13 120
+"PUSH_BUTTON4"
+""
+1 939.90625 305 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+109 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  937.90625 294 1040.90625 339
+
+T 
+2
+LANG:1 10 Monitoring
+LANG:10001 7 Monitor
+"main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"CMS_GEM_multichannel/Monitor1.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/QC6mainframe/board02\", \"$BoardName:Board02\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {CMS_GEM_multichannel/Monitor1.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/QC6mainframe/board02}
+// PanelPara2 {$BoardName:Board02}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ E E "main()
+{
+  this.text(\"Monitor\");
+  this.backCol(\"_Button\");
+  this.foreCol(\"black\");
+}" 0
+
+13 121
+"PUSH_BUTTON5"
+""
+1 1069.90625 305 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+110 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  1067.90625 294 1170.90625 339
+
+T 
+2
+LANG:1 8 Trending
+LANG:10001 11 Show
+Trends
+"main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"CMS_GEM_multichannel/CMS_GEM_multichannel_showTrends.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/QC6mainframe/board02\", \"$BoardName:Board02\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {CMS_GEM_multichannel/CMS_GEM_multichannel_showTrends.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/QC6mainframe/board02}
+// PanelPara2 {$BoardName:Board02}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ E E "main()
+{
+  this.text(\"Show\\nTrends\");
+  this.backCol(\"_Button\");
+  this.foreCol(\"black\");
+}" 0
+
+14 123
+"TEXT_FIELD408"
+""
+1 1424.90625109896 429.2473262032084 E E E 1 E 1 E N "_WindowText" E N "lightgrey" E E
+ E E
+112 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0  710.9062489010406 312.9973211647537 771.9062489010405 339.9973211647537
+2 "0s" 0 0 0 1 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+EP_textFieldIn()
+{
+dyn_errClass err;
+
+  if( !dpExists( \"CAEN/QC6mainframe/board02.readBackSettings.opMode\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"CAEN/QC6mainframe/board02.readBackSettings.opMode\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+
+EP_textFieldInCB(string dp, int fNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, fNewValue, TRUE) );
+  if (this.text==\"TRUE\") this.text=\"GEM\";
+  if (this.text==\"FALSE\") this.text=\"FREE\";
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {CMS_GEM_multichannel_board.readBackSettings.opMode}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+// 
+// 
+" 0
+ E
+30 124
+"FRAME6"
+""
+1 30 214 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+113 0 0 0 0 0
+E E E
+1
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"main()
+{
+  this.text(\"Layer1\");
+}" 0
+ E 0 0 1 0 1 E 3.244444444444445 0 0.5376344086021505 -37.42708333333337 149.9462365591398 0 E 30 214 121 401
+2
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0 2
+LANG:1 3 Top
+LANG:10001 6 Layer1
+7 125
+"ELLIPSE3"
+""
+1 110 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+114 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+// main()
+// {
+//   dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board02/channel006.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel005.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel004.actual.status:_online.._value\" , 
+//                                  \"CAEN/QC6mainframe/board02/channel003.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel002.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel001.actual.status:_online.._value\" ,
+//                                  \"CAEN/QC6mainframe/board02/channel000.actual.status:_online.._value\");
+// 
+//   EP_setBackColor(dps);
+//   
+//   int i=1;
+//   for(i=1 ; i<=dynlen(dps) ; i++)
+//   {
+//     dpConnectUserData(\"EP_setBackColor\",dps, dps[i]);
+//     dyn_errClass err = getLastError();
+//     if (dynlen(err) > 0)
+//     setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//   }
+// }
+// 
+// 
+// bool checkAllDpsExist(dyn_string dps)
+//   {
+//     bool exist=1;
+//     int i=1;
+//     for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+//     return exist;
+//   }
+// 
+// 
+// EP_setBackColor(dyn_string dps)
+//   {
+//     dyn_errClass err;
+// 
+//       if( !checkAllDpsExist(dps) )
+//     {
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//       return;
+//     }
+// 
+// 
+//     dyn_int results = makeDynBool( 1,1,1,1,1,1,1 );
+//     dpGet( dps , results);
+//     bool ChannelStatus=0;
+//     bool ChamberStatus=0;
+//     int i=1;
+//     for (i=1;i<=dynlen(dps);i++) 
+//       {
+//       ChannelStatus=(results[i] & 0x008);      
+//       ChamberStatus=ChamberStatus || ChannelStatus;
+//       }
+//     EP_setBackColorCB(ChamberStatus);
+//     err = getLastError();
+//     if (dynlen(err) > 0)
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+// 
+//   }
+// 
+// 
+// EP_setBackColorCB(bool boNewValue)
+// {
+//   if (!boNewValue)
+//     setValue(\"\", \"backCol\", \"grey\");
+//   else
+//     setValue(\"\", \"backCol\", \"Red\");
+// }
+
+// SimpleCtrlScript {EP_setBackColor}
+// DP {CMS_GEM_multichannel_Top_{any}.actual.OvC}
+// DPConfig {:_online.._value}
+// DPType {bool}
+// AlertHdl {FALSE}
+// DPEInvalid {}
+// DPEConfigInvalid {}
+// Operator1 {notequal}
+// Operant1 {0}
+// Color1 {grey}
+// Operator2 {equal}
+// Operant2 {1}
+// Color2 {Red}
+// SimpleCtrlScriptEnd {EP_setBackColor}
+// 
+
+// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board02/channel006.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel005.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/QC6mainframe/board02/channel003.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel002.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/QC6mainframe/board02/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetOvC\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetOvC(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit;
+    
+    int i=1;
+    for (i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);      
+      }
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+    if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1){ 
+        setValue(\"\",\"backCol\",\"red\");
+      }
+    else {
+        setValue(\"\",\"backCol\",\"grey\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {CMS_GEM_multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+
+
+
+
+
+
+
+
+
+" 0
+ E 0 2 1 2 1 E 1 0 1 -18.09375 -219 1 E 110 550 10 10
+2 126
+"PRIMITIVE_TEXT181"
+""
+1 77.03125 302 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+115 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 77.03125 302 106.34375 319
+0 2 2 "0s" 0 0 0 192 0 0  77.03125 302 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 2
+LANG:1 3 OvC
+LANG:10001 3 OvC
+7 127
+"ELLIPSE4"
+""
+1 110 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+116 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+// main()
+// {
+//   dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board02/channel006.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel005.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel004.actual.status:_online.._value\" , 
+//                                  \"CAEN/QC6mainframe/board02/channel003.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel002.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel001.actual.status:_online.._value\" ,
+//                                  \"CAEN/QC6mainframe/board02/channel000.actual.status:_online.._value\");
+// 
+//   EP_setBackColor(dps);
+//     
+//   int i=1;
+//   for(i=1 ; i<=dynlen(dps) ; i++)
+//   {
+//     dpConnect(\"EP_setBackColor(dps)\", dps[i]);
+//     dyn_errClass err = getLastError();
+//     if (dynlen(err) > 0)
+//     setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//   }
+// }
+// 
+// 
+// bool checkAllDpsExist(dyn_string dps)
+//   {
+//     bool exist=1;
+//     int i=1;
+//     for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+//     return exist;
+//   }
+// 
+// 
+// EP_setBackColor(dyn_string dps)
+//   {
+//     dyn_errClass err;
+// 
+//       if( !checkAllDpsExist(dps) )
+//     {
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//       return;
+//     }
+// 
+// 
+//     dyn_int results = makeDynBool( 1,1,1,1,1,1,1 );
+//     dpGet( dps , results);
+//     bool ChannelStatus=0;
+//     bool ChamberStatus=0;
+//     int i=1;
+//     for (i=1;i<=dynlen(dps);i++) 
+//       {
+//       ChannelStatus=(results[i] & 0x010);      
+//       ChamberStatus=ChamberStatus || ChannelStatus;
+//       }
+//     EP_setBackColorCB(ChamberStatus);
+//     err = getLastError();
+//     if (dynlen(err) > 0)
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+// 
+//   }
+// 
+// 
+// EP_setBackColorCB(bool boNewValue)
+// {
+//   if (!boNewValue)
+//     setValue(\"\", \"backCol\", \"grey\");
+//   else
+//     setValue(\"\", \"backCol\", \"Red\");
+// }
+// 
+// SimpleCtrlScript {EP_setBackColor}
+// DP {CMS_GEM_multichannel_Top_{any}.actual.OvC}
+// DPConfig {:_online.._value}
+// DPType {bool}
+// AlertHdl {FALSE}
+// DPEInvalid {}
+// DPEConfigInvalid {}
+// Operator1 {notequal}
+// Operant1 {0}
+// Color1 {grey}
+// Operator2 {equal}
+// Operant2 {1}
+// Color2 {Red}
+// SimpleCtrlScriptEnd {EP_setBackColor}
+// 
+ 
+
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board02/channel006.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel005.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/QC6mainframe/board02/channel003.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel002.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/QC6mainframe/board02/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetOvV\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetOvV(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvV_bit;
+    
+    int i=1;
+    for (i=1;i<=dynlen(dps);i++) 
+      {
+      OvV_bit[i]=(results[i] & 0x010);      
+      }
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+    if(OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1){ 
+        setValue(\"\",\"backCol\",\"red\");
+      }
+    else {
+        setValue(\"\",\"backCol\",\"grey\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {CMS_GEM_multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+
+
+
+
+
+
+
+
+
+" 0
+ E 0 2 1 2 1 E 1 0 1 30.40625 -219 1 E 110 550 10 10
+2 128
+"PRIMITIVE_TEXT182"
+""
+1 125.53125 302 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+117 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 125.53125 302 155.34375 319
+0 2 2 "0s" 0 0 0 192 0 0  125.53125 302 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 2
+LANG:1 3 OvV
+LANG:10001 3 OvV
+7 129
+"ELLIPSE5"
+""
+1 110 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+118 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+// main()
+// {
+//   dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board02/channel006.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel005.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel004.actual.status:_online.._value\" , 
+//                                  \"CAEN/QC6mainframe/board02/channel003.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel002.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel001.actual.status:_online.._value\" ,
+//                                  \"CAEN/QC6mainframe/board02/channel000.actual.status:_online.._value\");
+// 
+//   EP_setBackColor(dps);
+//     
+//   int i=1;
+//   for(i=1 ; i<=dynlen(dps) ; i++)
+//   {
+//     dpConnect(\"EP_setBackColor(dps)\", dps[i]);
+//     dyn_errClass err = getLastError();
+//     if (dynlen(err) > 0)
+//     setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//   }
+// }
+// 
+// 
+// bool checkAllDpsExist(dyn_string dps)
+//   {
+//     bool exist=1;
+//     int i=1;
+//     for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+//     return exist;
+//   }
+// 
+// 
+// EP_setBackColor(dyn_string dps)
+//   {
+//     dyn_errClass err;
+// 
+//       if( !checkAllDpsExist(dps) )
+//     {
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//       return;
+//     }
+// 
+// 
+//     dyn_int results = makeDynBool( 1,1,1,1,1,1,1 );
+//     dpGet( dps , results);
+//     bool ChannelStatus=0;
+//     bool ChamberStatus=0;
+//     int i=1;
+//     for (i=1;i<=dynlen(dps);i++) 
+//       {
+//       ChannelStatus=(results[i] & 0x020);      
+//       ChamberStatus=ChamberStatus || ChannelStatus;
+//       }
+//     EP_setBackColorCB(ChamberStatus);
+//     err = getLastError();
+//     if (dynlen(err) > 0)
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+// 
+//   }
+// 
+// 
+// EP_setBackColorCB(bool boNewValue)
+// {
+//   if (!boNewValue)
+//     setValue(\"\", \"backCol\", \"grey\");
+//   else
+//     setValue(\"\", \"backCol\", \"Red\");
+// }
+// 
+// SimpleCtrlScript {EP_setBackColor}
+// DP {CMS_GEM_multichannel_Top_{any}.actual.OvC}
+// DPConfig {:_online.._value}
+// DPType {bool}
+// AlertHdl {FALSE}
+// DPEInvalid {}
+// DPEConfigInvalid {}
+// Operator1 {notequal}
+// Operant1 {0}
+// Color1 {grey}
+// Operator2 {equal}
+// Operant2 {1}
+// Color2 {Red}
+// SimpleCtrlScriptEnd {EP_setBackColor}
+// 
+// 
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board02/channel006.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel005.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/QC6mainframe/board02/channel003.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel002.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/QC6mainframe/board02/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetUnV\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetUnV(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool UnV_bit;
+    
+    int i=1;
+    for (i=1;i<=dynlen(dps);i++) 
+      {
+      UnV_bit[i]=(results[i] & 0x020);      
+      }
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+    if(UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1){ 
+        setValue(\"\",\"backCol\",\"red\");
+      }
+    else {
+        setValue(\"\",\"backCol\",\"grey\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {CMS_GEM_multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+
+
+
+
+
+
+
+// 
+
+" 0
+ E 0 2 1 2 1 E 1 0 1 76.90625 -219 1 E 110 550 10 10
+2 130
+"PRIMITIVE_TEXT183"
+""
+1 172.03125 302 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+119 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 172.03125 302 200.34375 319
+0 2 2 "0s" 0 0 0 192 0 0  172.03125 302 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 2
+LANG:1 3 UnV
+LANG:10001 3 UnV
+7 131
+"ELLIPSE6"
+""
+1 110 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+120 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+// main()
+// {
+//   dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board02/channel006.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel005.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel004.actual.status:_online.._value\" , 
+//                                  \"CAEN/QC6mainframe/board02/channel003.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel002.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel001.actual.status:_online.._value\" ,
+//                                  \"CAEN/QC6mainframe/board02/channel000.actual.status:_online.._value\");
+// 
+//   EP_setBackColor(dps);
+//     
+//   int i=1;
+//   for(i=1 ; i<=dynlen(dps) ; i++)
+//   {
+//     dpConnect(\"EP_setBackColor(dps)\", dps[i]);
+//     dyn_errClass err = getLastError();
+//     if (dynlen(err) > 0)
+//     setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//   }
+// }
+// 
+// 
+// bool checkAllDpsExist(dyn_string dps)
+//   {
+//     bool exist=1;
+//     int i=1;
+//     for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+//     return exist;
+//   }
+// 
+// 
+// EP_setBackColor(dyn_string dps)
+//   {
+//     dyn_errClass err;
+// 
+//       if( !checkAllDpsExist(dps) )
+//     {
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//       return;
+//     }
+// 
+// 
+//     dyn_int results = makeDynBool( 1,1,1,1,1,1,1 );
+//     dpGet( dps , results);
+//     bool ChannelStatus=0;
+//     bool ChamberStatus=0;
+//     int i=1;
+//     for (i=1;i<=dynlen(dps);i++) 
+//       {
+//       ChannelStatus=(results[i] & 0x200);      
+//       ChamberStatus=ChamberStatus || ChannelStatus;
+//       }
+//     EP_setBackColorCB(ChamberStatus);
+//     err = getLastError();
+//     if (dynlen(err) > 0)
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+// 
+//   }
+// 
+// 
+// EP_setBackColorCB(bool boNewValue)
+// {
+//   if (!boNewValue)
+//     setValue(\"\", \"backCol\", \"grey\");
+//   else
+//     setValue(\"\", \"backCol\", \"Red\");
+// }
+// 
+// SimpleCtrlScript {EP_setBackColor}
+// DP {CMS_GEM_multichannel_Top_{any}.actual.OvC}
+// DPConfig {:_online.._value}
+// DPType {bool}
+// AlertHdl {FALSE}
+// DPEInvalid {}
+// DPEConfigInvalid {}
+// Operator1 {notequal}
+// Operant1 {0}
+// Color1 {grey}
+// Operator2 {equal}
+// Operant2 {1}
+// Color2 {Red}
+// SimpleCtrlScriptEnd {EP_setBackColor}
+// 
+// 
+// 
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board02/channel006.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel005.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/QC6mainframe/board02/channel003.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel002.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/QC6mainframe/board02/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetTrip\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetTrip(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool Trip_bit;
+    
+    int i=1;
+    for (i=1;i<=dynlen(dps);i++) 
+      {
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+    if(Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1){ 
+        setValue(\"\",\"backCol\",\"red\");
+      }
+    else {
+        setValue(\"\",\"backCol\",\"grey\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {CMS_GEM_multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+
+
+
+
+
+
+
+
+
+" 0
+ E 0 2 1 2 1 E 1 0 1 120.90625 -219 1 E 110 550 10 10
+2 132
+"PRIMITIVE_TEXT184"
+""
+1 217.90625 302 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+121 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 217.90625 302 244.34375 319
+0 2 2 "0s" 0 0 0 192 0 0  217.90625 302 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 2
+LANG:1 4 Trip
+LANG:10001 4 Trip
+2 133
+"PRIMITIVE_TEXT185"
+""
+1 259.90625 302 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+122 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"main()
+{
+  this.text(\"Status\");
+}" 0
+ E 0 1 1 2 1 E U  0 E 259.90625 302 347.34375 319
+0 2 2 "0s" 0 0 0 192 0 0  259.90625 302 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 2
+LANG:1 12 Status (sum)
+LANG:10001 6 Status
+30 134
+"FRAME7"
+""
+1 30 214 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+123 0 0 0 0 0
+E E E
+1
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"main()
+{
+    this.text(\"Layer2\");
+}" 0
+ E 0 0 1 0 1 E 3.244444444444445 0 0.5376344086021505 282.5729166666665 149.9462365591398 0 E 30 214 121 401
+2
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0 2
+LANG:1 6 Bottom
+LANG:10001 6 Layer2
+2 136
+"PRIMITIVE_TEXT186"
+""
+1 397.03125 302 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+125 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 397.03125 302 426.34375 319
+0 2 2 "0s" 0 0 0 192 0 0  397.03125 302 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 2
+LANG:1 3 OvC
+LANG:10001 3 OvC
+7 137
+"ELLIPSE8"
+""
+1 110 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+126 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+// main()
+// {
+//   dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board02/channel013.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel012.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel011.actual.status:_online.._value\" , 
+//                                  \"CAEN/QC6mainframe/board02/channel010.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel009.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel008.actual.status:_online.._value\" ,
+//                                  \"CAEN/QC6mainframe/board02/channel007.actual.status:_online.._value\");
+// 
+//   EP_setBackColor(dps);
+//     
+//   int i=1;
+//   for(i=1 ; i<=dynlen(dps) ; i++)
+//   {
+//     dpConnect(\"EP_setBackColor(dps)\", dps[i]);
+//     dyn_errClass err = getLastError();
+//     if (dynlen(err) > 0)
+//     setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//   }
+// }
+// 
+// 
+// bool checkAllDpsExist(dyn_string dps)
+//   {
+//     bool exist=1;
+//     int i=1;
+//     for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+//     return exist;
+//   }
+// 
+// 
+// EP_setBackColor(dyn_string dps)
+//   {
+//     dyn_errClass err;
+// 
+//       if( !checkAllDpsExist(dps) )
+//     {
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//       return;
+//     }
+// 
+// 
+//     dyn_int results = makeDynBool( 1,1,1,1,1,1,1 );
+//     dpGet( dps , results);
+//     bool ChannelStatus=0;
+//     bool ChamberStatus=0;
+//     int i=1;
+//     for (i=1;i<=dynlen(dps);i++) 
+//       {
+//       ChannelStatus=(results[i] & 0x010);      
+//       ChamberStatus=ChamberStatus || ChannelStatus;
+//       }
+//     EP_setBackColorCB(ChamberStatus);
+//     err = getLastError();
+//     if (dynlen(err) > 0)
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+// 
+//   }
+// 
+// 
+// EP_setBackColorCB(bool boNewValue)
+// {
+//   if (!boNewValue)
+//     setValue(\"\", \"backCol\", \"grey\");
+//   else
+//     setValue(\"\", \"backCol\", \"Red\");
+// }
+// 
+// SimpleCtrlScript {EP_setBackColor}
+// DP {CMS_GEM_multichannel_Top_{any}.actual.OvC}
+// DPConfig {:_online.._value}
+// DPType {bool}
+// AlertHdl {FALSE}
+// DPEInvalid {}
+// DPEConfigInvalid {}
+// Operator1 {notequal}
+// Operant1 {0}
+// Color1 {grey}
+// Operator2 {equal}
+// Operant2 {1}
+// Color2 {Red}
+// SimpleCtrlScriptEnd {EP_setBackColor}
+// 
+// 
+// 
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board02/channel013.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel012.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/QC6mainframe/board02/channel010.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel009.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/QC6mainframe/board02/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetOvV\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetOvV(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvV_bit;
+    
+    int i=1;
+    for (i=1;i<=dynlen(dps);i++) 
+      {
+      OvV_bit[i]=(results[i] & 0x010);      
+      }
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+    if(OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1){ 
+        setValue(\"\",\"backCol\",\"red\");
+      }
+    else {
+        setValue(\"\",\"backCol\",\"grey\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {CMS_GEM_multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+
+
+
+
+
+
+
+
+
+" 0
+ E 0 2 1 2 1 E 1 0 1 350.40625 -219 1 E 110 550 10 10
+2 138
+"PRIMITIVE_TEXT187"
+""
+1 445.53125 302 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+127 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 445.53125 302 475.34375 319
+0 2 2 "0s" 0 0 0 192 0 0  445.53125 302 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 2
+LANG:1 3 OvV
+LANG:10001 3 OvV
+7 139
+"ELLIPSE9"
+""
+1 110 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+128 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+// main()
+// {
+//   dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board02/channel013.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel012.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel011.actual.status:_online.._value\" , 
+//                                  \"CAEN/QC6mainframe/board02/channel010.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel009.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel008.actual.status:_online.._value\" ,
+//                                  \"CAEN/QC6mainframe/board02/channel007.actual.status:_online.._value\");
+// 
+//   EP_setBackColor(dps);
+//     
+//   int i=1;
+//   for(i=1 ; i<=dynlen(dps) ; i++)
+//   {
+//     dpConnect(\"EP_setBackColor(dps)\", dps[i]);
+//     dyn_errClass err = getLastError();
+//     if (dynlen(err) > 0)
+//     setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//   }
+// }
+// 
+// 
+// bool checkAllDpsExist(dyn_string dps)
+//   {
+//     bool exist=1;
+//     int i=1;
+//     for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+//     return exist;
+//   }
+// 
+// 
+// EP_setBackColor(dyn_string dps)
+//   {
+//     dyn_errClass err;
+// 
+//       if( !checkAllDpsExist(dps) )
+//     {
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//       return;
+//     }
+// 
+// 
+//     dyn_int results = makeDynBool( 1,1,1,1,1,1,1 );
+//     dpGet( dps , results);
+//     bool ChannelStatus=0;
+//     bool ChamberStatus=0;
+//     int i=1;
+//     for (i=1;i<=dynlen(dps);i++) 
+//       {
+//       ChannelStatus=(results[i] & 0x020);      
+//       ChamberStatus=ChamberStatus || ChannelStatus;
+//       }
+//     EP_setBackColorCB(ChamberStatus);
+//     err = getLastError();
+//     if (dynlen(err) > 0)
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+// 
+//   }
+// 
+// 
+// EP_setBackColorCB(bool boNewValue)
+// {
+//   if (!boNewValue)
+//     setValue(\"\", \"backCol\", \"grey\");
+//   else
+//     setValue(\"\", \"backCol\", \"Red\");
+// }
+// 
+// SimpleCtrlScript {EP_setBackColor}
+// DP {CMS_GEM_multichannel_Top_{any}.actual.OvC}
+// DPConfig {:_online.._value}
+// DPType {bool}
+// AlertHdl {FALSE}
+// DPEInvalid {}
+// DPEConfigInvalid {}
+// Operator1 {notequal}
+// Operant1 {0}
+// Color1 {grey}
+// Operator2 {equal}
+// Operant2 {1}
+// Color2 {Red}
+// SimpleCtrlScriptEnd {EP_setBackColor}
+// 
+// 
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board02/channel013.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel012.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/QC6mainframe/board02/channel010.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel009.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/QC6mainframe/board02/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetUnV\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetUnV(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool UnV_bit;
+    
+    int i=1;
+    for (i=1;i<=dynlen(dps);i++) 
+      {
+      UnV_bit[i]=(results[i] & 0x020);      
+      }
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+    if(UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1){ 
+        setValue(\"\",\"backCol\",\"red\");
+      }
+    else {
+        setValue(\"\",\"backCol\",\"grey\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {CMS_GEM_multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+
+
+
+
+
+
+
+
+
+" 0
+ E 0 2 1 2 1 E 1 0 1 396.90625 -219 1 E 110 550 10 10
+2 140
+"PRIMITIVE_TEXT188"
+""
+1 492.03125 302 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+129 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 492.03125 302 520.34375 319
+0 2 2 "0s" 0 0 0 192 0 0  492.03125 302 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 2
+LANG:1 3 UnV
+LANG:10001 3 UnV
+7 141
+"ELLIPSE10"
+""
+1 110 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+130 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+// main()
+// {
+//   dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board02/channel013.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel012.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel011.actual.status:_online.._value\" , 
+//                                  \"CAEN/QC6mainframe/board02/channel010.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel009.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel008.actual.status:_online.._value\" ,
+//                                  \"CAEN/QC6mainframe/board02/channel007.actual.status:_online.._value\");
+// 
+//   EP_setBackColor(dps);
+//     
+//   int i=1;
+//   for(i=1 ; i<=dynlen(dps) ; i++)
+//   {
+//     dpConnect(\"EP_setBackColor(dps)\", dps[i]);
+//     dyn_errClass err = getLastError();
+//     if (dynlen(err) > 0)
+//     setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//   }
+// }
+// 
+// 
+// bool checkAllDpsExist(dyn_string dps)
+//   {
+//     bool exist=1;
+//     int i=1;
+//     for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+//     return exist;
+//   }
+// 
+// 
+// EP_setBackColor(dyn_string dps)
+//   {
+//     dyn_errClass err;
+// 
+//       if( !checkAllDpsExist(dps) )
+//     {
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//       return;
+//     }
+// 
+// 
+//     dyn_int results = makeDynBool( 1,1,1,1,1,1,1 );
+//     dpGet( dps , results);
+//     bool ChannelStatus=0;
+//     bool ChamberStatus=0;
+//     int i=1;
+//     for (i=1;i<=dynlen(dps);i++) 
+//       {
+//       ChannelStatus=(results[i] & 0x200);      
+//       ChamberStatus=ChamberStatus || ChannelStatus;
+//       }
+//     EP_setBackColorCB(ChamberStatus);
+//     err = getLastError();
+//     if (dynlen(err) > 0)
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+// 
+//   }
+// 
+// 
+// EP_setBackColorCB(bool boNewValue)
+// {
+//   if (!boNewValue)
+//     setValue(\"\", \"backCol\", \"grey\");
+//   else
+//     setValue(\"\", \"backCol\", \"Red\");
+// }
+// 
+// SimpleCtrlScript {EP_setBackColor}
+// DP {CMS_GEM_multichannel_Top_{any}.actual.Trip}
+// DPConfig {:_online.._value}
+// DPType {bool}
+// AlertHdl {FALSE}
+// DPEInvalid {}
+// DPEConfigInvalid {}
+// Operator1 {notequal}
+// Operant1 {0}
+// Color1 {grey}
+// Operator2 {equal}
+// Operant2 {1}
+// Color2 {Red}
+// SimpleCtrlScriptEnd {EP_setBackColor}
+// 
+// 
+// 
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board02/channel013.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel012.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/QC6mainframe/board02/channel010.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel009.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/QC6mainframe/board02/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetTrip\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetTrip(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool Trip_bit;
+    
+    int i=1;
+    for (i=1;i<=dynlen(dps);i++) 
+      {
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+    if(Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1){ 
+        setValue(\"\",\"backCol\",\"red\");
+      }
+    else {
+        setValue(\"\",\"backCol\",\"grey\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {CMS_GEM_multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+
+
+
+
+
+
+
+
+
+" 0
+ E 0 2 1 2 1 E 1 0 1 440.90625 -219 1 E 110 550 10 10
+2 142
+"PRIMITIVE_TEXT189"
+""
+1 537.90625 302 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+131 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 537.90625 302 564.34375 319
+0 2 2 "0s" 0 0 0 192 0 0  537.90625 302 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 2
+LANG:1 4 Trip
+LANG:10001 4 Trip
+2 143
+"PRIMITIVE_TEXT190"
+""
+1 579.90625 302 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+132 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"main()
+{
+  this.text(\"Status\");
+}" 0
+ E 0 1 1 2 1 E U  0 E 579.90625 302 667.34375 319
+0 2 2 "0s" 0 0 0 192 0 0  579.90625 302 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 2
+LANG:1 12 Status (sum)
+LANG:10001 6 Status
+7 144
+"ELLIPSE11"
+""
+1 110 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+133 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board02/channel006.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel005.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/QC6mainframe/board02/channel003.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel002.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/QC6mainframe/board02/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {CMS_GEM_multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+
+
+
+
+
+
+
+
+" 0
+ E 0 2 1 2 1 E 1 0 1 169.90625 -219 1 E 110 550 10 10
+7 145
+"ELLIPSE12"
+""
+1 110 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+134 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board02/channel013.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel012.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/QC6mainframe/board02/channel010.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel009.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/QC6mainframe/board02/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {CMS_GEM_multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+
+
+
+
+
+
+
+
+" 0
+ E 0 2 1 2 1 E 1 0 1 490 -219 1 E 110 550 10 10
+13 147
+"PUSH_BUTTON6"
+""
+1 810 470 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+136 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  808 459 911 504
+
+T 
+2
+LANG:1 11 Settings...
+LANG:10001 15 Change
+Settings
+"main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"CMS_GEM_multichannel/CMS_GEM_multichannel_ChangeSettings.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/QC6mainframe/board03\", \"$BoardName:Board03\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {CMS_GEM_multichannel/CMS_GEM_multichannel_ChangeSettings.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/QC6mainframe/board03}
+// PanelPara2 {$BoardName:Board03}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ E E "main()
+{
+  this.text(\"Change\\nSettings\");
+  this.backCol(\"_Button\");
+  this.foreCol(\"black\");
+}" 0
+
+30 148
+"FRAME8"
+""
+1 30 214 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+137 0 0 0 0 0
+E E E
+1
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 0 1 0 1 E 0.9111111111111113 0 0.5376344086021505 676.6666666666666 315.0277923997339 0 E 30 214 121 401
+2
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0 2
+LANG:1 5 Board
+LANG:10001 5 Board
+13 149
+"PUSH_BUTTON7"
+""
+1 940 470 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+138 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  938 459 1041 504
+
+T 
+2
+LANG:1 10 Monitoring
+LANG:10001 7 Monitor
+"main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"CMS_GEM_multichannel/Monitor1.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/QC6mainframe/board03\", \"$BoardName:Board03\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {CMS_GEM_multichannel/Monitor1.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/QC6mainframe/board03}
+// PanelPara2 {$BoardName:Board03}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ E E "main()
+{
+  this.text(\"Monitor\");
+  this.backCol(\"_Button\");
+  this.foreCol(\"black\");
+}" 0
+
+13 150
+"PUSH_BUTTON8"
+""
+1 1070 470 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+139 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  1068 459 1171 504
+
+T 
+2
+LANG:1 8 Trending
+LANG:10001 11 Show
+Trends
+"main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"CMS_GEM_multichannel/CMS_GEM_multichannel_showTrends.pnl\",
+      \"\",
+      makeDynString(\"$Board:CAEN/QC6mainframe/board03\", \"$BoardName:Board03\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {CMS_GEM_multichannel/CMS_GEM_multichannel_showTrends.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:CAEN/QC6mainframe/board03}
+// PanelPara2 {$BoardName:Board03}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ E E "main()
+{
+  this.text(\"Show\\nTrends\");
+  this.backCol(\"_Button\");
+  this.foreCol(\"black\");
+}" 0
+
+14 152
+"TEXT_FIELD409"
+""
+1 1425.00000109896 594.2473262032083 E E E 1 E 1 E N "_WindowText" E N "lightgrey" E E
+ E E
+141 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0  710.9999989010406 477.9973211647537 771.9999989010405 504.9973211647537
+2 "0s" 0 0 0 1 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+EP_textFieldIn()
+{
+dyn_errClass err;
+
+  if( !dpExists( \"CAEN/QC6mainframe/board03.readBackSettings.opMode\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"CAEN/QC6mainframe/board03.readBackSettings.opMode\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+
+EP_textFieldInCB(string dp, int fNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, fNewValue, TRUE) );
+  if (this.text==\"TRUE\") this.text=\"GEM\";
+  if (this.text==\"FALSE\") this.text=\"FREE\";
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {CMS_GEM_multichannel_board.readBackSettings.opMode}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+// 
+// 
+" 0
+ E
+30 153
+"FRAME9"
+""
+1 30 214 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+142 0 0 0 0 0
+E E E
+1
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"main()
+{
+  this.text(\"Layer1\");
+}" 0
+ E 0 0 1 0 1 E 3.244444444444445 0 0.5376344086021505 -37.33333333333334 314.9462365591398 0 E 30 214 121 401
+2
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0 2
+LANG:1 3 Top
+LANG:10001 6 Layer1
+7 154
+"ELLIPSE13"
+""
+1 110 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+143 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+// main()
+// {
+//   dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board03/channel006.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel005.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel004.actual.status:_online.._value\" , 
+//                                  \"CAEN/QC6mainframe/board03/channel003.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel002.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel001.actual.status:_online.._value\" ,
+//                                  \"CAEN/QC6mainframe/board03/channel000.actual.status:_online.._value\");
+// 
+//   EP_setBackColor(dps);
+//   
+//   int i=1;
+//   for(i=1 ; i<=dynlen(dps) ; i++)
+//   {
+//     dpConnectUserData(\"EP_setBackColor\",dps, dps[i]);
+//     dyn_errClass err = getLastError();
+//     if (dynlen(err) > 0)
+//     setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//   }
+// }
+// 
+// 
+// bool checkAllDpsExist(dyn_string dps)
+//   {
+//     bool exist=1;
+//     int i=1;
+//     for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+//     return exist;
+//   }
+// 
+// 
+// EP_setBackColor(dyn_string dps)
+//   {
+//     dyn_errClass err;
+// 
+//       if( !checkAllDpsExist(dps) )
+//     {
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//       return;
+//     }
+// 
+// 
+//     dyn_int results = makeDynBool( 1,1,1,1,1,1,1 );
+//     dpGet( dps , results);
+//     bool ChannelStatus=0;
+//     bool ChamberStatus=0;
+//     int i=1;
+//     for (i=1;i<=dynlen(dps);i++) 
+//       {
+//       ChannelStatus=(results[i] & 0x008);      
+//       ChamberStatus=ChamberStatus || ChannelStatus;
+//       }
+//     EP_setBackColorCB(ChamberStatus);
+//     err = getLastError();
+//     if (dynlen(err) > 0)
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+// 
+//   }
+// 
+// 
+// EP_setBackColorCB(bool boNewValue)
+// {
+//   if (!boNewValue)
+//     setValue(\"\", \"backCol\", \"grey\");
+//   else
+//     setValue(\"\", \"backCol\", \"Red\");
+// }
+
+// SimpleCtrlScript {EP_setBackColor}
+// DP {CMS_GEM_multichannel_Top_{any}.actual.OvC}
+// DPConfig {:_online.._value}
+// DPType {bool}
+// AlertHdl {FALSE}
+// DPEInvalid {}
+// DPEConfigInvalid {}
+// Operator1 {notequal}
+// Operant1 {0}
+// Color1 {grey}
+// Operator2 {equal}
+// Operant2 {1}
+// Color2 {Red}
+// SimpleCtrlScriptEnd {EP_setBackColor}
+// 
+
+// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board03/channel006.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel005.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/QC6mainframe/board03/channel003.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel002.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/QC6mainframe/board03/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetOvC\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetOvC(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit;
+    
+    int i=1;
+    for (i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);      
+      }
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+    if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1){ 
+        setValue(\"\",\"backCol\",\"red\");
+      }
+    else {
+        setValue(\"\",\"backCol\",\"grey\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {CMS_GEM_multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+
+
+
+
+
+
+
+
+
+" 0
+ E 0 2 1 2 1 E 1 0 1 -18.00000000000003 -54 1 E 110 550 10 10
+2 155
+"PRIMITIVE_TEXT193"
+""
+1 77.12500000000011 467 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+144 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 77.12500000000011 467 106.4375 483.9973211647537
+0 2 2 "0s" 0 0 0 192 0 0  77.12500000000011 467 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 2
+LANG:1 3 OvC
+LANG:10001 3 OvC
+7 156
+"ELLIPSE14"
+""
+1 110 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+145 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+// main()
+// {
+//   dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board03/channel006.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel005.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel004.actual.status:_online.._value\" , 
+//                                  \"CAEN/QC6mainframe/board03/channel003.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel002.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel001.actual.status:_online.._value\" ,
+//                                  \"CAEN/QC6mainframe/board03/channel000.actual.status:_online.._value\");
+// 
+//   EP_setBackColor(dps);
+//     
+//   int i=1;
+//   for(i=1 ; i<=dynlen(dps) ; i++)
+//   {
+//     dpConnect(\"EP_setBackColor(dps)\", dps[i]);
+//     dyn_errClass err = getLastError();
+//     if (dynlen(err) > 0)
+//     setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//   }
+// }
+// 
+// 
+// bool checkAllDpsExist(dyn_string dps)
+//   {
+//     bool exist=1;
+//     int i=1;
+//     for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+//     return exist;
+//   }
+// 
+// 
+// EP_setBackColor(dyn_string dps)
+//   {
+//     dyn_errClass err;
+// 
+//       if( !checkAllDpsExist(dps) )
+//     {
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//       return;
+//     }
+// 
+// 
+//     dyn_int results = makeDynBool( 1,1,1,1,1,1,1 );
+//     dpGet( dps , results);
+//     bool ChannelStatus=0;
+//     bool ChamberStatus=0;
+//     int i=1;
+//     for (i=1;i<=dynlen(dps);i++) 
+//       {
+//       ChannelStatus=(results[i] & 0x010);      
+//       ChamberStatus=ChamberStatus || ChannelStatus;
+//       }
+//     EP_setBackColorCB(ChamberStatus);
+//     err = getLastError();
+//     if (dynlen(err) > 0)
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+// 
+//   }
+// 
+// 
+// EP_setBackColorCB(bool boNewValue)
+// {
+//   if (!boNewValue)
+//     setValue(\"\", \"backCol\", \"grey\");
+//   else
+//     setValue(\"\", \"backCol\", \"Red\");
+// }
+// 
+// SimpleCtrlScript {EP_setBackColor}
+// DP {CMS_GEM_multichannel_Top_{any}.actual.OvC}
+// DPConfig {:_online.._value}
+// DPType {bool}
+// AlertHdl {FALSE}
+// DPEInvalid {}
+// DPEConfigInvalid {}
+// Operator1 {notequal}
+// Operant1 {0}
+// Color1 {grey}
+// Operator2 {equal}
+// Operant2 {1}
+// Color2 {Red}
+// SimpleCtrlScriptEnd {EP_setBackColor}
+// 
+ 
+
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board03/channel006.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel005.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/QC6mainframe/board03/channel003.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel002.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/QC6mainframe/board03/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetOvV\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetOvV(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvV_bit;
+    
+    int i=1;
+    for (i=1;i<=dynlen(dps);i++) 
+      {
+      OvV_bit[i]=(results[i] & 0x010);      
+      }
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+    if(OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1){ 
+        setValue(\"\",\"backCol\",\"red\");
+      }
+    else {
+        setValue(\"\",\"backCol\",\"grey\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {CMS_GEM_multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+
+
+
+
+
+
+
+
+
+" 0
+ E 0 2 1 2 1 E 1 0 1 30.5 -54 1 E 110 550 10 10
+2 157
+"PRIMITIVE_TEXT194"
+""
+1 125.6250000000001 467 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+146 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 125.6250000000001 467 155.4375 483.9973211647537
+0 2 2 "0s" 0 0 0 192 0 0  125.6250000000001 467 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 2
+LANG:1 3 OvV
+LANG:10001 3 OvV
+7 158
+"ELLIPSE15"
+""
+1 110 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+147 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+// main()
+// {
+//   dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board03/channel006.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel005.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel004.actual.status:_online.._value\" , 
+//                                  \"CAEN/QC6mainframe/board03/channel003.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel002.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel001.actual.status:_online.._value\" ,
+//                                  \"CAEN/QC6mainframe/board03/channel000.actual.status:_online.._value\");
+// 
+//   EP_setBackColor(dps);
+//     
+//   int i=1;
+//   for(i=1 ; i<=dynlen(dps) ; i++)
+//   {
+//     dpConnect(\"EP_setBackColor(dps)\", dps[i]);
+//     dyn_errClass err = getLastError();
+//     if (dynlen(err) > 0)
+//     setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//   }
+// }
+// 
+// 
+// bool checkAllDpsExist(dyn_string dps)
+//   {
+//     bool exist=1;
+//     int i=1;
+//     for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+//     return exist;
+//   }
+// 
+// 
+// EP_setBackColor(dyn_string dps)
+//   {
+//     dyn_errClass err;
+// 
+//       if( !checkAllDpsExist(dps) )
+//     {
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//       return;
+//     }
+// 
+// 
+//     dyn_int results = makeDynBool( 1,1,1,1,1,1,1 );
+//     dpGet( dps , results);
+//     bool ChannelStatus=0;
+//     bool ChamberStatus=0;
+//     int i=1;
+//     for (i=1;i<=dynlen(dps);i++) 
+//       {
+//       ChannelStatus=(results[i] & 0x020);      
+//       ChamberStatus=ChamberStatus || ChannelStatus;
+//       }
+//     EP_setBackColorCB(ChamberStatus);
+//     err = getLastError();
+//     if (dynlen(err) > 0)
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+// 
+//   }
+// 
+// 
+// EP_setBackColorCB(bool boNewValue)
+// {
+//   if (!boNewValue)
+//     setValue(\"\", \"backCol\", \"grey\");
+//   else
+//     setValue(\"\", \"backCol\", \"Red\");
+// }
+// 
+// SimpleCtrlScript {EP_setBackColor}
+// DP {CMS_GEM_multichannel_Top_{any}.actual.OvC}
+// DPConfig {:_online.._value}
+// DPType {bool}
+// AlertHdl {FALSE}
+// DPEInvalid {}
+// DPEConfigInvalid {}
+// Operator1 {notequal}
+// Operant1 {0}
+// Color1 {grey}
+// Operator2 {equal}
+// Operant2 {1}
+// Color2 {Red}
+// SimpleCtrlScriptEnd {EP_setBackColor}
+// 
+// 
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board03/channel006.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel005.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/QC6mainframe/board03/channel003.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel002.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/QC6mainframe/board03/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetUnV\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetUnV(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool UnV_bit;
+    
+    int i=1;
+    for (i=1;i<=dynlen(dps);i++) 
+      {
+      UnV_bit[i]=(results[i] & 0x020);      
+      }
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+    if(UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1){ 
+        setValue(\"\",\"backCol\",\"red\");
+      }
+    else {
+        setValue(\"\",\"backCol\",\"grey\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {CMS_GEM_multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+
+
+
+
+
+
+
+// 
+
+" 0
+ E 0 2 1 2 1 E 1 0 1 77.00000000000011 -54 1 E 110 550 10 10
+2 159
+"PRIMITIVE_TEXT195"
+""
+1 172.125 467 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+148 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 172.125 467 200.4375 483.9973211647537
+0 2 2 "0s" 0 0 0 192 0 0  172.125 467 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 2
+LANG:1 3 UnV
+LANG:10001 3 UnV
+7 160
+"ELLIPSE16"
+""
+1 110 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+149 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+// main()
+// {
+//   dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board03/channel006.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel005.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel004.actual.status:_online.._value\" , 
+//                                  \"CAEN/QC6mainframe/board03/channel003.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel002.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel001.actual.status:_online.._value\" ,
+//                                  \"CAEN/QC6mainframe/board03/channel000.actual.status:_online.._value\");
+// 
+//   EP_setBackColor(dps);
+//     
+//   int i=1;
+//   for(i=1 ; i<=dynlen(dps) ; i++)
+//   {
+//     dpConnect(\"EP_setBackColor(dps)\", dps[i]);
+//     dyn_errClass err = getLastError();
+//     if (dynlen(err) > 0)
+//     setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//   }
+// }
+// 
+// 
+// bool checkAllDpsExist(dyn_string dps)
+//   {
+//     bool exist=1;
+//     int i=1;
+//     for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+//     return exist;
+//   }
+// 
+// 
+// EP_setBackColor(dyn_string dps)
+//   {
+//     dyn_errClass err;
+// 
+//       if( !checkAllDpsExist(dps) )
+//     {
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//       return;
+//     }
+// 
+// 
+//     dyn_int results = makeDynBool( 1,1,1,1,1,1,1 );
+//     dpGet( dps , results);
+//     bool ChannelStatus=0;
+//     bool ChamberStatus=0;
+//     int i=1;
+//     for (i=1;i<=dynlen(dps);i++) 
+//       {
+//       ChannelStatus=(results[i] & 0x200);      
+//       ChamberStatus=ChamberStatus || ChannelStatus;
+//       }
+//     EP_setBackColorCB(ChamberStatus);
+//     err = getLastError();
+//     if (dynlen(err) > 0)
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+// 
+//   }
+// 
+// 
+// EP_setBackColorCB(bool boNewValue)
+// {
+//   if (!boNewValue)
+//     setValue(\"\", \"backCol\", \"grey\");
+//   else
+//     setValue(\"\", \"backCol\", \"Red\");
+// }
+// 
+// SimpleCtrlScript {EP_setBackColor}
+// DP {CMS_GEM_multichannel_Top_{any}.actual.OvC}
+// DPConfig {:_online.._value}
+// DPType {bool}
+// AlertHdl {FALSE}
+// DPEInvalid {}
+// DPEConfigInvalid {}
+// Operator1 {notequal}
+// Operant1 {0}
+// Color1 {grey}
+// Operator2 {equal}
+// Operant2 {1}
+// Color2 {Red}
+// SimpleCtrlScriptEnd {EP_setBackColor}
+// 
+// 
+// 
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board03/channel006.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel005.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/QC6mainframe/board03/channel003.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel002.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/QC6mainframe/board03/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetTrip\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetTrip(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool Trip_bit;
+    
+    int i=1;
+    for (i=1;i<=dynlen(dps);i++) 
+      {
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+    if(Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1){ 
+        setValue(\"\",\"backCol\",\"red\");
+      }
+    else {
+        setValue(\"\",\"backCol\",\"grey\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {CMS_GEM_multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+
+
+
+
+
+
+
+
+
+" 0
+ E 0 2 1 2 1 E 1 0 1 121.0000000000001 -54 1 E 110 550 10 10
+2 161
+"PRIMITIVE_TEXT196"
+""
+1 218 467 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+150 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 218 467 244.4375 483.9973211647537
+0 2 2 "0s" 0 0 0 192 0 0  218 467 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 2
+LANG:1 4 Trip
+LANG:10001 4 Trip
+2 162
+"PRIMITIVE_TEXT197"
+""
+1 260 467 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+151 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"main()
+{
+  this.text(\"Status\");
+}" 0
+ E 0 1 1 2 1 E U  0 E 260 467 347.4375 483.9973211647537
+0 2 2 "0s" 0 0 0 192 0 0  260 467 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 2
+LANG:1 12 Status (sum)
+LANG:10001 6 Status
+30 163
+"FRAME10"
+""
+1 30 214 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+152 0 0 0 0 0
+E E E
+1
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"main()
+{
+    this.text(\"Layer2\");
+}" 0
+ E 0 0 1 0 1 E 3.244444444444445 0 0.5376344086021505 282.6666666666666 314.9462365591398 0 E 30 214 121 401
+2
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0 2
+LANG:1 6 Bottom
+LANG:10001 6 Layer2
+7 164
+"ELLIPSE17"
+""
+1 110 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+153 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+// main()
+// {
+//   dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board03/channel013.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel012.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel011.actual.status:_online.._value\" , 
+//                                  \"CAEN/QC6mainframe/board03/channel010.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel009.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel008.actual.status:_online.._value\" ,
+//                                  \"CAEN/QC6mainframe/board03/channel007.actual.status:_online.._value\");
+// 
+//   EP_setBackColor(dps);
+//     
+//   int i=1;
+//   for(i=1 ; i<=dynlen(dps) ; i++)
+//   {
+//     dpConnect(\"EP_setBackColor(dps)\", dps[i]);
+//     dyn_errClass err = getLastError();
+//     if (dynlen(err) > 0)
+//     {
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//       DebugTN(\"************** i=\", i);
+//       DebugTN(\"************** dps[i]=\", dps[i]);
+//     }
+//   }
+// }
+// 
+// 
+// bool checkAllDpsExist(dyn_string dps)
+//   {
+//     bool exist=1;
+//     int i=1;
+//     for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+//     return exist;
+//   }
+// 
+// 
+// EP_setBackColor(dyn_string dps)
+//   {
+//     dyn_errClass err;
+// 
+//       if( !checkAllDpsExist(dps) )
+//     {
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//       return;
+//     }
+// 
+// 
+//     dyn_int results = makeDynBool( 1,1,1,1,1,1,1 );
+//     dpGet( dps , results);
+//     bool ChannelStatus=0;
+//     bool ChamberStatus=0;
+//     int i=1;
+//     for (i=1;i<=dynlen(dps);i++) 
+//       {
+//       ChannelStatus=(results[i] & 0x008);      
+//       ChamberStatus=ChamberStatus || ChannelStatus;
+//       }
+//     EP_setBackColorCB(ChamberStatus);
+//     err = getLastError();
+//     if (dynlen(err) > 0)
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+// 
+//   }
+// 
+// 
+// EP_setBackColorCB(bool boNewValue)
+// {
+//   if (!boNewValue)
+//     setValue(\"\", \"backCol\", \"grey\");
+//   else
+//     setValue(\"\", \"backCol\", \"Red\");
+// }
+// 
+// SimpleCtrlScript {EP_setBackColor}
+// DP {CMS_GEM_multichannel_Top_{any}.actual.OvC}
+// DPConfig {:_online.._value}
+// DPType {bool}
+// AlertHdl {FALSE}
+// DPEInvalid {}
+// DPEConfigInvalid {}
+// Operator1 {notequal}
+// Operant1 {0}
+// Color1 {grey}
+// Operator2 {equal}
+// Operant2 {1}
+// Color2 {Red}
+// SimpleCtrlScriptEnd {EP_setBackColor}
+// 
+// 
+// 
+
+
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board03/channel013.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel012.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/QC6mainframe/board03/channel010.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel009.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/QC6mainframe/board03/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetOvC\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetOvC(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit;
+    
+    int i=1;
+    for (i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);      
+      }
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+    if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1){ 
+        setValue(\"\",\"backCol\",\"red\");
+      }
+    else {
+        setValue(\"\",\"backCol\",\"grey\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {CMS_GEM_multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+
+
+
+
+
+
+
+
+
+" 0
+ E 0 2 1 2 1 E 1 0 1 302 -54 1 E 110 550 10 10
+2 165
+"PRIMITIVE_TEXT198"
+""
+1 397.1250000000001 467 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+154 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 397.1250000000001 467 426.4375 483.9973211647537
+0 2 2 "0s" 0 0 0 192 0 0  397.1250000000001 467 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 2
+LANG:1 3 OvC
+LANG:10001 3 OvC
+7 166
+"ELLIPSE18"
+""
+1 110 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+155 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+// main()
+// {
+//   dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board03/channel013.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel012.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel011.actual.status:_online.._value\" , 
+//                                  \"CAEN/QC6mainframe/board03/channel010.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel009.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel008.actual.status:_online.._value\" ,
+//                                  \"CAEN/QC6mainframe/board03/channel007.actual.status:_online.._value\");
+// 
+//   EP_setBackColor(dps);
+//     
+//   int i=1;
+//   for(i=1 ; i<=dynlen(dps) ; i++)
+//   {
+//     dpConnect(\"EP_setBackColor(dps)\", dps[i]);
+//     dyn_errClass err = getLastError();
+//     if (dynlen(err) > 0)
+//     setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//   }
+// }
+// 
+// 
+// bool checkAllDpsExist(dyn_string dps)
+//   {
+//     bool exist=1;
+//     int i=1;
+//     for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+//     return exist;
+//   }
+// 
+// 
+// EP_setBackColor(dyn_string dps)
+//   {
+//     dyn_errClass err;
+// 
+//       if( !checkAllDpsExist(dps) )
+//     {
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//       return;
+//     }
+// 
+// 
+//     dyn_int results = makeDynBool( 1,1,1,1,1,1,1 );
+//     dpGet( dps , results);
+//     bool ChannelStatus=0;
+//     bool ChamberStatus=0;
+//     int i=1;
+//     for (i=1;i<=dynlen(dps);i++) 
+//       {
+//       ChannelStatus=(results[i] & 0x010);      
+//       ChamberStatus=ChamberStatus || ChannelStatus;
+//       }
+//     EP_setBackColorCB(ChamberStatus);
+//     err = getLastError();
+//     if (dynlen(err) > 0)
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+// 
+//   }
+// 
+// 
+// EP_setBackColorCB(bool boNewValue)
+// {
+//   if (!boNewValue)
+//     setValue(\"\", \"backCol\", \"grey\");
+//   else
+//     setValue(\"\", \"backCol\", \"Red\");
+// }
+// 
+// SimpleCtrlScript {EP_setBackColor}
+// DP {CMS_GEM_multichannel_Top_{any}.actual.OvC}
+// DPConfig {:_online.._value}
+// DPType {bool}
+// AlertHdl {FALSE}
+// DPEInvalid {}
+// DPEConfigInvalid {}
+// Operator1 {notequal}
+// Operant1 {0}
+// Color1 {grey}
+// Operator2 {equal}
+// Operant2 {1}
+// Color2 {Red}
+// SimpleCtrlScriptEnd {EP_setBackColor}
+// 
+// 
+// 
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board03/channel013.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel012.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/QC6mainframe/board03/channel010.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel009.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/QC6mainframe/board03/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetOvV\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetOvV(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvV_bit;
+    
+    int i=1;
+    for (i=1;i<=dynlen(dps);i++) 
+      {
+      OvV_bit[i]=(results[i] & 0x010);      
+      }
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+    if(OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1){ 
+        setValue(\"\",\"backCol\",\"red\");
+      }
+    else {
+        setValue(\"\",\"backCol\",\"grey\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {CMS_GEM_multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+
+
+
+
+
+
+
+
+
+" 0
+ E 0 2 1 2 1 E 1 0 1 350.5 -54 1 E 110 550 10 10
+2 167
+"PRIMITIVE_TEXT199"
+""
+1 445.6250000000001 467 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+156 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 445.6250000000001 467 475.4375 483.9973211647537
+0 2 2 "0s" 0 0 0 192 0 0  445.6250000000001 467 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 2
+LANG:1 3 OvV
+LANG:10001 3 OvV
+7 168
+"ELLIPSE19"
+""
+1 110 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+157 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+// main()
+// {
+//   dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board03/channel013.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel012.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel011.actual.status:_online.._value\" , 
+//                                  \"CAEN/QC6mainframe/board03/channel010.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel009.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel008.actual.status:_online.._value\" ,
+//                                  \"CAEN/QC6mainframe/board03/channel007.actual.status:_online.._value\");
+// 
+//   EP_setBackColor(dps);
+//     
+//   int i=1;
+//   for(i=1 ; i<=dynlen(dps) ; i++)
+//   {
+//     dpConnect(\"EP_setBackColor(dps)\", dps[i]);
+//     dyn_errClass err = getLastError();
+//     if (dynlen(err) > 0)
+//     setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//   }
+// }
+// 
+// 
+// bool checkAllDpsExist(dyn_string dps)
+//   {
+//     bool exist=1;
+//     int i=1;
+//     for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+//     return exist;
+//   }
+// 
+// 
+// EP_setBackColor(dyn_string dps)
+//   {
+//     dyn_errClass err;
+// 
+//       if( !checkAllDpsExist(dps) )
+//     {
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//       return;
+//     }
+// 
+// 
+//     dyn_int results = makeDynBool( 1,1,1,1,1,1,1 );
+//     dpGet( dps , results);
+//     bool ChannelStatus=0;
+//     bool ChamberStatus=0;
+//     int i=1;
+//     for (i=1;i<=dynlen(dps);i++) 
+//       {
+//       ChannelStatus=(results[i] & 0x020);      
+//       ChamberStatus=ChamberStatus || ChannelStatus;
+//       }
+//     EP_setBackColorCB(ChamberStatus);
+//     err = getLastError();
+//     if (dynlen(err) > 0)
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+// 
+//   }
+// 
+// 
+// EP_setBackColorCB(bool boNewValue)
+// {
+//   if (!boNewValue)
+//     setValue(\"\", \"backCol\", \"grey\");
+//   else
+//     setValue(\"\", \"backCol\", \"Red\");
+// }
+// 
+// SimpleCtrlScript {EP_setBackColor}
+// DP {CMS_GEM_multichannel_Top_{any}.actual.OvC}
+// DPConfig {:_online.._value}
+// DPType {bool}
+// AlertHdl {FALSE}
+// DPEInvalid {}
+// DPEConfigInvalid {}
+// Operator1 {notequal}
+// Operant1 {0}
+// Color1 {grey}
+// Operator2 {equal}
+// Operant2 {1}
+// Color2 {Red}
+// SimpleCtrlScriptEnd {EP_setBackColor}
+// 
+// 
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board03/channel013.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel012.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/QC6mainframe/board03/channel010.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel009.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/QC6mainframe/board03/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetUnV\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetUnV(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool UnV_bit;
+    
+    int i=1;
+    for (i=1;i<=dynlen(dps);i++) 
+      {
+      UnV_bit[i]=(results[i] & 0x020);      
+      }
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+    if(UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1){ 
+        setValue(\"\",\"backCol\",\"red\");
+      }
+    else {
+        setValue(\"\",\"backCol\",\"grey\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {CMS_GEM_multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+
+
+
+
+
+
+
+
+
+" 0
+ E 0 2 1 2 1 E 1 0 1 397.0000000000001 -54 1 E 110 550 10 10
+2 169
+"PRIMITIVE_TEXT200"
+""
+1 492.1250000000001 467 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+158 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 492.1250000000001 467 520.4375 483.9973211647537
+0 2 2 "0s" 0 0 0 192 0 0  492.1250000000001 467 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 2
+LANG:1 3 UnV
+LANG:10001 3 UnV
+2 171
+"PRIMITIVE_TEXT201"
+""
+1 538 467 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+160 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 538 467 564.4375 483.9973211647537
+0 2 2 "0s" 0 0 0 192 0 0  538 467 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 2
+LANG:1 4 Trip
+LANG:10001 4 Trip
+2 172
+"PRIMITIVE_TEXT202"
+""
+1 580 467 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+161 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"main()
+{
+  this.text(\"Status\");
+}" 0
+ E 0 1 1 2 1 E U  0 E 580 467 667.4375 483.9973211647537
+0 2 2 "0s" 0 0 0 192 0 0  580 467 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
+0 2
+LANG:1 12 Status (sum)
+LANG:10001 6 Status
+7 173
+"ELLIPSE21"
+""
+1 110 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+162 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board03/channel006.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel005.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/QC6mainframe/board03/channel003.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel002.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/QC6mainframe/board03/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {CMS_GEM_multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+
+
+
+
+
+
+
+
+" 0
+ E 0 2 1 2 1 E 1 0 1 170 -54 1 E 110 550 10 10
+7 174
+"ELLIPSE22"
+""
+1 110 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+163 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board03/channel013.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel012.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/QC6mainframe/board03/channel010.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel009.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/QC6mainframe/board03/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {CMS_GEM_multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+
+
+
+
+
+
+
+
+" 0
+ E 0 2 1 2 1 E 1 0 1 490.09375 -54 1 E 110 550 10 10
+7 135
+"ELLIPSE7"
+""
+1 110 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+124 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+// main()
+// {
+//   dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board02/channel013.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel012.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel011.actual.status:_online.._value\" , 
+//                                  \"CAEN/QC6mainframe/board02/channel010.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel009.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel008.actual.status:_online.._value\" ,
+//                                  \"CAEN/QC6mainframe/board02/channel007.actual.status:_online.._value\");
+// 
+//   EP_setBackColor(dps);
+//     
+//   int i=1;
+//   for(i=1 ; i<=dynlen(dps) ; i++)
+//   {
+//     dpConnect(\"EP_setBackColor(dps)\", dps[i]);
+//     dyn_errClass err = getLastError();
+//     if (dynlen(err) > 0)
+//     {
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//       DebugTN(\"************** i=\", i);
+//       DebugTN(\"************** dps[i]=\", dps[i]);
+//     }
+//   }
+// }
+// 
+// 
+// bool checkAllDpsExist(dyn_string dps)
+//   {
+//     bool exist=1;
+//     int i=1;
+//     for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+//     return exist;
+//   }
+// 
+// 
+// EP_setBackColor(dyn_string dps)
+//   {
+//     dyn_errClass err;
+// 
+//       if( !checkAllDpsExist(dps) )
+//     {
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//       return;
+//     }
+// 
+// 
+//     dyn_int results = makeDynBool( 1,1,1,1,1,1,1 );
+//     dpGet( dps , results);
+//     bool ChannelStatus=0;
+//     bool ChamberStatus=0;
+//     int i=1;
+//     for (i=1;i<=dynlen(dps);i++) 
+//       {
+//       ChannelStatus=(results[i] & 0x008);      
+//       ChamberStatus=ChamberStatus || ChannelStatus;
+//       }
+//     EP_setBackColorCB(ChamberStatus);
+//     err = getLastError();
+//     if (dynlen(err) > 0)
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+// 
+//   }
+// 
+// 
+// EP_setBackColorCB(bool boNewValue)
+// {
+//   if (!boNewValue)
+//     setValue(\"\", \"backCol\", \"grey\");
+//   else
+//     setValue(\"\", \"backCol\", \"Red\");
+// }
+// 
+// SimpleCtrlScript {EP_setBackColor}
+// DP {CMS_GEM_multichannel_Top_{any}.actual.OvC}
+// DPConfig {:_online.._value}
+// DPType {bool}
+// AlertHdl {FALSE}
+// DPEInvalid {}
+// DPEConfigInvalid {}
+// Operator1 {notequal}
+// Operant1 {0}
+// Color1 {grey}
+// Operator2 {equal}
+// Operant2 {1}
+// Color2 {Red}
+// SimpleCtrlScriptEnd {EP_setBackColor}
+// 
+// 
+// 
+
+
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board02/channel013.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel012.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/QC6mainframe/board02/channel010.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel009.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board02/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/QC6mainframe/board02/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetOvC\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetOvC(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit;
+    
+    int i=1;
+    for (i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);      
+      }
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+    if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1){ 
+        setValue(\"\",\"backCol\",\"red\");
+      }
+    else {
+        setValue(\"\",\"backCol\",\"grey\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {CMS_GEM_multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+
+
+
+
+
+
+
+
+
+" 0
+ E 0 2 1 2 1 E 1 0 1 301.90625 -219 1 E 110 550 10 10
+7 170
+"ELLIPSE20"
+""
+1 110 550 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+159 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+// main()
+// {
+//   dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board03/channel013.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel012.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel011.actual.status:_online.._value\" , 
+//                                  \"CAEN/QC6mainframe/board03/channel010.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel009.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel008.actual.status:_online.._value\" ,
+//                                  \"CAEN/QC6mainframe/board03/channel007.actual.status:_online.._value\");
+// 
+//   EP_setBackColor(dps);
+//     
+//   int i=1;
+//   for(i=1 ; i<=dynlen(dps) ; i++)
+//   {
+//     dpConnect(\"EP_setBackColor(dps)\", dps[i]);
+//     dyn_errClass err = getLastError();
+//     if (dynlen(err) > 0)
+//     setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//   }
+// }
+// 
+// 
+// bool checkAllDpsExist(dyn_string dps)
+//   {
+//     bool exist=1;
+//     int i=1;
+//     for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+//     return exist;
+//   }
+// 
+// 
+// EP_setBackColor(dyn_string dps)
+//   {
+//     dyn_errClass err;
+// 
+//       if( !checkAllDpsExist(dps) )
+//     {
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+//       return;
+//     }
+// 
+// 
+//     dyn_int results = makeDynBool( 1,1,1,1,1,1,1 );
+//     dpGet( dps , results);
+//     bool ChannelStatus=0;
+//     bool ChamberStatus=0;
+//     int i=1;
+//     for (i=1;i<=dynlen(dps);i++) 
+//       {
+//       ChannelStatus=(results[i] & 0x200);      
+//       ChamberStatus=ChamberStatus || ChannelStatus;
+//       }
+//     EP_setBackColorCB(ChamberStatus);
+//     err = getLastError();
+//     if (dynlen(err) > 0)
+//       setValue(\"\", \"color\", \"_dpdoesnotexist\");
+// 
+//   }
+// 
+// 
+// EP_setBackColorCB(bool boNewValue)
+// {
+//   if (!boNewValue)
+//     setValue(\"\", \"backCol\", \"grey\");
+//   else
+//     setValue(\"\", \"backCol\", \"Red\");
+// }
+// 
+// SimpleCtrlScript {EP_setBackColor}
+// DP {CMS_GEM_multichannel_Top_{any}.actual.Trip}
+// DPConfig {:_online.._value}
+// DPType {bool}
+// AlertHdl {FALSE}
+// DPEInvalid {}
+// DPEConfigInvalid {}
+// Operator1 {notequal}
+// Operant1 {0}
+// Color1 {grey}
+// Operator2 {equal}
+// Operant2 {1}
+// Color2 {Red}
+// SimpleCtrlScriptEnd {EP_setBackColor}
+// 
+// 
+// 
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/QC6mainframe/board03/channel013.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel012.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/QC6mainframe/board03/channel010.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel009.actual.status:_online.._value\" , \"CAEN/QC6mainframe/board03/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/QC6mainframe/board03/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetTrip\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetTrip(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool Trip_bit;
+    
+    int i=1;
+    for (i=1;i<=dynlen(dps);i++) 
+      {
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+    if(Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1){ 
+        setValue(\"\",\"backCol\",\"red\");
+      }
+    else {
+        setValue(\"\",\"backCol\",\"grey\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {CMS_GEM_multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+
+
+
+
+
+
+
+
+
+" 0
+ E 0 2 1 2 1 E 1 0 1 441.0000000000001 -54 1 E 110 550 10 10
+30 179
+"FRAME11"
+""
+1 40 84 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+165 0 0 0 0 0
+E E E
+4
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.9206349206349206 0 0.9615384615384618 3.174603174603177 -0.7692307692307878 0 E 40 84 1301 241
+1
+LANG:1 35 MS Shell Dlg 2,-1,21,5,50,1,0,0,0,0
+0 1
+LANG:1 7 Board01
+30 180
+"FRAME12"
+""
+1 40 84 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+166 0 0 0 0 0
+E E E
+4
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.9206349206349206 0 0.9615384615384618 3.174603174603192 155.7307692307692 0 E 40 84 1301 241
+1
+LANG:1 35 MS Shell Dlg 2,-1,21,5,50,1,0,0,0,0
+0 1
+LANG:1 7 Board02
+30 181
+"FRAME13"
+""
+1 40 84 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+167 0 0 0 0 0
+E E E
+4
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.9206349206349206 0 0.9615384615384618 3.987103174603291 317.728090395523 0 E 40 84 1301 241
+1
+LANG:1 35 MS Shell Dlg 2,-1,21,5,50,1,0,0,0,0
+0 1
+LANG:1 7 Board03
 0
 LAYER, 1 
 1
@@ -2705,6 +6851,6 @@ LANG:1 0
 3 0 "PANEL_REF0" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"objects/fwAccessControl/fwAccessControl_CurrentUser.pnl" 699.5 228.9974885919566 T 103 1 0 1 -259.5 -228.9974885919566
+"objects/fwAccessControl/fwAccessControl_CurrentUser.pnl" 699.5 228.9974885919566 T 103 1 0 1 -282.5 -218.9974885919566
 0
 0
