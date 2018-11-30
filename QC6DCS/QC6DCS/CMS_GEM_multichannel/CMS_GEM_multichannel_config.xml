@@ -21,14 +21,14 @@
   <target>
     <system_name>gem_qc6:</system_name>
     <configuration>
-      <tag>MC_QC6_datapoints_V001</tag>
+      <tag>MC_QC6_datapoints_V002</tag>
       <hardware>true</hardware>
       <logical>false</logical>
       <pattern>*</pattern>
       <force_reinstall>false</force_reinstall>
     </configuration>
     <configuration>
-      <tag>MC_trending_V000</tag>
+      <tag>MC_trending_V001</tag>
       <hardware>true</hardware>
       <logical>true</logical>
       <pattern>*</pattern>

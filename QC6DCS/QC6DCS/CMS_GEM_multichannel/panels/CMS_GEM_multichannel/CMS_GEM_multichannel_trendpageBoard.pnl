@@ -2,7 +2,9 @@ V 14
 2
 LANG:1 0 
 LANG:10001 0 
-PANEL,-1 -1 722 400 N "_3DFace" 0
+PANEL,-1 -1 722 400 N "_3DFace" 2
+"$Board"
+"$BoardName"
 E E E E E 1 -1 -1 0  18 14.12500034458935
 ""0  1
 E E 3
@@ -31,7 +33,11 @@ LANG:10001 0
 "layoutAlignment" "AlignCenter"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 5 1 2 1 E U  0 E 20 20.06250017229468 142 38
+"main(mapping event)
+{
+  this.text = $BoardName + \" TRENDS\";
+}" 0
+ E 0 5 1 2 1 E U  0 E 20 20.06250017229468 142 38
 0 2 2 "0s" 0 0 0 192 0 0  20 20.06250017229468 1
 2
 LANG:1 35 MS Shell Dlg 2,-1,16,5,75,0,0,0,0,0
@@ -42,7 +48,7 @@ LANG:10001 12 BOARD Trends
 13 1
 "BUTTON_CLOSE"
 ""
-1 190 20 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 270 20 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 1 0 0 0 0 0
 E E E
@@ -56,7 +62,7 @@ LANG:10001 0
 2
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
-0  188 11 272 45
+0  268 11 352 45
 
 T 
 2
@@ -167,5 +173,5 @@ LANG:1 0
 "$sForeColor"""
 "$sRefName""trendBoard."
 "$sTimeRange"""
-"$templateParameters""board=CAEN/QC6mainframe/board01,"
+"$templateParameters""board=$Board,"
 0
