@@ -52,7 +52,12 @@ void setExpertRights()
 
 void setOperatorRights()
 {
-  setAllInPanel(true);
+  set_all_v0_Button.enabled(false);
+  set_all_trip_Button.enabled(false);
+  set_all_i0_button.enabled(false);
+  set_vMax_all.enabled(false);
+  ALL_ON_BUTTON.enabled(true);
+  ALL_OFF_BUTTON.enabled(true);
 }
 
 
