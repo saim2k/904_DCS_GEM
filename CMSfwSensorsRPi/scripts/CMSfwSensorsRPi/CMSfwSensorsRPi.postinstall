@@ -1,0 +1,17 @@
+#uses "CMSfwSensorsRpi/rpi_libs.ctl" 
+#uses "CMSfwSensorsRpi/rpi_dimConnection.ctl"
+
+main()
+{
+  dyn_string exc;
+
+
+  cmsrpi_configureDIM(exc);
+  if (dynlen(exc)>0) {
+    DebugN("Problems in configuring DIM" , exc);    
+  }
+  
+fwInstallationUtils_loadConfigurations("CMSfwSensorsRPi",exc);
+fwInstallation_appendManager(TRUE, "dim connection", "PVSS00dim", "manual", 30, 2, 2, "-num 7 -dim_dp_config dimRpi -dim_dns_node pccms56.cern.ch");
+fwInstallation_appendManager(TRUE, "checks the dim connection", "PVSS00ctrl", "manual", 30, 2, 2, "CMSfwSensorsRPi/rpiMeasProgStatusScript.ctl");
+}

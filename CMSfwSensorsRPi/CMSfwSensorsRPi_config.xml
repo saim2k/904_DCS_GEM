@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component_configuration>
+  <target>
+    <system_name>cms_gem_dcs_1:</system_name>
+	<configuration>
+      <tag>904_Environmental_Dim_V000</tag>
+      <hardware>true</hardware>
+      <logical>false</logical>
+      <pattern>*</pattern>
+      <force_reinstall>false</force_reinstall>
+    </configuration>
+    <configuration>
+      <tag>904_Environmental_dop_V000</tag>
+      <hardware>true</hardware>
+      <logical>false</logical>
+      <pattern>*</pattern>
+      <force_reinstall>true</force_reinstall>
+    </configuration>
+  </target>
+</component_configuration>

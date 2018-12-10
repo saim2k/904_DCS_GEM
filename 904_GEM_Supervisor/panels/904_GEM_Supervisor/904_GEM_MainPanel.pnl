@@ -30,7 +30,7 @@ LANG:1 0
 1
 LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
 0  8 88 1712 952.0000000000001
-E4 "MultichannelHV" 1
+E5 "MultichannelHV" 1
 LANG:1 12 High Voltage
 1 "904_GEM_Multichannel/904_GEM_Overview.pnl" 1
 LANG:1 0 
@@ -51,6 +51,12 @@ LANG:1 0
 "MixerMonitoring" 1
 LANG:1 5 Mixer
 1 "904_GEM_GAS/CMS_GEM_904Mixer.pnl" 1
+LANG:1 0 
+0
+
+"BaroRPi" 1
+LANG:1 13 Environmental
+1 "CMSfwSensorsRPi/CMSfwSensorsRpi_BaroPressQC8.pnl" 1
 LANG:1 0 
 0
 

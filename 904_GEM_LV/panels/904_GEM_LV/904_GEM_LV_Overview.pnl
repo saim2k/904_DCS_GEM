@@ -4199,7 +4199,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/powerConverter20/channel000\"));
+      makeDynString(\"$sDpName:cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/powerConverter22/channel000\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -4210,7 +4210,7 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/powerConverter20/channel000}
+// PanelPara1 {$sDpName:cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/powerConverter22/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
 " 0
  E E E

@@ -1,0 +1,791 @@
+V 14
+1
+LANG:1 0 
+PANEL,-1 -1 705 431 N "_3DFace" 0
+"
+main()
+{
+  init();  
+  
+//=================== Access Control ===================================================  
+  dyn_string exceptionInfo;
+  fwAccessControl_setupPanel( \"ApplyPanelAccessControl\", exceptionInfo);
+//======================================================================================
+}
+
+
+
+void ApplyPanelAccessControl(string s1, string s2)
+{
+  bool hasControl, hasModify;
+  dyn_string exceptionInfo;
+
+    DisableAllInPanel();
+
+  //check privileges:
+  fwAccessControl_isGranted( \"904_GEM:Control\", hasControl, exceptionInfo);
+  fwAccessControl_isGranted( \"904_GEM:Modify\", hasModify, exceptionInfo);
+
+  if (dynlen(exceptionInfo)) { fwExceptionHandling_display(exceptionInfo); return;}
+
+  //enable/disable panel functionality:
+
+    if (hasControl) 
+    {
+      setOperatorRights();
+    }  
+    if (hasModify) 
+    {
+      setExpertRights();
+    }
+  }
+
+
+void DisableAllInPanel()
+{
+  setAllInPanel(false);
+}
+
+void setExpertRights()
+{
+  setAllInPanel(true);
+}
+
+void setOperatorRights()
+{
+  setAllInPanel(false);
+}
+
+
+void setAllInPanel(bool set)
+{
+  dim.enabled(set);
+  clearEmailFlag.enabled(set);
+}
+" 0
+ E E E E 1 -1 -1 0  0 0
+""0  1
+E "string projectname=\"CMSfwSensorsRPi\";
+string dpRpiPressure;
+string dpRpiTemperature, dpRpiHumidity, dpRpiDewpoint, dpRpiHeight;
+string dpRpiUnixTime;
+string dpRpiDeadband;
+string dpRpiElemMeas;
+string dpRpiMeasDelay;
+
+string dpRpiSetElemMeas;
+string dpRpiSetDeadband;
+string dpRpiSetMeasDelay;
+
+string rpiElemMeasName=\"Elementary measurement number\";
+string rpiDeadbandName=\"Deadband value [hPa]\";
+string rpiMeasDelayName=\"Measurement delay value [ms]\";
+
+void init(){
+  dpRpiPressure=getSystemName()+\"rpiPressureQC8.pressureValue_hPa\";
+  dpRpiTemperature=getSystemName()+\"rpiPressureQC8.temperatureValue_degC\";        
+  dpRpiDewpoint=getSystemName()+\"rpiPressureQC8.dewpointValue_degC\";        
+  dpRpiHumidity=getSystemName()+\"rpiPressureQC8.relHumidityValue_percent\";        
+  dpRpiHeight=getSystemName()+\"rpiPressureQC8.heightValue_m\";        
+
+  dpRpiUnixTime=getSystemName()+\"rpiPressureQC8.readoutUnixTime\";
+  dpRpiDeadband=getSystemName()+\"rpiControlPressureQC8.deadbandValue\";
+  dpRpiElemMeas=getSystemName()+\"rpiControlPressureQC8.elementaryMeasNbValue\";
+  dpRpiMeasDelay=getSystemName()+\"rpiControlPressureQC8.measDelayValue\";
+  
+  dpRpiSetElemMeas=getSystemName()+\"rpiControlPressureQC8.setElementaryMeasNb\";
+  dpRpiSetDeadband=getSystemName()+\"rpiControlPressureQC8.setDeadband\";
+  dpRpiSetMeasDelay=getSystemName()+\"rpiControlPressureQC8.setMeasDelay\";
+  
+  //add trending of Pressure and Temperature
+/*  addSymbol(myModuleName(), myPanelName(), 
+            \"objects/fwTrending/fwTrendingQuickPlotButton.pnl\",
+            \"trendPressureTemperature\",
+            makeDynString(\"$sDpesToPlot:\"+dpRpiPressure+\";\"+dpRpiTemperature),
+            770, 270, 0, 1,1);
+*/
+  showValues();    
+}
+void showValues(){
+  dpConnect(\"workProgramStartedAt\", getSystemName()+\"rpiControlPressureQC8.programStartedAt\");  
+  dpConnect(\"workUpTime\", getSystemName()+\"rpiControlPressureQC8.upTime\"); 
+//  dpConnect(\"workDeadbandValue\", dpRpiDeadband);
+//  dpConnect(\"workMeasDelayValue\", getSystemName()+\"rpiControlPressureQC8.measDelayValue\");  
+//  dpConnect(\"workElementaryMeasValue\", dpRpiElemMeas);  
+  
+  dpConnect(\"workPressure\", dpRpiPressure);  
+  dpConnect(\"workTemperature\", dpRpiTemperature); 
+  dpConnect(\"workHeight\", dpRpiHeight);
+  dpConnect(\"workDewpoint\", dpRpiDewpoint);        
+  dpConnect(\"workHumidity\", dpRpiHumidity);        
+
+//  dpConnect(\"workReadoutTime\", getSystemName()+\"rpiPressureQC8.readoutTime\");  
+//  dpConnect(\"workReadoutUnixTime\", dpRpiUnixTime);  
+}
+void workProgramStartedAt(string dp, string sNewValue){
+  setValue(\"tfProgramStartedAt\",\"text\", sNewValue);    
+}
+void workUpTime(string dp, int iNewValue){
+  setValue(\"tfUpTime\",\"text\", dpValToString(dp,iNewValue, TRUE));  
+}
+void workDeadbandValue(string dp, float fNewValue){
+  setValue(\"tfDeadbandValue\",\"text\", dpValToString(dp,fNewValue, TRUE));    
+}
+void workMeasDelayValue(string dp, float fNewValue){
+  setValue(\"tfMeasDelayValue\",\"text\", dpValToString(dp,fNewValue, TRUE));    
+}
+void workElementaryMeasValue(string dp, int iNewValue){
+  setValue(\"tfElementaryMeasValue\",\"text\", dpValToString(dp,iNewValue, TRUE));    
+}
+//-------------------------------------
+void workPressure(string dp, float fNewValue){
+  setValue(\"tfPressure\",\"text\", dpValToString(dp,fNewValue, TRUE));    
+}
+void workTemperature(string dp, float fNewValue){
+  setValue(\"tfTemperature\",\"text\", dpValToString(dp,fNewValue, TRUE));    
+}
+void workHeight(string dp, float fNewValue){
+  setValue(\"tfHeight\",\"text\", dpValToString(dp,fNewValue, TRUE));    
+}
+void workDewpoint(string dp, float fNewValue){
+  setValue(\"tfDewpoint\",\"text\", dpValToString(dp,fNewValue, TRUE));    
+}
+void workHumidity(string dp, float fNewValue){
+  setValue(\"tfHumidity\",\"text\", dpValToString(dp,fNewValue, TRUE));    
+}
+void workReadoutTime(string dp, string sNewValue){
+  setValue(\"tfReadoutTime\",\"text\", sNewValue);    
+}
+void workReadoutUnixTime(string dp, float fNewValue){
+  setValue(\"tfReadoutUnixTime\",\"text\", dpValToString(dp,fNewValue, TRUE));    
+}
+//-------------------------------------
+void clearEmailFlag(){
+dyn_errClass err;
+
+  dpSet(getSystemName()+\"rpiControlPressureQC8.emailFlag\", TRUE);
+  err = getLastError();
+  if (dynlen(err) > 0)
+    errorDialog(err);
+}
+void openRPiTrendPanel(string datapointname, string name){
+  ChildPanelOn(projectname+\"/objects/CMSfwSensorsRPi_TrendValue.pnl\",
+      name+\"_trend\",
+      makeDynString(\"$nameData:\"+name,
+                    \"$actDatapoint:\"+datapointname),
+      0, 0);  
+}
+void openRPiSetValuePanel(string actDpName, string name, string newDpName, string type){
+  ChildPanelOn(projectname+\"/objects/CMSfwSensorsRPi_SetValue.pnl\",
+      name+\"_setVal\",
+      makeDynString(\"$nameData:\"+name,
+                    \"$actDatapoint:\"+actDpName,
+                    \"$newDatapoint:\"+newDpName,
+                    \"$dpType:\"+type),
+      0, 0);    
+}
+
+
+
+
+
+
+
+
+
+" 0
+ 3
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:1 0 
+14 7
+"tfUpTime"
+""
+1 200 128.0172413793102 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  198 126.0172413793104 412 149.0172413793104
+2 "0s" 0 0 0 0 0 -1  E E E
+2 8
+"textUpTime"
+""
+1 33 128.0172413793104 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+9 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 33 128.0172413793104 91 146
+0 2 2 "0s" 0 0 0 192 0 0  33 128.0172413793104 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0 1
+LANG:1 7 Up time
+14 13
+"tfProgramStartedAt"
+""
+1 200 158.0172413793102 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+14 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  198 156.0172413793104 412 179.0172413793104
+2 "0s" 0 0 0 0 0 -1  E E E
+2 14
+"textProgramStartedAt"
+""
+1 33 158.0172413793104 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+15 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 33 158.0172413793104 167 176
+0 2 2 "0s" 0 0 0 192 0 0  33 158.0172413793104 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0 1
+LANG:1 18 Program started at
+1 181 0 "7" 0
+0
+2 16
+"PRIMITIVE_TEXT1"
+""
+1 33 98.01724137931035 E E E 1 E 1 E N "Red" E N "gelb" E E
+ E E
+16 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  1 E 33 98.01724137931035 446 116
+0 2 2 "0s" 0 0 0 192 0 0  33 98.01724137931035 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,0,0,0,0,0
+0 1
+LANG:1 48 The Up time counter must increment continuously!
+30 26
+"fError"
+""
+1 410 363 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+22 0 0 0 0 0
+E E E
+1
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 0 1 0 1 E 0.7000000000000001 0 2.127659574468083 263 -682.340425531914 0 E 410 363 581 411
+1
+LANG:1 35 MS Shell Dlg 2,-1,13,5,75,1,0,0,0,0
+0 1
+LANG:1 6 Errors
+13 27
+"clearEmailFlag"
+""
+1 593.3528186521535 156.922607270055 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  clearEmailFlag();
+}
+
+" 0
+
+23 0 0 0 0 0
+E E E
+0
+1
+LANG:1 12 doubleClick!
+
+1
+"layoutAlignment" "AlignCenter"
+1
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  558 136 662 174
+
+T 
+1
+LANG:1 14 ClearEmailFlag
+E E E E
+1 187 1 "1" 0
+0
+30 43
+"frameData"
+""
+1 20 183 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+26 0 0 0 0 0
+E E E
+1
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 0 1 0 1 E 2.07762460233298 0 1.496062992125982 -19.40615058324494 -60.52952755905443 0 E 20 183 251 311
+1
+LANG:1 35 MS Shell Dlg 2,-1,19,5,75,1,0,0,0,0
+0 1
+LANG:1 4 Data
+30 111
+"FRAME1"
+""
+1 20 183 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+42 0 0 0 0 0
+E E E
+1
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 0 1 0 1 E 2.860869565217391 0 1.03923431984795 -35.21739130434782 -122.1626391528646 0 E 20 183 251 311
+1
+LANG:1 35 MS Shell Dlg 2,-1,19,5,75,1,0,0,0,0
+0 1
+LANG:1 6 Status
+14 117
+"tfPressure"
+""
+1 200.1463414634146 241.25 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+48 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  198.1463414634146 239.25 332.1463414634146 262.25
+2 "0s" 0 0 0 0 0 -1  E E E
+2 118
+"tPressure"
+""
+1 36.14634146341473 243.25 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+49 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 36.14634146341473 243.25 140.3989115097762 261.75
+0 2 2 "0s" 0 0 0 192 0 0  36.14634146341473 243.25 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0 1
+LANG:1 14 Pressure [hPa]
+14 119
+"tfTemperature"
+""
+1 200.1463414634146 271.25 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+50 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  198.1463414634146 269.25 332.1463414634146 292.25
+2 "0s" 0 0 0 0 0 -1  E E E
+2 120
+"tTemperature"
+""
+1 36.14634146341473 273.25 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+51 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 36.14634146341473 273.25 181.3989115097762 291.75
+0 2 2 "0s" 0 0 0 192 0 0  36.14634146341473 273.25 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0 1
+LANG:1 18 Temperature [degC]
+13 127
+"bTrendPressure"
+""
+1 360 250 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+58 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+1
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  348 237.9999999999999 402 263.9999999999999
+
+T 
+1
+LANG:1 5 Trend
+"main()
+{
+  openRPiTrendPanel(dpRpiPressure, \"Pressure in QC8 [hPa]\");
+}
+
+
+
+" 0
+ E "main()
+{
+}
+
+" 0
+ E
+13 128
+"bTrendTemperature"
+""
+1 360 280 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+59 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+1
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  348 267.9999999999999 402 293.9999999999999
+
+T 
+1
+LANG:1 5 Trend
+"main()
+{
+  openRPiTrendPanel(dpRpiTemperature, \"Temperature in QC8 [degC]\");  
+}
+
+
+" 0
+ E "main()
+{
+}
+
+" 0
+ E
+13 159
+"dim"
+""
+1 820 33 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+77 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+1
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  558 227 662 265
+
+T 
+1
+LANG:1 9 DIM panel
+"//[SCRIPT_WIZARD_GENERATED {valid}
+//[FUNCTION main
+main()
+{
+  //[OPEN_POPUP_CODE
+  sdOpenPopup(\"\",\"fwDIM/fwDim.pnl\",\"DIM browser\",0,0,0,\"\");
+  //]
+}
+//]
+//]
+" 0
+ E E E
+2 175
+"tDewpoint"
+""
+1 10335.07307388135 -5124 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+80 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 0.9756097560975611 0 1 4.878048780487802 -108.25 0 E 32 412 154 430
+0 2 2 "0s" 0 0 0 192 0 0  32 412 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0 1
+LANG:1 15 Dewpoint [degC]
+14 176
+"tfDewpoint"
+""
+1 200.1463414634146 301.75 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+81 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  198.1463414634146 300.25 332.1463414634146 323.25
+2 "0s" 0 0 0 0 0 -1  E E E
+2 177
+"tHumidity"
+""
+1 10335.07307388135 -5035.5 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+82 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E 0.9756097560975611 0 1 4.878048780487802 -78.75 0 E 32 412 163 430
+0 2 2 "0s" 0 0 0 192 0 0  32 412 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0 1
+LANG:1 17 Rel. Humidity [%]
+13 178
+"bTrendDewpoint"
+""
+1 360 310.9999999999999 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+83 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+1
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  348 298.9999999999999 402 324.9999999999999
+
+T 
+1
+LANG:1 5 Trend
+"main()
+{
+  openRPiTrendPanel(dpRpiDewpoint, \"Dewpoint temperature in QC8 [degC]\");  
+}
+
+
+
+
+" 0
+ E "main()
+{
+}
+
+" 0
+ E
+14 179
+"tfHumidity"
+""
+1 200.1463414634146 331.25 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+84 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  198.1463414634146 330.25 332.1463414634146 353.25
+2 "0s" 0 0 0 0 0 -1  E E E
+13 180
+"bTrendHumidity"
+""
+1 360 340.4999999999999 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+85 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignCenter"
+1
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  348 328.9999999999999 402 354.9999999999999
+
+T 
+1
+LANG:1 5 Trend
+"main()
+{
+  openRPiTrendPanel(dpRpiHumidity, \"Rel Humidity in QC8 [%]\");  
+}
+
+
+
+
+" 0
+ E "main()
+{
+}
+
+" 0
+ E
+2 194
+"PRIMITIVE_TEXT13"
+""
+1 23.5 16 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+86 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  0 E 23.5 16 443 48
+0 2 2 "0s" 0 0 0 192 0 0  23.5 16 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,27,5,75,1,0,0,0,0
+0 1
+LANG:1 28 904 Environmental monitoring
+0
+LAYER, 1 
+1
+LANG:1 0 
+1 182 0 "" 0
+0
+1 188 1 "" 0
+0
+0
+LAYER, 2 
+1
+LANG:1 0 
+0
+LAYER, 3 
+1
+LANG:1 0 
+0
+LAYER, 4 
+1
+LANG:1 0 
+0
+LAYER, 5 
+1
+LANG:1 0 
+0
+LAYER, 6 
+1
+LANG:1 0 
+0
+LAYER, 7 
+1
+LANG:1 0 
+0
+3 0 "upTime" -1
+"layoutAlignment" "AlignCenter"
+"" ""
+"objects/STD_LEDS/Led_1.pnl" 190 360 T 2 1 0 1 279.7474299536384 -274.8189655172413
+5
+"$b_IBit""TRUE"
+"$b_ShowAlert""FALSE"
+"$dpe_value""rpiControlPressureSX5.isUpTimeOK"
+"$s_ColOff""STD_device_alert"
+"$s_ColOn""Green"
+3 1 "errorLED" -1
+"layoutAlignment" "AlignCenter"
+"" ""
+"objects/STD_LEDS/Led_2.pnl" 442 382 T 21 1.375730699455755 0 0.8189655172413792 -48.07296915944369 -202.8448275862069
+5
+"$b_IBit""TRUE"
+"$b_ShowAlert""FALSE"
+"$dpe_value""rpiControlPressureSX5.emailFlag"
+"$s_ColOff""Red"
+"$s_ColOn""Green"
+0
