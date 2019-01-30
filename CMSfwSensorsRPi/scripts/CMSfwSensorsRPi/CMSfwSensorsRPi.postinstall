@@ -1,5 +1,8 @@
 #uses "CMSfwSensorsRpi/rpi_libs.ctl" 
 #uses "CMSfwSensorsRpi/rpi_dimConnection.ctl"
+#uses "CMSfwInstallUtils/CMSfwInstallUtils.ctl"
+#uses "fwInstallationUtils.ctl"
+
 
 main()
 {
