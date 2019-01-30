@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <component>
   <name>904_GEM_Supervisor</name>
-  <version>1.0.8</version>
-  <date>07/12/2018</date>
+  <version>1.0.9</version>
+  <date>30/01/2018</date>
   <required>fwCore=8.0.7</required>
   <required>fwAccessControl=8.0.1</required>
   <required>CMSfwInstallUtils=2.2.5</required>

@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component_configuration>
+  <append_managers>
+    <manager>
+      <type>WCCOAdim</type>
+      <num>7</num>
+      <options>-num 7 -dim_dp_config dimRpi -dim_dns_node pccms56.cern.ch</options>
+      <mode>manual</mode>
+      <restart>2</restart>
+      <counter>2</counter>
+      <sec_kill>30</sec_kill>
+      <isDriver>false</isDriver>
+      <restartManager>true</restartManager>
+    </manager>
+  </append_managers>
   <target>
     <system_name>cms_gem_dcs_1:</system_name>
 	<configuration>
