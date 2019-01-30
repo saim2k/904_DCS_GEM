@@ -1,0 +1,188 @@
+V 11
+1
+LANG:1 0 
+PANEL,-1 -1 574 400 N "_3DFace" 2
+"$actDatapoint"
+"$nameData"
+"main()
+{
+  init();
+}
+" 0
+ E E E E 1 -1 -1 0  0 0
+""0  1
+E "void init(){
+
+  dpConnect(\"workFunc\",$actDatapoint);
+
+  setValue(\"tTitleCont\", \"text\", \"- ''\"+$nameData+\"''\");  
+  
+  dyn_string ex;
+  string dpe, refPlotName;
+  dpe = $actDatapoint;//your datapoint here; for example: dpe = TEXTFIELD1.text;
+  refPlotName=$nameData;  
+  fwTrending_addQuickFaceplate(myModuleName(), myPanelName(),
+                               refPlotName, makeDynString(dpe), 15,90, ex);
+   if (dynlen(ex)) DebugTN(ex);
+}
+void workFunc(string dpe, float fNewValue){
+  setValue(\"tfActualValue\", \"text\", dpValToString(dpe, fNewValue, TRUE));
+}
+
+
+
+
+
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:1 0 
+2 0
+"tTitleCont"
+""
+1 82 12 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 82 12 466 42
+0 2 2 "0s" 0 0 0 192 0 0  82 12 1
+1
+LANG:1 26 Arial,18,-1,5,75,0,0,0,0,0
+0 1
+LANG:1 29 Elementary measurement number
+2 1
+"tTitle"
+""
+1 12 12 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 12 12 78 42
+0 2 2 "0s" 0 0 0 192 0 0  12 12 1
+1
+LANG:1 26 Arial,18,-1,5,75,0,0,0,0,0
+0 1
+LANG:1 5 Trend
+14 86
+"tfActualValue"
+""
+1 210 60 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 34 MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0
+0  208 58 351 81
+2 "0s" 0 0 0 0 0 -1  E E E
+2 87
+"tActualValue"
+""
+1 61 62 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 22 62 100 79
+0 2 2 "0s" 0 0 0 193 0 0  61 62 1
+1
+LANG:1 26 Arial,10,-1,5,75,0,0,0,0,0
+0 1
+LANG:1 12 Actual value
+13 172
+"closeButton"
+""
+1 450 370 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  448 368 572 395
+
+T 
+1
+LANG:1 5 Close
+"// SimpleCtrlScriptStart {valid}
+main()
+{
+  EP_panelOff();
+}
+
+EP_panelOff()
+{
+  PanelOff();
+}
+
+// SimpleCtrlScript {EP_panelOff}
+// Function {PanelOff}
+// Panel {}
+// Module {}
+// SimpleCtrlScriptEnd {EP_panelOff}
+" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:1 0 
+0
+LAYER, 2 
+1
+LANG:1 0 
+0
+LAYER, 3 
+1
+LANG:1 0 
+0
+LAYER, 4 
+1
+LANG:1 0 
+0
+LAYER, 5 
+1
+LANG:1 0 
+0
+LAYER, 6 
+1
+LANG:1 0 
+0
+LAYER, 7 
+1
+LANG:1 0 
+0
+1 1 "SHAPE_GROUP1" -1
+2 0 
+1 0 
+
+0

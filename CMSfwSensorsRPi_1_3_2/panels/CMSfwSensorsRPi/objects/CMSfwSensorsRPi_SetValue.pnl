@@ -1,0 +1,363 @@
+V 11
+1
+LANG:1 0 
+PANEL,-1 -1 497 150 N "_3DFace" 4
+"$actDatapoint"
+"$dpType"
+"$nameData"
+"$newDatapoint"
+"main()
+{
+  init();
+}
+" 0
+ E E E E 1 -1 -1 0  0 0
+""0  1
+E "string rpiTempString;
+
+init(){
+  dpGet($newDatapoint, rpiTempString);
+  setValue(\"tfNewValue\", \"text\", rpiTempString);
+  setValue(\"tTitleCont\", \"text\", \"- ''\"+$nameData+\"''\");
+
+  dpConnect(\"workFunc\",$actDatapoint);
+}
+void workFunc(string dpe, float fNewValue){
+  setValue(\"tfActualValue\", \"text\", dpValToString(dpe, fNewValue, TRUE));
+}
+void readInput(){
+  int iNewValue;
+  float fNewValue;
+  getValue(\"tfNewValue\", \"text\", rpiTempString);
+  //DebugN(rpiTempString);
+  if($dpType==\"int\")  sscanf(rpiTempString, \"%d\", iNewValue);
+  if($dpType==\"float\")  sscanf(rpiTempString, \"%15.4f\", fNewValue);
+  
+  if(checkFormat(rpiTempString, $newDatapoint)==0){
+      setValue(\"tfNewValue\", \"text\", rpiTempString);
+  }
+  if(checkFormat(rpiTempString, $newDatapoint)==1){
+      DebugN(\"wrong\");
+      ChildPanelOnCentral( \"vision/MessageWarning\",
+                         getCatStr( \"e_para\", \"warning\" ),
+                         makeDynString( getCatStr( \"e_para\", \"wrongFormat\" )));
+    return;
+  }
+  
+}
+int checkFormat(string sTemp, string newDp){
+  dyn_errClass err; 
+  string sFormat, sDp;
+  sDp = dpSubStr(newDp,  DPSUB_SYS_DP_EL);
+  if ( strpos(sDp,\".\") < 1 )
+    sDp += \".\";
+
+  sFormat = dpGetFormat( sDp );
+  if( !checkStringFormat(sTemp, sFormat) )
+  {
+    ChildPanelOnCentral( \"vision/MessageWarning\",
+                         getCatStr( \"e_para\", \"warning\" ),
+                         makeDynString( getCatStr( \"e_para\", \"wrongFormat\" )));
+    return 1;
+  }
+  return 0; //0=OK, 1=not OK
+}
+void buttonSet(){
+  dyn_errClass err;
+  if(checkFormat(rpiTempString, $newDatapoint)==0){
+    dpSetWait($newDatapoint, rpiTempString);
+    err = getLastError();
+    if (dynlen(err) > 0)
+    errorDialog(err);
+  }  
+}
+
+
+
+
+
+
+
+
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:1 0 
+2 0
+"tTitleCont"
+""
+1 54 12 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 54 12 438 42
+0 2 2 "0s" 0 0 0 192 0 0  54 12 1
+1
+LANG:1 26 Arial,18,-1,5,75,0,0,0,0,0
+0 1
+LANG:1 29 Elementary measurement number
+14 1
+"tfActualValue"
+""
+1 122 69 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 34 MS Shell Dlg 2,8,-1,5,75,0,0,0,0,0
+0  120 67 263 90
+2 "0s" 0 0 0 0 0 -1  E E E
+2 3
+"tActualValue"
+""
+1 60 70 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 21 70 99 87
+0 2 2 "0s" 0 0 0 193 0 0  60 70 1
+1
+LANG:1 26 Arial,10,-1,5,75,0,0,0,0,0
+0 1
+LANG:1 12 Actual value
+2 4
+"tNewValue"
+""
+1 55 110 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 21 110 89 127
+0 2 2 "0s" 0 0 0 193 0 0  55 110 1
+1
+LANG:1 26 Arial,10,-1,5,75,0,0,0,0,0
+0 1
+LANG:1 9 NEW value
+13 6
+"bSet"
+""
+1 310 60 E E E 1 E 1 E N "_ButtonText" E N "red" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 26 Arial,14,-1,5,75,0,0,0,0,0
+0  308 58 432 142
+
+T 
+1
+LANG:1 3 SET
+"main()
+{
+  buttonSet();
+}
+
+
+
+
+" 0
+ E E E
+2 7
+"tTitle"
+""
+1 12 12 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 12 12 49 42
+0 2 2 "0s" 0 0 0 192 0 0  12 12 1
+1
+LANG:1 26 Arial,18,-1,5,75,0,0,0,0,0
+0 1
+LANG:1 3 Set
+13 9
+"closeButton"
+""
+1 449 117 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  447 115 491 142
+
+T 
+1
+LANG:1 5 Close
+"// SimpleCtrlScriptStart {valid}
+main()
+{
+  EP_panelOff();
+}
+
+EP_panelOff()
+{
+  PanelOff();
+}
+
+// SimpleCtrlScript {EP_panelOff}
+// Function {PanelOff}
+// Panel {}
+// Module {}
+// SimpleCtrlScriptEnd {EP_panelOff}
+" 0
+ E E E
+14 10
+"tfNewValue"
+""
+1 122 109 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+9 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 34 MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0
+0  120 107 263 130
+3 "0s" 0 0 0 0 0 -1  E E "    main(){
+  readInput();
+}
+
+" 0
+
+4 11
+"LINE1"
+""
+1 289.0000000000001 106 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  289 106 289 123
+4 13
+"LINE3"
+""
+1 289 123.3333333333333 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+12 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  289 123 270 123
+4 14
+"LINE4"
+""
+1 279.5000000000001 114.6666666666667 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+13 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  280 115 270 123
+4 16
+"LINE6"
+""
+1 270.0000000000001 123.3333333333333 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+15 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  270 123 280 132
+0
+LAYER, 1 
+1
+LANG:1 0 
+0
+LAYER, 2 
+1
+LANG:1 0 
+0
+LAYER, 3 
+1
+LANG:1 0 
+0
+LAYER, 4 
+1
+LANG:1 0 
+0
+LAYER, 5 
+1
+LANG:1 0 
+0
+LAYER, 6 
+1
+LANG:1 0 
+0
+LAYER, 7 
+1
+LANG:1 0 
+0
+1 1 "SHAPE_GROUP1" -1
+2 0 
+0 7 
+
+1 2 "SHAPE_GROUP2" -1
+4 0 
+11 13 14 16 
+
+0

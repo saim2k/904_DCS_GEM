@@ -1,0 +1,301 @@
+# ascii dump of database
+
+# DpType
+TypeName
+raspberryMeasData_BMP085.raspberryMeasData_BMP085	1#1
+	pressureValue_hPa	22#5
+	temperatureValue_degC	22#6
+	heightValue	22#7
+	readoutTime	25#8
+	readoutUnixTime	22#11
+raspberryMeasData_BMP280.raspberryMeasData_BMP280	1#1
+	pressureValue_hPa	22#2
+	temperatureValue_degC	22#3
+	dewpointValue_degC	22#4
+	relHumidityValue_percent	22#5
+	heightValue_m	22#6
+	deadband	1#15
+		pressureDeadband	22#16
+		temperatureDeadband	22#17
+		dewpointDeadband	22#18
+		relHumidityDeadband	22#19
+	readoutTime	1#20
+		pressureReadoutTime	22#21
+		temperatureReadoutTime	22#22
+		dewpointReadoutTime	22#23
+		relHumidityReadoutTime	22#24
+	lockReadoutTogetherValue	22#25
+raspberryMeasData_CoolingPressure.raspberryMeasData_CoolingPressure	1#1
+	ch00_values	6#19
+	ch01_values	6#20
+	ch02_values	6#21
+	ch03_values	6#22
+	ch04_values	6#23
+	ch05_values	6#24
+	ch06_values	6#25
+	ch07_values	6#26
+	ch00_deadband	22#10
+	ch01_deadband	22#11
+	ch02_deadband	22#12
+	ch03_deadband	22#13
+	ch04_deadband	22#14
+	ch05_deadband	22#15
+	ch06_deadband	22#16
+	ch07_deadband	22#17
+	dataRate__samples_ch_sec	22#18
+	finalVal	1#27
+		ch00_pressure	22#28
+		ch01_pressure	22#29
+		ch02_pressure	22#30
+		ch03_pressure	22#31
+		ch04_pressure	22#32
+		ch05_pressure	22#33
+		ch06_pressure	22#34
+		ch07_pressure	22#35
+	rawVal	1#36
+		ch00_ADC	22#37
+		ch01_ADC	22#38
+		ch02_ADC	22#39
+		ch03_ADC	22#40
+		ch04_ADC	22#41
+		ch05_ADC	22#42
+		ch06_ADC	22#43
+		ch07_ADC	22#44
+		ch00_Current	22#45
+		ch01_Current	22#46
+		ch02_Current	22#47
+		ch03_Current	22#48
+		ch04_Current	22#49
+		ch05_Current	22#50
+		ch06_Current	22#51
+		ch07_Current	22#52
+
+# Datapoint/DpId
+DpName	TypeName	ID
+rpiPressureUXC	raspberryMeasData_BMP085	106495
+rpiPressureSX5	raspberryMeasData_BMP280	2822467
+rpiCoolingUXC_X0	raspberryMeasData_CoolingPressure	2822476
+rpiPressureUGX	raspberryMeasData_BMP280	2822494
+rpiPressureMilliQan	raspberryMeasData_BMP280	2822517
+rpiPressureUXC_2	raspberryMeasData_BMP280	2822523
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+rpiPressureUXC.pressureValue_hPa	""	lt:1 LANG:1 "@%15.3f@"
+rpiPressureUXC.temperatureValue_degC	""	lt:1 LANG:1 "@%15.2f@"
+rpiPressureUXC.heightValue	""	lt:1 LANG:1 "@%15.2f@"
+
+# DpFunction
+ElementName	TypeName	_dp_fct.._type	_dp_fct.._param	_dp_fct.._fct	_dp_fct.._global	_dp_fct.._stat_type	_dp_fct.._interval	_dp_fct.._time	_dp_fct.._day_of_week	_dp_fct.._day	_dp_fct.._month	_dp_fct.._delay	_dp_fct.._read_archive	_dp_fct.._inv_func	_dp_fct.._inv_limit	_dp_fct.._def_func	_dp_fct.._def_limit	_dp_fct.._user1_func	_dp_fct.._user1_limit	_dp_fct.._user2_func	_dp_fct.._user2_limit	_dp_fct.._user3_func	_dp_fct.._user3_limit	_dp_fct.._user4_func	_dp_fct.._user4_limit	_dp_fct.._user5_func	_dp_fct.._user5_limit	_dp_fct.._user6_func	_dp_fct.._user6_limit	_dp_fct.._user7_func	_dp_fct.._user7_limit	_dp_fct.._user8_func	_dp_fct.._user8_limit	_dp_fct.._interm_res	_dp_fct.._interm_res_cyc
+rpiCoolingUXC_X0.finalVal.ch00_pressure	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch00_values:_online.._value	"p1[3]"	
+rpiCoolingUXC_X0.finalVal.ch01_pressure	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch01_values:_online.._value	"p1[3]"	
+rpiCoolingUXC_X0.finalVal.ch02_pressure	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch02_values:_online.._value	"p1[3]"	
+rpiCoolingUXC_X0.finalVal.ch03_pressure	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch03_values:_online.._value	"p1[3]"	
+rpiCoolingUXC_X0.finalVal.ch04_pressure	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch04_values:_online.._value	"p1[3]"	
+rpiCoolingUXC_X0.finalVal.ch05_pressure	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch05_values:_online.._value	"p1[3]"	
+rpiCoolingUXC_X0.finalVal.ch06_pressure	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch06_values:_online.._value	"p1[3]"	
+rpiCoolingUXC_X0.finalVal.ch07_pressure	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch07_values:_online.._value	"p1[3]"	
+rpiCoolingUXC_X0.rawVal.ch00_ADC	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch00_values:_online.._value	"p1[1]"	
+rpiCoolingUXC_X0.rawVal.ch01_ADC	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch01_values:_online.._value	"p1[1]"	
+rpiCoolingUXC_X0.rawVal.ch02_ADC	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch02_values:_online.._value	"p1[1]"	
+rpiCoolingUXC_X0.rawVal.ch03_ADC	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch03_values:_online.._value	"p1[1]"	
+rpiCoolingUXC_X0.rawVal.ch04_ADC	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch04_values:_online.._value	"p1[1]"	
+rpiCoolingUXC_X0.rawVal.ch05_ADC	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch05_values:_online.._value	"p1[1]"	
+rpiCoolingUXC_X0.rawVal.ch06_ADC	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch06_values:_online.._value	"p1[1]"	
+rpiCoolingUXC_X0.rawVal.ch07_ADC	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch07_values:_online.._value	"p1[1]"	
+rpiCoolingUXC_X0.rawVal.ch00_Current	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch00_values:_online.._value	"p1[2]"	
+rpiCoolingUXC_X0.rawVal.ch01_Current	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch01_values:_online.._value	"p1[2]"	
+rpiCoolingUXC_X0.rawVal.ch02_Current	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch02_values:_online.._value	"p1[2]"	
+rpiCoolingUXC_X0.rawVal.ch03_Current	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch03_values:_online.._value	"p1[2]"	
+rpiCoolingUXC_X0.rawVal.ch04_Current	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch04_values:_online.._value	"p1[2]"	
+rpiCoolingUXC_X0.rawVal.ch05_Current	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch05_values:_online.._value	"p1[2]"	
+rpiCoolingUXC_X0.rawVal.ch06_Current	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch06_values:_online.._value	"p1[2]"	
+rpiCoolingUXC_X0.rawVal.ch07_Current	raspberryMeasData_CoolingPressure	60	rpiCoolingUXC_X0.ch07_values:_online.._value	"p1[2]"	
+
+# DbArchiveInfo
+ElementName	TypeName	DetailNr	_archive.._type	_archive.._archive	_archive.._class	_archive.._interv	_archive.._interv_type	_archive.._std_type	_archive.._std_tol	_archive.._std_time	_archive.._round_val	_archive.._round_inv
+rpiPressureUXC.pressureValue_hPa	raspberryMeasData_BMP085		45	1
+rpiPressureUXC.pressureValue_hPa	raspberryMeasData_BMP085	1	3		_EVENT	0	0	4	0.001	01.01.1970 00:00:00.000	0	0
+rpiPressureUXC.temperatureValue_degC	raspberryMeasData_BMP085		45	1
+rpiPressureUXC.temperatureValue_degC	raspberryMeasData_BMP085	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUXC.readoutUnixTime	raspberryMeasData_BMP085		45	1
+rpiPressureUXC.readoutUnixTime	raspberryMeasData_BMP085	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureSX5.pressureValue_hPa	raspberryMeasData_BMP280		45	1
+rpiPressureSX5.pressureValue_hPa	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureSX5.temperatureValue_degC	raspberryMeasData_BMP280		45	1
+rpiPressureSX5.temperatureValue_degC	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureSX5.dewpointValue_degC	raspberryMeasData_BMP280		45	1
+rpiPressureSX5.dewpointValue_degC	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureSX5.relHumidityValue_percent	raspberryMeasData_BMP280		45	1
+rpiPressureSX5.relHumidityValue_percent	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureSX5.heightValue_m	raspberryMeasData_BMP280		45	1
+rpiPressureSX5.heightValue_m	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureSX5.deadband.pressureDeadband	raspberryMeasData_BMP280		45	1
+rpiPressureSX5.deadband.pressureDeadband	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureSX5.deadband.temperatureDeadband	raspberryMeasData_BMP280		45	1
+rpiPressureSX5.deadband.temperatureDeadband	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureSX5.deadband.dewpointDeadband	raspberryMeasData_BMP280		45	1
+rpiPressureSX5.deadband.dewpointDeadband	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureSX5.deadband.relHumidityDeadband	raspberryMeasData_BMP280		45	1
+rpiPressureSX5.deadband.relHumidityDeadband	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureSX5.readoutTime.pressureReadoutTime	raspberryMeasData_BMP280		45	1
+rpiPressureSX5.readoutTime.pressureReadoutTime	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureSX5.readoutTime.temperatureReadoutTime	raspberryMeasData_BMP280		45	1
+rpiPressureSX5.readoutTime.temperatureReadoutTime	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureSX5.readoutTime.dewpointReadoutTime	raspberryMeasData_BMP280		45	1
+rpiPressureSX5.readoutTime.dewpointReadoutTime	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureSX5.readoutTime.relHumidityReadoutTime	raspberryMeasData_BMP280		45	1
+rpiPressureSX5.readoutTime.relHumidityReadoutTime	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureSX5.lockReadoutTogetherValue	raspberryMeasData_BMP280		45	1
+rpiPressureSX5.lockReadoutTogetherValue	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.ch00_deadband	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.ch00_deadband	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.ch01_deadband	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.ch01_deadband	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.ch02_deadband	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.ch02_deadband	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.ch03_deadband	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.ch03_deadband	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.ch04_deadband	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.ch04_deadband	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.ch05_deadband	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.ch05_deadband	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.ch06_deadband	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.ch06_deadband	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.ch07_deadband	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.ch07_deadband	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.dataRate__samples_ch_sec	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.dataRate__samples_ch_sec	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.finalVal.ch00_pressure	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.finalVal.ch00_pressure	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.finalVal.ch01_pressure	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.finalVal.ch01_pressure	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.finalVal.ch02_pressure	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.finalVal.ch02_pressure	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.finalVal.ch03_pressure	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.finalVal.ch03_pressure	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.finalVal.ch04_pressure	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.finalVal.ch04_pressure	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.finalVal.ch05_pressure	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.finalVal.ch05_pressure	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.finalVal.ch06_pressure	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.finalVal.ch06_pressure	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.finalVal.ch07_pressure	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.finalVal.ch07_pressure	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.rawVal.ch00_ADC	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.rawVal.ch00_ADC	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.rawVal.ch01_ADC	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.rawVal.ch01_ADC	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.rawVal.ch02_ADC	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.rawVal.ch02_ADC	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.rawVal.ch03_ADC	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.rawVal.ch03_ADC	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.rawVal.ch04_ADC	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.rawVal.ch04_ADC	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.rawVal.ch05_ADC	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.rawVal.ch05_ADC	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.rawVal.ch06_ADC	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.rawVal.ch06_ADC	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.rawVal.ch07_ADC	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.rawVal.ch07_ADC	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.rawVal.ch00_Current	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.rawVal.ch00_Current	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.rawVal.ch01_Current	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.rawVal.ch01_Current	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.rawVal.ch02_Current	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.rawVal.ch02_Current	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.rawVal.ch03_Current	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.rawVal.ch03_Current	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.rawVal.ch04_Current	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.rawVal.ch04_Current	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.rawVal.ch05_Current	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.rawVal.ch05_Current	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.rawVal.ch06_Current	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.rawVal.ch06_Current	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiCoolingUXC_X0.rawVal.ch07_Current	raspberryMeasData_CoolingPressure		45	1
+rpiCoolingUXC_X0.rawVal.ch07_Current	raspberryMeasData_CoolingPressure	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUGX.pressureValue_hPa	raspberryMeasData_BMP280		45	1
+rpiPressureUGX.pressureValue_hPa	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUGX.temperatureValue_degC	raspberryMeasData_BMP280		45	1
+rpiPressureUGX.temperatureValue_degC	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUGX.dewpointValue_degC	raspberryMeasData_BMP280		45	1
+rpiPressureUGX.dewpointValue_degC	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUGX.relHumidityValue_percent	raspberryMeasData_BMP280		45	1
+rpiPressureUGX.relHumidityValue_percent	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUGX.heightValue_m	raspberryMeasData_BMP280		45	1
+rpiPressureUGX.heightValue_m	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUGX.deadband.pressureDeadband	raspberryMeasData_BMP280		45	1
+rpiPressureUGX.deadband.pressureDeadband	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUGX.deadband.temperatureDeadband	raspberryMeasData_BMP280		45	1
+rpiPressureUGX.deadband.temperatureDeadband	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUGX.deadband.dewpointDeadband	raspberryMeasData_BMP280		45	1
+rpiPressureUGX.deadband.dewpointDeadband	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUGX.deadband.relHumidityDeadband	raspberryMeasData_BMP280		45	1
+rpiPressureUGX.deadband.relHumidityDeadband	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUGX.readoutTime.pressureReadoutTime	raspberryMeasData_BMP280		45	1
+rpiPressureUGX.readoutTime.pressureReadoutTime	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUGX.readoutTime.temperatureReadoutTime	raspberryMeasData_BMP280		45	1
+rpiPressureUGX.readoutTime.temperatureReadoutTime	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUGX.readoutTime.dewpointReadoutTime	raspberryMeasData_BMP280		45	1
+rpiPressureUGX.readoutTime.dewpointReadoutTime	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUGX.readoutTime.relHumidityReadoutTime	raspberryMeasData_BMP280		45	1
+rpiPressureUGX.readoutTime.relHumidityReadoutTime	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUGX.lockReadoutTogetherValue	raspberryMeasData_BMP280		45	1
+rpiPressureUGX.lockReadoutTogetherValue	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureMilliQan.pressureValue_hPa	raspberryMeasData_BMP280		45	1
+rpiPressureMilliQan.pressureValue_hPa	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureMilliQan.temperatureValue_degC	raspberryMeasData_BMP280		45	1
+rpiPressureMilliQan.temperatureValue_degC	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureMilliQan.dewpointValue_degC	raspberryMeasData_BMP280		45	1
+rpiPressureMilliQan.dewpointValue_degC	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureMilliQan.relHumidityValue_percent	raspberryMeasData_BMP280		45	1
+rpiPressureMilliQan.relHumidityValue_percent	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureMilliQan.heightValue_m	raspberryMeasData_BMP280		45	1
+rpiPressureMilliQan.heightValue_m	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureMilliQan.deadband.pressureDeadband	raspberryMeasData_BMP280		45	1
+rpiPressureMilliQan.deadband.pressureDeadband	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureMilliQan.deadband.temperatureDeadband	raspberryMeasData_BMP280		45	1
+rpiPressureMilliQan.deadband.temperatureDeadband	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureMilliQan.deadband.dewpointDeadband	raspberryMeasData_BMP280		45	1
+rpiPressureMilliQan.deadband.dewpointDeadband	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureMilliQan.deadband.relHumidityDeadband	raspberryMeasData_BMP280		45	1
+rpiPressureMilliQan.deadband.relHumidityDeadband	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureMilliQan.readoutTime.pressureReadoutTime	raspberryMeasData_BMP280		45	1
+rpiPressureMilliQan.readoutTime.pressureReadoutTime	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureMilliQan.readoutTime.temperatureReadoutTime	raspberryMeasData_BMP280		45	1
+rpiPressureMilliQan.readoutTime.temperatureReadoutTime	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureMilliQan.readoutTime.dewpointReadoutTime	raspberryMeasData_BMP280		45	1
+rpiPressureMilliQan.readoutTime.dewpointReadoutTime	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureMilliQan.readoutTime.relHumidityReadoutTime	raspberryMeasData_BMP280		45	1
+rpiPressureMilliQan.readoutTime.relHumidityReadoutTime	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureMilliQan.lockReadoutTogetherValue	raspberryMeasData_BMP280		45	1
+rpiPressureMilliQan.lockReadoutTogetherValue	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUXC_2.pressureValue_hPa	raspberryMeasData_BMP280		45	1
+rpiPressureUXC_2.pressureValue_hPa	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUXC_2.temperatureValue_degC	raspberryMeasData_BMP280		45	1
+rpiPressureUXC_2.temperatureValue_degC	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUXC_2.dewpointValue_degC	raspberryMeasData_BMP280		45	1
+rpiPressureUXC_2.dewpointValue_degC	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUXC_2.relHumidityValue_percent	raspberryMeasData_BMP280		45	1
+rpiPressureUXC_2.relHumidityValue_percent	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUXC_2.heightValue_m	raspberryMeasData_BMP280		45	1
+rpiPressureUXC_2.heightValue_m	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUXC_2.deadband.pressureDeadband	raspberryMeasData_BMP280		45	1
+rpiPressureUXC_2.deadband.pressureDeadband	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUXC_2.deadband.temperatureDeadband	raspberryMeasData_BMP280		45	1
+rpiPressureUXC_2.deadband.temperatureDeadband	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUXC_2.deadband.dewpointDeadband	raspberryMeasData_BMP280		45	1
+rpiPressureUXC_2.deadband.dewpointDeadband	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUXC_2.deadband.relHumidityDeadband	raspberryMeasData_BMP280		45	1
+rpiPressureUXC_2.deadband.relHumidityDeadband	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUXC_2.readoutTime.pressureReadoutTime	raspberryMeasData_BMP280		45	1
+rpiPressureUXC_2.readoutTime.pressureReadoutTime	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUXC_2.readoutTime.temperatureReadoutTime	raspberryMeasData_BMP280		45	1
+rpiPressureUXC_2.readoutTime.temperatureReadoutTime	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUXC_2.readoutTime.dewpointReadoutTime	raspberryMeasData_BMP280		45	1
+rpiPressureUXC_2.readoutTime.dewpointReadoutTime	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUXC_2.readoutTime.relHumidityReadoutTime	raspberryMeasData_BMP280		45	1
+rpiPressureUXC_2.readoutTime.relHumidityReadoutTime	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiPressureUXC_2.lockReadoutTogetherValue	raspberryMeasData_BMP280		45	1
+rpiPressureUXC_2.lockReadoutTogetherValue	raspberryMeasData_BMP280	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+# ascii dump of database

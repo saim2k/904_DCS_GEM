@@ -1,0 +1,81 @@
+# ascii dump of database
+
+# DpType
+TypeName
+raspberryMeasControl.raspberryMeasControl	1#1
+	programStartedAt	25#11
+	measDelayValue	22#12
+	deadbandValue	22#13
+	emailFlag	23#14
+	isUpTimeOK	23#15
+	setMeasDelay	22#16
+	setDeadband	22#17
+	upTime	21#18
+	elementaryMeasNbValue	21#19
+	setElementaryMeasNb	21#20
+raspberryEnvMonMeasControl.raspberryEnvMonMeasControl	1#1
+	programStartedAt	25#2
+	emailFlag	23#4
+	isUpTimeOK	23#5
+	upTime	25#6
+	measDelayValue_ms	22#7
+	setDeadbandLocking	22#13
+	setDeadband	1#14
+		setDeadbandPressure_hPa	22#15
+		setDeadbandTemperature_degC	22#16
+		setDeadbandDewpoint_degC	22#17
+		setDeadbandRelHumidity_percent	22#18
+	setMeasDelay_ms	22#19
+raspberryCoolingPressureMeasControl.raspberryCoolingPressureMeasControl	1#1
+	programStartedAt	25#2
+	upTime	25#3
+	isUpTimeOK	23#4
+	emailFlag	23#5
+	ch00DeadbandCmd	22#6
+	ch01DeadbandCmd	22#7
+	ch02DeadbandCmd	22#8
+	ch03DeadbandCmd	22#9
+	ch04DeadbandCmd	22#10
+	ch05DeadbandCmd	22#11
+	ch06DeadbandCmd	22#12
+	ch07DeadbandCmd	22#13
+
+# Datapoint/DpId
+DpName	TypeName	ID
+rpiControlPressureUXC	raspberryMeasControl	106496
+rpiControlPressureSX5	raspberryEnvMonMeasControl	2822466
+rpiControlCoolingUXC_X0	raspberryCoolingPressureMeasControl	2822477
+rpiControlPressureUGX	raspberryEnvMonMeasControl	2822493
+rpiControlPressureMilliQan	raspberryEnvMonMeasControl	2822518
+rpiControlPressureUXC_2	raspberryEnvMonMeasControl	2822524
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+rpiControlPressureUXC.measDelayValue	""	lt:1 LANG:1 "@%15.3f@"
+rpiControlPressureUXC.deadbandValue	""	lt:1 LANG:1 "@%15.3f@"
+
+# DbArchiveInfo
+ElementName	TypeName	DetailNr	_archive.._type	_archive.._archive	_archive.._class	_archive.._interv	_archive.._interv_type	_archive.._std_type	_archive.._std_tol	_archive.._std_time	_archive.._round_val	_archive.._round_inv
+rpiControlPressureUXC.deadbandValue	raspberryMeasControl		45	1
+rpiControlPressureUXC.deadbandValue	raspberryMeasControl	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiControlPressureUXC.elementaryMeasNbValue	raspberryMeasControl		45	1
+rpiControlPressureUXC.elementaryMeasNbValue	raspberryMeasControl	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiControlPressureSX5.programStartedAt	raspberryEnvMonMeasControl		45	1
+rpiControlPressureSX5.programStartedAt	raspberryEnvMonMeasControl	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiControlPressureSX5.measDelayValue_ms	raspberryEnvMonMeasControl		45	1
+rpiControlPressureSX5.measDelayValue_ms	raspberryEnvMonMeasControl	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiControlCoolingUXC_X0.programStartedAt	raspberryCoolingPressureMeasControl		45	1
+rpiControlCoolingUXC_X0.programStartedAt	raspberryCoolingPressureMeasControl	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiControlPressureUGX.programStartedAt	raspberryEnvMonMeasControl		45	1
+rpiControlPressureUGX.programStartedAt	raspberryEnvMonMeasControl	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiControlPressureUGX.measDelayValue_ms	raspberryEnvMonMeasControl		45	1
+rpiControlPressureUGX.measDelayValue_ms	raspberryEnvMonMeasControl	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiControlPressureMilliQan.programStartedAt	raspberryEnvMonMeasControl		45	1
+rpiControlPressureMilliQan.programStartedAt	raspberryEnvMonMeasControl	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiControlPressureMilliQan.measDelayValue_ms	raspberryEnvMonMeasControl		45	1
+rpiControlPressureMilliQan.measDelayValue_ms	raspberryEnvMonMeasControl	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiControlPressureUXC_2.programStartedAt	raspberryEnvMonMeasControl		45	1
+rpiControlPressureUXC_2.programStartedAt	raspberryEnvMonMeasControl	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+rpiControlPressureUXC_2.measDelayValue_ms	raspberryEnvMonMeasControl		45	1
+rpiControlPressureUXC_2.measDelayValue_ms	raspberryEnvMonMeasControl	1	3		_EVENT	0	0	4	0	01.01.1970 00:00:00.000	0	0
+# ascii dump of database
