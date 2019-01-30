@@ -1,13 +1,12 @@
 <component>
 <name>CMSfwSensorsRPi</name>
-<version>1.0.0</version>
-<date>07/12/2018</date>
+<version>1.0.1</version>
+<date>10/12/2018</date>
 <required>fwTrending=3.3.4</required>
 <required>fwDIM=19.03</required>
 <required>fwDIP=5.1.1</required>
 <file>./scripts/CMSfwSensorsRPi/rpiMeasProgStatusScript.ctl</file>
 <file>./panels/CMSfwSensorsRPi/CMSfwSensorsRPi_BaroPressQC8.pnl</file>
-<file>./panels/CMSfwSensorsRPi/CMSfwSensorsRPi_WaterCoolPressureUXC_DCS.pnl</file>
 <file>./panels/CMSfwSensorsRPi/objects/CMSfwSensorsRPi_TrendValue.pnl</file>
 <file>./scripts/libs/CMSfwSensorsRPi/rpi_dimConnection.ctl</file>
 <file>./scripts/libs/CMSfwSensorsRPi/rpi_smsEmailSend.ctl</file>
