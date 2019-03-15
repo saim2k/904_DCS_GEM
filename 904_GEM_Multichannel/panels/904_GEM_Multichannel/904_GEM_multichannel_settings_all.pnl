@@ -84,7 +84,7 @@ E "// updateSum()
 "CBRef" "1"
 "EClose" E
 "dpi" "96"
-3 0 0
+0 0 0
 ""
 DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
 LAYER, 0 
@@ -138,19 +138,19 @@ dyn_string boards;
   
 boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board01\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board02\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board03\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board04\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board05\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board06\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board07\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board08\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board09\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board10\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board11\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board12\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board13\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board14\");
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15\");
   
 
 for(int i=1; i< dynlen(boards); i++){
@@ -176,6 +176,7 @@ for(int i=1; i< dynlen(boards); i++){
    }
 }  
   
+
 
 
 
@@ -232,19 +233,19 @@ dyn_string boards;
   
 boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board01\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board02\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board03\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board04\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board05\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board06\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board07\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board08\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board09\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board10\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board11\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board12\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board13\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board14\");
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15\");
   
 
 for(int i=1; i< dynlen(boards); i++){
@@ -269,6 +270,7 @@ for(int i=1; i< dynlen(boards); i++){
  
    }
 }  
+
 " 0
  E E E
 13 181
@@ -368,19 +370,19 @@ floats = makeDynFloat(i0_float,i0_float,i0_float,i0_float,i0_float,i0_float,i0_f
 
 boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board01\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board02\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board03\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board04\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board05\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board06\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board07\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board08\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board09\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board10\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board11\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board12\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board13\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board14\");
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15\");
 
 int j=1;
 for(j=1; j<=dynlen(boards);j++){
@@ -450,6 +452,7 @@ string sFormat, sDp;
   if (dynlen(err) > 0)
     errorDialog(err);
 }
+
 
 
 
@@ -575,19 +578,19 @@ texts = makeDynString(Vdrift_str,VG3top_str,VG3bot_str,VG2top_str,VG2bot_str,VG1
 
 boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board01\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board02\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board03\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board04\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board05\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board06\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board07\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board08\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board09\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board10\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board11\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board12\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board13\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board14\");
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15\");
 
 int j=1;
       for(j=1; j<=dynlen(boards);j++){      
@@ -664,6 +667,7 @@ string sFormat, sDp;
   if (dynlen(err) > 0)
     errorDialog(err);
 }
+
 
 
 
@@ -793,19 +797,19 @@ texts = makeDynString(Vdrift_str,VG3top_str,VG3bot_str,VG2top_str,VG2bot_str,VG1
 
 boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board01\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board02\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board03\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board04\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board05\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board06\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board07\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board08\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board09\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board10\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board11\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board12\",
                        \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board13\",
-                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board14\");
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15\");
 
 int j=1;
       for(j=1; j<=dynlen(boards);j++){      
@@ -882,6 +886,7 @@ string sFormat, sDp;
   if (dynlen(err) > 0)
     errorDialog(err);
 }
+
 
 
 " 0
