@@ -1,0 +1,1162 @@
+V 12
+1
+LANG:1 0 
+PANEL,-1 -1 947 436 N "_3DFace" 0
+"main()
+{
+  init();
+}
+" 0
+ E E E E 1 -1 -1 0  0 0
+""0  1
+E "string projectname=\"CMSfwSensorsRPi\";
+string dpRpiPressure;
+string dpRpiTemperature, dpRpiDewpoint, dpRpiHumidity, dpRpiHeight;        
+string dpRpiUnixTime;
+string dpRpiDeadband;
+string dpRpiElemMeas;
+string dpRpiMeasDelay;
+
+string dpRpiSetElemMeas;
+string dpRpiSetDeadband;
+string dpRpiSetMeasDelay;
+
+string rpiElemMeasName=\"Elementary measurement number\";
+string rpiDeadbandName=\"Deadband value [hPa]\";
+string rpiMeasDelayName=\"Measurement delay value [ms]\";
+
+void init(){
+  dpRpiPressure=getSystemName()+\"rpiPressureUGX.pressureValue_hPa\";
+  dpRpiTemperature=getSystemName()+\"rpiPressureUGX.temperatureValue_degC\";        
+  dpRpiDewpoint=getSystemName()+\"rpiPressureUGX.dewpointValue_degC\";        
+  dpRpiHumidity=getSystemName()+\"rpiPressureUGX.relHumidityValue_percent\";        
+  dpRpiHeight=getSystemName()+\"rpiPressureUGX.heightValue_m\";        
+
+  dpRpiUnixTime=getSystemName()+\"rpiPressureUGX.readoutUnixTime\";
+  dpRpiDeadband=getSystemName()+\"rpiControlPressureUGX.deadbandValue\";
+  dpRpiElemMeas=getSystemName()+\"rpiControlPressureUGX.elementaryMeasNbValue\";
+  dpRpiMeasDelay=getSystemName()+\"rpiControlPressureUGX.measDelayValue\";
+  
+  dpRpiSetElemMeas=getSystemName()+\"rpiControlPressureUGX.setElementaryMeasNb\";
+  dpRpiSetDeadband=getSystemName()+\"rpiControlPressureUGX.setDeadband\";
+  dpRpiSetMeasDelay=getSystemName()+\"rpiControlPressureUGX.setMeasDelay\";
+  
+  //add trending of Pressure and Temperature
+/*  addSymbol(myModuleName(), myPanelName(), 
+            \"objects/fwTrending/fwTrendingQuickPlotButton.pnl\",
+            \"trendPressureTemperature\",
+            makeDynString(\"$sDpesToPlot:\"+dpRpiPressure+\";\"+dpRpiTemperature),
+            770, 270, 0, 1,1);
+*/
+  showValues();    
+}
+void showValues(){
+  dpConnect(\"workProgramStartedAt\", getSystemName()+\"rpiControlPressureUGX.programStartedAt\");  
+  dpConnect(\"workUpTime\", getSystemName()+\"rpiControlPressureUGX.upTime\"); 
+ // dpConnect(\"workDeadbandValue\", dpRpiDeadband);
+//  dpConnect(\"workMeasDelayValue\", getSystemName()+\"rpiControlPressureUGX.measDelayValue\");  
+//  dpConnect(\"workElementaryMeasValue\", dpRpiElemMeas);  
+  
+  dpConnect(\"workPressure\", dpRpiPressure);  
+  dpConnect(\"workTemperature\", dpRpiTemperature); 
+  dpConnect(\"workHeight\", dpRpiHeight);
+  dpConnect(\"workDewpoint\", dpRpiDewpoint);        
+  dpConnect(\"workHumidity\", dpRpiHumidity);        
+
+  //  dpConnect(\"workReadoutTime\", getSystemName()+\"rpiPressureUGX.readoutTime\");  
+ // dpConnect(\"workReadoutUnixTime\", dpRpiUnixTime);  
+}
+void workProgramStartedAt(string dp, string sNewValue){
+  setValue(\"tfProgramStartedAt\",\"text\", sNewValue);    
+}
+void workUpTime(string dp, int iNewValue){
+  setValue(\"tfUpTime\",\"text\", dpValToString(dp,iNewValue, TRUE));  
+}
+void workDeadbandValue(string dp, float fNewValue){
+  setValue(\"tfDeadbandValue\",\"text\", dpValToString(dp,fNewValue, TRUE));    
+}
+void workMeasDelayValue(string dp, float fNewValue){
+  setValue(\"tfMeasDelayValue\",\"text\", dpValToString(dp,fNewValue, TRUE));    
+}
+void workElementaryMeasValue(string dp, int iNewValue){
+  setValue(\"tfElementaryMeasValue\",\"text\", dpValToString(dp,iNewValue, TRUE));    
+}
+//-------------------------------------
+void workPressure(string dp, float fNewValue){
+  setValue(\"tfPressure\",\"text\", dpValToString(dp,fNewValue, TRUE));    
+}
+void workTemperature(string dp, float fNewValue){
+  setValue(\"tfTemperature\",\"text\", dpValToString(dp,fNewValue, TRUE));    
+}
+void workHeight(string dp, float fNewValue){
+  setValue(\"tfHeight\",\"text\", dpValToString(dp,fNewValue, TRUE));    
+}
+void workDewpoint(string dp, float fNewValue){
+  setValue(\"tfDewpoint\",\"text\", dpValToString(dp,fNewValue, TRUE));    
+}
+void workHumidity(string dp, float fNewValue){
+  setValue(\"tfHumidity\",\"text\", dpValToString(dp,fNewValue, TRUE));    
+}
+void workReadoutTime(string dp, string sNewValue){
+  setValue(\"tfReadoutTime\",\"text\", sNewValue);    
+}
+void workReadoutUnixTime(string dp, float fNewValue){
+  setValue(\"tfReadoutUnixTime\",\"text\", dpValToString(dp,fNewValue, TRUE));    
+}
+//-------------------------------------
+void clearEmailFlag(){
+dyn_errClass err;
+
+  dpSet(getSystemName()+\"rpiControlPressureUGX.emailFlag\", TRUE);
+  err = getLastError();
+  if (dynlen(err) > 0)
+    errorDialog(err);
+}
+void openRPiTrendPanel(string datapointname, string name){
+  ChildPanelOn(projectname+\"/objects/CMSfwSensorsRPi_TrendValue.pnl\",
+      name+\"_trend\",
+      makeDynString(\"$nameData:\"+name,
+                    \"$actDatapoint:\"+datapointname),
+      0, 0);  
+}
+void openRPiSetValuePanel(string actDpName, string name, string newDpName, string type){
+  ChildPanelOn(projectname+\"/objects/CMSfwSensorsRPi_SetValue.pnl\",
+      name+\"_setVal\",
+      makeDynString(\"$nameData:\"+name,
+                    \"$actDatapoint:\"+actDpName,
+                    \"$newDatapoint:\"+newDpName,
+                    \"$dpType:\"+type),
+      0, 0);    
+}
+
+
+
+
+
+
+
+
+
+" 0
+ 2
+"CBRef" "1"
+"EClose" E
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:1 0 
+14 2
+"tfDeadbandValue"
+""
+1 200 236 E E E 0 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 34 MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0
+0  198 234 376 257
+2 "0s" 0 0 0 0 0 -1  E E E
+14 3
+"tfMeasDelayValue"
+""
+1 200 265.9999999999999 E E E 0 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 34 MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0
+0  198 264 376 287
+2 "0s" 0 0 0 0 0 -1  E E E
+2 4
+"textDeadbandValue"
+""
+1 32 238 E E E 0 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E 0.9999999999999999 0 1 0 0 0 E 32 238 163 253
+0 2 2 "0s" 0 0 0 192 0 0  32 238 1
+1
+LANG:1 26 Arial,10,-1,5,50,0,0,0,0,0
+0 1
+LANG:1 20 Deadband Value [hPa]
+2 5
+"textMeasDelayValue"
+""
+1 32 268 E E E 0 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 32 268 178 283
+0 2 2 "0s" 0 0 0 192 0 0  32 268 1
+1
+LANG:1 26 Arial,10,-1,5,50,0,0,0,0,0
+0 1
+LANG:1 22 Measurement delay [ms]
+30 6
+"framePressureMonUXC"
+""
+1 20 63 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+7 0 0 0 0 0
+E E E
+1
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 4.043478260869565 0 3.247863247863247 -70.86956521739128 -154.6153846153846 0 E 20 63 251 181
+1
+LANG:1 26 Arial,12,-1,5,75,0,0,0,0,0
+0 1
+LANG:1 31 Barometric pressure monitor UGX
+14 7
+"tfUpTime"
+""
+1 162 139.9999999999999 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 34 MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0
+0  160 138 374 161
+2 "0s" 0 0 0 0 0 -1  E E E
+2 8
+"textUpTime"
+""
+1 31 140 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+9 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 31 140 78 155
+0 2 2 "0s" 0 0 0 192 0 0  31 140 1
+1
+LANG:1 26 Arial,10,-1,5,50,0,0,0,0,0
+0 1
+LANG:1 7 Up time
+14 9
+"tfElementaryMeasValue"
+""
+1 200 289.9999999999998 E E E 0 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 34 MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0
+0  198 288 376 317
+2 "0s" 0 0 0 0 0 -1  E E E
+2 10
+"textElementaryMeasValue"
+""
+1 95 2088.999999999999 E E E 0 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E 1 0 0.9999999999999999 1 106 0 E 32 192 154 207
+0 2 2 "0s" 0 0 0 192 0 0  32 192 1
+1
+LANG:1 26 Arial,10,-1,5,50,0,0,0,0,0
+0 1
+LANG:1 18 Elementary meas nb
+14 13
+"tfProgramStartedAt"
+""
+1 162 169.9999999999999 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+14 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 34 MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0
+0  160 168 374 191
+2 "0s" 0 0 0 0 0 -1  E E E
+2 14
+"textProgramStartedAt"
+""
+1 31 170 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+15 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 31 170 141 185
+0 2 2 "0s" 0 0 0 192 0 0  31 170 1
+1
+LANG:1 26 Arial,10,-1,5,50,0,0,0,0,0
+0 1
+LANG:1 18 Program started at
+1 181 0 "7" 0
+0
+2 16
+"PRIMITIVE_TEXT1"
+""
+1 31 110 E E E 1 E 1 E N "Red" E N "gelb" E E
+ E E
+16 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  1 E 31 110 314 123
+0 2 2 "0s" 0 0 0 192 0 0  31 110 1
+1
+LANG:1 25 Arial,8,-1,5,75,0,0,0,0,0
+0 1
+LANG:1 48 The Up time counter must increment continuously!
+30 26
+"fError"
+""
+1 410 363 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+22 0 0 0 0 0
+E E E
+1
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 0.5882352941176471 0 1.702127659574468 148.8235294117647 -517.8723404255319 0 E 410 363 581 411
+1
+LANG:1 25 Arial,8,-1,5,50,0,0,0,0,0
+0 1
+LANG:1 6 errors
+13 27
+"clearEmailFlag"
+""
+1 426.6666666666667 159.0225563909776 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  clearEmailFlag();
+}
+
+" 0
+
+23 0 0 0 0 0
+E E E
+0
+1
+LANG:1 12 doubleClick!
+
+0
+1
+LANG:1 25 Arial,8,-1,5,50,0,0,0,0,0
+0  398 148 482 172
+
+T 
+1
+LANG:1 14 ClearEmailFlag
+E E E E
+1 187 1 "1" 0
+0
+30 43
+"frameData"
+""
+1 20 183 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+26 0 0 0 0 0
+E E E
+1
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 1.434782608695652 0 2.519685039370077 571.304347826087 -381.1023622047239 0 E 20 183 251 311
+1
+LANG:1 26 Arial,10,-1,5,50,0,0,0,0,0
+0 1
+LANG:1 4 Data
+30 111
+"FRAME1"
+""
+1 20 183 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+42 0 0 0 0 0
+E E E
+1
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 2.130434782608695 0 0.9447489014612095 -22.6086956521739 -92.88904896740135 0 E 20 183 251 311
+1
+LANG:1 26 Arial,10,-1,5,50,0,0,0,0,0
+0 1
+LANG:1 6 Status
+30 112
+"FRAME2"
+""
+1 20 183 E E E 0 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+43 0 0 0 0 0
+E E E
+1
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 0 1 0 1 E 2.478260869565216 0 0.9447489014612094 -29.56521739130432 37.11095103259871 0 E 20 183 251 311
+1
+LANG:1 26 Arial,10,-1,5,50,0,0,0,0,0
+0 1
+LANG:1 8 Controls
+13 113
+"bSetDeadband"
+""
+1 472.6666666666667 245 E E E 0 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+44 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 25 Arial,8,-1,5,75,0,0,0,0,0
+0  449 233 583 259
+
+T 
+1
+LANG:1 12 Set deadband
+"main()
+{
+  //openRPiSetValuePanel(string actDpName, string name, string newDpName, string type)
+  openRPiSetValuePanel(dpRpiDeadband, rpiDeadbandName, dpRpiSetDeadband, \"float\");
+}
+
+
+
+
+
+
+" 0
+ E "main()
+{
+
+}
+" 0
+ E
+13 114
+"bSetDelay"
+""
+1 472.6666666666667 246 E E E 0 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+45 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 25 Arial,8,-1,5,75,0,0,0,0,0
+0  449 263 583 289
+
+T 
+1
+LANG:1 9 Set delay
+"main()
+{
+  //openRPiSetValuePanel(string actDpName, string name, string newDpName, string type)
+  openRPiSetValuePanel(dpRpiMeasDelay, rpiMeasDelayName, dpRpiSetMeasDelay, \"float\");
+}
+
+
+
+" 0
+ E E E
+13 116
+"bSetElemMeas"
+""
+1 472.6666666666667 246 E E E 0 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+47 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 25 Arial,8,-1,5,75,0,0,0,0,0
+0  449 293 583 319
+
+T 
+1
+LANG:1 19 Set elementary meas
+"main()
+{
+  //openRPiSetValuePanel(string actDpName, string name, string newDpName, string type)
+  openRPiSetValuePanel(dpRpiElemMeas, rpiElemMeasName, dpRpiSetElemMeas, \"int\");
+}
+
+
+
+" 0
+ E E E
+14 117
+"tfPressure"
+""
+1 730 108 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+48 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 34 MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0
+0  728 106 862 129
+2 "0s" 0 0 0 0 0 -1  E E E
+2 118
+"tPressure"
+""
+1 612.0000000000001 110 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+49 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 612.0000000000001 110 701 125
+0 2 2 "0s" 0 0 0 192 0 0  612.0000000000001 110 1
+1
+LANG:1 26 Arial,10,-1,5,50,0,0,0,0,0
+0 1
+LANG:1 14 Pressure [hPa]
+14 119
+"tfTemperature"
+""
+1 730 138 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+50 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 34 MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0
+0  728 136 862 159
+2 "0s" 0 0 0 0 0 -1  E E E
+2 120
+"tTemperature"
+""
+1 612.0000000000001 140 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+51 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 612.0000000000001 140 727 155
+0 2 2 "0s" 0 0 0 192 0 0  612.0000000000001 140 1
+1
+LANG:1 26 Arial,10,-1,5,50,0,0,0,0,0
+0 1
+LANG:1 18 Temperature [degC]
+14 123
+"tfReadoutTime"
+""
+1 725.6429923116666 280 E E E 0 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+54 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 34 MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0
+0  724 278 858 301
+2 "0s" 0 0 0 0 0 -1  E E E
+2 124
+"tReadoutTime"
+""
+1 15235.7506937937 -4000 E E E 0 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+55 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E 1.03448275862069 0 1 574.6085095530459 -160 0 E 32 442 114 457
+0 2 2 "0s" 0 0 0 192 0 0  32 442 1
+1
+LANG:1 26 Arial,10,-1,5,50,0,0,0,0,0
+0 1
+LANG:1 12 Readout Time
+14 125
+"tfReadoutUnixTime"
+""
+1 725.6429923116666 310 E E E 0 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+56 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 34 MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0
+0  724 308 858 331
+2 "0s" 0 0 0 0 0 -1  E E E
+2 126
+"tReadoutUnixTime"
+""
+1 607.6429923116667 312 E E E 0 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+57 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 607.6429923116667 312 716 327
+0 2 2 "0s" 0 0 0 192 0 0  607.6429923116667 312 1
+1
+LANG:1 26 Arial,10,-1,5,50,0,0,0,0,0
+0 1
+LANG:1 17 Readout Unix time
+13 127
+"bTrendPressure"
+""
+1 880 117.0000000000001 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+58 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 25 Arial,8,-1,5,75,0,0,0,0,0
+0  868 105 922 131
+
+T 
+1
+LANG:1 5 trend
+"main()
+{
+  openRPiTrendPanel(dpRpiPressure, \"Pressure in UGX [hPa]\");
+}
+
+
+" 0
+ E "main()
+{
+}
+
+" 0
+ E
+13 128
+"bTrendTemperature"
+""
+1 880 147.0000000000001 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+59 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 25 Arial,8,-1,5,75,0,0,0,0,0
+0  868 135 922 161
+
+T 
+1
+LANG:1 5 trend
+"main()
+{
+  openRPiTrendPanel(dpRpiTemperature, \"Temperature in UGX [degC]\");  
+}
+
+" 0
+ E "main()
+{
+}
+
+" 0
+ E
+13 133
+"bTrendUnix"
+""
+1 875.6429923116666 319.0000000000001 E E E 0 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+64 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 25 Arial,8,-1,5,75,0,0,0,0,0
+0  864 307 918 333
+
+T 
+1
+LANG:1 5 trend
+"main()
+{
+  openRPiTrendPanel(dpRpiUnixTime, \"Readout Unix Time\");  
+}
+
+" 0
+ E "main()
+{
+}
+
+" 0
+ E
+13 136
+"bTrendDeadband"
+""
+1 391 245 E E E 0 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+67 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 25 Arial,8,-1,5,75,0,0,0,0,0
+0  379 233 433 259
+
+T 
+1
+LANG:1 5 trend
+"main()
+{
+  openRPiTrendPanel(dpRpiDeadband, rpiDeadbandName);  
+}
+
+
+" 0
+ E "main()
+{
+}
+" 0
+ E
+13 138
+"bTrendElemMeas"
+""
+1 391 305 E E E 0 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+69 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 25 Arial,8,-1,5,75,0,0,0,0,0
+0  379 293 433 319
+
+T 
+1
+LANG:1 5 trend
+"main()
+{
+  openRPiTrendPanel(dpRpiElemMeas, rpiElemMeasName);
+}
+
+
+" 0
+ E "main()
+{
+}
+
+" 0
+ E
+4 144
+"LINE1"
+""
+1 441 236 E E E 0 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+75 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E  441 236 441 316
+2 145
+"titleTrend"
+""
+1 655.6429923116666 362 E E E 0 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+76 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E U  0 E 655.6429923116666 362 751 395
+0 2 2 "0s" 0 0 0 192 0 0  655.6429923116666 362 2
+1
+LANG:1 26 Arial,10,-1,5,50,0,0,0,0,0
+0 1
+LANG:1 15 Trend pressure 
+1
+LANG:1 26 Arial,10,-1,5,50,0,0,0,0,0
+0 1
+LANG:1 15 and temperature
+13 159
+"dim"
+""
+1 862 33 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+77 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  860 26 942 52
+
+T 
+1
+LANG:1 9 DIM panel
+"//[SCRIPT_WIZARD_GENERATED {valid}
+//[FUNCTION main
+main()
+{
+  //[OPEN_POPUP_CODE
+  sdOpenPopup(\"\",\"fwDIM/fwDim.pnl\",\"DIM browser\",0,0,0,\"\");
+  //]
+}
+//]
+//]
+" 0
+ E E E
+2 173
+"PRIMITIVE_TEXT2"
+""
+1 9996.41217492414 -4797 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+78 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E 0.9756097560975611 0 1 579.8268090704812 -180.5 0 E 32 412 94 427
+0 2 2 "0s" 0 0 0 192 0 0  32 412 1
+1
+LANG:1 26 Arial,10,-1,5,50,0,0,0,0,0
+0 1
+LANG:1 10 Height [m]
+14 174
+"tfHeight"
+""
+1 729.095101753408 229.5 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+79 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 34 MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0
+0  727 228 861 251
+2 "0s" 0 0 0 0 0 -1  E E E
+2 175
+"tDewpoint"
+""
+1 9996.41217492414 -4888.5 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+80 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E 0.9756097560975611 0 1 579.8268090704812 -242.5 0 E 32 412 129 427
+0 2 2 "0s" 0 0 0 192 0 0  32 412 1
+1
+LANG:1 26 Arial,10,-1,5,50,0,0,0,0,0
+0 1
+LANG:1 15 Dewpoint [degC]
+13 176
+"bTrendDewpoint"
+""
+1 879.095101753408 177 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+81 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 25 Arial,8,-1,5,75,0,0,0,0,0
+0  867 165 921 191
+
+T 
+1
+LANG:1 5 trend
+"main()
+{
+  openRPiTrendPanel(dpRpiDewpoint, \"Dewpoint temperature in UGX [degC]\");  
+}
+
+
+
+" 0
+ E "main()
+{
+}
+
+" 0
+ E
+14 177
+"tfDewpoint"
+""
+1 729.095101753408 167.5 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+82 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 34 MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0
+0  727 166 861 189
+2 "0s" 0 0 0 0 0 -1  E E E
+2 178
+"tHumidity"
+""
+1 9996.41217492414 -4829.5 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+83 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"dashclr"N "_Transparent"
+E E 0 1 1 2 1 E 0.9756097560975611 0 1 579.8268090704812 -213 0 E 32 412 136 427
+0 2 2 "0s" 0 0 0 192 0 0  32 412 1
+1
+LANG:1 26 Arial,10,-1,5,50,0,0,0,0,0
+0 1
+LANG:1 17 Rel. Humidity [%]
+13 179
+"bTrendHumidity"
+""
+1 879.095101753408 206.5 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+84 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 25 Arial,8,-1,5,75,0,0,0,0,0
+0  867 195 921 221
+
+T 
+1
+LANG:1 5 trend
+"main()
+{
+  openRPiTrendPanel(dpRpiHumidity, \"Rel Humidity in UGX [%]\");  
+}
+
+
+
+" 0
+ E "main()
+{
+}
+
+" 0
+ E
+14 180
+"tfHumidity"
+""
+1 729.095101753408 197 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+85 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+0
+1
+LANG:1 34 MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0
+0  727 196 861 219
+2 "0s" 0 0 0 0 0 -1  E E E
+0
+LAYER, 1 
+1
+LANG:1 0 
+1 182 0 "" 0
+0
+1 183 0 "" 1
+0
+1 184 0 "" 2
+0
+1 185 0 "" 3
+0
+1 186 0 "" 4
+0
+1 188 1 "" 0
+0
+1 189 1 "" 3
+0
+1 190 1 "" 5
+0
+1 191 1 "" 4
+0
+1 192 1 "" 2
+0
+1 193 1 "" 1
+0
+0
+LAYER, 2 
+1
+LANG:1 0 
+0
+LAYER, 3 
+1
+LANG:1 0 
+0
+LAYER, 4 
+1
+LANG:1 0 
+0
+LAYER, 5 
+1
+LANG:1 0 
+0
+LAYER, 6 
+1
+LANG:1 0 
+0
+LAYER, 7 
+1
+LANG:1 0 
+0
+3 0 "upTime" -1
+"objects\\STD_LEDS\\Led_1.pnl" 190 360 T 2 1 0 1 131.9999999999999 -270.0000000000001
+5
+"$b_IBit""TRUE"
+"$b_ShowAlert""FALSE"
+"$dpe_value""rpiControlPressureUGX.isUpTimeOK"
+"$s_ColOff""STD_device_alert"
+"$s_ColOn""Green"
+3 1 "errorLED" -1
+"objects\\STD_LEDS\\Led_2.pnl" 442 382 T 21 1.375730699455755 0 0.8189655172413792 -205.3547671840355 -193.8620689655172
+5
+"$b_IBit""TRUE"
+"$b_ShowAlert""FALSE"
+"$dpe_value""rpiControlPressureUGX.emailFlag"
+"$s_ColOff""Red"
+"$s_ColOn""Green"
+0

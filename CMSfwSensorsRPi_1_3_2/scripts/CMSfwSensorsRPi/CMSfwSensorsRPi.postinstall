@@ -1,0 +1,20 @@
+#uses "CMSfwSensorsRpi/rpi_libs.ctl" 
+#uses "CMSfwSensorsRpi/rpi_dimConnection.ctl"
+
+main()
+{
+  dyn_string exc;
+  cmsrpi_configureDip(exc);
+  if (dynlen(exc)>0) {
+    DebugN("Problems in configuring DIP" , exc);   
+  }    
+
+  cmsrpi_configureDIM(exc);
+  if (dynlen(exc)>0) {
+    DebugN("Problems in configuring DIP" , exc);    
+  }
+  
+fwInstallation_appendManager(TRUE, "dip connection", "PVSS00dip", "manual", 30, 2, 2, "-num 13 -dns cmsdimns1,cmsdimns2 -dip_dp_config DIPConfig_rpi");  
+fwInstallation_appendManager(TRUE, "dim connection", "PVSS00dim", "manual", 30, 2, 2, "-num 7 -dim_dp_config dimRpi -dim_dns_node vmepcs2g19-16.cms");
+fwInstallation_appendManager(TRUE, "checks the dim connection", "PVSS00ctrl", "manual", 30, 2, 2, "CMSfwSensorsRPi/rpiMeasProgStatusScript.ctl");
+}

@@ -23,7 +23,7 @@
       <force_reinstall>false</force_reinstall>
     </configuration>
     <configuration>
-      <tag>904_Environmental_dop_V000</tag>
+      <tag>904_Environmental_dp_V000</tag>
       <hardware>true</hardware>
       <logical>false</logical>
       <pattern>*</pattern>
