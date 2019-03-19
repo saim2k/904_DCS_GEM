@@ -34,7 +34,7 @@
       <force_reinstall>false</force_reinstall>
     </configuration>
     <configuration>
-      <tag>904_multichannel_dp_V001</tag>
+      <tag>904_multichannel_dp_V002</tag>
       <hardware>true</hardware>
       <logical>false</logical>
       <pattern>*</pattern>
