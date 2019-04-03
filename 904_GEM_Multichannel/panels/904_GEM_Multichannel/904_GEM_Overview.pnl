@@ -193,9 +193,9 @@ LANG:1 0
 main()
 {
 
-  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board12/channel006.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board12/channel005.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board12/channel004.actual.status:_online.._value\" , 
-                                 \"CAEN/904_HV_mainframe/board12/channel003.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board12/channel002.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board12/channel001.actual.status:_online.._value\" ,
-                                 \"CAEN/904_HV_mainframe/board12/channel000.actual.status:_online.._value\");
+  dyn_string dps = makeDynString(\"CAEN/904_Shared_mainframe/board11/channel006.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board11/channel005.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board11/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_Shared_mainframe/board11/channel003.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board11/channel002.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board11/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_Shared_mainframe/board11/channel000.actual.status:_online.._value\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -257,6 +257,7 @@ GetStatus(dyn_string dps, dyn_int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -268,7 +269,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
       \"Chamber HV monitoring\",
-      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board12\",\"$Chamber:5/1 Top\"));
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11\",\"$Chamber:5/1 Top\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -281,6 +282,7 @@ void EP_childPanelOn()
 // OffsetY {0}
 // PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999999 6.888888888888943 1 E 170 220 340 260
 6 100
@@ -302,9 +304,9 @@ LANG:1 0
 main()
 {
 
-  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board12/channel013.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board12/channel012.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board12/channel011.actual.status:_online.._value\" , 
-                                 \"CAEN/904_HV_mainframe/board12/channel010.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board12/channel009.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board12/channel008.actual.status:_online.._value\" ,
-                                 \"CAEN/904_HV_mainframe/board12/channel007.actual.status:_online.._value\");
+  dyn_string dps = makeDynString(\"CAEN/904_Shared_mainframe/board11/channel013.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board11/channel012.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board11/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_Shared_mainframe/board11/channel010.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board11/channel009.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board11/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_Shared_mainframe/board11/channel007.actual.status:_online.._value\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -366,6 +368,7 @@ GetStatus(dyn_string dps, dyn_int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -377,7 +380,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
       \"Chamber HV monitoring\",
-      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board12\", \"$Chamber:5/1 Bot\"));
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11\", \"$Chamber:5/1 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -390,6 +393,7 @@ void EP_childPanelOn()
 // OffsetY {0}
 // PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999999 46.88888888888894 1 E 170 220 340 260
 6 101
@@ -411,9 +415,9 @@ LANG:1 0
 main()
 {
 
-  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board13/channel006.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board13/channel005.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board13/channel004.actual.status:_online.._value\" , 
-                                 \"CAEN/904_HV_mainframe/board13/channel003.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board13/channel002.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board13/channel001.actual.status:_online.._value\" ,
-                                 \"CAEN/904_HV_mainframe/board13/channel000.actual.status:_online.._value\");
+  dyn_string dps = makeDynString(\"CAEN/904_Shared_mainframe/board12/channel006.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board12/channel005.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board12/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_Shared_mainframe/board12/channel003.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board12/channel002.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board12/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_Shared_mainframe/board12/channel000.actual.status:_online.._value\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -475,6 +479,7 @@ GetStatus(dyn_string dps, dyn_int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -486,7 +491,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
       \"Chamber HV monitoring\",
-      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board13\", \"$Chamber:5/2 Top\"));
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12\", \"$Chamber:5/2 Top\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -499,6 +504,7 @@ void EP_childPanelOn()
 // OffsetY {0}
 // PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 6.888888888888943 1 E 170 220 340 260
 6 102
@@ -520,9 +526,9 @@ LANG:1 0
 main()
 {
 
-  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board13/channel013.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board13/channel012.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board13/channel011.actual.status:_online.._value\" , 
-                                 \"CAEN/904_HV_mainframe/board13/channel010.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board13/channel009.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board13/channel008.actual.status:_online.._value\" ,
-                                 \"CAEN/904_HV_mainframe/board13/channel007.actual.status:_online.._value\");
+  dyn_string dps = makeDynString(\"CAEN/904_Shared_mainframe/board12/channel013.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board12/channel012.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board12/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_Shared_mainframe/board12/channel010.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board12/channel009.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board12/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_Shared_mainframe/board12/channel007.actual.status:_online.._value\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -584,6 +590,7 @@ GetStatus(dyn_string dps, dyn_int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -595,7 +602,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
       \"Chamber HV monitoring\",
-      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board13\", \"$Chamber:5/2 Bot\"));
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12\", \"$Chamber:5/2 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -608,6 +615,7 @@ void EP_childPanelOn()
 // OffsetY {0}
 // PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 46.88888888888894 1 E 170 220 340 260
 6 103
@@ -629,9 +637,9 @@ LANG:1 0
 main()
 {
 
-  dyn_string dps = makeDynString(\"CAEN/904_Shared_mainframe/board15/channel006.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board15/channel005.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board15/channel004.actual.status:_online.._value\" , 
-                                 \"CAEN/904_Shared_mainframe/board15/channel003.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board15/channel002.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board15/channel001.actual.status:_online.._value\" ,
-                                 \"CAEN/904_Shared_mainframe/board15/channel000.actual.status:_online.._value\");
+  dyn_string dps = makeDynString(\"CAEN/904_Shared_mainframe/board13/channel006.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board13/channel005.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board13/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_Shared_mainframe/board13/channel003.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board13/channel002.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board13/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_Shared_mainframe/board13/channel000.actual.status:_online.._value\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -694,6 +702,7 @@ GetStatus(dyn_string dps, dyn_int results)
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
 
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -705,7 +714,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
       \"Chamber HV monitoring\",
-      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15\", \"$Chamber:5/1 Top\"));
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13\", \"$Chamber:5/1 Top\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -718,6 +727,7 @@ void EP_childPanelOn()
 // OffsetY {0}
 // PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 6.888888888888943 1 E 170 220 340 260
@@ -740,9 +750,9 @@ LANG:1 0
 main()
 {
 
-  dyn_string dps = makeDynString(\"CAEN/904_Shared_mainframe/board15/channel013.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board15/channel012.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board15/channel011.actual.status:_online.._value\" , 
-                                 \"CAEN/904_Shared_mainframe/board15/channel010.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board15/channel009.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board15/channel008.actual.status:_online.._value\" ,
-                                 \"CAEN/904_Shared_mainframe/board15/channel007.actual.status:_online.._value\");
+  dyn_string dps = makeDynString(\"CAEN/904_Shared_mainframe/board13/channel013.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board13/channel012.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board13/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_Shared_mainframe/board13/channel010.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board13/channel009.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board13/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_Shared_mainframe/board13/channel007.actual.status:_online.._value\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -805,6 +815,7 @@ GetStatus(dyn_string dps, dyn_int results)
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
 
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -816,7 +827,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
       \"Chamber HV monitoring\",
-      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15\", \"$Chamber:5/1 Bot\"));
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13\", \"$Chamber:5/1 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -829,6 +840,7 @@ void EP_childPanelOn()
 // OffsetY {0}
 // PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 46.88888888888894 1 E 170 220 340 260
@@ -851,9 +863,9 @@ LANG:1 0
 main()
 {
 
-  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board09/channel006.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board09/channel005.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board09/channel004.actual.status:_online.._value\" , 
-                                 \"CAEN/904_HV_mainframe/board09/channel003.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board09/channel002.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board09/channel001.actual.status:_online.._value\" ,
-                                 \"CAEN/904_HV_mainframe/board09/channel000.actual.status:_online.._value\");
+  dyn_string dps = makeDynString(\"CAEN/904_Shared_mainframe/board10/channel006.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board10/channel005.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board10/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_Shared_mainframe/board10/channel003.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board10/channel002.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board10/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_Shared_mainframe/board10/channel000.actual.status:_online.._value\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -915,6 +927,7 @@ GetStatus(dyn_string dps, dyn_int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -926,7 +939,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
       \"Chamber HV monitoring\",
-      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board09\", \"$Chamber:4/1 Top\"));
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_Shared_mainframe/board10\", \"$Chamber:4/1 Top\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -939,6 +952,7 @@ void EP_childPanelOn()
 // OffsetY {0}
 // PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999996 134.8888888888889 1 E 170 220 340 260
 6 106
@@ -960,9 +974,9 @@ LANG:1 0
 main()
 {
 
-  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board09/channel013.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board09/channel012.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board09/channel011.actual.status:_online.._value\" , 
-                                 \"CAEN/904_HV_mainframe/board09/channel010.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board09/channel009.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board09/channel008.actual.status:_online.._value\" ,
-                                 \"CAEN/904_HV_mainframe/board09/channel007.actual.status:_online.._value\");
+  dyn_string dps = makeDynString(\"CAEN/904_Shared_mainframe/board10/channel013.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board10/channel012.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board10/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_Shared_mainframe/board10/channel010.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board10/channel009.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board10/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_Shared_mainframe/board10/channel007.actual.status:_online.._value\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -1024,6 +1038,7 @@ GetStatus(dyn_string dps, dyn_int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -1035,7 +1050,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
       \"Chamber HV monitoring\",
-      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board09\", \"$Chamber:4/1 Bot\"));
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_Shared_mainframe/board10\", \"$Chamber:4/1 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -1048,6 +1063,7 @@ void EP_childPanelOn()
 // OffsetY {0}
 // PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999996 174.8888888888889 1 E 170 220 340 260
 6 107
@@ -1056,224 +1072,6 @@ void EP_childPanelOn()
 1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
  E E
 107 0 0 0 0 0
-E E E
-0
-1
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignNone"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-"// SimpleCtrlScriptStart {invalid}
-main()
-{
-
-  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board10/channel006.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board10/channel005.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board10/channel004.actual.status:_online.._value\" , 
-                                 \"CAEN/904_HV_mainframe/board10/channel003.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board10/channel002.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board10/channel001.actual.status:_online.._value\" ,
-                                 \"CAEN/904_HV_mainframe/board10/channel000.actual.status:_online.._value\");
-  
-  dpConnect(\"GetStatus\",dps)  ;
-  
- 
-}
-
-
-bool checkAllDpsExist(dyn_string dps)
-  {
-    bool exist=1;
-    int i=1;
-    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
-    return exist;
-  }
-
-
-GetStatus(dyn_string dps, dyn_int results)
-  {
-    dyn_errClass err;
-    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
-
-      if( !checkAllDpsExist(dps) )
-    {
-      setValue(\"\", \"color\", \"_dpdoesnotexist\");
-      return;
-    }
-    
-      for (int i=1;i<=dynlen(dps);i++) 
-      {
-      OvC_bit[i]=(results[i] & 0x008);
-      OvV_bit[i]=(results[i] & 0x010); 
-      UnV_bit[i]=(results[i] & 0x020);      
-      Trip_bit[i]=(results[i] & 0x200);      
-      }
-
-    
-    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
-        setValue(\"\",\"backCol\",\"grey\");
-      }  
-    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
-        setValue(\"\",\"backCol\",\"STD_led_On\");
-      }
-    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
-    {
-        setValue(\"\",\"backCol\",\"red\");
-    }
-    else {
-        setValue(\"\",\"backCol\",\"STD_value_light\");
-      }
-  }
-
-
-
-
-// SimpleCtrlScript {EP_textFieldIn}
-// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
-// DPConfig {:_online.._value}
-// DPType {int}
-// UseDPUnit {TRUE}
-// UseDPFormat {TRUE}
-// SimpleCtrlScriptEnd {EP_textFieldIn}
-" 0
- "// SimpleCtrlScriptStart {invalid}
-main()
-{
-  EP_childPanelOn();
-}
-
-void EP_childPanelOn()
-{
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
-      \"Chamber HV monitoring\",
-      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board10\", \"$Chamber:4/2 Top\"));
-}
-
-// SimpleCtrlScript {EP_childPanelOn}
-// Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
-// Panel {Chamber HV monitoring}
-// Parent {}
-// Module {}
-// OffsetX {0}
-// OffsetY {0}
-// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
-// SimpleCtrlScriptEnd {EP_childPanelOn}
-" 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 134.8888888888889 1 E 170 220 340 260
-6 108
-"Rect_4/2Bot"
-""
-1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
- E E
-108 0 0 0 0 0
-E E E
-0
-1
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignNone"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-"// SimpleCtrlScriptStart {invalid}
-main()
-{
-
-  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board10/channel013.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board10/channel012.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board10/channel011.actual.status:_online.._value\" , 
-                                 \"CAEN/904_HV_mainframe/board10/channel010.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board10/channel009.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board10/channel008.actual.status:_online.._value\" ,
-                                 \"CAEN/904_HV_mainframe/board10/channel007.actual.status:_online.._value\");
-  
-  dpConnect(\"GetStatus\",dps)  ;
-  
- 
-}
-
-
-bool checkAllDpsExist(dyn_string dps)
-  {
-    bool exist=1;
-    int i=1;
-    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
-    return exist;
-  }
-
-
-GetStatus(dyn_string dps, dyn_int results)
-  {
-    dyn_errClass err;
-    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
-
-      if( !checkAllDpsExist(dps) )
-    {
-      setValue(\"\", \"color\", \"_dpdoesnotexist\");
-      return;
-    }
-    
-      for (int i=1;i<=dynlen(dps);i++) 
-      {
-      OvC_bit[i]=(results[i] & 0x008);
-      OvV_bit[i]=(results[i] & 0x010); 
-      UnV_bit[i]=(results[i] & 0x020);      
-      Trip_bit[i]=(results[i] & 0x200);      
-      }
-
-    
-    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
-        setValue(\"\",\"backCol\",\"grey\");
-      }  
-    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
-        setValue(\"\",\"backCol\",\"STD_led_On\");
-      }
-    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
-    {
-        setValue(\"\",\"backCol\",\"red\");
-    }
-    else {
-        setValue(\"\",\"backCol\",\"STD_value_light\");
-      }
-  }
-
-
-
-
-// SimpleCtrlScript {EP_textFieldIn}
-// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
-// DPConfig {:_online.._value}
-// DPType {int}
-// UseDPUnit {TRUE}
-// UseDPFormat {TRUE}
-// SimpleCtrlScriptEnd {EP_textFieldIn}
-" 0
- "// SimpleCtrlScriptStart {invalid}
-main()
-{
-  EP_childPanelOn();
-}
-
-void EP_childPanelOn()
-{
-  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
-      \"Chamber HV monitoring\",
-      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board10\", \"$Chamber:4/2 Bot\"));
-}
-
-// SimpleCtrlScript {EP_childPanelOn}
-// Function {ChildPanelOnCentralModal}
-// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
-// Panel {Chamber HV monitoring}
-// Parent {}
-// Module {}
-// OffsetX {0}
-// OffsetY {0}
-// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
-// SimpleCtrlScriptEnd {EP_childPanelOn}
-" 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 174.8888888888889 1 E 170 220 340 260
-6 109
-"Rect_4/3Top"
-""
-1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
- E E
-109 0 0 0 0 0
 E E E
 0
 1
@@ -1363,7 +1161,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
       \"Chamber HV monitoring\",
-      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14\", \"$Chamber:4/3 Top\"));
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14\", \"$Chamber:4/2 Top\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -1378,13 +1176,13 @@ void EP_childPanelOn()
 // SimpleCtrlScriptEnd {EP_childPanelOn}
 
 " 0
- 0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 134.8888888888889 1 E 170 220 340 260
-6 110
-"Rect_4/3Bot"
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 134.8888888888889 1 E 170 220 340 260
+6 108
+"Rect_4/2Bot"
 ""
 1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
  E E
-110 0 0 0 0 0
+108 0 0 0 0 0
 E E E
 0
 1
@@ -1474,7 +1272,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
       \"Chamber HV monitoring\",
-      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14\", \"$Chamber:4/3 Bot\"));
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14\", \"$Chamber:4/2 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -1487,6 +1285,232 @@ void EP_childPanelOn()
 // OffsetY {0}
 // PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 174.8888888888889 1 E 170 220 340 260
+6 109
+"Rect_4/3Top"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+109 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_Shared_mainframe/board15/channel006.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board15/channel005.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board15/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_Shared_mainframe/board15/channel003.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board15/channel002.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board15/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_Shared_mainframe/board15/channel000.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15\", \"$Chamber:4/3 Top\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
+
+" 0
+ 0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 134.8888888888889 1 E 170 220 340 260
+6 110
+"Rect_4/3Bot"
+""
+1 170 220 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+110 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+
+  dyn_string dps = makeDynString(\"CAEN/904_Shared_mainframe/board15/channel013.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board15/channel012.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board15/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_Shared_mainframe/board15/channel010.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board15/channel009.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board15/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_Shared_mainframe/board15/channel007.actual.status:_online.._value\");
+  
+  dpConnect(\"GetStatus\",dps)  ;
+  
+ 
+}
+
+
+bool checkAllDpsExist(dyn_string dps)
+  {
+    bool exist=1;
+    int i=1;
+    for (i=1; i<=dynlen(dps); i++)  exist=exist && dpExists(dps[i]);
+    return exist;
+  }
+
+
+GetStatus(dyn_string dps, dyn_int results)
+  {
+    dyn_errClass err;
+    dyn_bool OvC_bit, OvV_bit, UnV_bit, Trip_bit;
+
+      if( !checkAllDpsExist(dps) )
+    {
+      setValue(\"\", \"color\", \"_dpdoesnotexist\");
+      return;
+    }
+    
+      for (int i=1;i<=dynlen(dps);i++) 
+      {
+      OvC_bit[i]=(results[i] & 0x008);
+      OvV_bit[i]=(results[i] & 0x010); 
+      UnV_bit[i]=(results[i] & 0x020);      
+      Trip_bit[i]=(results[i] & 0x200);      
+      }
+
+    
+    if(results[1]==0 && results[2]==0 && results[3]==0 && results[4]==0 && results[5]==0 && results[6]==0 && results[7]==0){
+        setValue(\"\",\"backCol\",\"grey\");
+      }  
+    else if(results[1]==1 && results[2]==1 && results[3]==1 && results[4]==1 && results[5]==1 && results[6]==1 && results[7]==1){ 
+        setValue(\"\",\"backCol\",\"STD_led_On\");
+      }
+    else if(OvC_bit[1]==1 || OvC_bit[2]==1 || OvC_bit[3]==1 || OvC_bit[4]==1 || OvC_bit[5]==1 || OvC_bit[6]==1 || OvC_bit[7]==1 || OvV_bit[1]==1 || OvV_bit[2]==1 || OvV_bit[3]==1 || OvV_bit[4]==1 || OvV_bit[5]==1 || OvV_bit[6]==1 || OvV_bit[7]==1 || UnV_bit[1]==1 || UnV_bit[2]==1 || UnV_bit[3]==1 || UnV_bit[4]==1 || UnV_bit[5]==1 || UnV_bit[6]==1 || UnV_bit[7]==1 || Trip_bit[1]==1 || Trip_bit[2]==1 || Trip_bit[3]==1 || Trip_bit[4]==1 || Trip_bit[5]==1 || Trip_bit[6]==1 || Trip_bit[7]==1)
+    {
+        setValue(\"\",\"backCol\",\"red\");
+    }
+    else {
+        setValue(\"\",\"backCol\",\"STD_value_light\");
+      }
+  }
+
+
+
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {904_GEM_Multichannel_Bot_Drift.actual.status}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {TRUE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+
+" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
+      \"Chamber HV monitoring\",
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15\", \"$Chamber:4/3 Bot\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl}
+// Panel {Chamber HV monitoring}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+
 
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 174.8888888888889 1 E 170 220 340 260
@@ -1945,9 +1969,9 @@ LANG:1 0
 main()
 {
 
-  dyn_string dps = makeDynString(\"CAEN/904_Shared_mainframe/board13/channel006.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board13/channel005.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board13/channel004.actual.status:_online.._value\" , 
-                                 \"CAEN/904_Shared_mainframe/board13/channel003.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board13/channel002.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board13/channel001.actual.status:_online.._value\" ,
-                                 \"CAEN/904_Shared_mainframe/board13/channel000.actual.status:_online.._value\");
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board08/channel006.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board08/channel005.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board08/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board08/channel003.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board08/channel002.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board08/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board08/channel000.actual.status:_online.._value\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -2010,6 +2034,7 @@ GetStatus(dyn_string dps, dyn_int results)
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
 
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -2021,7 +2046,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
       \"Chamber HV monitoring\",
-      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13\", \"$Chamber:3/3 Bot\"));
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board08\", \"$Chamber:3/3 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -2034,6 +2059,7 @@ void EP_childPanelOn()
 // OffsetY {0}
 // PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 273.8888888888889 1 E 170 220 340 260
@@ -2056,9 +2082,9 @@ LANG:1 0
 main()
 {
 
-  dyn_string dps = makeDynString(\"CAEN/904_Shared_mainframe/board13/channel013.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board13/channel012.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board13/channel011.actual.status:_online.._value\" , 
-                                 \"CAEN/904_Shared_mainframe/board13/channel010.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board13/channel009.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board13/channel008.actual.status:_online.._value\" ,
-                                 \"CAEN/904_Shared_mainframe/board13/channel007.actual.status:_online.._value\");
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board08/channel013.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board08/channel012.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board08/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board08/channel010.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board08/channel009.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board08/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board08/channel007.actual.status:_online.._value\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -2121,6 +2147,7 @@ GetStatus(dyn_string dps, dyn_int results)
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
 
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -2132,7 +2159,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
       \"Chamber HV monitoring\",
-      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13\", \"$Chamber:3/3 Bot\"));
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board08\", \"$Chamber:3/3 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -2145,6 +2172,7 @@ void EP_childPanelOn()
 // OffsetY {0}
 // PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 313.8888888888889 1 E 170 220 340 260
@@ -2603,9 +2631,9 @@ LANG:1 0
 main()
 {
 
-  dyn_string dps = makeDynString(\"CAEN/904_Shared_mainframe/board12/channel006.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board12/channel005.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board12/channel004.actual.status:_online.._value\" , 
-                                 \"CAEN/904_Shared_mainframe/board12/channel003.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board12/channel002.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board12/channel001.actual.status:_online.._value\" ,
-                                 \"CAEN/904_Shared_mainframe/board12/channel000.actual.status:_online.._value\");
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board05/channel006.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board05/channel005.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board05/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board05/channel003.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board05/channel002.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board05/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board05/channel000.actual.status:_online.._value\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -2668,6 +2696,7 @@ GetStatus(dyn_string dps, dyn_int results)
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
 
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -2679,7 +2708,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
       \"Chamber HV monitoring\",
-      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12\", \"$Chamber:2/3 Top\"));
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board05\", \"$Chamber:2/3 Top\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -2692,6 +2721,7 @@ void EP_childPanelOn()
 // OffsetY {0}
 // PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 401.8888888888889 1 E 170 220 340 260
@@ -2714,9 +2744,9 @@ LANG:1 0
 main()
 {
 
-  dyn_string dps = makeDynString(\"CAEN/904_Shared_mainframe/board12/channel013.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board12/channel012.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board12/channel011.actual.status:_online.._value\" , 
-                                 \"CAEN/904_Shared_mainframe/board12/channel010.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board12/channel009.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board12/channel008.actual.status:_online.._value\" ,
-                                 \"CAEN/904_Shared_mainframe/board12/channel007.actual.status:_online.._value\");
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board05/channel013.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board05/channel012.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board05/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board05/channel010.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board05/channel009.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board05/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board05/channel007.actual.status:_online.._value\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -2779,6 +2809,7 @@ GetStatus(dyn_string dps, dyn_int results)
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
 
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -2790,7 +2821,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
       \"Chamber HV monitoring\",
-      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12\",\"$Chamber:2/3 Bot\"));
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board05\",\"$Chamber:2/3 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -2803,6 +2834,7 @@ void EP_childPanelOn()
 // OffsetY {0}
 // PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 441.8888888888889 1 E 170 220 340 260
@@ -3262,9 +3294,9 @@ LANG:1 0
 main()
 {
 
-  dyn_string dps = makeDynString(\"CAEN/904_Shared_mainframe/board11/channel006.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board11/channel005.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board11/channel004.actual.status:_online.._value\" , 
-                                 \"CAEN/904_Shared_mainframe/board11/channel003.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board11/channel002.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board11/channel001.actual.status:_online.._value\" ,
-                                 \"CAEN/904_Shared_mainframe/board11/channel000.actual.status:_online.._value\");
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board02/channel006.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board02/channel005.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board02/channel004.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board02/channel003.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board02/channel002.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board02/channel001.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board02/channel000.actual.status:_online.._value\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -3327,6 +3359,7 @@ GetStatus(dyn_string dps, dyn_int results)
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
 
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -3338,7 +3371,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl\",
       \"Chamber HV monitoring\",
-      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11\", \"$Chamber:1/3 Top\"));
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board02\", \"$Chamber:1/3 Top\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -3351,6 +3384,7 @@ void EP_childPanelOn()
 // OffsetY {0}
 // PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 529.8888888888888 1 E 170 220 340 260
@@ -3373,9 +3407,9 @@ LANG:1 0
 main()
 {
 
-  dyn_string dps = makeDynString(\"CAEN/904_Shared_mainframe/board11/channel013.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board11/channel012.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board11/channel011.actual.status:_online.._value\" , 
-                                 \"CAEN/904_Shared_mainframe/board11/channel010.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board11/channel009.actual.status:_online.._value\" , \"CAEN/904_Shared_mainframe/board11/channel008.actual.status:_online.._value\" ,
-                                 \"CAEN/904_Shared_mainframe/board11/channel007.actual.status:_online.._value\");
+  dyn_string dps = makeDynString(\"CAEN/904_HV_mainframe/board02/channel013.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board02/channel012.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board02/channel011.actual.status:_online.._value\" , 
+                                 \"CAEN/904_HV_mainframe/board02/channel010.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board02/channel009.actual.status:_online.._value\" , \"CAEN/904_HV_mainframe/board02/channel008.actual.status:_online.._value\" ,
+                                 \"CAEN/904_HV_mainframe/board02/channel007.actual.status:_online.._value\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -3438,6 +3472,7 @@ GetStatus(dyn_string dps, dyn_int results)
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
 
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -3449,7 +3484,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl\",
       \"Chamber HV monitoring\",
-      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11\", \"$Chamber:1/3 Bot\"));
+      makeDynString(\"$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board02\", \"$Chamber:1/3 Bot\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -3462,6 +3497,7 @@ void EP_childPanelOn()
 // OffsetY {0}
 // PanelPara1 {$Board:cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 569.8888888888888 1 E 170 220 340 260
