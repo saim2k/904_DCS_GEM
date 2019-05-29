@@ -109,6 +109,11 @@ void setOperatorRights()
    TEXT2_G2BotV0.enabled = set;
    TEXT2_G3TopV0.enabled = set;
    TEXT2_G3BotV0.enabled = set;
+   
+    //board Settings
+   CASCADE_OpMode.enabled = set;
+   BUTTON_applyOpMode.enabled = set; 
+
     
 }
 
@@ -9521,7 +9526,7 @@ main()
   bool showmessage=Crosscheck_table_dpesettings();
   //DebugTN(showmessage);
   if (showmessage)  { sdOpenPopup(\"\",\"CMS_GEM_multichannel/message_closeSettings\", \"Warning - not applied\", 30, 30, 0, \"\"); }
-  else  { PanelOff(\"CMS_GEM_multichannel/CMS_GEM_multichannel_ChangeSettings.pnl\"); }
+  else  { PanelOff(\"904_GEM_multichannel/904_GEM_multichannel_settings.pnl\"); }
 }
 
 bool Crosscheck_table_dpesettings()

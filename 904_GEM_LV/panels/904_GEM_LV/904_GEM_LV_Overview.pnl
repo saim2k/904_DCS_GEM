@@ -263,7 +263,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel000.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard16/channel000.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -329,6 +329,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -340,7 +341,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel000\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard16/channel000\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -351,8 +352,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999999 6.888888888888943 1 E 170 220 340 260
 6 100
@@ -374,7 +376,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel001.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard16/channel001.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -440,6 +442,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -451,7 +454,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel001\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard16/channel001\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -462,8 +465,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999999 46.88888888888894 1 E 170 220 340 260
 6 101
@@ -485,7 +489,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel002.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard16/channel002.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -551,6 +555,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -562,7 +567,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel002\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard16/channel002\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -573,8 +578,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 6.888888888888943 1 E 170 220 340 260
 6 102
@@ -596,7 +602,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel003.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard16/channel003.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -662,6 +668,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -673,7 +680,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel003\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard16/channel003\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -684,8 +691,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 46.88888888888894 1 E 170 220 340 260
 6 103
@@ -707,7 +715,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel004.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard16/channel004.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -773,6 +781,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -784,7 +793,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel004\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard16/channel004\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -795,8 +804,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 6.888888888888943 1 E 170 220 340 260
 6 104
@@ -818,7 +828,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel005.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard16/channel005.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -884,6 +894,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -895,7 +906,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16/channel005\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard16/channel005\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -906,8 +917,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 46.88888888888894 1 E 170 220 340 260
 6 105
@@ -929,7 +941,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel000.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard12/channel000.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -995,6 +1007,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -1006,7 +1019,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel000\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard12/channel000\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -1017,8 +1030,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999996 134.8888888888889 1 E 170 220 340 260
 6 106
@@ -1040,7 +1054,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel001.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard12/channel001.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -1106,6 +1120,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -1117,7 +1132,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel001\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard12/channel001\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -1128,8 +1143,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999996 174.8888888888889 1 E 170 220 340 260
 6 107
@@ -1151,7 +1167,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel002.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard12/channel002.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -1217,6 +1233,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -1228,7 +1245,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel002\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard12/channel002\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -1239,8 +1256,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 134.8888888888889 1 E 170 220 340 260
 6 108
@@ -1262,7 +1280,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel003.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard12/channel003.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -1328,6 +1346,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -1339,7 +1358,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel003\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard12/channel003\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -1350,8 +1369,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 174.8888888888889 1 E 170 220 340 260
 6 109
@@ -1373,7 +1393,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel004.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard12/channel004.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -1439,6 +1459,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -1450,7 +1471,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel004\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard12/channel004\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -1461,8 +1482,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 134.8888888888889 1 E 170 220 340 260
 6 110
@@ -1484,7 +1506,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel005.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard12/channel005.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -1550,6 +1572,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -1561,7 +1584,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12/channel005\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard12/channel005\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -1572,8 +1595,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 174.8888888888889 1 E 170 220 340 260
 6 111
@@ -1595,7 +1619,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel000.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard08/channel000.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -1661,6 +1685,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -1672,7 +1697,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel000\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard08/channel000\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -1683,8 +1708,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43750000000001 273.8888888888889 1 E 170 220 340 260
 6 112
@@ -1706,7 +1732,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel001.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard08/channel001.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -1772,6 +1798,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -1783,7 +1810,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel001\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard08/channel001\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -1794,8 +1821,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43750000000001 313.8888888888889 1 E 170 220 340 260
 6 113
@@ -1817,7 +1845,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel002.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard08/channel002.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -1883,6 +1911,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -1894,7 +1923,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel002\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard08/channel002\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -1905,8 +1934,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 273.8888888888889 1 E 170 220 340 260
 6 114
@@ -1928,7 +1958,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel003.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard08/channel003.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -1994,6 +2024,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -2005,7 +2036,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel003\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard08/channel003\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -2016,8 +2047,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 313.8888888888889 1 E 170 220 340 260
 6 115
@@ -2039,7 +2071,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel004.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard08/channel004.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -2105,6 +2137,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -2116,7 +2149,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel004\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard08/channel004\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -2127,8 +2160,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 273.8888888888889 1 E 170 220 340 260
 6 116
@@ -2150,7 +2184,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel005.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard08/channel005.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -2216,6 +2250,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -2227,7 +2262,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08/channel005\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard08/channel005\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -2238,8 +2273,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 313.8888888888889 1 E 170 220 340 260
 6 117
@@ -2261,7 +2297,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel000.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard04/channel000.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -2327,6 +2363,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -2338,7 +2375,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel000\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard04/channel000\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -2349,8 +2386,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999996 401.8888888888889 1 E 170 220 340 260
 6 118
@@ -2372,7 +2410,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel001.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard04/channel001.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -2438,6 +2476,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -2449,7 +2488,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel001\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard04/channel001\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -2460,8 +2499,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999996 441.8888888888889 1 E 170 220 340 260
 6 119
@@ -2483,7 +2523,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel002.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard04/channel002.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -2549,6 +2589,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -2560,7 +2601,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel002\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard04/channel002\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -2571,8 +2612,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 401.8888888888889 1 E 170 220 340 260
 6 120
@@ -2594,7 +2636,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel003.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard04/channel003.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -2660,6 +2702,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -2671,7 +2714,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel003\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard04/channel003\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -2682,8 +2725,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 441.8888888888889 1 E 170 220 340 260
 6 121
@@ -2705,7 +2749,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel004.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard04/channel004.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -2771,6 +2815,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -2782,7 +2827,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel004\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard04/channel004\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -2793,8 +2838,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 401.8888888888889 1 E 170 220 340 260
 6 122
@@ -2816,7 +2862,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel005.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard04/channel005.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -2882,6 +2928,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -2893,7 +2940,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04/channel005\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard04/channel005\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -2904,8 +2951,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 441.8888888888889 1 E 170 220 340 260
 6 123
@@ -2927,7 +2975,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -2993,6 +3041,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -3004,7 +3053,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -3015,8 +3064,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999999 529.8888888888888 1 E 170 220 340 260
 6 124
@@ -3038,7 +3088,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel001.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel001.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -3104,6 +3154,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -3115,7 +3166,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel001\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel001\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -3126,8 +3177,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 -59.43749999999999 569.8888888888888 1 E 170 220 340 260
 6 125
@@ -3149,7 +3201,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel002.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel002.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -3215,6 +3267,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -3226,7 +3279,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel002\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel002\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -3237,8 +3290,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 529.8888888888888 1 E 170 220 340 260
 6 126
@@ -3260,7 +3314,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel003.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel003.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -3326,6 +3380,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -3337,7 +3392,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel003\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel003\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -3348,8 +3403,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 151.5625 569.8888888888888 1 E 170 220 340 260
 6 127
@@ -3371,7 +3427,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel004.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel004.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -3437,6 +3493,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -3448,7 +3505,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel004\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel004\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -3459,8 +3516,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 529.8888888888888 1 E 170 220 340 260
 6 128
@@ -3482,7 +3540,7 @@ LANG:1 0
 main()
 {
 
-  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel005.actual.status\");
+  string dps = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel005.actual.status\");
   
   dpConnect(\"GetStatus\",dps)  ;
   
@@ -3548,6 +3606,7 @@ GetStatus(string dps, int results)
 // UseDPUnit {TRUE}
 // UseDPFormat {TRUE}
 // SimpleCtrlScriptEnd {EP_textFieldIn}
+
 " 0
  "// SimpleCtrlScriptStart {invalid}
 main()
@@ -3559,7 +3618,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"Chamber LV monitoring\",
-      makeDynString(\"$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel005\"));
+      makeDynString(\"$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel005\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -3570,8 +3629,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00/channel000}
+// PanelPara1 {$sDpName:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  0 1 1 2 1 E 0.8235294117647057 0 0.75 362.5625 569.8888888888888 1 E 170 220 340 260
 2 129
@@ -4144,7 +4204,7 @@ LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
 T 
 1
 LANG:1 33 Fast LV settings
-to ALL detectors
+to ALL detector
 "// SimpleCtrlScriptStart {valid}
 main()
 {
@@ -4189,7 +4249,7 @@ LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
 T 
 1
 LANG:1 3 MAO
-"// SimpleCtrlScriptStart {valid}
+"// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_childPanelOn();
@@ -4199,7 +4259,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_LV/fwCaenChannelOperationGEM.pnl\",
       \"\",
-      makeDynString(\"$sDpName:cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/powerConverter22/channel000\"));
+      makeDynString(\"$sDpName:cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/powerConverter22/channel000\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -4210,8 +4270,9 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$sDpName:cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/powerConverter22/channel000}
+// PanelPara1 {$sDpName:cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/powerConverter22/channel000}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  E E E
 13 166
@@ -4289,6 +4350,7 @@ void EP_setDP()
   dyn_errClass err;
 
   dpSetWait(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe.Commands.ClearAlarm\", 1);
+  dpSetWait(\"cms_gem_dcs_1:CAEN/904_HV_mainframe.Commands.ClearAlarm\", 1);
   err = getLastError();
   if (dynlen(err) > 0)
     errorDialog(err);

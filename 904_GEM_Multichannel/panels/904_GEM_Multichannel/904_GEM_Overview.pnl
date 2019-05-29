@@ -4071,7 +4071,7 @@ LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
 T 
 1
 LANG:1 33 Fast HV settings
-to ALL detectors
+to ALL detector
 "// SimpleCtrlScriptStart {valid}
 main()
 {
@@ -4116,7 +4116,7 @@ LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
 T 
 1
 LANG:1 21 Complete HV 
-settings
+setting
 "// SimpleCtrlScriptStart {valid}
 main()
 {
@@ -4274,6 +4274,7 @@ void EP_setDP()
   dyn_errClass err;
 
   dpSetWait(\"CAEN/904_HV_mainframe.Commands.ClearAlarm\", 1);
+  dpSetWait(\"CAEN/904_Shared_mainframe.Commands.ClearAlarm\", 1);
   err = getLastError();
   if (dynlen(err) > 0)
     errorDialog(err);

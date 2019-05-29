@@ -486,7 +486,7 @@ LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
 T 
 1
 LANG:1 3 4/1
-"// SimpleCtrlScriptStart {valid}
+"// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_childPanelOn();
@@ -496,7 +496,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
       \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board09\", \"$Superchamber:4/1\"));
+      makeDynString(\"$Board:CAEN/904_Shared_mainframe/board10\", \"$Superchamber:4/1\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -507,9 +507,10 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board09}
+// PanelPara1 {$Board:CAEN/904_Shared_mainframe/board10}
 // PanelPara2 {$Superchamber:4/1}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  E E E
 13 11
@@ -532,7 +533,7 @@ LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
 T 
 1
 LANG:1 3 4/2
-"// SimpleCtrlScriptStart {valid}
+"// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_childPanelOn();
@@ -542,7 +543,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
       \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board10\", \"$Superchamber:4/2\"));
+      makeDynString(\"$Board:CAEN/904_Shared_mainframe/board14\", \"$Superchamber:4/2\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -553,9 +554,10 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board10}
+// PanelPara1 {$Board:CAEN/904_Shared_mainframe/board14}
 // PanelPara2 {$Superchamber:4/2}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  E E E
 13 12
@@ -578,7 +580,7 @@ LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
 T 
 1
 LANG:1 3 4/3
-"// SimpleCtrlScriptStart {valid}
+"// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_childPanelOn();
@@ -588,7 +590,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
       \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board11\", \"$Superchamber:4/3\"));
+      makeDynString(\"$Board:CAEN/904_Shared_mainframe/board15\", \"$Superchamber:4/3\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -599,9 +601,10 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board11}
+// PanelPara1 {$Board:CAEN/904_Shared_mainframe/board15}
 // PanelPara2 {$Superchamber:4/3}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  E E E
 13 13
@@ -624,7 +627,7 @@ LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
 T 
 1
 LANG:1 3 5/1
-"// SimpleCtrlScriptStart {valid}
+"// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_childPanelOn();
@@ -634,7 +637,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
       \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board12\", \"$Superchamber:5/1\"));
+      makeDynString(\"$Board:CAEN/904_Shared_mainframe/board11\", \"$Superchamber:5/1\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -645,9 +648,10 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board12}
+// PanelPara1 {$Board:CAEN/904_Shared_mainframe/board11}
 // PanelPara2 {$Superchamber:5/1}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  E E E
 13 14
@@ -670,7 +674,7 @@ LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
 T 
 1
 LANG:1 3 5/2
-"// SimpleCtrlScriptStart {valid}
+"// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_childPanelOn();
@@ -680,7 +684,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
       \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board13\", \"$Superchamber:5/2\"));
+      makeDynString(\"$Board:CAEN/904_Shared_mainframe/board12\", \"$Superchamber:5/2\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -691,9 +695,10 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board13}
+// PanelPara1 {$Board:CAEN/904_Shared_mainframe/board12}
 // PanelPara2 {$Superchamber:5/2}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  E E E
 13 15
@@ -716,7 +721,7 @@ LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
 T 
 1
 LANG:1 3 5/3
-"// SimpleCtrlScriptStart {valid}
+"// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_childPanelOn();
@@ -726,7 +731,7 @@ void EP_childPanelOn()
 {
   ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_settings.pnl\",
       \"\",
-      makeDynString(\"$Board:CAEN/904_HV_mainframe/board14\", \"$Superchamber:5/3\"));
+      makeDynString(\"$Board:CAEN/904_Shared_mainframe/board13\", \"$Superchamber:5/3\"));
 }
 
 // SimpleCtrlScript {EP_childPanelOn}
@@ -737,9 +742,10 @@ void EP_childPanelOn()
 // Module {}
 // OffsetX {0}
 // OffsetY {0}
-// PanelPara1 {$Board:CAEN/904_HV_mainframe/board14}
+// PanelPara1 {$Board:CAEN/904_Shared_mainframe/board13}
 // PanelPara2 {$Superchamber:5/3}
 // SimpleCtrlScriptEnd {EP_childPanelOn}
+
 " 0
  E E E
 2 16
