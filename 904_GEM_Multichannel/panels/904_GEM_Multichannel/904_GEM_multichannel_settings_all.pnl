@@ -2,7 +2,7 @@ V 14
 2
 LANG:1 0 
 LANG:10001 12 TEXT_DriftV0
-PANEL,-1 -1 759 343 N "_3DFace" 0
+PANEL,-1 -1 1047 702 N "_3DFace" 0
 "main()
 {
   
@@ -52,17 +52,30 @@ void setExpertRights()
 
 void setOperatorRights()
 {
-  setAllInPanel(true);
+  bool set = true;  
+  
+  set_all_DivCurr_button.enabled(set);
+  set_all_DivVolt_button.enabled(set);
+  set_all_i0_button.enabled(set);
+  ALL_ON_BUTTON.enabled(set);
+  ALL_OFF_BUTTON.enabled(set);
 }
 
 
 void setAllInPanel(bool set)
 {
-  set_all_DivCurr_Button.enabled(set);
-  set_all_DivVolt_Button.enabled(set);
+  set_all_DivCurr_button.enabled(set);
+  set_all_DivVolt_button.enabled(set);
   set_all_i0_button.enabled(set);
   ALL_ON_BUTTON.enabled(set);
   ALL_OFF_BUTTON.enabled(set);
+  set_triptime_all_button.enabled(set);
+  set_rup_all_button.enabled(set);
+  set_rdw_all_button.enabled(set);
+  set_onorder_button.enabled(set);
+  set_offorder_button.enabled(set);
+  set_vmax_button.enabled(set);
+  setboardmode_button(set);
 }
 " 0
  E E E E 1 -1 -1 0  30 20
@@ -189,7 +202,7 @@ for(int i=1; i< dynlen(boards); i++){
 13 175
 "ALL_OFF_BUTTON"
 ""
-1 460.7499999999999 204.7743658508187 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 733.5937499999999 146.2256341491812 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 175 0 0 0 0 0
 E E E
@@ -203,7 +216,7 @@ LANG:10001 0
 2
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
-0  458.7499999999999 191.7743658508187 681.9999999999999 235.7743658508187
+0  731.5937499999999 133.2256341491812 954.8437499999999 177.2256341491812
 
 T 
 2
@@ -278,7 +291,7 @@ for(int i=1; i< dynlen(boards); i++){
 13 181
 "BUTTON_CLOSE"
 ""
-1 600 279.7764796814229 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+1 843.2187499999999 627.099577233879 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 181 0 0 0 0 0
 E E E
@@ -292,7 +305,7 @@ LANG:10001 0
 2
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
-0  598 271.2764796814229 682 305.2764796814229
+0  841.2187499999999 618.599577233879 925.2187499999999 652.599577233879
 
 T 
 2
@@ -389,13 +402,13 @@ boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00\",
 int j=1;
 for(j=1; j<=dynlen(boards);j++){
 
-dp_texts = makeDynString(boards[j]+\"/channel006.settings.i0:_original.._value\",
-                         boards[j]+\"/channel005.settings.i0:_original.._value\",
-                         boards[j]+\"/channel004.settings.i0:_original.._value\",
-                         boards[j]+\"/channel003.settings.i0:_original.._value\",
-                         boards[j]+\"/channel002.settings.i0:_original.._value\",
-                         boards[j]+\"/channel001.settings.i0:_original.._value\",
-                         boards[j]+\"/channel000.settings.i0:_original.._value\",
+dp_texts = makeDynString(boards[j]+\"/channel013.settings.i0:_original.._value\",
+                         boards[j]+\"/channel012.settings.i0:_original.._value\",
+                         boards[j]+\"/channel011.settings.i0:_original.._value\",
+                         boards[j]+\"/channel010.settings.i0:_original.._value\",
+                         boards[j]+\"/channel009.settings.i0:_original.._value\",
+                         boards[j]+\"/channel008.settings.i0:_original.._value\",
+                         boards[j]+\"/channel007.settings.i0:_original.._value\",
                          boards[j]+\"/channel006.settings.i0:_original.._value\",
                          boards[j]+\"/channel005.settings.i0:_original.._value\",
                          boards[j]+\"/channel004.settings.i0:_original.._value\",
@@ -1061,6 +1074,2027 @@ LANG:1 30 Be careful! What you set here
 LANG:1 35 MS Shell Dlg 2,-1,13,5,75,1,0,0,0,0
 0 1
 LANG:1 37 will be applied to all the detectors!
+13 1018
+"set_triptime_all_button"
+""
+1 230 355.5264796814229 E E E 1 E 1 E N "Black" E N "_Button" E E
+ E E
+628 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  228 340.5264796814229 362 384.5264796814229
+
+T 
+2
+LANG:1 20 Set Trip Time to All
+LANG:10001 13 Set i0 to ALL
+"main()
+{
+  
+dyn_string exceptionInfo;
+  bool answ;
+  fwGeneral_openMessagePanel(\"Do you really want to apply changes?\", answ , exceptionInfo, \"Confirm\", false );
+  DebugTN(\"answer\",answ);
+  
+  if (answ)
+  {
+    applyChanges();
+   }
+}
+
+
+
+
+
+void applyChanges()  {
+dyn_string dp_texts, texts, textfields, boards;
+dyn_float floats;
+//string texts;
+float triptime_float;
+getValue(\"TEXT_TripTime\",\"text\",triptime_float);
+//texts = makeDynString( \"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\" );
+floats = makeDynFloat(triptime_float,triptime_float,triptime_float,triptime_float,triptime_float,triptime_float,triptime_float,triptime_float,triptime_float,triptime_float,triptime_float,triptime_float,triptime_float,triptime_float);
+
+boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board01\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board02\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board03\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board04\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board05\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board06\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board07\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board08\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board10\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13\");
+
+int j=1;
+for(j=1; j<=dynlen(boards);j++){
+
+dp_texts = makeDynString(boards[j]+\"/channel013.settings.tripTime:_original.._value\",
+                         boards[j]+\"/channel012.settings.tripTime:_original.._value\",
+                         boards[j]+\"/channel011.settings.tripTime:_original.._value\",
+                         boards[j]+\"/channel010.settings.tripTime:_original.._value\",
+                         boards[j]+\"/channel009.settings.tripTime:_original.._value\",
+                         boards[j]+\"/channel008.settings.tripTime:_original.._value\",
+                         boards[j]+\"/channel007.settings.tripTime:_original.._value\",
+                         boards[j]+\"/channel006.settings.tripTime:_original.._value\",
+                         boards[j]+\"/channel005.settings.tripTime:_original.._value\",
+                         boards[j]+\"/channel004.settings.tripTime:_original.._value\",
+                         boards[j]+\"/channel003.settings.tripTime:_original.._value\",
+                         boards[j]+\"/channel002.settings.tripTime:_original.._value\",
+                         boards[j]+\"/channel001.settings.tripTime:_original.._value\",
+                         boards[j]+\"/channel000.settings.tripTime:_original.._value\"
+                         );
+
+//textfields = makeDynString(\"TEXT_DriftI0\" , \"TEXT_G1TopI0\" , \"TEXT_G1BotI0\" , \"TEXT_G2TopI0\" ,\"TEXT_G2BotI0\" , \"TEXT_G3TopI0\" , \"TEXT_G3BotI0\" );
+
+int i=1;
+if (dynlen(floats)==dynlen(dp_texts))
+ {
+  for (i=1; i<=dynlen(floats); i++) 
+    {
+   // DebugTN(\"i=\", i, \"   texts[i]=\" , texts[i] , \"   dp_texts[i]=\" , dp_texts[i]);   
+  //  EP_textFieldOut( texts[i] , dp_texts[i] );
+      //setValue( textfields[i],\"text\",floats[i]);
+      dpSet(dp_texts[i],triptime_float);
+    }
+ }
+}
+ //   setValue(\"set_all_i0_button\",\"backCol\",\"_Button\");
+ //   setValue(\"set_all_i0_button\",\"foreCol\",\"darkgrey\");
+
+ 
+}
+
+EP_textFieldOut(string text, string dp_text) //applies to Dps values written in text fields
+{
+//DebugTN(\"Applying new setting to\", dp_text);
+float fNewValue;
+dyn_errClass err;
+string sTmp;
+string sFormat, sDp;
+
+  getValue(text, \"text\", sTmp);
+  sscanf(sTmp, \"%f\", fNewValue);
+
+  sDp = dpSubStr(dp_text,  DPSUB_SYS_DP_EL);
+  if ( strpos(sDp,\".\") < 1 )
+    sDp += \".\";
+
+  sFormat = dpGetFormat( sDp );
+  if( !checkStringFormat(sTmp, sFormat) )
+  {
+    ChildPanelOnCentral( \"vision/MessageWarning\",
+                         getCatStr( \"e_para\", \"warning\" ),
+                         makeDynString( getCatStr( \"e_para\", \"wrongFormat\" )));
+    return;
+  }
+
+  dpSetWait(dp_text, sTmp);
+  err = getLastError();
+  if (dynlen(err) > 0)
+    errorDialog(err);
+}
+
+
+
+
+
+
+
+" 0
+ E E E
+14 1019
+"TEXT_TripTime"
+""
+1 60 350.7038950187464 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+629 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  58 343.2256341491811 152 389.2256341491813
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  this.text(\"(s)\");
+}
+" 0
+ E
+2 1020
+"PRIMITIVE_TEXT253"
+""
+1 860 310 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+630 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+"main()
+{
+  this.text(\"(uA)\");
+}" 0
+ E 0 5 1 2 1 E 1.32 0 1.337394308469786 -944.96 -56.3909673272712 0 E 840 310 860 325
+0 2 2 "0s" 0 0 0 194 0 0  860 310 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,75,1,0,0,0,0
+LANG:10001 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0 2
+LANG:1 3 (s)
+LANG:10001 4 (uA)
+13 1021
+"set_rup_all_button"
+""
+1 230 435.5264796814229 E E E 1 E 1 E N "Black" E N "_Button" E E
+ E E
+631 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  228 420.5264796814229 362 464.5264796814229
+
+T 
+2
+LANG:1 14 Set rUp to All
+LANG:10001 13 Set i0 to ALL
+"main()
+{
+  
+dyn_string exceptionInfo;
+  bool answ;
+  fwGeneral_openMessagePanel(\"Do you really want to apply changes?\", answ , exceptionInfo, \"Confirm\", false );
+  DebugTN(\"answer\",answ);
+  
+  if (answ)
+  {
+    applyChanges();
+   }
+}
+
+
+
+
+
+void applyChanges()  {
+dyn_string dp_texts, texts, textfields, boards;
+dyn_float floats;
+//string texts;
+float rup_float;
+getValue(\"TEXT_rup\",\"text\",rup_float);
+//texts = makeDynString( \"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\" );
+floats = makeDynFloat(rup_float,rup_float,rup_float,rup_float,rup_float,rup_float,rup_float,rup_float,rup_float,rup_float,rup_float,rup_float,rup_float,rup_float);
+
+boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board01\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board02\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board03\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board04\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board05\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board06\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board07\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board08\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board10\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13\");
+
+int j=1;
+for(j=1; j<=dynlen(boards);j++){
+
+dp_texts = makeDynString(boards[j]+\"/channel013.settings.rUp:_original.._value\",
+                         boards[j]+\"/channel012.settings.rUp:_original.._value\",
+                         boards[j]+\"/channel011.settings.rUp:_original.._value\",
+                         boards[j]+\"/channel010.settings.rUp:_original.._value\",
+                         boards[j]+\"/channel009.settings.rUp:_original.._value\",
+                         boards[j]+\"/channel008.settings.rUp:_original.._value\",
+                         boards[j]+\"/channel007.settings.rUp:_original.._value\",
+                         boards[j]+\"/channel006.settings.rUp:_original.._value\",
+                         boards[j]+\"/channel005.settings.rUp:_original.._value\",
+                         boards[j]+\"/channel004.settings.rUp:_original.._value\",
+                         boards[j]+\"/channel003.settings.rUp:_original.._value\",
+                         boards[j]+\"/channel002.settings.rUp:_original.._value\",
+                         boards[j]+\"/channel001.settings.rUp:_original.._value\",
+                         boards[j]+\"/channel000.settings.rUp:_original.._value\"
+                         );
+
+//textfields = makeDynString(\"TEXT_DriftI0\" , \"TEXT_G1TopI0\" , \"TEXT_G1BotI0\" , \"TEXT_G2TopI0\" ,\"TEXT_G2BotI0\" , \"TEXT_G3TopI0\" , \"TEXT_G3BotI0\" );
+
+int i=1;
+if (dynlen(floats)==dynlen(dp_texts))
+ {
+  for (i=1; i<=dynlen(floats); i++) 
+    {
+   // DebugTN(\"i=\", i, \"   texts[i]=\" , texts[i] , \"   dp_texts[i]=\" , dp_texts[i]);   
+  //  EP_textFieldOut( texts[i] , dp_texts[i] );
+      //setValue( textfields[i],\"text\",floats[i]);
+      dpSet(dp_texts[i],rup_float);
+    }
+ }
+}
+ //   setValue(\"set_all_i0_button\",\"backCol\",\"_Button\");
+ //   setValue(\"set_all_i0_button\",\"foreCol\",\"darkgrey\");
+
+ 
+}
+
+EP_textFieldOut(string text, string dp_text) //applies to Dps values written in text fields
+{
+//DebugTN(\"Applying new setting to\", dp_text);
+float fNewValue;
+dyn_errClass err;
+string sTmp;
+string sFormat, sDp;
+
+  getValue(text, \"text\", sTmp);
+  sscanf(sTmp, \"%f\", fNewValue);
+
+  sDp = dpSubStr(dp_text,  DPSUB_SYS_DP_EL);
+  if ( strpos(sDp,\".\") < 1 )
+    sDp += \".\";
+
+  sFormat = dpGetFormat( sDp );
+  if( !checkStringFormat(sTmp, sFormat) )
+  {
+    ChildPanelOnCentral( \"vision/MessageWarning\",
+                         getCatStr( \"e_para\", \"warning\" ),
+                         makeDynString( getCatStr( \"e_para\", \"wrongFormat\" )));
+    return;
+  }
+
+  dpSetWait(dp_text, sTmp);
+  err = getLastError();
+  if (dynlen(err) > 0)
+    errorDialog(err);
+}
+
+
+
+
+
+
+
+" 0
+ E E E
+14 1022
+"TEXT_rup"
+""
+1 60 430.7038950187464 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+632 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  58 423.2256341491811 152 469.2256341491813
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  this.text(\"(V/s)\");
+}
+" 0
+ E
+2 1023
+"PRIMITIVE_TEXT254"
+""
+1 860 310 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+633 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+"main()
+{
+  this.text(\"(uA)\");
+}" 0
+ E 0 5 1 2 1 E 1.222736842105263 0 1.337394308469786 -841.5536842105262 25.40776437436637 0 E 823 310 860 325
+0 2 2 "0s" 0 0 0 194 0 0  860 310 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,75,1,0,0,0,0
+LANG:10001 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0 2
+LANG:1 5 (V/s)
+LANG:10001 4 (uA)
+13 1024
+"set_rdw_all_button"
+""
+1 230 520 E E E 1 E 1 E N "Black" E N "_Button" E E
+ E E
+634 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  228 505 362 549
+
+T 
+2
+LANG:1 15 Set rDwn to All
+LANG:10001 13 Set i0 to ALL
+"main()
+{
+  
+dyn_string exceptionInfo;
+  bool answ;
+  fwGeneral_openMessagePanel(\"Do you really want to apply changes?\", answ , exceptionInfo, \"Confirm\", false );
+  DebugTN(\"answer\",answ);
+  
+  if (answ)
+  {
+    applyChanges();
+   }
+}
+
+
+
+
+
+void applyChanges()  {
+dyn_string dp_texts, texts, textfields, boards;
+dyn_float floats;
+//string texts;
+float rdw_float;
+getValue(\"TEXT_rdwn\",\"text\",rdw_float);
+//texts = makeDynString( \"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\" );
+floats = makeDynFloat(rdw_float,rdw_float,rdw_float,rdw_float,rdw_float,rdw_float,rdw_float,rdw_float,rdw_float,rdw_float,rdw_float,rdw_float,rdw_float,rdw_float);
+
+boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board01\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board02\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board03\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board04\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board05\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board06\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board07\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board08\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board10\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13\");
+
+int j=1;
+for(j=1; j<=dynlen(boards);j++){
+
+dp_texts = makeDynString(boards[j]+\"/channel013.settings.rDwn:_original.._value\",
+                         boards[j]+\"/channel012.settings.rDwn:_original.._value\",
+                         boards[j]+\"/channel011.settings.rDwn:_original.._value\",
+                         boards[j]+\"/channel010.settings.rDwn:_original.._value\",
+                         boards[j]+\"/channel009.settings.rDwn:_original.._value\",
+                         boards[j]+\"/channel008.settings.rDwn:_original.._value\",
+                         boards[j]+\"/channel007.settings.rDwn:_original.._value\",
+                         boards[j]+\"/channel006.settings.rDwn:_original.._value\",
+                         boards[j]+\"/channel005.settings.rDwn:_original.._value\",
+                         boards[j]+\"/channel004.settings.rDwn:_original.._value\",
+                         boards[j]+\"/channel003.settings.rDwn:_original.._value\",
+                         boards[j]+\"/channel002.settings.rDwn:_original.._value\",
+                         boards[j]+\"/channel001.settings.rDwn:_original.._value\",
+                         boards[j]+\"/channel000.settings.rDwn:_original.._value\"
+                         );
+
+//textfields = makeDynString(\"TEXT_DriftI0\" , \"TEXT_G1TopI0\" , \"TEXT_G1BotI0\" , \"TEXT_G2TopI0\" ,\"TEXT_G2BotI0\" , \"TEXT_G3TopI0\" , \"TEXT_G3BotI0\" );
+
+int i=1;
+if (dynlen(floats)==dynlen(dp_texts))
+ {
+  for (i=1; i<=dynlen(floats); i++) 
+    {
+   // DebugTN(\"i=\", i, \"   texts[i]=\" , texts[i] , \"   dp_texts[i]=\" , dp_texts[i]);   
+  //  EP_textFieldOut( texts[i] , dp_texts[i] );
+      //setValue( textfields[i],\"text\",floats[i]);
+      dpSet(dp_texts[i],rdw_float);
+    }
+ }
+}
+ //   setValue(\"set_all_i0_button\",\"backCol\",\"_Button\");
+ //   setValue(\"set_all_i0_button\",\"foreCol\",\"darkgrey\");
+
+ 
+}
+
+EP_textFieldOut(string text, string dp_text) //applies to Dps values written in text fields
+{
+//DebugTN(\"Applying new setting to\", dp_text);
+float fNewValue;
+dyn_errClass err;
+string sTmp;
+string sFormat, sDp;
+
+  getValue(text, \"text\", sTmp);
+  sscanf(sTmp, \"%f\", fNewValue);
+
+  sDp = dpSubStr(dp_text,  DPSUB_SYS_DP_EL);
+  if ( strpos(sDp,\".\") < 1 )
+    sDp += \".\";
+
+  sFormat = dpGetFormat( sDp );
+  if( !checkStringFormat(sTmp, sFormat) )
+  {
+    ChildPanelOnCentral( \"vision/MessageWarning\",
+                         getCatStr( \"e_para\", \"warning\" ),
+                         makeDynString( getCatStr( \"e_para\", \"wrongFormat\" )));
+    return;
+  }
+
+  dpSetWait(dp_text, sTmp);
+  err = getLastError();
+  if (dynlen(err) > 0)
+    errorDialog(err);
+}
+
+
+
+
+
+
+
+" 0
+ E E E
+14 1025
+"TEXT_rdwn"
+""
+1 60 515.1774153373235 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+635 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  58 507.6991544677582 152 553.6991544677584
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  this.text(\"(V/s)\");
+}
+" 0
+ E
+2 1026
+"PRIMITIVE_TEXT255"
+""
+1 860 310 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+636 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+"main()
+{
+  this.text(\"(uA)\");
+}" 0
+ E 0 5 1 2 1 E 1.32 0 1.337394308469786 -935.2000000000001 105.4077643743664 0 E 823 310 860 325
+0 2 2 "0s" 0 0 0 194 0 0  860 310 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,75,1,0,0,0,0
+LANG:10001 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0 2
+LANG:1 5 (V/s)
+LANG:10001 4 (uA)
+14 1027
+"TEXT_onDrift"
+""
+1 460 260 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+637 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  458 253.7258772537242 511 290.4941516418385
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ E E
+14 1028
+"TEXT_onG1T"
+""
+1 460 292.8841371940571 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+638 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  458 286.6100144477813 511 323.3782888358956
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ E E
+14 1029
+"TEXT_onG1B"
+""
+1 460 325.8262057910857 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+639 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  458 319.5520830448098 511 356.3203574329241
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ E E
+14 1030
+"TEXT_onG2T"
+""
+1 460 358.7972400895999 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+640 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  458 352.5231173433241 511 389.2913917314384
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ E E
+14 1031
+"TEXT_onG2B"
+""
+1 460 391.7827572388571 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+641 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  458 385.5086344925812 511 422.2769088806955
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ E E
+14 1032
+"TEXT_onG3T"
+""
+1 459.9999999999999 424.7755158134855 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+642 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  457.9999999999999 418.5013930672097 510.9999999999999 455.269667455324
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ E E
+14 1033
+"TEXT_onG3B"
+""
+1 459.9999999999999 457.7718951007998 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+643 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  457.9999999999999 451.4977723545241 510.9999999999999 488.2660467426383
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ E E
+14 1034
+"TEXT_offDrift"
+""
+1 508.9999999999999 259.8841371940571 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+644 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  506.9999999999999 253.6100144477813 559.9999999999999 290.3782888358956
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ E E
+14 1035
+"TEXT_offG1T"
+""
+1 509 292.8262057910857 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+645 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  507 286.5520830448098 560 323.3203574329241
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ E E
+14 1036
+"TEXT_offG1B"
+""
+1 509 325.7972400895999 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+646 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  507 319.5231173433241 560 356.2913917314384
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ E E
+14 1037
+"TEXT_offG2T"
+""
+1 509 358.7827572388571 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+647 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  507 352.5086344925812 560 389.2769088806955
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ E E
+14 1038
+"TEXT_offG2B"
+""
+1 509 391.7755158134856 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+648 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  507 385.5013930672099 560 422.2696674553241
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ E E
+14 1039
+"TEXT_offG3T"
+""
+1 509 424.6596530075428 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+649 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  507 418.385530261267 560 455.1538046493813
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ E E
+14 1040
+"TEXT_offG3B"
+""
+1 508.9999999999999 457.6578426511999 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+650 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  506.9999999999999 451.3837199049241 559.9999999999999 488.1519942930383
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ E E
+14 1041
+"TEXT_vmaxDrift"
+""
+1 691 259.8841371940571 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+651 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  689 253.6100144477813 742 290.3782888358956
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ E E
+14 1042
+"TEXT_vmaxG1T"
+""
+1 690.9999999999999 292.7139636978285 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+652 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  688.9999999999999 286.4398409515527 741.9999999999999 323.208115339667
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ E E
+14 1043
+"TEXT_vmaxG1B"
+""
+1 690.9999999999999 325.6288769497142 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+653 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  688.9999999999999 319.3547542034384 741.9999999999999 356.1230285915526
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ E E
+14 1044
+"TEXT_vmaxG2T"
+""
+1 690.9999999999999 358.586333575657 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+654 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  688.9999999999999 352.3122108293812 741.9999999999999 389.0804852174955
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ E E
+14 1045
+"TEXT_vmaxG2B"
+""
+1 690.9999999999999 391.5650618886285 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+655 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  688.9999999999999 385.2909391423526 741.9999999999999 422.0592135304669
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ E E
+14 1046
+"TEXT_vmaxG3T"
+""
+1 690.9999999999999 424.5544260451142 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+656 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  688.9999999999999 418.2803032988384 741.9999999999999 455.0485776869526
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ E E
+14 1047
+"TEXT_vmaxG3B"
+""
+1 690.9999999999999 457.5491081233571 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+657 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  688.9999999999999 451.2749853770813 741.9999999999999 488.0432597651956
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ E E
+2 1048
+"PRIMITIVE_TEXT256"
+""
+1 860 310 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+658 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+"main()
+{
+  this.text(\"Drift\");
+}" 0
+ E 0 5 1 2 1 E 1.32 0 1.337394308469786 -490.6400000000001 -149.8880979180673 0 E 830 310 860 325
+0 2 2 "0s" 0 0 0 194 0 0  860 310 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,75,1,0,0,0,0
+LANG:10001 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0 2
+LANG:1 5 Drift
+LANG:10001 4 (uA)
+2 1049
+"PRIMITIVE_TEXT257"
+""
+1 860 310 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+659 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+"main()
+{
+  this.text(\"G1Top\");
+}" 0
+ E 0 5 1 2 1 E 1.32 0 1.337394308469786 -486 -119.1523946740809 0 E 820 310 860 325
+0 2 2 "0s" 0 0 0 194 0 0  860 310 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,75,1,0,0,0,0
+LANG:10001 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0 2
+LANG:1 5 G1Top
+LANG:10001 4 (uA)
+2 1050
+"PRIMITIVE_TEXT258"
+""
+1 860 310 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+660 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+"main()
+{
+  this.text(\"G1Bot\");
+}" 0
+ E 0 5 1 2 1 E 1.32 0 1.337394308469786 -487.3599999999999 -84.17183345492936 0 E 821 310 860 325
+0 2 2 "0s" 0 0 0 194 0 0  860 310 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,75,1,0,0,0,0
+LANG:10001 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0 2
+LANG:1 5 G1Bot
+LANG:10001 4 (uA)
+2 1051
+"PRIMITIVE_TEXT259"
+""
+1 860 310 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+661 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+"main()
+{
+  this.text(\"G2Top\");
+}" 0
+ E 0 5 1 2 1 E 1.32 0 1.337394308469786 -486.7199999999998 -49.89588760219527 0 E 820 310 860 325
+0 2 2 "0s" 0 0 0 194 0 0  860 310 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,75,1,0,0,0,0
+LANG:10001 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0 2
+LANG:1 5 G2Top
+LANG:10001 4 (uA)
+2 1052
+"PRIMITIVE_TEXT260"
+""
+1 860 310 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+662 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+"main()
+{
+  this.text(\"G2Bot\");
+}" 0
+ E 0 5 1 2 1 E 1.32 0 1.337394308469786 -487.0799999999997 -19.16018435820894 0 E 821 310 860 325
+0 2 2 "0s" 0 0 0 194 0 0  860 310 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,75,1,0,0,0,0
+LANG:10001 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0 2
+LANG:1 5 G2Bot
+LANG:10001 4 (uA)
+2 1053
+"PRIMITIVE_TEXT261"
+""
+1 860 310 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+663 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+"main()
+{
+  this.text(\"G3Top\");
+}" 0
+ E 0 5 1 2 1 E 1.32 0 1.337394308469786 -487.4399999999996 15.07220486726186 0 E 820 310 860 325
+0 2 2 "0s" 0 0 0 194 0 0  860 310 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,75,1,0,0,0,0
+LANG:10001 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0 2
+LANG:1 5 G3Top
+LANG:10001 4 (uA)
+2 1054
+"PRIMITIVE_TEXT262"
+""
+1 860 310 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+664 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+"main()
+{
+  this.text(\"G3Bot\");
+}" 0
+ E 0 5 1 2 1 E 1.32 0 1.337394308469786 -487.4399999999996 47.48269672818776 0 E 821 310 860 325
+0 2 2 "0s" 0 0 0 194 0 0  860 310 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,75,1,0,0,0,0
+LANG:10001 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0 2
+LANG:1 5 G3Bot
+LANG:10001 4 (uA)
+2 1055
+"PRIMITIVE_TEXT263"
+""
+1 860 310 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+665 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+"main()
+{
+  this.text(\"onOrder\");
+}" 0
+ E 0 5 1 2 1 E 1.32 0 1.337394308469786 -624.96 -181.6020616158958 0 E 806 310 860 325
+0 2 2 "0s" 0 0 0 194 0 0  860 310 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,75,1,0,0,0,0
+LANG:10001 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0 2
+LANG:1 7 onOrder
+LANG:10001 4 (uA)
+2 1056
+"PRIMITIVE_TEXT264"
+""
+1 860 310 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+666 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+"main()
+{
+  this.text(\"offOrder\");
+}" 0
+ E 0 5 1 2 1 E 1.32 0 1.337394308469786 -564.8400000000002 -181.32793886962 0 E 804 310 860 325
+0 2 2 "0s" 0 0 0 194 0 0  860 310 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,75,1,0,0,0,0
+LANG:10001 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0 2
+LANG:1 8 offOrder
+LANG:10001 4 (uA)
+2 1057
+"PRIMITIVE_TEXT265"
+""
+1 860 310 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+667 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+"main()
+{
+  this.text(\"vMaxSoftValue\");
+}" 0
+ E 0 5 1 2 1 E 1.32 0 1.337394308469786 -369.96 -181.7179244218387 0 E 762 310 860 325
+0 2 2 "0s" 0 0 0 194 0 0  860 310 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,75,1,0,0,0,0
+LANG:10001 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0 2
+LANG:1 13 vMaxSoftValue
+LANG:10001 4 (uA)
+13 1058
+"set_onorder_button"
+""
+1 811 292.7650523346131 E E E 1 E 1 E N "Black" E N "_Button" E E
+ E E
+668 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  809 277.7650523346131 943 321.7650523346131
+
+T 
+2
+LANG:1 18 Set onOrder to All
+LANG:10001 13 Set i0 to ALL
+"main()
+{
+  
+dyn_string exceptionInfo;
+  bool answ;
+  fwGeneral_openMessagePanel(\"Do you really want to apply changes?\", answ , exceptionInfo, \"Confirm\", false );
+  DebugTN(\"answer\",answ);
+  
+  if (answ)
+  {
+    applyChanges();
+   }
+}
+
+
+
+
+
+void applyChanges()  {
+dyn_string dp_texts, texts, textfields, boards;
+dyn_float floats;
+//string texts;
+float G3Bot_float,G3Top_float,G2Bot_float,G2Top_float,G1Bot_float,G1Top_float,Drift_float;
+getValue(\"TEXT_onDrift\",\"text\",Drift_float);
+getValue(\"TEXT_onG1T\",\"text\",G1Top_float);
+getValue(\"TEXT_onG1B\",\"text\",G1Bot_float);
+getValue(\"TEXT_onG2T\",\"text\",G2Top_float);
+getValue(\"TEXT_onG2B\",\"text\",G2Bot_float);
+getValue(\"TEXT_onG3T\",\"text\",G3Top_float);
+getValue(\"TEXT_onG3B\",\"text\",G3Bot_float);
+
+//texts = makeDynString( \"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\" );
+floats = makeDynFloat(G3Bot_float,G3Top_float,G2Bot_float,G2Top_float,G1Bot_float,G1Top_float,Drift_float,G3Bot_float,G3Top_float,G2Bot_float,G2Top_float,G1Bot_float,G1Top_float,Drift_float);
+
+boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board01\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board02\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board03\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board04\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board05\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board06\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board07\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board08\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board10\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13\");
+
+int j=1;
+for(j=1; j<=dynlen(boards);j++){
+
+dp_texts = makeDynString(boards[j]+\"/channel013.settings.onOrder:_original.._value\",
+                         boards[j]+\"/channel012.settings.onOrder:_original.._value\",
+                         boards[j]+\"/channel011.settings.onOrder:_original.._value\",
+                         boards[j]+\"/channel010.settings.onOrder:_original.._value\",
+                         boards[j]+\"/channel009.settings.onOrder:_original.._value\",
+                         boards[j]+\"/channel008.settings.onOrder:_original.._value\",
+                         boards[j]+\"/channel007.settings.onOrder:_original.._value\",
+                         boards[j]+\"/channel006.settings.onOrder:_original.._value\",
+                         boards[j]+\"/channel005.settings.onOrder:_original.._value\",
+                         boards[j]+\"/channel004.settings.onOrder:_original.._value\",
+                         boards[j]+\"/channel003.settings.onOrder:_original.._value\",
+                         boards[j]+\"/channel002.settings.onOrder:_original.._value\",
+                         boards[j]+\"/channel001.settings.onOrder:_original.._value\",
+                         boards[j]+\"/channel000.settings.onOrder:_original.._value\"
+                         );
+
+//textfields = makeDynString(\"TEXT_DriftI0\" , \"TEXT_G1TopI0\" , \"TEXT_G1BotI0\" , \"TEXT_G2TopI0\" ,\"TEXT_G2BotI0\" , \"TEXT_G3TopI0\" , \"TEXT_G3BotI0\" );
+
+int i=1;
+if (dynlen(floats)==dynlen(dp_texts))
+ {
+  for (i=1; i<=dynlen(floats); i++) 
+    {
+   // DebugTN(\"i=\", i, \"   texts[i]=\" , texts[i] , \"   dp_texts[i]=\" , dp_texts[i]);   
+  //  EP_textFieldOut( texts[i] , dp_texts[i] );
+      //setValue( textfields[i],\"text\",floats[i]);
+      dpSetWait(dp_texts[i],floats[i]);
+    }
+ }
+}
+ //   setValue(\"set_all_i0_button\",\"backCol\",\"_Button\");
+ //   setValue(\"set_all_i0_button\",\"foreCol\",\"darkgrey\");
+
+ 
+}
+
+EP_textFieldOut(string text, string dp_text) //applies to Dps values written in text fields
+{
+//DebugTN(\"Applying new setting to\", dp_text);
+float fNewValue;
+dyn_errClass err;
+string sTmp;
+string sFormat, sDp;
+
+  getValue(text, \"text\", sTmp);
+  sscanf(sTmp, \"%f\", fNewValue);
+
+  sDp = dpSubStr(dp_text,  DPSUB_SYS_DP_EL);
+  if ( strpos(sDp,\".\") < 1 )
+    sDp += \".\";
+
+  sFormat = dpGetFormat( sDp );
+  if( !checkStringFormat(sTmp, sFormat) )
+  {
+    ChildPanelOnCentral( \"vision/MessageWarning\",
+                         getCatStr( \"e_para\", \"warning\" ),
+                         makeDynString( getCatStr( \"e_para\", \"wrongFormat\" )));
+    return;
+  }
+
+  dpSetWait(dp_text, sTmp);
+  err = getLastError();
+  if (dynlen(err) > 0)
+    errorDialog(err);
+}
+
+
+
+
+
+
+
+" 0
+ E E E
+13 1059
+"set_offorder_button"
+""
+1 811 355.0215594064988 E E E 1 E 1 E N "Black" E N "_Button" E E
+ E E
+669 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  809 340.0215594064988 943 384.0215594064988
+
+T 
+2
+LANG:1 19 Set offOrder to All
+LANG:10001 13 Set i0 to ALL
+"main()
+{
+  
+dyn_string exceptionInfo;
+  bool answ;
+  fwGeneral_openMessagePanel(\"Do you really want to apply changes?\", answ , exceptionInfo, \"Confirm\", false );
+  DebugTN(\"answer\",answ);
+  
+  if (answ)
+  {
+    applyChanges();
+   }
+}
+
+
+
+
+
+void applyChanges()  {
+dyn_string dp_texts, texts, textfields, boards;
+dyn_float floats;
+//string texts;
+float G3Bot_float,G3Top_float,G2Bot_float,G2Top_float,G1Bot_float,G1Top_float,Drift_float;
+getValue(\"TEXT_offDrift\",\"text\",Drift_float);
+getValue(\"TEXT_offG1T\",\"text\",G1Top_float);
+getValue(\"TEXT_offG1B\",\"text\",G1Bot_float);
+getValue(\"TEXT_offG2T\",\"text\",G2Top_float);
+getValue(\"TEXT_offG2B\",\"text\",G2Bot_float);
+getValue(\"TEXT_offG3T\",\"text\",G3Top_float);
+getValue(\"TEXT_offG3B\",\"text\",G3Bot_float);
+
+//texts = makeDynString( \"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\" );
+floats = makeDynFloat(G3Bot_float,G3Top_float,G2Bot_float,G2Top_float,G1Bot_float,G1Top_float,Drift_float,G3Bot_float,G3Top_float,G2Bot_float,G2Top_float,G1Bot_float,G1Top_float,Drift_float);
+
+boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board01\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board02\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board03\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board04\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board05\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board06\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board07\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board08\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board10\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13\");
+
+int j=1;
+for(j=1; j<=dynlen(boards);j++){
+
+dp_texts = makeDynString(boards[j]+\"/channel013.settings.offOrder:_original.._value\",
+                         boards[j]+\"/channel012.settings.offOrder:_original.._value\",
+                         boards[j]+\"/channel011.settings.offOrder:_original.._value\",
+                         boards[j]+\"/channel010.settings.offOrder:_original.._value\",
+                         boards[j]+\"/channel009.settings.offOrder:_original.._value\",
+                         boards[j]+\"/channel008.settings.offOrder:_original.._value\",
+                         boards[j]+\"/channel007.settings.offOrder:_original.._value\",
+                         boards[j]+\"/channel006.settings.offOrder:_original.._value\",
+                         boards[j]+\"/channel005.settings.offOrder:_original.._value\",
+                         boards[j]+\"/channel004.settings.offOrder:_original.._value\",
+                         boards[j]+\"/channel003.settings.offOrder:_original.._value\",
+                         boards[j]+\"/channel002.settings.offOrder:_original.._value\",
+                         boards[j]+\"/channel001.settings.offOrder:_original.._value\",
+                         boards[j]+\"/channel000.settings.offOrder:_original.._value\"
+                         );
+
+//textfields = makeDynString(\"TEXT_DriftI0\" , \"TEXT_G1TopI0\" , \"TEXT_G1BotI0\" , \"TEXT_G2TopI0\" ,\"TEXT_G2BotI0\" , \"TEXT_G3TopI0\" , \"TEXT_G3BotI0\" );
+
+int i=1;
+if (dynlen(floats)==dynlen(dp_texts))
+ {
+  for (i=1; i<=dynlen(floats); i++) 
+    {
+   // DebugTN(\"i=\", i, \"   texts[i]=\" , texts[i] , \"   dp_texts[i]=\" , dp_texts[i]);   
+  //  EP_textFieldOut( texts[i] , dp_texts[i] );
+      //setValue( textfields[i],\"text\",floats[i]);
+      dpSetWait(dp_texts[i],floats[i]);
+    }
+ }
+}
+ //   setValue(\"set_all_i0_button\",\"backCol\",\"_Button\");
+ //   setValue(\"set_all_i0_button\",\"foreCol\",\"darkgrey\");
+
+ 
+}
+
+EP_textFieldOut(string text, string dp_text) //applies to Dps values written in text fields
+{
+//DebugTN(\"Applying new setting to\", dp_text);
+float fNewValue;
+dyn_errClass err;
+string sTmp;
+string sFormat, sDp;
+
+  getValue(text, \"text\", sTmp);
+  sscanf(sTmp, \"%f\", fNewValue);
+
+  sDp = dpSubStr(dp_text,  DPSUB_SYS_DP_EL);
+  if ( strpos(sDp,\".\") < 1 )
+    sDp += \".\";
+
+  sFormat = dpGetFormat( sDp );
+  if( !checkStringFormat(sTmp, sFormat) )
+  {
+    ChildPanelOnCentral( \"vision/MessageWarning\",
+                         getCatStr( \"e_para\", \"warning\" ),
+                         makeDynString( getCatStr( \"e_para\", \"wrongFormat\" )));
+    return;
+  }
+
+  dpSetWait(dp_text, sTmp);
+  err = getLastError();
+  if (dynlen(err) > 0)
+    errorDialog(err);
+}
+
+
+
+
+
+
+
+" 0
+ E E E
+13 1060
+"set_vmax_button"
+""
+1 811 419.9896518759559 E E E 1 E 1 E N "Black" E N "_Button" E E
+ E E
+670 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  809 404.9896518759559 972 448.9896518759559
+
+T 
+2
+LANG:1 24 Set vMaxSoftValue to All
+LANG:10001 13 Set i0 to ALL
+"main()
+{
+  
+dyn_string exceptionInfo;
+  bool answ;
+  fwGeneral_openMessagePanel(\"Do you really want to apply changes?\", answ , exceptionInfo, \"Confirm\", false );
+  DebugTN(\"answer\",answ);
+  
+  if (answ)
+  {
+    applyChanges();
+   }
+}
+
+
+
+
+
+void applyChanges()  {
+dyn_string dp_texts, texts, textfields, boards;
+dyn_float floats;
+//string texts;
+float G3Bot_float,G3Top_float,G2Bot_float,G2Top_float,G1Bot_float,G1Top_float,Drift_float;
+getValue(\"TEXT_vmaxDrift\",\"text\",Drift_float);
+getValue(\"TEXT_vmaxG1T\",\"text\",G1Top_float);
+getValue(\"TEXT_vmaxG1B\",\"text\",G1Bot_float);
+getValue(\"TEXT_vmaxG2T\",\"text\",G2Top_float);
+getValue(\"TEXT_vmaxG2B\",\"text\",G2Bot_float);
+getValue(\"TEXT_vmaxG3T\",\"text\",G3Top_float);
+getValue(\"TEXT_vmaxG3B\",\"text\",G3Bot_float);
+
+//texts = makeDynString( \"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\" );
+floats = makeDynFloat(G3Bot_float,G3Top_float,G2Bot_float,G2Top_float,G1Bot_float,G1Top_float,Drift_float,G3Bot_float,G3Top_float,G2Bot_float,G2Top_float,G1Bot_float,G1Top_float,Drift_float);
+
+boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board01\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board02\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board03\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board04\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board05\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board06\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board07\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board08\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board10\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13\");
+
+int j=1;
+for(j=1; j<=dynlen(boards);j++){
+
+dp_texts = makeDynString(boards[j]+\"/channel013.settings.vMaxSoftValue:_original.._value\",
+                         boards[j]+\"/channel012.settings.vMaxSoftValue:_original.._value\",
+                         boards[j]+\"/channel011.settings.vMaxSoftValue:_original.._value\",
+                         boards[j]+\"/channel010.settings.vMaxSoftValue:_original.._value\",
+                         boards[j]+\"/channel009.settings.vMaxSoftValue:_original.._value\",
+                         boards[j]+\"/channel008.settings.vMaxSoftValue:_original.._value\",
+                         boards[j]+\"/channel007.settings.vMaxSoftValue:_original.._value\",
+                         boards[j]+\"/channel006.settings.vMaxSoftValue:_original.._value\",
+                         boards[j]+\"/channel005.settings.vMaxSoftValue:_original.._value\",
+                         boards[j]+\"/channel004.settings.vMaxSoftValue:_original.._value\",
+                         boards[j]+\"/channel003.settings.vMaxSoftValue:_original.._value\",
+                         boards[j]+\"/channel002.settings.vMaxSoftValue:_original.._value\",
+                         boards[j]+\"/channel001.settings.vMaxSoftValue:_original.._value\",
+                         boards[j]+\"/channel000.settings.vMaxSoftValue:_original.._value\"
+                         );
+
+//textfields = makeDynString(\"TEXT_DriftI0\" , \"TEXT_G1TopI0\" , \"TEXT_G1BotI0\" , \"TEXT_G2TopI0\" ,\"TEXT_G2BotI0\" , \"TEXT_G3TopI0\" , \"TEXT_G3BotI0\" );
+
+int i=1;
+if (dynlen(floats)==dynlen(dp_texts))
+ {
+  for (i=1; i<=dynlen(floats); i++) 
+    {
+   // DebugTN(\"i=\", i, \"   texts[i]=\" , texts[i] , \"   dp_texts[i]=\" , dp_texts[i]);   
+  //  EP_textFieldOut( texts[i] , dp_texts[i] );
+      //setValue( textfields[i],\"text\",floats[i]);
+      dpSetWait(dp_texts[i],floats[i]);
+    }
+ }
+}
+ //   setValue(\"set_all_i0_button\",\"backCol\",\"_Button\");
+ //   setValue(\"set_all_i0_button\",\"foreCol\",\"darkgrey\");
+
+ 
+}
+
+EP_textFieldOut(string text, string dp_text) //applies to Dps values written in text fields
+{
+//DebugTN(\"Applying new setting to\", dp_text);
+float fNewValue;
+dyn_errClass err;
+string sTmp;
+string sFormat, sDp;
+
+  getValue(text, \"text\", sTmp);
+  sscanf(sTmp, \"%f\", fNewValue);
+
+  sDp = dpSubStr(dp_text,  DPSUB_SYS_DP_EL);
+  if ( strpos(sDp,\".\") < 1 )
+    sDp += \".\";
+
+  sFormat = dpGetFormat( sDp );
+  if( !checkStringFormat(sTmp, sFormat) )
+  {
+    ChildPanelOnCentral( \"vision/MessageWarning\",
+                         getCatStr( \"e_para\", \"warning\" ),
+                         makeDynString( getCatStr( \"e_para\", \"wrongFormat\" )));
+    return;
+  }
+
+  dpSetWait(dp_text, sTmp);
+  err = getLastError();
+  if (dynlen(err) > 0)
+    errorDialog(err);
+}
+
+
+
+
+
+
+
+" 0
+ E E E
+2 1061
+"PRIMITIVE_TEXT266"
+""
+1 860 310 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+671 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+"main()
+{
+  this.text(\"Board Mode: 0 = FREE; 1 = GEM\");
+}" 0
+ E 0 5 1 2 1 E 1.32 0 1.337394308469786 -875.2000000000001 165.4077643743664 0 E 654 310 860 325
+0 2 2 "0s" 0 0 0 194 0 0  860 310 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,75,1,0,0,0,0
+LANG:10001 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0 2
+LANG:1 29 Board Mode: 0 = FREE; 1 = GEM
+LANG:10001 4 (uA)
+13 1062
+"setboardmode_button"
+""
+1 228.52 631 E E E 1 E 1 E N "Black" E N "_Button" E E
+ E E
+672 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  226.52 616 372 660
+
+T 
+2
+LANG:1 21 Set Board Mode to All
+LANG:10001 13 Set i0 to ALL
+"main()
+{
+  
+dyn_string exceptionInfo;
+  bool answ;
+  fwGeneral_openMessagePanel(\"Do you really want to apply changes?\", answ , exceptionInfo, \"Confirm\", false );
+  DebugTN(\"answer\",answ);
+  
+  if (answ)
+  {
+    applyChanges();
+   }
+}
+
+
+
+
+
+void applyChanges()  {
+dyn_string dp_texts, texts, textfields, boards;
+dyn_bool floats;
+//string texts;
+bool opmode_bool;
+getValue(\"TEXT_rdwn\",\"text\",opmode_bool);
+//texts = makeDynString( \"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\" );
+floats = makeDynFloat(opmode_bool,opmode_bool,opmode_bool,opmode_bool,opmode_bool,opmode_bool,opmode_bool,opmode_bool,opmode_bool,opmode_bool,opmode_bool,opmode_bool,opmode_bool,opmode_bool);
+
+boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board01\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board02\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board03\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board04\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board05\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board06\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board07\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board08\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board10\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12\",
+                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13\");
+
+int j=1;
+for(j=1; j<=dynlen(boards);j++){
+
+dp_texts = makeDynString(boards[j]+\".settings.opMode:_original.._value\",
+                         boards[j]+\".settings.opMode:_original.._value\",
+                         boards[j]+\".settings.opMode:_original.._value\",
+                         boards[j]+\".settings.opMode:_original.._value\",
+                         boards[j]+\".settings.opMode:_original.._value\",
+                         boards[j]+\".settings.opMode:_original.._value\",
+                         boards[j]+\".settings.opMode:_original.._value\",
+                         boards[j]+\".settings.opMode:_original.._value\",
+                         boards[j]+\".settings.opMode:_original.._value\",
+                         boards[j]+\".settings.opMode:_original.._value\",
+                         boards[j]+\".settings.opMode:_original.._value\",
+                         boards[j]+\".settings.opMode:_original.._value\",
+                         boards[j]+\".settings.opMode:_original.._value\",
+                         boards[j]+\".settings.opMode:_original.._value\"
+                         );
+
+//textfields = makeDynString(\"TEXT_DriftI0\" , \"TEXT_G1TopI0\" , \"TEXT_G1BotI0\" , \"TEXT_G2TopI0\" ,\"TEXT_G2BotI0\" , \"TEXT_G3TopI0\" , \"TEXT_G3BotI0\" );
+
+int i=1;
+if (dynlen(floats)==dynlen(dp_texts))
+ {
+  for (i=1; i<=dynlen(floats); i++) 
+    {
+   // DebugTN(\"i=\", i, \"   texts[i]=\" , texts[i] , \"   dp_texts[i]=\" , dp_texts[i]);   
+  //  EP_textFieldOut( texts[i] , dp_texts[i] );
+      //setValue( textfields[i],\"text\",floats[i]);
+      dpSetWait(dp_texts[i],opmode_bool);
+    }
+ }
+}
+ //   setValue(\"set_all_i0_button\",\"backCol\",\"_Button\");
+ //   setValue(\"set_all_i0_button\",\"foreCol\",\"darkgrey\");
+
+ 
+}
+
+EP_textFieldOut(string text, string dp_text) //applies to Dps values written in text fields
+{
+//DebugTN(\"Applying new setting to\", dp_text);
+float fNewValue;
+dyn_errClass err;
+string sTmp;
+string sFormat, sDp;
+
+  getValue(text, \"text\", sTmp);
+  sscanf(sTmp, \"%f\", fNewValue);
+
+  sDp = dpSubStr(dp_text,  DPSUB_SYS_DP_EL);
+  if ( strpos(sDp,\".\") < 1 )
+    sDp += \".\";
+
+  sFormat = dpGetFormat( sDp );
+  if( !checkStringFormat(sTmp, sFormat) )
+  {
+    ChildPanelOnCentral( \"vision/MessageWarning\",
+                         getCatStr( \"e_para\", \"warning\" ),
+                         makeDynString( getCatStr( \"e_para\", \"wrongFormat\" )));
+    return;
+  }
+
+  dpSetWait(dp_text, sTmp);
+  err = getLastError();
+  if (dynlen(err) > 0)
+    errorDialog(err);
+}
+
+
+
+
+
+
+
+" 0
+ E E E
+14 1063
+"TEXT_opMode"
+""
+1 58.51999999999998 626.1774153373235 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+673 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignCenter"
+2
+LANG:1 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  56.51999999999998 618.6991544677582 150.52 664.6991544677584
+3 "0s" 0 0 0 0 0 -1  "main()
+{
+    setValue(\"set_all_i0_button\",\"foreCol\",\"_ButtonText\");
+}" 0
+ E E
 0
 LAYER, 1 
 1
