@@ -67,6 +67,9 @@ void setAllInPanel(bool set)
   Alarm_Screen_Button.enabled(set);
   Clear_HV_Button.enabled(set);
   Kill_HV_Button.enabled(set);
+  enableRestart_button.enabled(set);
+  setLimit_button.enabled(set);
+  flagsCheck_button.enabled(set);
 }
 " 0
  E E E E 1 -1 -1 0  110 160
@@ -4340,6 +4343,388 @@ void applyChanges()
 }
 " 0
  E E E
+13 170
+"enableRestart_button"
+""
+1 840.9999999999999 438 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+170 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  838.9999999999999 498 1042 552
+
+T 
+1
+LANG:1 1 
+
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+  
+bool value;
+   dpGet(\"cms_gem_dcs_1:RestartSequence.value:_online.._value\", value);
+  
+dyn_string exceptionInfo;
+  bool answ;
+  if(value){
+  fwGeneral_openMessagePanel(\"Do you really want to disable the automatic restart sequence?\", answ , exceptionInfo, \"Confirm\", false );
+}
+  else{
+  fwGeneral_openMessagePanel(\"Do you really want to enable the automatic restart sequence?\", answ , exceptionInfo, \"Confirm\", false );
+  } 
+ 
+  DebugTN(\"answer\",answ);
+  
+  if (answ)
+  {
+    EP_toggleDP();
+   
+  }
+}
+  
+  
+void EP_toggleDP()
+{
+bool bo;
+
+  dpGet(\"cms_gem_dcs_1:RestartSequence.value:_online.._value\", bo);
+  dpSet(\"cms_gem_dcs_1:RestartSequence.value:_original.._value\", !bo);
+}
+
+// SimpleCtrlScript {EP_toggleDP}
+// DP {cms_gem_dcs_1:RestartSequence.value}
+// Config {:_original.._value}
+// DPType {bool}
+// SimpleCtrlScriptEnd {EP_toggleDP}
+" 0
+ E E "main()
+{
+  bool restartEnabled;
+  dpGet(\"cms_gem_dcs_1:RestartSequence.value\", restartEnabled);
+  
+  if(restartEnabled){
+    this.text(\"Disable automatic restart\"); 
+  }  
+  else{
+    this.text(\"Enable automatic restart\");  
+  }  
+}" 0
+
+2 171
+"PRIMITIVE_TEXT209"
+""
+1 404 22 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+171 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+5
+"hoverbclr" "N \"_Transparent\""
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+"main()
+{
+
+  dpConnect(\"GetDP\", \"cms_gem_dcs_1:RestartSequence.value\");  
+    
+}
+
+GetDP(string dp, bool value){
+
+  if(value){
+    this.text(\"Restart Sequence Enabled\");
+    this.foreCol(\"STD_value_ok\");
+   }  
+  else{
+    this.text(\"Restart Sequence Disabled\");
+    this.foreCol(\"STD_value_not_ok\");
+  }  
+
+}" 0
+ E 1 3 3 2 1 E 1.321124315907578 0 0.46875 306.2657763733386 559.6875 0 E 404 22 714 82
+1 2 2 "0s" 0 0 0 65 0 0  404 22 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,19,5,75,1,0,0,0,0
+0 1
+LANG:1 0 
+14 172
+"restartLimit_text"
+""
+1 1079 519.0555555555555 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+172 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  1077 498.0555555555555 1141 552.0555555555555
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {valid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:restartLimit.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:restartLimit.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", iNewValue);
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:restartLimit.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {FALSE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+13 173
+"setLimit_button"
+""
+1 1162 519.1111111111111 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+173 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  1160 498.1111111111111 1313 552.1111111111111
+
+T 
+1
+LANG:1 20 Set # restarts limit
+"main()
+{
+  
+  
+dyn_string exceptionInfo;
+  bool answ;
+  fwGeneral_openMessagePanel(\"Do you really want to update the # restarts limit?\", answ , exceptionInfo, \"Confirm\", false );
+  DebugTN(\"answer\",answ);
+  
+  if (answ)
+  {
+    applyChanges();
+   
+  }
+}
+  
+void applyChanges(){
+  
+  int restartLimit;
+  restartLimit = restartLimit_text.text;
+    DebugTN(restartLimit);
+  
+  dpSetWait(\"cms_gem_dcs_1:restartLimit.value\", restartLimit);
+  
+
+}" 0
+ E E E
+13 175
+"flagsCheck_button"
+""
+1 841.3577513681848 640 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+175 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  839.3577513681848 619 992.3577513681848 673
+
+T 
+1
+LANG:1 18 See restart status
+"// SimpleCtrlScriptStart {valid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_restartSummary.pnl\",
+      \"\",
+      makeDynString(\"\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_restartSummary.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ E E E
+7 176
+"ELLIPSE1"
+""
+1 1080 650 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+176 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+"main()
+{
+  dyn_string dps;
+  dps = makeDynString(\"cms_gem_dcs_1:Board00Top.value\",
+                      \"cms_gem_dcs_1:Board01Top.value\",
+                      \"cms_gem_dcs_1:Board02Top.value\",
+                      \"cms_gem_dcs_1:Board03Top.value\",
+                      \"cms_gem_dcs_1:Board04Top.value\",
+                      \"cms_gem_dcs_1:Board05Top.value\",
+                      \"cms_gem_dcs_1:Board06Top.value\",
+                      \"cms_gem_dcs_1:Board07Top.value\",
+                      \"cms_gem_dcs_1:Board08Top.value\",
+                      \"cms_gem_dcs_1:Board10Top.value\",
+                      \"cms_gem_dcs_1:Board11Top.value\",
+                      \"cms_gem_dcs_1:Board12Top.value\",
+                      \"cms_gem_dcs_1:Board13Top.value\",
+                      \"cms_gem_dcs_1:Board14Top.value\",
+                      \"cms_gem_dcs_1:Board15Top.value\",
+                      \"cms_gem_dcs_1:Board00Bottom.value\",
+                      \"cms_gem_dcs_1:Board01Bottom.value\",
+                      \"cms_gem_dcs_1:Board02Bottom.value\",
+                      \"cms_gem_dcs_1:Board03Bottom.value\",
+                      \"cms_gem_dcs_1:Board04Bottom.value\",
+                      \"cms_gem_dcs_1:Board05Bottom.value\",
+                      \"cms_gem_dcs_1:Board06Bottom.value\",
+                      \"cms_gem_dcs_1:Board07Bottom.value\",
+                      \"cms_gem_dcs_1:Board08Bottom.value\",
+                      \"cms_gem_dcs_1:Board10Bottom.value\",
+                      \"cms_gem_dcs_1:Board11Bottom.value\",
+                      \"cms_gem_dcs_1:Board12Bottom.value\",
+                      \"cms_gem_dcs_1:Board13Bottom.value\",
+                      \"cms_gem_dcs_1:Board14Bottom.value\",
+                      \"cms_gem_dcs_1:Board15Bottom.value\"
+                      );
+  
+   dpConnect(\"GetFlags\",dps); 
+  
+}
+
+
+void GetFlags(dyn_string dpes, dyn_int values){
+
+  if(values[1]==0 && values[2]==0 && values[3]==0 && values[4]==0 && values[5]==0 && values[6]==0 && values[7]==0 && values[8]==0 && values[9]==0 && values[10]==0 && values[11]==0 && values[12]==0 && values[13]==0 && values[14]==0 && values[15]==0 && values[16]==0 && values[17]==0 && values[18]==0 && values[19]==0 && values[20]==0 && values[21]==0 && values[22]==0 && values[23]==0 && values[24]==0 && values[25]==0 && values[26]==0 && values[27]==0 && values[28]==0 && values[29]==0 && values[30]==0){
+    this.backCol(\"STD_led_On\");    
+  }
+  else if(values[1]==3 || values[2]==3 || values[3]==3 || values[4]==3 || values[5]==3 || values[6]==3 || values[7]==3 || values[8]==3 || values[9]==3 || values[10]==3 || values[11]==3 || values[12]==3 || values[13]==3 || values[14]==3 || values[15]==3 || values[16]==3 || values[17]==3 || values[18]==3 || values[19]==3 || values[20]==3 || values[21]==3 || values[22]==3 || values[23]==3 || values[24]==3 || values[25]==3 || values[26]==3 || values[27]==3 || values[28]==3 || values[29]==3 || values[30]==3){
+    this.backCol(\"red\");
+  }
+  else{
+    this.backCol(\"yellow\");
+  }
+
+
+}" 0
+ E 0 1 3 2 1 E 1 0 1 -35.22573103432524 -6 1 E 1080 650 20 20
+30 177
+"FRAME1"
+""
+1 820 474 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+177 0 0 0 0 0
+E E E
+1
+1
+LANG:1 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E U  0 E 820 474 1321 691
+1
+LANG:1 35 MS Shell Dlg 2,-1,13,5,75,1,0,0,0,0
+0 1
+LANG:1 36 Automatic Restart - Only for experts
+2 178
+"PRIMITIVE_TEXT210"
+""
+1 1079 620 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+178 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 1079 620 1296 662
+0 2 2 "0s" 0 0 0 192 0 0  1079 620 3
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0 1
+LANG:1 30 Green --> 0 chambers restarted
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0 1
+LANG:1 44 Red --> at least 1 chamber restarted 3 times
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0 1
+LANG:1 29 Yellow --> other combinations
 0
 LAYER, 1 
 1

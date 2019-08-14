@@ -1103,7 +1103,7 @@ LANG:10001 0
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 0  489 160.9999999999999 547 187.9999999999999
-3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+3 "0.1f" 2 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_textFieldIn();
@@ -2132,7 +2132,7 @@ LANG:10001 0
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 0  489 183.9999999999999 547 210.9999999999999
-3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+3 "0.1f" 2 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_textFieldIn();
@@ -3106,7 +3106,7 @@ LANG:10001 0
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 0  489 206.9999999999999 547 233.9999999999999
-3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+3 "0.1f" 2 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_textFieldIn();
@@ -4080,7 +4080,7 @@ LANG:10001 0
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 0  489 229.9999999999999 547 256.9999999999999
-3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+3 "0.1f" 2 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_textFieldIn();
@@ -5054,7 +5054,7 @@ LANG:10001 0
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 0  489 252.9999999999999 547 279.9999999999999
-3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+3 "0.1f" 2 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_textFieldIn();
@@ -6028,7 +6028,7 @@ LANG:10001 0
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 0  489 275.9999999999999 547 302.9999999999999
-3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+3 "0.1f" 2 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_textFieldIn();
@@ -7001,7 +7001,7 @@ LANG:10001 0
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 0  489 298.9999999999999 547 325.9999999999999
-3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+3 "0.1f" 2 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_textFieldIn();
@@ -10679,7 +10679,7 @@ LANG:10001 0
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 0  489 461.0000000000001 547 488.0000000000001
-3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+3 "0.1f" 2 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_textFieldIn();
@@ -11745,7 +11745,7 @@ LANG:10001 0
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 0  489 484.0000000000001 547 511.0000000000001
-3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+3 "0.1f" 2 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_textFieldIn();
@@ -12768,7 +12768,7 @@ LANG:10001 0
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 0  489 507.0000000000001 547 534.0000000000001
-3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+3 "0.1f" 2 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_textFieldIn();
@@ -13791,7 +13791,7 @@ LANG:10001 0
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 0  489 530.0000000000001 547 557.0000000000001
-3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+3 "0.1f" 2 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_textFieldIn();
@@ -14814,7 +14814,7 @@ LANG:10001 0
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 0  489 553.0000000000001 547 580.0000000000001
-3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+3 "0.1f" 2 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_textFieldIn();
@@ -15837,7 +15837,7 @@ LANG:10001 0
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 0  489 576.0000000000001 547 603.0000000000001
-3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+3 "0.1f" 2 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_textFieldIn();
@@ -16859,7 +16859,7 @@ LANG:10001 0
 LANG:1 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 LANG:10001 35 MS Shell Dlg 2,-1,15,5,50,0,0,0,0,0
 0  489 599.0000000000001 547 626.0000000000001
-3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+3 "0.1f" 2 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_textFieldIn();

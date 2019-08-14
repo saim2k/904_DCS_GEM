@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <component>
   <name>904_GEM_Multichannel</name>
-  <version>1.1.1</version>
-  <date>29/05/2019</date>
+  <version>1.1.2</version>
+  <date>14/08/2019</date>
   <required>fwCaen=8.0.0</required>
   <required>fwCore=8.0.6</required>
   <required>fwTrending=8.0.0</required>
@@ -23,7 +23,10 @@
   <file>./panels/904_GEM_Multichannel/904_GEM_multichannel_monitoring_bottom.pnl</file>
   <file>./panels/904_GEM_Multichannel/904_GEM_multichannel_monitoring_top.pnl</file>
   <file>./panels/904_GEM_Multichannel/904_GEM_multichannel_selection.pnl</file>
+  <file>./panels/904_GEM_Multichannel/904_GEM_multichannel_restartSummary.pnl</file>
+  <file>./panels/904_GEM_Multichannel/904_GEM_multichannel_hvprocedure.pnl</file>
   <file>./panels/904_GEM_Multichannel/904_GEM_multichannel_settings_all.pnl</file>
+  <file>./scripts/904_GEM_Multichannel/904HVRestartManager/904HVRestartManager.ctl</file>
   <postInstall>./scripts/904_GEM_Multichannel/904_GEM_Multichannel.postinstall</postInstall>
   <file>./904_GEM_Multichannel.xml</file>
 </component>

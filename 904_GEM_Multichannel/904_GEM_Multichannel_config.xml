@@ -23,6 +23,17 @@
       <isDriver>false</isDriver>
       <restartManager>false</restartManager>
     </manager>
+    <manager>
+      <type>WCCOActrl</type>
+      <num>29</num>
+      <options>-num 29 904_GEM_Multichannel/904HVRestartManager/904HVRestartManager.ctl</options>
+      <mode>always</mode>
+      <restart>2</restart>
+      <counter>2</counter>
+      <sec_kill>30</sec_kill>
+      <isDriver>false</isDriver>
+      <restartManager>false</restartManager>
+    </manager>
   </append_managers>
   <target>
     <system_name>cms_gem_dcs_1:</system_name>
@@ -42,6 +53,13 @@
     </configuration>
     <configuration>
       <tag>904_multichannel_trending_v0</tag>
+      <hardware>true</hardware>
+      <logical>false</logical>
+      <pattern>*</pattern>
+      <force_reinstall>false</force_reinstall>
+    </configuration>
+    <configuration>
+      <tag>904_multichannel_restart_v0</tag>
       <hardware>true</hardware>
       <logical>false</logical>
       <pattern>*</pattern>

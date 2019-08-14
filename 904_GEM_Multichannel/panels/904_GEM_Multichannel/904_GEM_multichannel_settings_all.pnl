@@ -75,7 +75,7 @@ void setAllInPanel(bool set)
   set_onorder_button.enabled(set);
   set_offorder_button.enabled(set);
   set_vmax_button.enabled(set);
-  setboardmode_button(set);
+  setboardmode_button.enabled(set);
 }
 " 0
  E E E E 1 -1 -1 0  30 20

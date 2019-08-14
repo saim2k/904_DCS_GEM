@@ -1,0 +1,3375 @@
+V 14
+1
+LANG:1 0 
+PANEL,-1 -1 663 687 N "_3DFace" 0
+E E E E E 1 -1 -1 0  70 51
+""0  1
+E E 3
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:1 0 
+14 0
+"restartLimit_text"
+""
+1 72 243.7575 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  70 230.7375 134 263.7375
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board10Top.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board10Top.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Top.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 1
+"TEXT_FIELD1"
+""
+1 72 288.7575 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  70 275.7375 134 308.7375
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board10Bottom.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board10Bottom.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Bottom.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 2
+"TEXT_FIELD2"
+""
+1 196 243.88875 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  194 230.86875 258 263.86875
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board14Top.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board14Top.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Top.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 3
+"TEXT_FIELD3"
+""
+1 196 288.88875 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  194 275.86875 258 308.86875
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board14Bottom.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board14Bottom.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Bottom.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 4
+"TEXT_FIELD4"
+""
+1 327 243.88875 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  325 230.86875 389 263.86875
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board15Top.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board15Top.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Top.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 5
+"TEXT_FIELD5"
+""
+1 327 288.88875 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  325 275.86875 389 308.86875
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board15Bottom.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board15Bottom.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Bottom.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 6
+"TEXT_FIELD6"
+""
+1 72 360.2725 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  70 347.2525 134 380.2525
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board06Top.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board06Top.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Top.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 7
+"TEXT_FIELD7"
+""
+1 72 405.2725 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  70 392.2525 134 425.2525
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board06Bottom.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board06Bottom.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Bottom.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 8
+"TEXT_FIELD8"
+""
+1 196 360.40375 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  194 347.38375 258 380.38375
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board07Top.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board07Top.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Top.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 9
+"TEXT_FIELD9"
+""
+1 196 405.40375 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+9 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  194 392.38375 258 425.38375
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board07Bottom.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board07Bottom.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Bottom.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 10
+"TEXT_FIELD10"
+""
+1 327 360.40375 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  325 347.38375 389 380.38375
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board08Top.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board08Top.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Top.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 11
+"TEXT_FIELD11"
+""
+1 327 405.40375 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  325 392.38375 389 425.38375
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board08Bottom.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board08Bottom.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Bottom.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 12
+"TEXT_FIELD12"
+""
+1 72 473.7575 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+12 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  70 460.7375 134 493.7375
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board03Top.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board03Top.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Top.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 13
+"TEXT_FIELD13"
+""
+1 72 518.7574999999999 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+13 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  70 505.7375 134 538.7375
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board03Bottom.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board03Bottom.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Bottom.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 14
+"TEXT_FIELD14"
+""
+1 196 473.88875 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+14 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  194 460.86875 258 493.86875
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board04Top.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board04Top.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Top.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 15
+"TEXT_FIELD15"
+""
+1 196 518.88875 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+15 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  194 505.86875 258 538.86875
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board04Bottom.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board04Bottom.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Bottom.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 16
+"TEXT_FIELD16"
+""
+1 327 473.88875 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+16 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  325 460.86875 389 493.86875
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board05Top.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board05Top.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Top.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 17
+"TEXT_FIELD17"
+""
+1 327 518.88875 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+17 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  325 505.86875 389 538.86875
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board05Bottom.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board05Bottom.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Bottom.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 18
+"TEXT_FIELD18"
+""
+1 72 588.5731250000001 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+18 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  70 575.5531250000001 134 608.5531250000001
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board00Top.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board00Top.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Top.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 19
+"TEXT_FIELD19"
+""
+1 72 633.7574999999999 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+19 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  70 620.7375 134 653.7375
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board00Bottom.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board00Bottom.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Bottom.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 20
+"TEXT_FIELD20"
+""
+1 196 588.88875 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+20 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  194 575.86875 258 608.86875
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board01Top.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board01Top.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Top.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 21
+"TEXT_FIELD21"
+""
+1 196 633.88875 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+21 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  194 620.86875 258 653.86875
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board01Bottom.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board01Bottom.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Bottom.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+
+" 0
+ E
+14 22
+"TEXT_FIELD22"
+""
+1 327 588.88875 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+22 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  325 575.86875 389 608.86875
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board02Top.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board02Top.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Top.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 23
+"TEXT_FIELD23"
+""
+1 327 633.88875 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+23 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  325 620.86875 389 653.86875
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board02Bottom.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board02Bottom.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Bottom.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 24
+"TEXT_FIELD24"
+""
+1 72 130.7575 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+24 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  70 117.7375 134 150.7375
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board11Top.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board11Top.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Top.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 25
+"TEXT_FIELD25"
+""
+1 72 175.7575 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+25 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  70 162.7375 134 195.7375
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board11Bottom.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board11Bottom.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Bottom.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 26
+"TEXT_FIELD26"
+""
+1 196 130.88875 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+26 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  194 117.86875 258 150.86875
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board12Top.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board12Top.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Top.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 27
+"TEXT_FIELD27"
+""
+1 196 175.88875 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+27 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  194 162.86875 258 195.86875
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board12Bottom.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board12Bottom.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Bottom.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 28
+"TEXT_FIELD28"
+""
+1 327 130.88875 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+28 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  325 117.86875 389 150.86875
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board13Top.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board13Top.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Top.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+14 29
+"TEXT_FIELD29"
+""
+1 327 175.88875 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+29 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  325 162.86875 389 195.86875
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_textFieldIn();
+}
+
+void EP_textFieldIn()
+{
+  dyn_errClass err;
+
+  if( !dpExists( \"cms_gem_dcs_1:Board13Bottom.value:_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_textFieldInCB\",
+            \"cms_gem_dcs_1:Board13Bottom.value:_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+void EP_textFieldInCB(string dp, int iNewValue)
+{
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
+}
+
+// SimpleCtrlScript {EP_textFieldIn}
+// DP {cms_gem_dcs_1:Board01Bottom.value}
+// DPConfig {:_online.._value}
+// DPType {int}
+// UseDPUnit {FALSE}
+// UseDPFormat {TRUE}
+// SimpleCtrlScriptEnd {EP_textFieldIn}
+" 0
+ E
+20 33
+"checkBox_51T"
+""
+1 140 117 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+33 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  138 115 162 159
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 34
+"checkBox_51B"
+""
+1 140 160 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+34 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  138 158 162 202
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 35
+"checkBox_41T"
+""
+1 140 228 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+35 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  138 226 162 270
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 36
+"checkBox_41B"
+""
+1 140 268 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+36 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  138 266 162 310
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 37
+"checkBox_31T"
+""
+1 140 343.62625 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+37 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  138 341.62625 162 385.62625
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 38
+"checkBox_31B"
+""
+1 140 388.62625 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+38 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  138 386.62625 162 430.62625
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 39
+"checkBox_21T"
+""
+1 140 458 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+39 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  138 456 162 500
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 40
+"checkBox_21B"
+""
+1 140 503 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+40 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  138 501 162 545
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 41
+"checkBox_11T"
+""
+1 140 572.36875 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+41 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  138 570.36875 162 614.36875
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 42
+"checkBox_11B"
+""
+1 140 617.36875 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+42 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  138 615.36875 162 659.36875
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 43
+"checkBox_52T"
+""
+1 265 117.434375 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+43 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  263 115.434375 287 159.434375
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 44
+"checkBox_52B"
+""
+1 265 160.434375 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+44 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  263 158.434375 287 202.434375
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 45
+"checkBox_42T"
+""
+1 265 228.434375 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+45 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  263 226.434375 287 270.434375
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 46
+"checkBox_42B"
+""
+1 265 272.434375 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+46 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  263 270.434375 287 314.434375
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 48
+"checkBox_32T"
+""
+1 265 344 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+48 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  263 342 287 386
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 49
+"checkBox_32B"
+""
+1 265 388.691875 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+49 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  263 386.691875 287 430.691875
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 50
+"checkBox_22T"
+""
+1 265 458 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+50 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  263 456 287 500
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 52
+"checkBox_22B"
+""
+1 265 503 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+52 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  263 501 287 545
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 53
+"checkBox_12T"
+""
+1 265 572.4343750000001 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+53 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  263 570.4343750000001 287 614.4343750000001
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 54
+"checkBox_12B"
+""
+1 265 617.4343750000001 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+54 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  263 615.4343750000001 287 659.4343750000001
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 56
+"checkBox_13B"
+""
+1 394.5 617.4343750000001 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+56 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  392.5 615.4343750000001 416.5 659.4343750000001
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 57
+"checkBox_13T"
+""
+1 394.75 572.2171875 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+57 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  392.75 570.2171875 416.75 614.2171875
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 58
+"checkBox_23B"
+""
+1 395 503.26015625 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+58 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  393 501.26015625 417 545.26015625
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 59
+"checkBox_23T"
+""
+1 395 458.26015625 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+59 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  393 456.26015625 417 500.26015625
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 60
+"checkBox_33B"
+""
+1 394.75 388.691875 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+60 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  392.75 386.691875 416.75 430.691875
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 61
+"checkBox_33T"
+""
+1 394.75 343.691875 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+61 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  392.75 341.691875 416.75 385.691875
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 62
+"checkBox_43B"
+""
+1 394.75 272.434375 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+62 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  392.75 270.434375 416.75 314.434375
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 63
+"checkBox_43T"
+""
+1 395 228 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+63 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  393 226 417 270
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 64
+"checkBox_53B"
+""
+1 395 160.434375 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+64 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  393 158.434375 417 202.434375
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE20 65
+"checkBox_53T"
+""
+1 395 117.434375 E E E 1 E 1 E N "_3DText" E N "_3DFace" E E
+ E E
+65 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  393 115.434375 417 159.434375
+1
+T 
+1
+LANG:1 0 
+
+0 
+1
+LANG:1 0 
+E E
+0 0 0 0 0
+0
+EE13 67
+"clearSelected_button"
+""
+1 479 626.1628906249999 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+67 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  477 610.1628906249999 611 654.1628906249999
+
+T 
+1
+LANG:1 20 Clear Selected Flags
+"main(mapping event)
+{
+ 
+  
+  shape T11= getShape(\"checkBox_11T\");
+  if(T11.state(0)==TRUE){ 
+    dpSetWait(\"cms_gem_dcs_1:Board00Top.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board00Top.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board00Top.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board00Top.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board00Top.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board00Top.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board00Top.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board00Top.G3Bot\",0);
+  } 
+  shape T12= getShape(\"checkBox_12T\");
+  if(T12.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board01Top.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board01Top.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board01Top.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board01Top.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board01Top.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board01Top.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board01Top.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board01Top.G3Bot\",0);
+  } 
+
+  shape T13= getShape(\"checkBox_13T\");
+  if(T13.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board02Top.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board02Top.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board02Top.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board02Top.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board02Top.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board02Top.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board02Top.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board02Top.G3Bot\",0);
+  } 
+  shape T21= getShape(\"checkBox_21T\");
+  if(T21.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board03Top.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board03Top.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board03Top.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board03Top.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board03Top.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board03Top.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board03Top.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board03Top.G3Bot\",0);
+  } 
+  shape T22= getShape(\"checkBox_22T\");
+  if(T22.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board04Top.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board04Top.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board04Top.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board04Top.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board04Top.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board04Top.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board04Top.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board04Top.G3Bot\",0);
+  } 
+  shape T23= getShape(\"checkBox_23T\");
+  if(T23.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board05Top.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board05Top.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board05Top.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board05Top.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board05Top.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board05Top.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board05Top.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board05Top.G3Bot\",0);
+  } 
+  shape T31= getShape(\"checkBox_31T\");
+  if(T31.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board06Top.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board06Top.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board06Top.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board06Top.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board06Top.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board06Top.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board06Top.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board06Top.G3Bot\",0);
+  } 
+
+  shape T32= getShape(\"checkBox_32T\");
+  if(T32.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board07Top.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board07Top.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board07Top.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board07Top.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board07Top.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board07Top.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board07Top.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board07Top.G3Bot\",0);
+  } 
+
+  shape T33= getShape(\"checkBox_33T\");
+  if(T33.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board08Top.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board08Top.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board08Top.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board08Top.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board08Top.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board08Top.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board08Top.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board08Top.G3Bot\",0);
+  } 
+
+  shape T41= getShape(\"checkBox_41T\");
+  if(T41.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board10Top.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board10Top.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board10Top.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board10Top.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board10Top.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board10Top.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board10Top.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board10Top.G3Bot\",0);
+  } 
+
+  shape T42= getShape(\"checkBox_42T\");
+  if(T42.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board14Top.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board14Top.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board14Top.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board14Top.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board14Top.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board14Top.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board14Top.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board14Top.G3Bot\",0);
+  } 
+
+  shape T43= getShape(\"checkBox_43T\");
+  if(T43.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board15Top.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board15Top.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board15Top.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board15Top.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board15Top.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board15Top.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board15Top.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board15Top.G3Bot\",0);
+  } 
+
+  shape T51= getShape(\"checkBox_51T\");
+  if(T51.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board11Top.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board11Top.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board11Top.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board11Top.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board11Top.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board11Top.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board11Top.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board11Top.G3Bot\",0);
+  } 
+
+  shape T52= getShape(\"checkBox_52T\");
+  if(T52.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board12Top.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board12Top.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board12Top.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board12Top.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board12Top.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board12Top.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board12Top.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board12Top.G3Bot\",0);
+  } 
+
+  shape T53= getShape(\"checkBox_53T\");
+  if(T53.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board13Top.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board13Top.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board13Top.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board13Top.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board13Top.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board13Top.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board13Top.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board13Top.G3Bot\",0);
+  } 
+
+  
+  shape B11= getShape(\"checkBox_11B\");
+  if(B11.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board00Bottom.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board00Bottom.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board00Bottom.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board00Bottom.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board00Bottom.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board00Bottom.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board00Bottom.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board00Bottom.G3Bot\",0);
+  } 
+
+  shape B12= getShape(\"checkBox_12B\");
+  if(B12.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board01Bottom.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board01Bottom.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board01Bottom.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board01Bottom.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board01Bottom.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board01Bottom.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board01Bottom.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board01Bottom.G3Bot\",0);
+  } 
+
+  shape B13= getShape(\"checkBox_13B\");
+  if(B13.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board02Bottom.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board02Bottom.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board02Bottom.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board02Bottom.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board02Bottom.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board02Bottom.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board02Bottom.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board02Bottom.G3Bot\",0);
+  } 
+
+  shape B21= getShape(\"checkBox_21B\");
+  if(B21.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board03Bottom.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board03Bottom.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board03Bottom.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board03Bottom.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board03Bottom.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board03Bottom.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board03Bottom.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board03Bottom.G3Bot\",0);
+  } 
+
+  shape B22= getShape(\"checkBox_22B\");
+  if(B22.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board04Bottom.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board04Bottom.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board04Bottom.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board04Bottom.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board04Bottom.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board04Bottom.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board04Bottom.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board04Bottom.G3Bot\",0);
+  } 
+
+  shape B23= getShape(\"checkBox_23B\");
+  if(B23.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board05Bottom.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board05Bottom.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board05Bottom.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board05Bottom.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board05Bottom.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board05Bottom.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board05Bottom.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board05Bottom.G3Bot\",0);
+  } 
+
+  shape B31= getShape(\"checkBox_31B\");
+  if(B31.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board06Bottom.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board06Bottom.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board06Bottom.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board06Bottom.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board06Bottom.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board06Bottom.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board06Bottom.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board06Bottom.G3Bot\",0);
+  } 
+
+  shape B32= getShape(\"checkBox_32B\");
+  if(B32.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board07Bottom.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board07Bottom.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board07Bottom.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board07Bottom.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board07Bottom.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board07Bottom.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board07Bottom.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board07Bottom.G3Bot\",0);
+  } 
+
+  shape B33= getShape(\"checkBox_33B\");
+  if(B33.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board08Bottom.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board08Bottom.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board08Bottom.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board08Bottom.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board08Bottom.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board08Bottom.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board08Bottom.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board08Bottom.G3Bot\",0);
+  } 
+
+  shape B41= getShape(\"checkBox_41B\");
+  if(B41.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board10Bottom.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board10Bottom.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board10Bottom.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board10Bottom.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board10Bottom.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board10Bottom.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board10Bottom.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board10Bottom.G3Bot\",0);
+  } 
+
+  shape B42= getShape(\"checkBox_42B\");
+  if(B42.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board14Bottom.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board14Bottom.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board14Bottom.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board14Bottom.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board14Bottom.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board14Bottom.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board14Bottom.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board14Bottom.G3Bot\",0);
+  } 
+
+  shape B43= getShape(\"checkBox_43B\");
+  if(B43.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board15Bottom.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board15Bottom.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board15Bottom.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board15Bottom.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board15Bottom.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board15Bottom.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board15Bottom.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board15Bottom.G3Bot\",0);
+  } 
+
+  shape B51= getShape(\"checkBox_51B\");
+  if(B51.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board11Bottom.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board11Bottom.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board11Bottom.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board11Bottom.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board11Bottom.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board11Bottom.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board11Bottom.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board11Bottom.G3Bot\",0);
+  } 
+
+  shape B52= getShape(\"checkBox_52B\");
+  if(B52.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board12Bottom.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board12Bottom.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board12Bottom.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board12Bottom.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board12Bottom.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board12Bottom.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board12Bottom.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board12Bottom.G3Bot\",0);
+  }
+
+  shape B53= getShape(\"checkBox_53B\");
+  if(B53.state(0)==TRUE){
+    dpSetWait(\"cms_gem_dcs_1:Board13Bottom.value\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board13Bottom.Drift\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board13Bottom.G1Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board13Bottom.G1Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board13Bottom.G2Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board13Bottom.G2Bot\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board13Bottom.G3Top\",0);
+    dpSetWait(\"cms_gem_dcs_1:Board13Bottom.G3Bot\",0);
+  }
+
+    
+    setValue(T11, \"state\", 0, 0) ; 
+    setValue(T12, \"state\", 0, 0) ;
+    setValue(T13, \"state\", 0, 0) ;
+    setValue(T21, \"state\", 0, 0) ;
+    setValue(T22, \"state\", 0, 0) ;
+    setValue(T23, \"state\", 0, 0) ;
+    setValue(T31, \"state\", 0, 0) ;
+    setValue(T32, \"state\", 0, 0) ;
+    setValue(T33, \"state\", 0, 0) ;
+    setValue(T41, \"state\", 0, 0) ;
+    setValue(T42, \"state\", 0, 0) ;
+    setValue(T43, \"state\", 0, 0) ;
+    setValue(T51, \"state\", 0, 0) ;
+    setValue(T52, \"state\", 0, 0) ;
+    setValue(T53, \"state\", 0, 0) ;
+  
+    setValue(B11, \"state\", 0, 0) ;
+    setValue(B12, \"state\", 0, 0) ;
+    setValue(B13, \"state\", 0, 0) ;
+    setValue(B21, \"state\", 0, 0) ;
+    setValue(B22, \"state\", 0, 0) ;
+    setValue(B23, \"state\", 0, 0) ;
+    setValue(B31, \"state\", 0, 0) ;
+    setValue(B32, \"state\", 0, 0) ;
+    setValue(B33, \"state\", 0, 0) ;
+    setValue(B41, \"state\", 0, 0) ;
+    setValue(B42, \"state\", 0, 0) ;
+    setValue(B43, \"state\", 0, 0) ;
+    setValue(B51, \"state\", 0, 0) ;
+    setValue(B52, \"state\", 0, 0) ;
+    setValue(B53, \"state\", 0, 0) ;
+  
+    
+  
+ 
+}" 0
+ E E E
+13 68
+"selectAll_button"
+""
+1 479 557.054296875 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+68 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  477 541.054296875 611 585.054296875
+
+T 
+1
+LANG:1 16 Select All Flags
+"main(mapping event)
+{
+   
+  shape T11= getShape(\"checkBox_11T\");
+    setValue(T11, \"state\", 0, 1) ; 
+  shape T12= getShape(\"checkBox_12T\");
+    setValue(T12, \"state\", 0, 1) ;
+  shape T13= getShape(\"checkBox_13T\");
+    setValue(T13, \"state\", 0, 1) ;
+  shape T21= getShape(\"checkBox_21T\");
+    setValue(T21, \"state\", 0, 1) ;
+  shape T22= getShape(\"checkBox_22T\");
+    setValue(T22, \"state\", 0, 1) ;
+  shape T23= getShape(\"checkBox_23T\");
+    setValue(T23, \"state\", 0, 1) ;
+  shape T31= getShape(\"checkBox_31T\");
+    setValue(T31, \"state\", 0, 1) ;
+  shape T32= getShape(\"checkBox_32T\");
+    setValue(T32, \"state\", 0, 1) ;
+  shape T33= getShape(\"checkBox_33T\");
+    setValue(T33, \"state\", 0, 1) ;
+  shape T41= getShape(\"checkBox_41T\");
+    setValue(T41, \"state\", 0, 1) ;
+  shape T42= getShape(\"checkBox_42T\");
+    setValue(T42, \"state\", 0, 1) ;
+  shape T43= getShape(\"checkBox_43T\");
+    setValue(T43, \"state\", 0, 1) ;
+  shape T51= getShape(\"checkBox_51T\");
+    setValue(T51, \"state\", 0, 1) ;
+  shape T52= getShape(\"checkBox_52T\");
+    setValue(T52, \"state\", 0, 1) ;
+  shape T53= getShape(\"checkBox_53T\");
+    setValue(T53, \"state\", 0, 1) ;
+  
+  shape B11= getShape(\"checkBox_11B\");
+    setValue(B11, \"state\", 0, 1) ;
+  shape B12= getShape(\"checkBox_12B\");
+    setValue(B12, \"state\", 0, 1) ;
+  shape B13= getShape(\"checkBox_13B\");
+    setValue(B13, \"state\", 0, 1) ;
+  shape B21= getShape(\"checkBox_21B\");
+    setValue(B21, \"state\", 0, 1) ;
+  shape B22= getShape(\"checkBox_22B\");
+    setValue(B22, \"state\", 0, 1) ;
+  shape B23= getShape(\"checkBox_23B\");
+    setValue(B23, \"state\", 0, 1) ;
+  shape B31= getShape(\"checkBox_31B\");
+    setValue(B31, \"state\", 0, 1) ;
+  shape B32= getShape(\"checkBox_32B\");
+    setValue(B32, \"state\", 0, 1) ;
+  shape B33= getShape(\"checkBox_33B\");
+    setValue(B33, \"state\", 0, 1) ;
+  shape B41= getShape(\"checkBox_41B\");
+    setValue(B41, \"state\", 0, 1) ;
+  shape B42= getShape(\"checkBox_42B\");
+    setValue(B42, \"state\", 0, 1) ;
+  shape B43= getShape(\"checkBox_43B\");
+    setValue(B43, \"state\", 0, 1) ;
+  shape B51= getShape(\"checkBox_51B\");
+    setValue(B51, \"state\", 0, 1) ;
+  shape B52= getShape(\"checkBox_52B\");
+    setValue(B52, \"state\", 0, 1) ;
+  shape B53= getShape(\"checkBox_53B\");
+    setValue(B53, \"state\", 0, 1) ;
+  
+ 
+}" 0
+ E E E
+2 69
+"PRIMITIVE_TEXT177"
+""
+1 72 30 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+69 0 0 0 0 0
+E E E
+0
+2
+LANG:1 0 
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 5 1 2 1 E U  0 E 72 30 317 48
+0 2 2 "0s" 0 0 0 192 0 0  72 30 1
+2
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+LANG:10001 35 MS Shell Dlg 2,-1,16,5,75,0,0,0,0,0
+0 2
+LANG:1 28 Number of automatic restarts
+LANG:10001 21 SUPERCHAMBER OVERVIEW
+2 70
+"PRIMITIVE_TEXT179"
+""
+1 88 557.2765625000001 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+70 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 88 557.2765625000001 168 627.2765625000001
+0 2 2 "0s" 0 0 0 64 0 0  88 557.2765625000001 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 1/1
+2 71
+"PRIMITIVE_TEXT180"
+""
+1 210 557.4343750000001 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+71 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 210 557.4343750000001 290 627.4343750000001
+0 2 2 "0s" 0 0 0 64 0 0  210 557.4343750000001 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 1/2
+2 72
+"PRIMITIVE_TEXT181"
+""
+1 342.3125 557.1060763888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+72 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 342.3125 557.1060763888889 422.3125 627.1060763888889
+0 2 2 "0s" 0 0 0 64 0 0  342.3125 557.1060763888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 1/3
+2 73
+"PRIMITIVE_TEXT182"
+""
+1 88 440 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+73 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 88 440 168 510
+0 2 2 "0s" 0 0 0 64 0 0  88 440 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 2/1
+2 74
+"PRIMITIVE_TEXT183"
+""
+1 210 440 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+74 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 210 440 290 510
+0 2 2 "0s" 0 0 0 64 0 0  210 440 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 2/2
+2 75
+"PRIMITIVE_TEXT184"
+""
+1 342 440.434375 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+75 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 342 440.434375 422 510.4343750000001
+0 2 2 "0s" 0 0 0 64 0 0  342 440.434375 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 2/3
+2 76
+"PRIMITIVE_TEXT185"
+""
+1 88 325.813125 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+76 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 88 325.813125 168 395.813125
+0 2 2 "0s" 0 0 0 64 0 0  88 325.813125 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 3/1
+2 77
+"PRIMITIVE_TEXT186"
+""
+1 210 326 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+77 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 210 326 290 396
+0 2 2 "0s" 0 0 0 64 0 0  210 326 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 3/2
+2 78
+"PRIMITIVE_TEXT187"
+""
+1 342 325.691875 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+78 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 342 325.691875 422 395.691875
+0 2 2 "0s" 0 0 0 64 0 0  342 325.691875 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 3/3
+2 79
+"PRIMITIVE_TEXT188"
+""
+1 87.5625 209.8888888888889 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+79 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 87.5625 209.8888888888889 167.5625 279.8888888888889
+0 2 2 "0s" 0 0 0 64 0 0  87.5625 209.8888888888889 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 4/1
+2 80
+"PRIMITIVE_TEXT189"
+""
+1 210 210.2171875 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+80 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 210 210.2171875 290 280.2171875
+0 2 2 "0s" 0 0 0 64 0 0  210 210.2171875 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 4/2
+2 81
+"PRIMITIVE_TEXT190"
+""
+1 342 210 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+81 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 342 210 422 280
+0 2 2 "0s" 0 0 0 64 0 0  342 210 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 4/3
+2 82
+"PRIMITIVE_TEXT191"
+""
+1 88 95 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+82 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 88 95 168 165
+0 2 2 "0s" 0 0 0 64 0 0  88 95 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 5/1
+2 83
+"PRIMITIVE_TEXT192"
+""
+1 210 95.43437499999999 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+83 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 210 95.43437499999999 290 165.434375
+0 2 2 "0s" 0 0 0 64 0 0  210 95.43437499999999 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 5/2
+2 84
+"PRIMITIVE_TEXT193"
+""
+1 342 95.43437499999999 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+84 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E U  0 E 342 95.43437499999999 422 165.434375
+0 2 2 "0s" 0 0 0 64 0 0  342 95.43437499999999 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 3 5/3
+13 85
+"close_button"
+""
+1 479 379 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+85 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  477 358 611 402
+
+T 
+1
+LANG:1 5 Close
+"// SimpleCtrlScriptStart {valid}
+main()
+{
+  EP_panelOff();
+}
+
+void EP_panelOff()
+{
+  PanelOff();
+}
+
+// SimpleCtrlScript {EP_panelOff}
+// Function {PanelOff}
+// Panel {}
+// Module {}
+// SimpleCtrlScriptEnd {EP_panelOff}
+" 0
+ E E E
+0
+LAYER, 1 
+1
+LANG:1 0 
+0
+LAYER, 2 
+1
+LANG:1 0 
+0
+LAYER, 3 
+1
+LANG:1 0 
+0
+LAYER, 4 
+1
+LANG:1 0 
+0
+LAYER, 5 
+1
+LANG:1 0 
+0
+LAYER, 6 
+1
+LANG:1 0 
+0
+LAYER, 7 
+1
+LANG:1 0 
+0
+0
