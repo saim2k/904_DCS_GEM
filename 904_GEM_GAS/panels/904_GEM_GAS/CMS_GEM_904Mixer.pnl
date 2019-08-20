@@ -1119,7 +1119,7 @@ LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
 T 
 1
 LANG:1 26 Reset Detector 
-Protection
+Protectio
 "main()
 {
   

@@ -228,20 +228,19 @@ main()
 } //end of main
 
 LockChannel(string dp, bit32 value){
-
+                                                                                      DebugTN("value of call function:", value, "on DPE:" , dp);
 
   dyn_string split;   //remove . from dp name
 	  split = strsplit(dp, ".");
 
   string lockdpe;   //define lockdpe
 	  lockdpe = split[1]+".settings.onOff:_lock._original._locked";
-
+    
   dyn_string splitName; //split again name of dp to isolate channel number
 	    splitName = strsplit(dp, "l");
 
   int channelN; //channel number
 	  channelN = splitName[2];
-
 
   string Board; //isolate board dp from channel dp
 	  Board=substr(splitName[1],0,sizeof(splitName[1])-7);
@@ -252,9 +251,9 @@ LockChannel(string dp, bit32 value){
   string Chamber;
 
   bool opMode; //get the opMode of the board
-	  dpGet(Board+".settings.opMode", opMode);
+	  dpGet(Board+".readBackSettings.opMode", opMode);
 
-  bool flag; //flag to see it the board was already in GEM mode or not
+  bool flag; //flag to see if the board was already in GEM mode or not
 	  flag = 0;
 
   int restarts; //number of automatic restarts already performed by the particular chamber
@@ -274,7 +273,7 @@ LockChannel(string dp, bit32 value){
   }
   //get the number of automatic restarts already performed by the chamber
   restartCounterdp="cms_gem_dcs_1:Board"+Chamber+".value";
-    DebugTN("Restart counter = ", restartCounterdp);
+    //DebugTN("Restart counter = ", restartCounterdp);
     dpGet(restartCounterdp, restarts);
 
 
@@ -321,7 +320,7 @@ LockChannel(string dp, bit32 value){
 
     dpGet(restartStatus, isRestarting);
 
-    DebugTN("Chamber is restarting? ", isRestarting);	
+    //DebugTN("Chamber is restarting? ", isRestarting);	
     
 
 
@@ -337,7 +336,7 @@ LockChannel(string dp, bit32 value){
 				   splitName[1]+"l006");
 
 	BottomChamberCh = makeDynString(splitName[1]+"l007",
-		     		  splitName[1]+"l008",
+		     		 splitName[1]+"l008",
 				      splitName[1]+"l009",
 				      splitName[1]+"l010",
 				      splitName[1]+"l011",
@@ -347,13 +346,16 @@ LockChannel(string dp, bit32 value){
 
 //Locks the dp in case of trip
 
-	if(getBit(value,6)||getBit(value,9)){
+	if( (getBit(value,6)||getBit(value,9)) && getBit(value,0) && !getBit(value,2) ){  //after the first trip the status changes from 1...1 to 1...101 (ramp down) or 1....0 (off, not yet cleared).
+                                                                // Hence the call function is called twice for the same trip! 
+                                                                //Condition on Bit0 allows to call it only at 1st occurrence
 		
 		dpSetWait(lockdpe, 1);
-			DebugTN("There was a trip " + dp + " locked for 180 sec");
-		delay(80);
+			DebugTN("There was a trip, " + dp + " locked for 180 sec");
+		delay(30);                                                                                  //was 80
 		dpSetWait(lockdpe, 0);
 			DebugTN(dp + " unlocked");
+    delay(2);                                                    //just to avoid that some delay in unlocking makes the next command uneffective
 	
   //Check if the restart sequence is enabled
   bool sequenceEnabled;
@@ -364,18 +366,49 @@ LockChannel(string dp, bit32 value){
 	  if(sequenceEnabled && restarts<(restartLimit+1)){
 
 	  	dpSetWait(restartStatus,1); //chamber is restarting
-	  	DebugTN("Restarting procedure started for chamber");
+                                                                                              //DebugTN("restartStatus = ", restartStatus);
+	  	DebugTN("Restarting procedure started for chamber at board "+Chamber);
 	
 	    //If sequenceEnabled and the limits of restarts has not been reached, once the dps are unlocked, restart sequence is initiated
 
+      //Step -1 - Wait for channels to ramp down after trip
+      bool groupOff = waitGroupOff(splitName[1], channelN, opMode);                              //TEST: added
+      //bool groupOn;
+      //if (!groupOff)  
+      // {
+      //  groupOn = waitGroupOn(splitName[1], channelN, opMode);
+      // if (groupOn) return; 
+      // }
+      if (groupOff) delay(2);                                                  // adding safety margin between end of ramping and clear alarm command
+      
 	  	//Step 0 - Clear Alarm
-
+      DebugTN("Clearing the alarms");
   		dpSetWait("CAEN/904_HV_mainframe.Commands.ClearAlarm", 1);
   		dpSetWait("CAEN/904_Shared_mainframe.Commands.ClearAlarm", 1);
-
-
+     
+    bool isCleared = FALSE;                                               // Repeating clear alarms up to 5 times (every 2 sec) until it's effective
+    delay(2);
+      bit32 newStatus;
+      int trials=1;
+      dpGet( dp, newStatus );
+      isCleared = !( getBit(newStatus,6) || getBit(newStatus,9) );
+      while (!isCleared && trials<6)
+      {      
+      dpGet( dp, newStatus );
+      isCleared = !( getBit(newStatus,6) || getBit(newStatus,9) );
+      if (!isCleared)
+        {
+        DebugTN("Determined that clear alarm did not clear the trip. Clearing it again.", "Trial nr. "+trials);
+        delay(2);
+        trials++;
+      		dpSetWait("CAEN/904_HV_mainframe.Commands.ClearAlarm", 1);
+      		dpSetWait("CAEN/904_Shared_mainframe.Commands.ClearAlarm", 1);
+        }
+      }
+      
 	  	//Step 1 - Set the current limit at 20 uA
-	  	if(channelN<7){
+      DebugTN("Settings current limit of group to i0=20");	  	
+      if(channelN<7){
 	  		for(int i=1; i<8; i++){
 	  			dpSetWait(TopChamberCh[i]+".settings.i0", 20);	
 	  		}
@@ -386,45 +419,60 @@ LockChannel(string dp, bit32 value){
 	  		}
 	  	}
 
-	  	delay(10);
+	  	delay(5);
 
 	  	//Step 2 - Move the group of channels in GEM mode (if not already)
-	  	if(opMode){
-	  		DebugTN("Chamber already in GEM mode");
-	  	}
-	  	else{
-	  		dpSetWait(Board+".settings.opMode",1);
-	  		flag = 1;
-	  		DebugTN("Chamber moved in GEM mode");
-	  	}
+    ////////////////////////////////////////// Trying to remove from here (don't move board to GEM mode) ///////////////////////////////
+	  	//if(opMode){
+	  	//	DebugTN("Chamber already in GEM mode");
+	  	//}
+	  	//else{
+	  	//	dpSetWait(Board+".settings.opMode",1);
+	  	//	flag = 1;
+	  	//	DebugTN("Chamber moved in GEM mode.");
+    // delay(3);                                              //adding a delay just for safety margin between commands
+	  	//}
+    ///////////////////////////////////////// Trying to remove to here (don't move board to GEM mode) //////////////////////////////////
 
+      
 	  	//Step 3 - Turn on group of channels, profiting of GEM mode, and then move back current limit to 2 uA
 	  	if(channelN<7){
-	  		dpSetWait(TopChamberCh[1]+".settings.onOff",1);
+//	  		dpSetWait(TopChamberCh[1]+".settings.onOff",1);
+     if (channelN < 10)   dpSetWait(splitName[1]+"l00"+channelN+".settings.onOff",1);
+     else                 dpSetWait(splitName[1]+"l0"+channelN+".settings.onOff",1);
 	  		DebugTN("Restarting the chamber");
 
-	  		delay(600);
+	  		//delay(180);      //previously 600    //replaced by next function
+        //waitGroupOn(splitName[1], channelN, TRUE);                                // pass real board mode to function (case board mode is not moved to GEM mode)       
+        waitGroupOn(splitName[1], channelN, opMode);
 
 	  		for(int i=1; i<8; i++){
 	  			dpSetWait(TopChamberCh[i]+".settings.i0", 2);	
 	  		}
 	  	}
 	  	else{
-	  		dpSetWait(BottomChamberCh[1]+".settings.onOff",1);
+	  		//dpSetWait(BottomChamberCh[1]+".settings.onOff",1);
+     if (channelN < 10)   dpSetWait(splitName[1]+"l00"+channelN+".settings.onOff",1);
+     else                 dpSetWait(splitName[1]+"l0"+channelN+".settings.onOff",1);
 	  		DebugTN("Restarting the chamber");
 
-	  		delay(600);
+	  		//delay(180);        //previously 600    //replaced by next function
+        //waitGroupOn(splitName[1], channelN, TRUE);                                // pass real board mode to function (case board mode is not moved to GEM mode)
+        waitGroupOn(splitName[1], channelN, opMode);
+       
 	  		for(int i=1; i<8; i++){
 	  			dpSetWait(BottomChamberCh[i]+".settings.i0", 2);	
 	  		}
 	  	}
 
+    //////////////////////////////////////////////////// Not necessary if board mode is not moved to GEM mode ///////////////////////
 	  	//Step 4 - Restore original opMode of group of channels (if needed)
-	  	if(flag){
-	  		dpSetWait(Board+".settings.opMode",0);
-	  		flag = 0;
-	  		DebugTN("Chamber moved back in FREE mode");
-	  	}
+	  	//if(flag){
+	  	//	dpSetWait(Board+".settings.opMode",0);
+	  	//	flag = 0;
+	  	//	DebugTN("Chamber moved back in FREE mode");
+	  	//}
+    ////////////////////////////////////////////////// End of "not necessary if board mode etc..." //////////////////////////////////
 
       if(channelN==0){
         isG3Bot = isG3Bot+1;
@@ -485,10 +533,10 @@ LockChannel(string dp, bit32 value){
       
       dyn_int channelsSummary;
       channelsSummary = makeDynInt(isDrift, isG1Top, isG1Bot, isG2Top, isG2Bot, isG3Top, isG3Bot);
-      DebugTN("Status of all the channels = ", channelsSummary);
+      //DebugTN("Status of all the channels = ", channelsSummary);
 
       restarts = dynMax(channelsSummary);
-      DebugTN("Status of the chamber = ", restarts);
+      //DebugTN("Status of the chamber = ", restarts);
       //restarts = restarts + 1 ;
 	  	dpSetWait(restartCounterdp, restarts);
 
@@ -514,4 +562,111 @@ else{
 	
 
 
+}
+
+
+bool waitGroupOn(string base, int chan, bool boardMode)   // this function waits until all 7 channels in a group have status==1 (ON, not ramping) 
+                                          // for a max of 10 minutes, with a tolerance of 2 seconds
+{            
+    bool groupOn=FALSE;
+    dyn_string groupActualStatus;
+    if (chan < 7 && boardMode==TRUE)  //GEM mode: all channel ramped down if trip
+    {
+    groupActualStatus = makeDynString(base+"l000.actual.status",base+"l001.actual.status",base+"l002.actual.status",
+                                      base+"l003.actual.status",base+"l004.actual.status",base+"l005.actual.status",base+"l006.actual.status");  
+    }
+    else if (chan > 6 && boardMode==TRUE)  //GEM mode: all channel ramped down if trip
+    {
+    groupActualStatus = makeDynString(base+"l007.actual.status",base+"l008.actual.status",base+"l009.actual.status",
+                                      base+"l010.actual.status",base+"l011.actual.status",base+"l012.actual.status",base+"l013.actual.status");  
+  
+    }
+    else if (chan <10 && boardMode==FALSE) //FREE mode
+    {
+    groupActualStatus = makeDynString(base+"l00"+chan+".actual.status");
+    }
+    else //FREE mode
+    {
+    groupActualStatus = makeDynString(base+"l0"+chan+".actual.status");
+    }
+    //DebugTN("groupActualStatus = ", groupActualStatus);
+
+    time startTime = getCurrentTime();
+    int tElapsed = 0;
+    while( tElapsed < 1200 && !groupOn ) //check if all channels of the group are on every 2 seconds
+                                         //exit the loop only if all channels are on or after 20 mins
+    {
+      delay(2); //usually when on command is given, the status becomes 1 for a moment for all channels, before becoming 3 or 0. Don't want to read at that time.
+      //DebugTN( "Running while loop of waitGroupOn function" );
+      dyn_int groupStatus;
+      for (int i=1; i<=dynlen(groupActualStatus); i++) dynAppend(groupStatus, 0);
+      for (int i=1; i<=dynlen(groupActualStatus); i++)  
+      {
+      int chStatus;
+      dpGet( groupActualStatus[i] , chStatus);
+      //DebugTN("reading status of element "+i, chStatus);
+      groupStatus[i] = chStatus;
+      //DebugTN("reading element "+i, "status="+groupStatus[i]);
+      }
+      DebugTN("dynCount=", dynCount(groupStatus, 1) );
+      if ( dynCount(groupStatus, 1)==dynlen(groupActualStatus) )  groupOn=TRUE; //don't check only status bit because bit0 it's TRUE also during ramping.
+                                                        //So I check that the status is EXACTLY 1 (and not, for example, 3=1+2 like when ramping).
+      tElapsed = period(getCurrentTime())-period(startTime);
+      DebugTN("All channels in group on: "+groupOn, "tElapsed = "+tElapsed+" s.");
+    }
+return groupOn;
+}
+
+bool waitGroupOff(string base, int chan, bool boardMode)
+{    
+    bool groupOff=FALSE;
+    dyn_string groupActualStatus;
+    if (chan < 7 && boardMode==TRUE)  //GEM mode: all channel ramped down if trip
+    {
+    groupActualStatus = makeDynString(base+"l000.actual.status",base+"l001.actual.status",base+"l002.actual.status",
+                                      base+"l003.actual.status",base+"l004.actual.status",base+"l005.actual.status",base+"l006.actual.status");  
+    }
+    else if (chan > 6 && boardMode==TRUE)  //GEM mode: all channel ramped down if trip
+    {
+    groupActualStatus = makeDynString(base+"l007.actual.status",base+"l008.actual.status",base+"l009.actual.status",
+                                      base+"l010.actual.status",base+"l011.actual.status",base+"l012.actual.status",base+"l013.actual.status");  
+  
+    }
+    else if (chan <10 && boardMode==FALSE) //FREE mode
+    {
+    groupActualStatus = makeDynString(base+"l00"+chan+".actual.status");
+    }
+    else //FREE mode
+    {
+    groupActualStatus = makeDynString(base+"l0"+chan+".actual.status");
+    }
+    DebugTN("groupActualStatus: ", groupActualStatus);
+    
+    time startTime = getCurrentTime();
+    int tElapsed = 0;
+    while( tElapsed < 600 && !groupOff ) //check if all channels of the group are off every 2 seconds
+                                         //exit the loop only if all channels are off or after 10 mins
+    {
+      //DebugTN( "entering while loop" );
+      dyn_bool groupIsOn;
+      for (int i=1; i<=dynlen(groupActualStatus); i++)
+      {
+      dynAppend(groupIsOn,1);  //must be filled with 1 and have same dynlen as groupActualStatus
+      }
+      for (int i=1; i<=dynlen(groupActualStatus); i++)  
+      {
+      int chStatus;
+      dpGet( groupActualStatus[i] , chStatus);
+      //DebugTN("reading status of element "+i, chStatus);
+      groupIsOn[i] = getBit( chStatus, 0);
+      //DebugTN("reading element "+i, "isOn="+groupIsOn[i]);
+      }
+      //DebugTN("dynCount=", dynCount(groupIsOn, FALSE) );
+      if ( dynCount(groupIsOn, FALSE)==dynlen(groupActualStatus) )  groupOff=TRUE;
+      if (groupOff==FALSE) delay(2);
+      
+      tElapsed = period(getCurrentTime())-period(startTime);
+      DebugTN("All channels in group off: "+groupOff, "tElapsed = "+tElapsed+" s.");
+    }
+  return groupOff;
 }

@@ -324,8 +324,8 @@ string alias;
 		
 		if(flag){
 
-			DebugTN("Alarm for channel " + dp + "already sent. Flag is going to be cleared in 15 min");
-			delay(900);
+			DebugTN("Alarm for channel " + dp + "already sent. Flag is going to be cleared in 60 min");
+			delay(3600);
 			dpSet(flagdp,0);
 			DebugTN("Trip Flag Cleared " + dp);
 
@@ -338,7 +338,7 @@ string alias;
 			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: Trip", textMessage);
 			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: Trip", textMessage);
+/*			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: Trip", textMessage);
 			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
 			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: Trip", textMessage);
@@ -358,7 +358,7 @@ string alias;
 
 			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: Trip", textMessage);
 			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
-
+*/
 				delay(1);
 				dpSet(flagdp,1);
 				DebugTN("Trip Flag Set " + dp);
@@ -418,8 +418,8 @@ string alias;
 
 		if(flag){
 
-			DebugTN("Alarm for channel " + dp + "already sent. Flag is going to be cleared in 15 min");
-			delay(900);
+			DebugTN("Alarm for channel " + dp + "already sent. Flag is going to be cleared in 60 min");
+			delay(3600);
 			dpSet(flagdp,0);
 			DebugTN("OvV Flag Cleared " + dp);
 
@@ -432,7 +432,7 @@ string alias;
 			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: OvV", textMessage);
 			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: OvV", textMessage);
+/*			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: OvV", textMessage);
 			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
 			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: OvV", textMessage);
@@ -452,7 +452,7 @@ string alias;
 
 			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: OvV", textMessage);
 			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
-
+*/
 				delay(1);
 				dpSet(flagdp,1);
 				DebugTN("OvV Flag Set " + dp);
@@ -512,8 +512,8 @@ string alias;
 
 		if(flag){
 
-			DebugTN("Alarm for channel " + dp + "already sent. Flag is going to be cleared in 15 min");
-			delay(900);
+			DebugTN("Alarm for channel " + dp + "already sent. Flag is going to be cleared in 60 min");
+			delay(3600);
 			dpSet(flagdp,0);
 			DebugTN("OvC Flag Cleared " + dp);
 
@@ -526,7 +526,7 @@ string alias;
 			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: OvC", textMessage);
 			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: OvC", textMessage);
+/*			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: OvC", textMessage);
 			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
 			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: OvC", textMessage);
@@ -546,7 +546,7 @@ string alias;
 
 			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: OvC", textMessage);
 			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
-
+*/
 				delay(1);
 				dpSet(flagdp,1);
 				DebugTN("OvC Flag Set " + dp);
@@ -606,8 +606,8 @@ string alias;
 		
 		if(flag){
 
-			DebugTN("Alarm for channel " + dp + "already sent. Flag is going to be cleared in 15 min");
-			delay(900);
+			DebugTN("Alarm for channel " + dp + "already sent. Flag is going to be cleared in 60 min");
+			delay(3600);
 			dpSet(flagdp,0);
 			DebugTN("UnV Flag Cleared " + dp);
 
@@ -620,7 +620,7 @@ string alias;
 			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: UnV", textMessage);
 			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: UnV", textMessage);
+/*			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: UnV", textMessage);
 			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
 			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: UnV", textMessage);
@@ -640,7 +640,7 @@ string alias;
 
 			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: UnV", textMessage);
 			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
-
+*/
 				delay(1);
 				dpSet(flagdp,1);
 				DebugTN("UnV Flag Set " + dp);
@@ -701,8 +701,8 @@ string alias;
 
 		if(flag){
 
-			DebugTN("Alarm for channel " + dp + "already sent. Flag is going to be cleared in 15 min");
-			delay(900);
+			DebugTN("Alarm for channel " + dp + "already sent. Flag is going to be cleared in 60 min");
+			delay(3600);
 			dpSet(flagdp,0);
 			DebugTN("external Disable Flag Cleared " + dp);
 
@@ -714,7 +714,7 @@ string alias;
 
 			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: externalDisable", textMessage);
 			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
-
+/*
 			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: externalDisable", textMessage);
 			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
@@ -735,7 +735,7 @@ string alias;
 
 			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: externalDisable", textMessage);
 			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
-
+*/
 				delay(1);
 				dpSet(flagdp,1);
 				DebugTN("external Disable Flag Set " + dp);
@@ -791,8 +791,8 @@ string alias;
 		
 		if(flag){
 
-			DebugTN("Alarm for channel " + dp + "already sent. Flag is going to be cleared in 15 min");
-			delay(900);
+			DebugTN("Alarm for channel " + dp + "already sent. Flag is going to be cleared in 60 min");
+			delay(3600);
 			dpSet(flagdp,0);
 			DebugTN("status Flag Cleared " + dp);
 
@@ -805,7 +805,7 @@ string alias;
 			email1 = makeDynString("904-gem-dcs-notifications@cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: status", textMessage);
 			sendMail(smtp_host, email1, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
-			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: status", textMessage);
+/*			email2 = makeDynString("+41754116971@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: status", textMessage);
 			sendMail(smtp_host, email2, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
 
 			email3 = makeDynString("+41754112109@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: status", textMessage);
@@ -825,7 +825,7 @@ string alias;
 
 			email8 = makeDynString("+41754117652@mail2sms.cern.ch", "qc8dcs.administrator@cern.ch", "904 QC8 Error: status", textMessage);
 			sendMail(smtp_host, email8, ret, smtp_user, smtp_pass, useTLS, sAttachPath) ; 
-
+*/
 				delay(1);
 				dpSet(flagdp,1);
 				DebugTN("status Flag Set " + dp);
