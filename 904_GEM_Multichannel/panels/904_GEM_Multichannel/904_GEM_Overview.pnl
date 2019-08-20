@@ -70,6 +70,7 @@ void setAllInPanel(bool set)
   enableRestart_button.enabled(set);
   setLimit_button.enabled(set);
   flagsCheck_button.enabled(set);
+  alarmHandling_button.enabled(set);
 }
 " 0
  E E E E 1 -1 -1 0  110 160
@@ -4725,6 +4726,50 @@ LANG:1 44 Red --> at least 1 chamber restarted 3 times
 LANG:1 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
 0 1
 LANG:1 29 Yellow --> other combinations
+13 179
+"alarmHandling_button"
+""
+1 1070 191 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+179 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  1068 170 1222 224
+
+T 
+1
+LANG:1 13 Handle Alarms
+"// SimpleCtrlScriptStart {valid}
+main()
+{
+  EP_childPanelOn();
+}
+
+void EP_childPanelOn()
+{
+  ChildPanelOnCentralModal(\"904_GEM_Multichannel/904_GEM_multichannel_enableDisableAlarms.pnl\",
+      \"\",
+      makeDynString(\"\"));
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnCentralModal}
+// File {904_GEM_Multichannel/904_GEM_multichannel_enableDisableAlarms.pnl}
+// Panel {}
+// Parent {}
+// Module {}
+// OffsetX {0}
+// OffsetY {0}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ E E E
 0
 LAYER, 1 
 1
