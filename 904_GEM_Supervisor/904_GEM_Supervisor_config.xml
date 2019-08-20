@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component_configuration>
+  <append_managers>
+    <manager>
+      <type>WCCOActrl</type>
+      <num>28</num>
+      <options>-num 28 904_GEM_Supervisor/904SMSConfigurator/904CaenSMSHandler.ctl</options>
+      <mode>always</mode>
+      <restart>2</restart>
+      <counter>2</counter>
+      <sec_kill>30</sec_kill>
+      <isDriver>false</isDriver>
+      <restartManager>false</restartManager>
+    </manager>
+  </append_managers>
+  <target>
+    <system_name>cms_gem_dcs_1:</system_name>
+    <configuration>
+      <tag>904_flag_dp_V001</tag>
+      <hardware>true</hardware>
+      <logical>false</logical>
+      <pattern>*</pattern>
+      <force_reinstall>true</force_reinstall>
+    </configuration>
+  </target>
+</component_configuration>

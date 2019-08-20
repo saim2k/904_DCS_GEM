@@ -1,0 +1,1412 @@
+V 14
+1
+LANG:1 0 
+PANEL,-1 -1 1297 550 N "_3DFace" 0
+E E E E E 1 -1 -1 0  80 60
+""0  1
+E E 3
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+1
+LANG:1 0 
+22 3
+"comboBox_chambers"
+""
+1 40 120 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,19,5,50,0,0,0,0,0
+0  38 111 181 149
+34
+1
+LANG:1 3 All
+
+0
+1
+LANG:1 7 Column1
+
+0
+1
+LANG:1 7 Column2
+
+0
+1
+LANG:1 7 Column3
+
+0
+1
+LANG:1 6 1/1Top
+
+0
+1
+LANG:1 9 1/1Bottom
+
+0
+1
+LANG:1 6 1/2Top
+
+0
+1
+LANG:1 9 1/2Bottom
+
+0
+1
+LANG:1 6 1/3Top
+
+0
+1
+LANG:1 9 1/3Bottom
+
+0
+1
+LANG:1 6 2/1Top
+
+0
+1
+LANG:1 9 2/1Bottom
+
+0
+1
+LANG:1 6 2/2Top
+
+0
+1
+LANG:1 9 2/2Bottom
+
+0
+1
+LANG:1 6 2/3Top
+
+0
+1
+LANG:1 9 2/3Bottom
+
+0
+1
+LANG:1 6 3/1Top
+
+0
+1
+LANG:1 9 3/1Bottom
+
+0
+1
+LANG:1 6 3/2Top
+
+0
+1
+LANG:1 9 3/2Bottom
+
+0
+1
+LANG:1 6 3/3Top
+
+0
+1
+LANG:1 9 3/3Bottom
+
+0
+1
+LANG:1 6 4/1Top
+
+0
+1
+LANG:1 9 4/1Bottom
+
+0
+1
+LANG:1 6 4/2Top
+
+0
+1
+LANG:1 9 4/2Bottom
+
+0
+1
+LANG:1 6 4/3Top
+
+0
+1
+LANG:1 9 4/3Bottom
+
+0
+1
+LANG:1 6 5/1Top
+
+0
+1
+LANG:1 9 5/1Bottom
+
+0
+1
+LANG:1 6 5/2Top
+
+0
+1
+LANG:1 9 5/2Bottom
+
+0
+1
+LANG:1 6 5/3Top
+
+0
+1
+LANG:1 9 5/3Bottom
+
+0
+
+E
+E
+E
+ 1 0
+13 4
+"AddChamberToList_button"
+""
+1 200 121.9276315789474 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  198 111 236 149
+
+T 
+1
+LANG:1 2 >>
+"main(mapping event)
+{
+  string chamber;
+  chamber = comboBox_chambers.text;
+  
+  selectionList_chambers.appendItem(chamber);
+}" 0
+ E E E
+17 5
+"selectionList_chambers"
+""
+1 260 112.921052631579 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  258 111 411 314
+0
+
+E
+E
+E
+
+0 0
+22 6
+"comboBox_channels"
+""
+1 450 117.4276315789474 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,19,5,50,0,0,0,0,0
+0  448 111 591 149
+8
+1
+LANG:1 3 All
+
+0
+1
+LANG:1 5 Drift
+
+0
+1
+LANG:1 5 G1Top
+
+0
+1
+LANG:1 5 G1Bot
+
+0
+1
+LANG:1 5 G2Top
+
+0
+1
+LANG:1 5 G2Bot
+
+0
+1
+LANG:1 5 G3Top
+
+0
+1
+LANG:1 5 G3Bot
+
+0
+
+E
+E
+E
+ 1 0
+13 7
+"AddChannelToList_button"
+""
+1 169 107 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  608 111 646 149
+
+T 
+1
+LANG:1 2 >>
+"main(mapping event)
+{
+  string channel;
+  channel = comboBox_channels.text;
+  
+  selectionList_channels.appendItem(channel);
+}" 0
+ E E E
+17 8
+"selectionList_channels"
+""
+1 670 112.8552631578947 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  668 111 821 314
+0
+
+E
+E
+E
+
+0 0
+13 9
+"disableSelected_button"
+""
+1 161 416 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+9 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,19,5,50,0,0,0,0,0
+0  49 450 202 508
+
+T 
+1
+LANG:1 16 Disable Selected
+"// #uses \"fwConfigs/fwAlertConfig\"
+
+main(mapping event)
+{
+  dyn_string chambers;
+  chambers = selectionList_chambers.items;
+  
+  dyn_string channels;
+  channels = selectionList_channels.items;
+
+  dyn_string alarms;
+  alarms = selectionList_alarms.items;
+
+
+  dyn_string exceptionInfo;
+  bool answ;
+  
+    string message;
+    message = \"You have selected the chambers: \" + chambers + \". In each chamber, the alarms will be disabled for channels: \" + channels + \". The alarms that will be disabled are: \" + alarms + \". Are you sure?\";
+    fwGeneral_openMessagePanel(message, answ, exceptionInfo, \"Confirm\", false);  
+  
+    if(answ){
+      
+      disableAlarms(chambers, channels, alarms);
+    } 
+  
+  
+}
+
+void disableAlarms(dyn_string chamberList, dyn_string channelList, dyn_string alarmList){
+
+      //DebugTN(chamberList, channelList, alarmList);
+      
+      dyn_string chamberDp;
+      dyn_string channelDp;
+      dyn_string completeChannelList;
+
+      bool ok;
+      dyn_string error;
+      
+      for(int i=1; i<dynlen(chamberList)+1; i++){
+        if(chamberList[i]==\"1/1Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/\";        
+        }      
+        else if(chamberList[i]==\"1/1Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/\";        
+        }      
+        else if(chamberList[i]==\"1/2Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board01/\";        
+        }      
+        else if(chamberList[i]==\"1/2Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board01/\";        
+        }      
+        else if(chamberList[i]==\"1/3Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board02/\";        
+        }      
+        else if(chamberList[i]==\"1/3Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board02/\";        
+        }      
+        else if(chamberList[i]==\"2/1Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board03/\";        
+        }      
+        else if(chamberList[i]==\"2/1Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board03/\";        
+        }      
+        else if(chamberList[i]==\"2/2Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board04/\";        
+        }      
+        else if(chamberList[i]==\"2/2Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board04/\";        
+        }      
+        else if(chamberList[i]==\"2/3Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board05/\";        
+        }      
+        else if(chamberList[i]==\"2/3Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board05/\";        
+        }      
+        else if(chamberList[i]==\"3/1Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board06/\";        
+        }      
+        else if(chamberList[i]==\"3/1Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board06/\";        
+        }      
+        else if(chamberList[i]==\"3/2Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board07/\";        
+        }      
+        else if(chamberList[i]==\"3/2Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board07/\";        
+        }      
+        else if(chamberList[i]==\"3/3Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board08/\";        
+        }      
+        else if(chamberList[i]==\"3/3Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board08/\";        
+        }      
+        else if(chamberList[i]==\"4/1Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board10/\";        
+        }      
+        else if(chamberList[i]==\"4/1Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board10/\";        
+        }      
+        else if(chamberList[i]==\"4/2Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14/\";        
+        }      
+        else if(chamberList[i]==\"4/2Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14/\";        
+        }      
+        else if(chamberList[i]==\"4/3Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15/\";        
+        }      
+        else if(chamberList[i]==\"4/3Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15/\";        
+        }      
+        else if(chamberList[i]==\"5/1Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11/\";        
+        }      
+        else if(chamberList[i]==\"5/1Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11/\";        
+        }      
+        else if(chamberList[i]==\"4/2Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12/\";        
+        }      
+        else if(chamberList[i]==\"4/2Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12/\";        
+        }      
+        else if(chamberList[i]==\"5/3Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13/\";        
+        }      
+        else if(chamberList[i]==\"5/3Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13/\";        
+        }     
+        else if(chamberList[i]==\"All\"){
+          chamberDp = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board01/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board02/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board03/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board04/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board05/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board06/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board07/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board08/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board10/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15/\");        
+        } 
+        else if(chamberList[i]==\"Column1\"){
+          chamberDp = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board03/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board06/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board10/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11/\");        
+        } 
+        else if(chamberList[i]==\"Column2\"){
+          chamberDp = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board01/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board04/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board07/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14/\");        
+        } 
+        else if(chamberList[i]==\"Column3\"){
+          chamberDp = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board02/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board05/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board08/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15/\");        
+        }
+        else if(dynlen(chamberList)==0){
+           fwGeneral_openMessagePanel(\"Error! No chambers selected!\", ok, error, \"Info\", TRUE);            
+        }
+      }
+      
+      DebugTN(\"chamberDp = \", chamberDp);
+            
+      
+      for(int k=1; k<dynlen(chamberDp)+1; k++){
+        if((dynlen(chamberList)>1) && (strtok(chamberList[k], \"p\") > 0)){
+          for(int j=1; j<dynlen(channelList)+1; j++){
+            if(channelList[j]==\"Drift\"){
+              channelDp[j] = chamberDp[k]+\"channel006\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G1Top\"){
+              channelDp[j] = chamberDp[k]+\"channel005\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G1Bot\"){
+              channelDp[j] = chamberDp[k]+\"channel004\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G2Top\"){
+              channelDp[j] = chamberDp[k]+\"channel003\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G2Bot\"){
+              channelDp[j] = chamberDp[k]+\"channel002\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G3Top\"){
+              channelDp[j] = chamberDp[k]+\"channel001\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G3Bot\"){
+              channelDp[j] = chamberDp[k]+\"channel000\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(dynlen(channelList) == 0 || channelList[j]==\"All\"){
+              channelDp = makeDynString(chamberDp[k]+\"channel000\", 
+                                        chamberDp[k]+\"channel001\", 
+                                        chamberDp[k]+\"channel002\", 
+                                        chamberDp[k]+\"channel003\", 
+                                        chamberDp[k]+\"channel004\", 
+                                        chamberDp[k]+\"channel005\", 
+                                        chamberDp[k]+\"channel006\");                          
+              dynAppend(completeChannelList, channelDp);
+            }
+          }
+        }
+        else if((dynlen(chamberList)>1) && (strtok(chamberList[k], \"b\") > 0)){
+          for(int j=1; j<dynlen(channelList)+1; j++){
+            if(channelList[j]==\"Drift\"){
+              channelDp[j] = chamberDp[k]+\"channel013\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G1Top\"){
+              channelDp[j] = chamberDp[k]+\"channel012\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G1Bot\"){
+              channelDp[j] = chamberDp[k]+\"channel011\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G2Top\"){
+              channelDp[j] = chamberDp[k]+\"channel010\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G2Bot\"){
+              channelDp[j] = chamberDp[k]+\"channel009\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G3Top\"){
+              channelDp[j] = chamberDp[k]+\"channel008\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G3Bot\"){
+              channelDp[j] = chamberDp[k]+\"channel007\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(dynlen(channelList) == 0 || channelList[j]==\"All\" ){
+              channelDp = makeDynString(chamberDp[k]+\"channel007\", 
+                                        chamberDp[k]+\"channel008\", 
+                                        chamberDp[k]+\"channel009\", 
+                                        chamberDp[k]+\"channel010\", 
+                                        chamberDp[k]+\"channel011\", 
+                                        chamberDp[k]+\"channel012\", 
+                                        chamberDp[k]+\"channel013\");                          
+              dynAppend(completeChannelList, channelDp);
+            }
+          }
+        }
+        else{
+              channelDp = makeDynString(chamberDp[k]+\"channel000\", 
+                                        chamberDp[k]+\"channel001\", 
+                                        chamberDp[k]+\"channel002\", 
+                                        chamberDp[k]+\"channel003\", 
+                                        chamberDp[k]+\"channel004\", 
+                                        chamberDp[k]+\"channel005\", 
+                                        chamberDp[k]+\"channel006\",
+                                        chamberDp[k]+\"channel007\", 
+                                        chamberDp[k]+\"channel008\", 
+                                        chamberDp[k]+\"channel009\", 
+                                        chamberDp[k]+\"channel010\", 
+                                        chamberDp[k]+\"channel011\", 
+                                        chamberDp[k]+\"channel012\", 
+                                        chamberDp[k]+\"channel013\");                          
+              dynAppend(completeChannelList, channelDp);
+        }        
+      }
+      
+      DebugTN(\"channelDP = \", completeChannelList);      
+      
+      dyn_string dpListFinal;
+      dyn_string dp;
+      
+      for(int w=1; w<dynlen(completeChannelList)+1; w++){
+        if(dynlen(alarmList)==0 || alarmList[0]==\"All\" ){
+          dp = makeDynString(completeChannelList[w]+\".actual.Trip\",
+                             completeChannelList[w]+\".actual.OvC\",
+                             completeChannelList[w]+\".actual.OvV\",
+                             completeChannelList[w]+\".actual.UnV\",
+                             completeChannelList[w]+\".actual.externalDisable\",
+                             completeChannelList[w]+\".actual.status\");
+                             
+          dynAppend(dpListFinal, dp);         
+        }
+        else{
+          for(int x=1; x<dynlen(alarmList)+1; x++){
+            dp[x] = completeChannelList[w]+\".\"+alarmList[x];
+            dynAppend(dpListFinal, dp[x]);
+          }
+        }
+      }      
+      
+      dyn_string Info;      
+      
+        fwAlertConfig_deactivateMultiple(dpListFinal, Info, TRUE, FALSE, FALSE);         
+        
+        DebugTN(\"exceptionInfo: \", Info);
+
+        DebugTN(\"final list: \", dpListFinal);
+
+
+}" 0
+ E E E
+22 11
+"comboBox_alarms"
+""
+1 94 -72 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,19,5,50,0,0,0,0,0
+0  848 111 991 149
+7
+1
+LANG:1 3 All
+
+0
+1
+LANG:1 11 actual.Trip
+
+0
+1
+LANG:1 10 actual.OvC
+
+0
+1
+LANG:1 10 actual.OvV
+
+0
+1
+LANG:1 13 actual.status
+
+0
+1
+LANG:1 10 actual.UnV
+
+0
+1
+LANG:1 22 actual.externalDisable
+
+0
+
+E
+E
+E
+ 1 0
+13 12
+"AddAlarmsToList_button"
+""
+1 239 -224 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+12 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 37 MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0
+0  1008 111 1046 149
+
+T 
+1
+LANG:1 2 >>
+"main(mapping event)
+{
+  string alarm;
+  alarm = comboBox_alarms.text;
+  
+  selectionList_alarms.appendItem(alarm);
+}" 0
+ E E E
+17 13
+"selectionList_alarms"
+""
+1 306 -233 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+13 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  1068 111 1221 314
+0
+
+E
+E
+E
+
+0 0
+13 14
+"enableSelected_button"
+""
+1 207 410 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+14 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,19,5,50,0,0,0,0,0
+0  270 450 423 508
+
+T 
+1
+LANG:1 15 Enable Selected
+"// #uses \"fwConfigs/fwAlertConfig\"
+
+main(mapping event)
+{
+  dyn_string chambers;
+  chambers = selectionList_chambers.items;
+  
+  dyn_string channels;
+  channels = selectionList_channels.items;
+
+  dyn_string alarms;
+  alarms = selectionList_alarms.items;
+
+
+  dyn_string exceptionInfo;
+  bool answ;
+  
+    string message;
+    message = \"You have selected the chambers: \" + chambers + \". In each chamber, the alarms will be disabled for channels: \" + channels + \". The alarms that will be disabled are: \" + alarms + \". Are you sure?\";
+    fwGeneral_openMessagePanel(message, answ, exceptionInfo, \"Confirm\", false);  
+  
+    if(answ){
+      
+      disableAlarms(chambers, channels, alarms);
+    } 
+  
+  
+}
+
+void disableAlarms(dyn_string chamberList, dyn_string channelList, dyn_string alarmList){
+
+      //DebugTN(chamberList, channelList, alarmList);
+      
+      dyn_string chamberDp;
+      dyn_string channelDp;
+      dyn_string completeChannelList;
+
+      bool ok;
+      dyn_string error;
+      
+      for(int i=1; i<dynlen(chamberList)+1; i++){
+        if(chamberList[i]==\"1/1Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/\";        
+        }      
+        else if(chamberList[i]==\"1/1Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/\";        
+        }      
+        else if(chamberList[i]==\"1/2Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board01/\";        
+        }      
+        else if(chamberList[i]==\"1/2Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board01/\";        
+        }      
+        else if(chamberList[i]==\"1/3Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board02/\";        
+        }      
+        else if(chamberList[i]==\"1/3Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board02/\";        
+        }      
+        else if(chamberList[i]==\"2/1Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board03/\";        
+        }      
+        else if(chamberList[i]==\"2/1Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board03/\";        
+        }      
+        else if(chamberList[i]==\"2/2Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board04/\";        
+        }      
+        else if(chamberList[i]==\"2/2Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board04/\";        
+        }      
+        else if(chamberList[i]==\"2/3Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board05/\";        
+        }      
+        else if(chamberList[i]==\"2/3Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board05/\";        
+        }      
+        else if(chamberList[i]==\"3/1Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board06/\";        
+        }      
+        else if(chamberList[i]==\"3/1Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board06/\";        
+        }      
+        else if(chamberList[i]==\"3/2Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board07/\";        
+        }      
+        else if(chamberList[i]==\"3/2Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board07/\";        
+        }      
+        else if(chamberList[i]==\"3/3Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board08/\";        
+        }      
+        else if(chamberList[i]==\"3/3Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board08/\";        
+        }      
+        else if(chamberList[i]==\"4/1Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board10/\";        
+        }      
+        else if(chamberList[i]==\"4/1Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board10/\";        
+        }      
+        else if(chamberList[i]==\"4/2Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14/\";        
+        }      
+        else if(chamberList[i]==\"4/2Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14/\";        
+        }      
+        else if(chamberList[i]==\"4/3Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15/\";        
+        }      
+        else if(chamberList[i]==\"4/3Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15/\";        
+        }      
+        else if(chamberList[i]==\"5/1Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11/\";        
+        }      
+        else if(chamberList[i]==\"5/1Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11/\";        
+        }      
+        else if(chamberList[i]==\"4/2Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12/\";        
+        }      
+        else if(chamberList[i]==\"4/2Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12/\";        
+        }      
+        else if(chamberList[i]==\"5/3Top\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13/\";        
+        }      
+        else if(chamberList[i]==\"5/3Bottom\"){
+          chamberDp[i] = \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13/\";        
+        }     
+        else if(chamberList[i]==\"All\"){
+          chamberDp = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board01/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board02/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board03/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board04/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board05/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board06/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board07/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board08/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board10/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15/\");        
+        } 
+        else if(chamberList[i]==\"Column1\"){
+          chamberDp = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board03/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board06/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board10/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board11/\");        
+        } 
+        else if(chamberList[i]==\"Column2\"){
+          chamberDp = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board01/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board04/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board07/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board12/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board14/\");        
+        } 
+        else if(chamberList[i]==\"Column3\"){
+          chamberDp = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board02/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board05/\",
+                                    \"cms_gem_dcs_1:CAEN/904_HV_mainframe/board08/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13/\",
+                                    \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board15/\");        
+        }
+        else if(dynlen(chamberList)==0){
+           fwGeneral_openMessagePanel(\"Error! No chambers selected!\", ok, error, \"Info\", TRUE);            
+        }
+      }
+      
+      DebugTN(\"chamberDp = \", chamberDp);
+            
+      
+      for(int k=1; k<dynlen(chamberDp)+1; k++){
+        if((dynlen(chamberList)>1) && (strtok(chamberList[k], \"p\") > 0)){
+          for(int j=1; j<dynlen(channelList)+1; j++){
+            if(channelList[j]==\"Drift\"){
+              channelDp[j] = chamberDp[k]+\"channel006\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G1Top\"){
+              channelDp[j] = chamberDp[k]+\"channel005\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G1Bot\"){
+              channelDp[j] = chamberDp[k]+\"channel004\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G2Top\"){
+              channelDp[j] = chamberDp[k]+\"channel003\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G2Bot\"){
+              channelDp[j] = chamberDp[k]+\"channel002\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G3Top\"){
+              channelDp[j] = chamberDp[k]+\"channel001\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G3Bot\"){
+              channelDp[j] = chamberDp[k]+\"channel000\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(dynlen(channelList) == 0 || channelList[j]==\"All\"){
+              channelDp = makeDynString(chamberDp[k]+\"channel000\", 
+                                        chamberDp[k]+\"channel001\", 
+                                        chamberDp[k]+\"channel002\", 
+                                        chamberDp[k]+\"channel003\", 
+                                        chamberDp[k]+\"channel004\", 
+                                        chamberDp[k]+\"channel005\", 
+                                        chamberDp[k]+\"channel006\");                          
+              dynAppend(completeChannelList, channelDp);
+            }
+          }
+        }
+        else if((dynlen(chamberList)>1) && (strtok(chamberList[k], \"b\") > 0)){
+          for(int j=1; j<dynlen(channelList)+1; j++){
+            if(channelList[j]==\"Drift\"){
+              channelDp[j] = chamberDp[k]+\"channel013\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G1Top\"){
+              channelDp[j] = chamberDp[k]+\"channel012\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G1Bot\"){
+              channelDp[j] = chamberDp[k]+\"channel011\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G2Top\"){
+              channelDp[j] = chamberDp[k]+\"channel010\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G2Bot\"){
+              channelDp[j] = chamberDp[k]+\"channel009\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G3Top\"){
+              channelDp[j] = chamberDp[k]+\"channel008\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(channelList[j]==\"G3Bot\"){
+              channelDp[j] = chamberDp[k]+\"channel007\";                          
+              dynAppend(completeChannelList, channelDp[j]);
+            }
+            else if(dynlen(channelList) == 0 || channelList[j]==\"All\" ){
+              channelDp = makeDynString(chamberDp[k]+\"channel007\", 
+                                        chamberDp[k]+\"channel008\", 
+                                        chamberDp[k]+\"channel009\", 
+                                        chamberDp[k]+\"channel010\", 
+                                        chamberDp[k]+\"channel011\", 
+                                        chamberDp[k]+\"channel012\", 
+                                        chamberDp[k]+\"channel013\");                          
+              dynAppend(completeChannelList, channelDp);
+            }
+          }
+        }
+        else{
+              channelDp = makeDynString(chamberDp[k]+\"channel000\", 
+                                        chamberDp[k]+\"channel001\", 
+                                        chamberDp[k]+\"channel002\", 
+                                        chamberDp[k]+\"channel003\", 
+                                        chamberDp[k]+\"channel004\", 
+                                        chamberDp[k]+\"channel005\", 
+                                        chamberDp[k]+\"channel006\",
+                                        chamberDp[k]+\"channel007\", 
+                                        chamberDp[k]+\"channel008\", 
+                                        chamberDp[k]+\"channel009\", 
+                                        chamberDp[k]+\"channel010\", 
+                                        chamberDp[k]+\"channel011\", 
+                                        chamberDp[k]+\"channel012\", 
+                                        chamberDp[k]+\"channel013\");                          
+              dynAppend(completeChannelList, channelDp);
+        }        
+      }
+      
+      DebugTN(\"channelDP = \", completeChannelList);      
+      
+      dyn_string dpListFinal;
+      dyn_string dp;
+      
+      for(int w=1; w<dynlen(completeChannelList)+1; w++){
+        if(dynlen(alarmList)==0 || alarmList[0]==\"All\" ){
+          dp = makeDynString(completeChannelList[w]+\".actual.Trip\",
+                             completeChannelList[w]+\".actual.OvC\",
+                             completeChannelList[w]+\".actual.OvV\",
+                             completeChannelList[w]+\".actual.UnV\",
+                             completeChannelList[w]+\".actual.externalDisable\",
+                             completeChannelList[w]+\".actual.status\"); 
+ 
+          dynAppend(dpListFinal, dp);         
+        }
+        else{
+          for(int x=1; x<dynlen(alarmList)+1; x++){
+            dp[x] = completeChannelList[w]+\".\"+alarmList[x];
+            dynAppend(dpListFinal, dp[x]);
+          }
+        }
+      }      
+      
+      dyn_string Info;      
+      
+        fwAlertConfig_activateMultiple(dpListFinal, Info, TRUE, FALSE, FALSE);         
+        
+        DebugTN(\"exceptionInfo: \", Info);
+
+        DebugTN(\"final list: \", dpListFinal);
+
+
+}" 0
+ E E E
+13 15
+"clearChamber_button"
+""
+1 260 344 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+15 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  258 328 412 372
+
+T 
+1
+LANG:1 19 Clear chambers list
+"main(mapping event)
+{
+  selectionList_chambers.deleteAllItems;
+}" 0
+ E E E
+13 16
+"clearChannel_button"
+""
+1 670 344 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+16 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  668 328 822 372
+
+T 
+1
+LANG:1 19 Clear channels list
+"main(mapping event)
+{
+  selectionList_channels.deleteAllItems;
+}" 0
+ E E E
+13 17
+"clearAlrms_button"
+""
+1 1070 344 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+17 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,50,0,0,0,0,0
+0  1068 328 1222 372
+
+T 
+1
+LANG:1 17 Clear alarms list
+"main(mapping event)
+{
+  selectionList_alarms.deleteAllItems;
+}" 0
+ E E E
+13 18
+"close_button"
+""
+1 1090 470 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+18 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:1 35 MS Shell Dlg 2,-1,19,5,50,0,0,0,0,0
+0  1088 449 1222 503
+
+T 
+1
+LANG:1 5 Close
+"// SimpleCtrlScriptStart {valid}
+main()
+{
+  EP_panelOff();
+}
+
+void EP_panelOff()
+{
+  PanelOff();
+}
+
+// SimpleCtrlScript {EP_panelOff}
+// Function {PanelOff}
+// Panel {}
+// Module {}
+// SimpleCtrlScriptEnd {EP_panelOff}
+" 0
+ E E E
+2 19
+"PRIMITIVE_TEXT1"
+""
+1 40 70 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+19 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 40 70 285 94
+0 2 2 "0s" 0 0 0 192 0 0  40 70 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,21,5,75,1,0,0,0,0
+0 1
+LANG:1 22 1) Select the chambers
+2 20
+"PRIMITIVE_TEXT2"
+""
+1 450 70 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+20 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 450 70 685 94
+0 2 2 "0s" 0 0 0 192 0 0  450 70 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,21,5,75,1,0,0,0,0
+0 1
+LANG:1 22 2) Select the channels
+2 21
+"PRIMITIVE_TEXT3"
+""
+1 850 70 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+21 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 850 70 1056 94
+0 2 2 "0s" 0 0 0 192 0 0  850 70 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,21,5,75,1,0,0,0,0
+0 1
+LANG:1 19 3) Select the alams
+2 22
+"PRIMITIVE_TEXT4"
+""
+1 40 15 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+22 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 40 15 399 47
+0 2 2 "0s" 0 0 0 192 0 0  40 15 1
+1
+LANG:1 35 MS Shell Dlg 2,-1,27,5,75,1,0,0,0,0
+0 1
+LANG:1 24 Enable/Disable HV alarms
+2 23
+"PRIMITIVE_TEXT5"
+""
+1 470 180 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+23 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E 1.106330459604677 0 1 -69.84778271237366 5 0 E 470 180 619 219
+0 2 2 "0s" 0 0 0 192 0 0  470 180 2
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 18 Empty list == all 
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 17 channels selected
+2 24
+"PRIMITIVE_TEXT6"
+""
+1 470 180 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+24 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E 1.106330459604677 0 1 329.9687845854956 5 0 E 470 180 614 219
+0 2 2 "0s" 0 0 0 192 0 0  470 180 2
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 18 Empty list == all 
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 15 alarms selected
+2 25
+"PRIMITIVE_TEXT7"
+""
+1 470 180 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+25 0 0 0 0 0
+E E E
+0
+1
+LANG:1 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E 1.106330459604677 0 1 -479.7626550949889 5 0 E 470 180 611 219
+0 2 2 "0s" 0 0 0 192 0 0  470 180 2
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 14 Chambers list 
+1
+LANG:1 35 MS Shell Dlg 2,-1,16,5,75,1,0,0,0,0
+0 1
+LANG:1 15 cannot be empty
+0
+LAYER, 1 
+1
+LANG:1 0 
+0
+LAYER, 2 
+1
+LANG:1 0 
+0
+LAYER, 3 
+1
+LANG:1 0 
+0
+LAYER, 4 
+1
+LANG:1 0 
+0
+LAYER, 5 
+1
+LANG:1 0 
+0
+LAYER, 6 
+1
+LANG:1 0 
+0
+LAYER, 7 
+1
+LANG:1 0 
+0
+0

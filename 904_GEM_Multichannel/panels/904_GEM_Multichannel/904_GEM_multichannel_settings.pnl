@@ -2,8 +2,9 @@ V 14
 2
 LANG:1 0 
 LANG:10001 0 
-PANEL,-1 -1 1150 777 N "_3DFace" 1
+PANEL,-1 -1 1150 777 N "_3DFace" 2
 "$Board"
+"$Superchamber"
 E E E E E 1 -1 -1 0  20 30
 ""0  1
 E E 3
@@ -39,16 +40,18 @@ LANG:1 17 Settings - Common
 LANG:10001 17 Settings - Common
 1 "904_GEM_Multichannel/904_GEM_multichannel_settings_1.pnl" 1
 LANG:1 0 
-1
+2
 "$Board""$Board"
+"$Superchamber""$Superchamber"
 
 "Settings#2" 2
 LANG:1 15 Settings - More
 LANG:10001 15 Settings - More
 1 "904_GEM_Multichannel/904_GEM_multichannel_settings_2.pnl" 1
 LANG:1 0 
-1
+2
 "$Board""$Board"
+"$Superchamber""$Superchamber"
 
 
 0

@@ -142,11 +142,11 @@ void applyChanges()
  
 dyn_string boards; 
   
-boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16\");
+boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard04\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard08\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard12\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard16\");
   
 
 for(int i=1; i< dynlen(boards)+1; i++){
@@ -170,6 +170,7 @@ for(int i=1; i< dynlen(boards)+1; i++){
    }
 }  
   
+
 
 
 
@@ -224,11 +225,11 @@ void applyChanges()
  
 dyn_string boards; 
   
-boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16\");
+boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard04\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard08\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard12\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard16\");
   
 
 for(int i=1; i< dynlen(boards)+1; i++){
@@ -251,7 +252,8 @@ for(int i=1; i< dynlen(boards)+1; i++){
  
    }
 }  
-  " 0
+  
+" 0
  E E E
 13 181
 "BUTTON_CLOSE"
@@ -350,11 +352,11 @@ getValue(\"TEXT_i0\",\"text\",i0);
   
 dyn_string boards; 
   
-boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16\");
+boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard04\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard08\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard12\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard16\");
   
 
 for(int i=1; i< dynlen(boards)+1; i++){
@@ -377,7 +379,8 @@ for(int i=1; i< dynlen(boards)+1; i++){
  
    }
 }  
-  " 0
+  
+" 0
  E E E
 14 899
 "TEXT_i0"
@@ -431,7 +434,7 @@ T
 2
 LANG:1 20 Set Trip Time to ALL
 LANG:10001 26 Set Divider Current
-to ALL
+to AL
 "// SimpleCtrlScriptStart {invalid}
 main()
 {
@@ -461,11 +464,11 @@ getValue(\"TEXT_trip\",\"text\",trip);
   
 dyn_string boards; 
   
-boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16\");
+boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard04\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard08\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard12\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard16\");
   
 
 for(int i=1; i< dynlen(boards)+1; i++){
@@ -488,7 +491,8 @@ for(int i=1; i< dynlen(boards)+1; i++){
  
    }
 }  
-  " 0
+  
+" 0
  E E E
 14 905
 "TEXT_trip"
@@ -543,7 +547,7 @@ T
 2
 LANG:1 13 Set v0 to ALL
 LANG:10001 26 Set Divider Voltage
-to ALL
+to AL
 "// SimpleCtrlScriptStart {invalid}
 main()
 {
@@ -573,11 +577,11 @@ getValue(\"TEXT_v0\",\"text\",v0);
   
 dyn_string boards; 
   
-boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16\");
+boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard04\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard08\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard12\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard16\");
   
 
 for(int i=1; i< dynlen(boards)+1; i++){
@@ -601,6 +605,7 @@ for(int i=1; i< dynlen(boards)+1; i++){
    }
 }  
   
+
 
 
 
@@ -799,7 +804,7 @@ T
 2
 LANG:1 15 Set vMax to ALL
 LANG:10001 26 Set Divider Current
-to ALL
+to AL
 "// SimpleCtrlScriptStart {invalid}
 main()
 {
@@ -829,11 +834,11 @@ getValue(\"TEXT_vMax\",\"text\",vMax);
   
 dyn_string boards; 
   
-boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard00\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard04\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard08\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard12\",
-                       \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/branchController00/easyCrate0/easyBoard16\");
+boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard00\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard04\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard08\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard12\",
+                       \"cms_gem_dcs_1:CAEN/904_HV_mainframe/branchController14/easyCrate0/easyBoard16\");
   
 
 for(int i=1; i< dynlen(boards)+1; i++){
@@ -856,7 +861,8 @@ for(int i=1; i< dynlen(boards)+1; i++){
  
    }
 }  
-  " 0
+  
+" 0
  E E E
 14 1019
 "TEXT_vMax"
