@@ -20,7 +20,7 @@ main(){
   
 		fwRDBConfig_setUser("gem_904_cond");
 		fwRDBConfig_setHost("int2r");
-		fwRDBConfig_setPassword("904CondDB"); 
+		fwRDBConfig_setPassword(""); 
 
 		  
 
