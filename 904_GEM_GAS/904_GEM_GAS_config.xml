@@ -54,14 +54,14 @@
   <target>
     <system_name>cms_gem_dcs_1:</system_name>
     <configuration>
-      <tag>904_gas_dp_V006</tag>
+      <tag>904_gas_dp_V007</tag>
       <hardware>true</hardware>
       <logical>false</logical>
       <pattern>*</pattern>
       <force_reinstall>true</force_reinstall>
     </configuration>
     <configuration>
-      <tag>904_gas_trend_V002</tag>
+      <tag>904_gas_trend_V003</tag>
       <hardware>true</hardware>
       <logical>false</logical>
       <pattern>*</pattern>

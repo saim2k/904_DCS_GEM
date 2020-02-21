@@ -1,73 +1,16 @@
 V 14
 1
-LANG:1 8 RefPanel
-PANEL,-1 -1 324 259 N "_3DFace" 1
+LANG:1 7 Button1
+PANEL,-1 -1 323 262 N "_3DFace" 1
 "$dpChnName"
 "main()
 {
-  dyn_string exceptionInfo;  
-  
-	DisableAllInPanel();
-  fwAccessControl_setupPanel(\"ApplyPanelAccessControl\", exceptionInfo); 
+
+
 }" 0
  E E E E 1 -1 -1 0  70 50
 ""0  1
-E "#uses \"fwAccessControl/fwAccessControl.ctc\"
-
-void ApplyPanelAccessControl(string s1, string s2)
-{
-  bool hasDebug, hasControl,hasMonitor,hasVisualize,hasModify;
-  dyn_string exceptionInfo;
-  
-  DisableAllInPanel();  // revoke all previous rights:
-  
-// check privileges:
-  string domain;
-  domain=\"904_GEM\";
-
-  fwAccessControl_isGranted( domain+\":Control\", hasControl, exceptionInfo);
-  fwAccessControl_isGranted( domain+\":Modify\",  hasModify,  exceptionInfo);
-  
-  if (dynlen(exceptionInfo)) { fwExceptionHandling_display(exceptionInfo); return;}
-  // enable/disable panel functionality:
-  //if (hasControl) AlcLV.enabled = true;
-  //if (hasDebug) AlcHV.enabled = true;
-
-  if (hasControl) 
-  {
-    setOperatorRights();
-  }  
-  if (hasModify) 
-  {
-    setExpertRights();
-  }  
-  
-}
-
-void setExpertRights()
-{
-  setAllInPanel(true);
-}
-
-void setOperatorRights()
-{
-  setValue(\"Button_set\",\"enabled\",false);
-  setValue(\"Button_onoff\",\"enabled\",true);
-}
-
-void DisableAllInPanel()
-{
-  setAllInPanel(false);
-}
-
-
-void setAllInPanel(bool set)
-{
-	setValue(\"Button_set\",\"enabled\",set);
-  setValue(\"Button_onoff\",\"enabled\",set);
-}
-" 0
- 3
+E E 3
 "CBRef" "1"
 "EClose" E
 "dpi" "96"
@@ -93,12 +36,12 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 3 2 1 E 0.6389548043574663 0 0.2388409457425784 -27.45987028788717 34.08692906930663 0 E 70 50 180 100
+E E 0 1 3 2 1 E 0.5220207253886011 0 0.2388409457425784 -9.722490263609856 34.08692906930663 0 E 70 50 180 100
 0 2 2 "0s" 0 0 0 64 0 0  70 50 1
 1
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 0 1
-LANG:1 11 Voltage (V)
+LANG:1 7 Voltage
 2 3
 "PRIMITIVE_TEXT3"
 ""
@@ -115,12 +58,12 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 3 2 1 E 0.6299231319465035 0 0.3720130285227238 -26.64601001426363 59.07781923883036 0 E 70 50 180 100
+E E 0 1 3 2 1 E 0.6299231319465035 0 0.3720130285227238 -16.64601001426363 59.07781923883036 0 E 70 50 180 100
 0 2 2 "0s" 0 0 0 64 0 0  70 50 1
 1
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 0 1
-LANG:1 9 I max (A)
+LANG:1 5 I max
 2 7
 "PRIMITIVE_TEXT7"
 ""
@@ -137,12 +80,12 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 3 2 1 E 0.6400982537031364 0 0.3374423055274118 133.4814886844568 29.580884836204 0 E 70 50 180 100
+E E 0 1 3 2 1 E 0.5220207253886011 0 0.3374423055274118 143.2901554404145 32.580884836204 0 E 70 50 180 100
 0 2 2 "0s" 0 0 0 64 0 0  70 50 1
 1
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 0 1
-LANG:1 11 Voltage (V)
+LANG:1 7 Voltage
 2 8
 "PRIMITIVE_TEXT8"
 ""
@@ -159,12 +102,12 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 3 2 1 E 0.6062176165803109 0 0.4074074074074074 135.4676165803109 57.62962962962963 0 E 70 50 180 100
+E E 0 1 3 2 1 E 0.6062176165803109 0 0.4074074074074074 134.4676165803109 61.62962962962963 0 E 70 50 180 100
 0 2 2 "0s" 0 0 0 64 0 0  70 50 1
 1
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 0 1
-LANG:1 11 Current (A)
+LANG:1 7 Current
 2 9
 "PRIMITIVE_TEXT9"
 ""
@@ -181,16 +124,16 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 3 2 1 E 0.6316228546592644 0 0.4074074074074074 -26.95535954798615 85.46527777777776 0 E 70 50 180 100
+E E 0 1 3 2 1 E 0.6316228546592644 0 0.4074074074074074 -16.95535954798615 85.46527777777776 0 E 70 50 180 100
 0 2 2 "0s" 0 0 0 64 0 0  70 50 1
 1
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 0 1
-LANG:1 9 V max (V)
+LANG:1 5 V max
 13 12
-"Button_onoff"
+"PUSH_BUTTON3"
 ""
-1 196.0631085558047 217.6052083333333 E E E 1 E 1 E N "_ButtonText" E N "WF_Info" E E
+1 197.6954744170985 227 E E E 1 E 1 E N "STD_windows_available" E N "_Button" E E
  E E
 11 0 0 0 0 0
 E E E
@@ -201,35 +144,24 @@ LANG:1 0
 1
 "layoutAlignment" "AlignNone"
 1
-LANG:1 31 Sans Serif,-1,15,5,50,0,0,0,0,0
-0  194.0631085558046 209.1052083333333 275.2471759133175 242.1052083333333
+LANG:1 30 Open Sans,-1,15,5,75,0,0,0,0,0
+0  195.6954744170984 218.5 276.8795417746113 251.5
 
 T 
 1
-LANG:1 6 On/Off
+LANG:1 6 ON/OFF
 "// SimpleCtrlScriptStart {invalid}
 main()
 {
-  
-  dyn_string exceptionInfo;
-  bool answ;
-  fwGeneral_openMessagePanel(\"Are you sure?\",answ,exceptionInfo,\"confirm\",false);
-  Debug(\"answer\",answ);
-  if(answ)
-  {
-    EP_toggleDP();
-  }
+  EP_toggleDP();
 }
 
 void EP_toggleDP()
 {
 bool bo;
- string v0;
 
   dpGet($dpChnName+\".settings.onOff:_online.._value\", bo);
   dpSet($dpChnName+\".settings.onOff:_original.._value\", !bo);
-     DebugN(myModuleName()); 
-     DebugN(myPanelName()); 
 }
 
 // SimpleCtrlScript {EP_toggleDP}
@@ -248,7 +180,7 @@ bool bo;
 14 14
 "Vset"
 ""
-1 99.75 46 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 98 46 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 13 0 0 0 0 0
 E E E
@@ -260,49 +192,12 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 1
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  97.75 35 150.75 69
-3 "0.1f" 2 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
-main()
-{
-  EP_textFieldIn();
-}
-
-void EP_textFieldIn()
-{
-  dyn_errClass err;
-
-  if( !dpExists( $dpChnName+\".readBackSettings.v0:_online.._value\"))
-  {
-    setValue(\"\", \"color\", \"_dpdoesnotexist\");
-    return;
-  }
-
-  dpConnect(\"EP_textFieldInCB\",$dpChnName+\".readBackSettings.v0:_online.._value\");
-  err = getLastError();
-  if (dynlen(err) > 0)
-    setValue(\"\", \"color\", \"_dpdoesnotexist\");
-
-}
-
-
-void EP_textFieldInCB(string dp, float fNewValue)
-{
-  setValue(\"\", \"text\", fNewValue);
-}
-
-// SimpleCtrlScript {EP_textFieldIn}
-// DP {cms_gem_dcs_1:CAEN/904_Shared_mainframe/board02/channel000.readBackSettings.v0}
-// DPConfig {:_online.._value}
-// DPType {float}
-// UseDPUnit {FALSE}
-// UseDPFormat {FALSE}
-// SimpleCtrlScriptEnd {EP_textFieldIn}
-" 0
- E
+0  96 35 152 69
+3 "0s" 0 0 0 0 0 -1  E E E
 14 15
 "Imax"
 ""
-1 100 76 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 98 76 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 14 0 0 0 0 0
 E E E
@@ -314,50 +209,12 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 1
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  98 65 151 99
-3 "0.1f" 2 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
-main()
-{
-  EP_textFieldIn();
-}
-
-void EP_textFieldIn()
-{
-  dyn_errClass err;
-
-  if( !dpExists( $dpChnName+\".readBackSettings.i0:_online.._value\"))
-  {
-    setValue(\"\", \"color\", \"_dpdoesnotexist\");
-    return;
-  }
-
-  dpConnect(\"EP_textFieldInCB\",
-            $dpChnName+\".readBackSettings.i0:_online.._value\");
-  err = getLastError();
-  if (dynlen(err) > 0)
-    setValue(\"\", \"color\", \"_dpdoesnotexist\");
-
-}
-
-
-void EP_textFieldInCB(string dp, float fNewValue)
-{
-  setValue(\"\", \"text\", fNewValue);
-}
-
-// SimpleCtrlScript {EP_textFieldIn}
-// DP {cms_gem_dcs_1:CAEN/904_Shared_mainframe/board02/channel000.readBackSettings.i0}
-// DPConfig {:_online.._value}
-// DPType {float}
-// UseDPUnit {FALSE}
-// UseDPFormat {FALSE}
-// SimpleCtrlScriptEnd {EP_textFieldIn}
-" 0
- E
+0  96 65 152 99
+3 "0s" 0 0 0 0 0 -1  E E E
 14 16
 "Vmax"
 ""
-1 100 106.0231481481482 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 98 106.0231481481482 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 15 0 0 0 0 0
 E E E
@@ -369,49 +226,12 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 1
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  98 95 151 129
-3 "0.1f" 2 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
-main()
-{
-  EP_textFieldIn();
-}
-
-void EP_textFieldIn()
-{
-  dyn_errClass err;
-
-  if( !dpExists( $dpChnName+\".readBackSettings.vMaxSoftValue:_online.._value\"))
-  {
-    setValue(\"\", \"color\", \"_dpdoesnotexist\");
-    return;
-  }
-
-  dpConnect(\"EP_textFieldInCB\",$dpChnName+\".readBackSettings.vMaxSoftValue:_online.._value\");
-  err = getLastError();
-  if (dynlen(err) > 0)
-    setValue(\"\", \"color\", \"_dpdoesnotexist\");
-
-}
-
-
-void EP_textFieldInCB(string dp, float fNewValue)
-{
-  setValue(\"\", \"text\", fNewValue);
-}
-
-// SimpleCtrlScript {EP_textFieldIn}
-// DP {cms_gem_dcs_1:CAEN/904_Shared_mainframe/board02/channel000.readBackSettings.vMaxSoftValue}
-// DPConfig {:_online.._value}
-// DPType {float}
-// UseDPUnit {FALSE}
-// UseDPFormat {FALSE}
-// SimpleCtrlScriptEnd {EP_textFieldIn}
-" 0
- E
+0  96 95.02314814814818 152 129.0231481481482
+3 "0s" 0 0 0 0 0 -1  E E E
 14 17
 "TEXT_FIELD4"
 ""
-1 254.8976683937825 46.00000000000001 E E E 1 E 1 E N "_WindowText" E N "White" E E
+1 254.8976683937825 46.00000000000001 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 16 0 0 0 0 0
 E E E
@@ -423,8 +243,8 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 1
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  253 35 306 69
-3 "0.1f" 2 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+0  252.8976683937825 35.00000000000001 304.3563795336788 69.00000000000001
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_textFieldIn();
@@ -487,7 +307,7 @@ void EP_setBackColorCB(string dpSource, bool boNewValue)
   if (!boNewValue)
     setValue(\"\", \"backCol\", \"white\");
   else
-    setValue(\"\", \"backCol\", \"{154,255,110,246}\");
+    setValue(\"\", \"backCol\", \"green\");
 }
 " 0
  E
@@ -506,8 +326,8 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 1
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  253 65 306 99
-3 "0.1f" 2 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
+0  253.1556023316063 65.00000000000001 304.5571567357513 99
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_textFieldIn();
@@ -561,7 +381,7 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 3 2 1 E 0.6726457399103141 0 0.9217557251908402 -3.434977578475358 -44.96183206106884 0 E 17 58 241 321
+E E 0 1 3 2 1 E 0.6586554010121725 0 0.9217557251908401 1.922703757078626 -44.96183206106884 0 E 17 58 241 321
 1
 LANG:1 31 Sans Serif,-1,16,5,50,0,0,0,0,0
 0 1
@@ -581,7 +401,7 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 "dashclr"N "_Transparent"
 "antiAliased" "0"
-E E 0 1 3 2 1 E 0.64731613283524 0 0.5846762793327671 158.995625741801 -25.54085383093 0 E 17 58 241 321
+E E 0 1 3 2 1 E 0.6563066346801739 0 0.5846762793327671 158.8427872104371 -25.91122420130031 0 E 17 58 241 321
 1
 LANG:1 31 Sans Serif,-1,16,5,50,0,0,0,0,0
 0 1
@@ -589,11 +409,11 @@ LANG:1 6 Actual
 13 22
 "Button_set"
 ""
-1 60.46153152510195 207.6052083333333 E E E 1 E 1 E N "_ButtonText" E N "WF_Info" E E
+1 58.00000000000001 202 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
  E E
 21 0 0 0 0 0
 E E E
-0
+8
 1
 LANG:1 0 
 
@@ -601,7 +421,7 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 1
 LANG:1 30 Open Sans,-1,15,5,50,0,0,0,0,0
-0  58.46153152510195 208.6052083333333 142.4615315251019 242.6052083333333
+0  56.00000000000001 203 140 237
 
 T 
 1
@@ -636,7 +456,7 @@ applyChange()
 14 23
 "Rmpup"
 ""
-1 99.99999999999997 136.0208333333333 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 97.99999999999997 136.0208333333333 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 22 0 0 0 0 0
 E E E
@@ -648,46 +468,8 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 1
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  98 125 151 159
-3 "0.1f" 2 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
-main()
-{
-  EP_textFieldIn();
-}
-
-void EP_textFieldIn()
-{
-  dyn_errClass err;
-
-  if( !dpExists( $dpChnName+\".readBackSettings.rUp:_online.._value\"))
-  {
-    setValue(\"\", \"color\", \"_dpdoesnotexist\");
-    return;
-  }
-
-  dpConnect(\"EP_textFieldInCB\",
-            $dpChnName+\".readBackSettings.rUp:_online.._value\");
-  err = getLastError();
-  if (dynlen(err) > 0)
-    setValue(\"\", \"color\", \"_dpdoesnotexist\");
-
-}
-
-
-void EP_textFieldInCB(string dp, float fNewValue)
-{
-  setValue(\"\", \"text\", fNewValue);
-}
-
-// SimpleCtrlScript {EP_textFieldIn}
-// DP {cms_gem_dcs_1:CAEN/904_Shared_mainframe/board02/channel000.readBackSettings.rUp}
-// DPConfig {:_online.._value}
-// DPType {float}
-// UseDPUnit {FALSE}
-// UseDPFormat {FALSE}
-// SimpleCtrlScriptEnd {EP_textFieldIn}
-" 0
- E
+0  95.99999999999997 125.0208333333333 152 159.0208333333333
+3 "0s" 0 0 0 0 0 -1  E E E
 2 24
 "PRIMITIVE_TEXT10"
 ""
@@ -704,16 +486,16 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 3 2 1 E 0.6565951930102709 0 0.2873677248677254 -28.50032512786935 122.2271825396825 0 E 70 50 180 100
+E E 0 1 3 2 1 E 0.6565951930102709 0 0.2873677248677254 -18.50032512786935 122.2271825396825 0 E 70 50 180 100
 0 2 2 "0s" 0 0 0 64 0 0  70 50 1
 1
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 0 1
-LANG:1 10 Rmp Up (V)
+LANG:1 7 Ramp Up
 14 25
 "Rmpdown"
 ""
-1 100 166.0104166666667 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 98 166.0104166666667 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 24 0 0 0 0 0
 E E E
@@ -725,46 +507,8 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 1
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  98 155 151 189
-3 "0.1f" 2 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
-main()
-{
-  EP_textFieldIn();
-}
-
-void EP_textFieldIn()
-{
-  dyn_errClass err;
-
-  if( !dpExists( $dpChnName+\".readBackSettings.rUp:_online.._value\"))
-  {
-    setValue(\"\", \"color\", \"_dpdoesnotexist\");
-    return;
-  }
-
-  dpConnect(\"EP_textFieldInCB\",
-            $dpChnName+\".readBackSettings.rUp:_online.._value\");
-  err = getLastError();
-  if (dynlen(err) > 0)
-    setValue(\"\", \"color\", \"_dpdoesnotexist\");
-
-}
-
-
-void EP_textFieldInCB(string dp, float fNewValue)
-{
-  setValue(\"\", \"text\", fNewValue);
-}
-
-// SimpleCtrlScript {EP_textFieldIn}
-// DP {cms_gem_dcs_1:CAEN/904_Shared_mainframe/board02/channel000.readBackSettings.rUp}
-// DPConfig {:_online.._value}
-// DPType {float}
-// UseDPUnit {FALSE}
-// UseDPFormat {FALSE}
-// SimpleCtrlScriptEnd {EP_textFieldIn}
-" 0
- E
+0  96 155.0104166666667 152 189.0104166666667
+3 "0s" 0 0 0 0 0 -1  E E E
 2 26
 "PRIMITIVE_TEXT11"
 ""
@@ -781,20 +525,16 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 3 2 1 E 0.7428650215990081 0 0.4074074074074074 -34.73990240591754 144.6666666666666 0 E 70 50 180 100
-0 2 2 "0s" 0 0 0 64 0 0  70 50 2
+E E 0 1 3 2 1 E 0.7428650215990081 0 0.4074074074074074 -24.73990240591754 144.6666666666666 0 E 70 50 180 100
+0 2 2 "0s" 0 0 0 64 0 0  70 50 1
 1
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 0 1
-LANG:1 11 Rmp Dwn (V)
-1
-LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0 1
-LANG:1 0 
+LANG:1 8 Ramp Dwn
 14 27
 "TEXT_FIELD8"
 ""
-1 254.70417746114 106.0949074074074 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+1 254.5119818652851 106.0046296296296 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
  E E
 26 0 0 0 0 0
 E E E
@@ -806,8 +546,8 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 1
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  253.1921955958549 95.09027777777779 306.1921955958549 129.0902777777778
-3 "0s" 0 0 0 1 0 -1  E "// SimpleCtrlScriptStart {invalid}
+0  252.5119818652851 95.0046296296296 303.9135362694302 129.0046296296296
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_textFieldIn();
@@ -817,14 +557,14 @@ void EP_textFieldIn()
 {
   dyn_errClass err;
 
-  if( !dpExists($dpChnName+\".actual.status:_online.._value\"))
+  if( !dpExists($dpChnName+\".actual.rampingDirection:_online.._value\"))
   {
     setValue(\"\", \"color\", \"_dpdoesnotexist\");
     return;
   }
 
   dpConnect(\"EP_textFieldInCB\",
-            $dpChnName+\".actual.status:_online.._value\");
+            $dpChnName+\".actual.rampingDirection:_online.._value\");
   err = getLastError();
   if (dynlen(err) > 0)
     setValue(\"\", \"color\", \"_dpdoesnotexist\");
@@ -833,23 +573,9 @@ void EP_textFieldIn()
 
 void EP_textFieldInCB(string dp, int iNewValue)
 {
- // setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
-
-  if ( getBit(iNewValue,1) == 1 &&  getBit(iNewValue,2) == 0) 
-  { 
-     setValue(\"\", \"backCol\", \"yellow\");
-     setValue(\"\", \"text\", \"UP\" );
-  } else if ( getBit(iNewValue,1) == 0 &&  getBit(iNewValue,2) == 1) 
-  {
-     setValue(\"\", \"backCol\", \"yellow\");
-     setValue(\"\", \"text\", \"DOWN\" ); 
-  }
-  else
-  { 
-     setValue(\"\", \"backCol\", \"white\");
-     setValue(\"\", \"text\", \"----\" ); 
-  } 
+  setValue(\"\", \"text\", dpValToString(dp, iNewValue, FALSE) );
 }
+
 // SimpleCtrlScript {EP_textFieldIn}
 // DP {cms_gem_dcs_1:CAEN/904_Shared_mainframe/board02/channel000.actual.rampingDirection}
 // DPConfig {:_online.._value}
@@ -874,8 +600,8 @@ LANG:1 0
 "layoutAlignment" "AlignNone"
 1
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
-0  253 125 306 159
-3 "0s" 0 0 0 1 0 -1  E "// SimpleCtrlScriptStart {invalid}
+0  252.8770239637307 125.224537037037 304.3928918393783 159.224537037037
+3 "0s" 0 0 0 0 0 -1  E "// SimpleCtrlScriptStart {invalid}
 main()
 {
   EP_textFieldIn();
@@ -930,7 +656,7 @@ void EP_setBackColorCB(string dpSource, bool boNewValue)
   if (!boNewValue)
     setValue(\"\", \"backCol\", \"white\");
   else
-    setValue(\"\", \"backCol\", \"{248,69,105,232}\");
+    setValue(\"\", \"backCol\", \"red\");
 }
 
 
@@ -959,12 +685,12 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 3 2 1 E 0.6062176165803109 0 0.4074074074074074 135.5647668393783 85.62962962962963 0 E 70 50 180 100
+E E 0 1 3 2 1 E 0.6062176165803109 0 0.4074074074074074 137.5647668393783 89.62962962962963 0 E 70 50 180 100
 0 2 2 "0s" 0 0 0 64 0 0  70 50 1
 1
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 0 1
-LANG:1 7 Rmp Dir
+LANG:1 7 Ramping
 2 30
 "PRIMITIVE_TEXT13"
 ""
@@ -981,7 +707,7 @@ LANG:1 0
 "dashclr"N "_Transparent"
 "antiAliased" "0"
 "transformable" "0"
-E E 0 1 3 2 1 E 0.6062176165803109 0 0.4074074074074074 135.5647668393783 116.6296296296296 0 E 70 50 180 100
+E E 0 1 3 2 1 E 0.6062176165803109 0 0.4074074074074074 137.5647668393783 119.6296296296296 0 E 70 50 180 100
 0 2 2 "0s" 0 0 0 64 0 0  70 50 1
 1
 LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
@@ -989,26 +715,6 @@ LANG:1 31 Sans Serif,-1,12,5,50,0,0,0,0,0
 LANG:1 4 Trip
 1 34 0 "" 2
 0
-30 33
-"FRAME3"
-""
-1 179 142 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
- E E
-35 0 0 0 0 0
-E E E
-1
-1
-LANG:1 0 
-
-3
-"layoutAlignment" "AlignNone"
-"dashclr"N "_Transparent"
-"antiAliased" "0"
-E E 0 1 3 2 1 E 1.021276595744681 0 0.8223593964334708 -12.80851063829787 44.4101508916323 0 E 179 142 321 251
-1
-LANG:1 30 Sans Serif,-1,8,5,50,0,0,0,0,0
-0 1
-LANG:1 0 
 0
 LAYER, 1 
 1
@@ -1041,8 +747,8 @@ LANG:1 0
 3 0 "Channel" -1
 "layoutAlignment" "AlignNone"
 "" ""
-"objects/fwTrending/fwTrendingPlotOpenButton.pnl" 192.8963730569948 260.03125 T 33 1.539184404264746 0 0.58 -146.9030890485607 24.18187500000002
+"objects/fwTrending/fwTrendingPlotOpenButton.pnl" 192.8963730569948 260.03125 T 33 1.539184404264746 0 0.58 -146.9030890485607 36.19229166666673
 2
 "$plotName""cms_gem_dcs_1:Channel"
-"$templateParameters""channel=$dpChnName,"
+"$templateParameters"""
 0

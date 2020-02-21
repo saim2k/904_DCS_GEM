@@ -93,7 +93,7 @@ string smtp_host = "smtp.cern.ch";
 dyn_string email1,email2,email3,email4,email5,email6,email7,email8;
 int ret;
 string smtp_user = "qc8dcs.administrator@cern.ch";
-string smtp_pass = "CafaXari7";
+string smtp_pass = "KuniBaxe85";
 bool useTLS = TRUE;
 string sAttachPath =  "";
 
@@ -218,7 +218,7 @@ string smtp_host = "smtp.cern.ch";
 dyn_string email1,email2,email3,email4,email5,email6,email7,email8;
 int ret;
 string smtp_user = "qc8dcs.administrator@cern.ch";
-string smtp_pass = "CafaXari7";
+string smtp_pass = "KuniBaxe85";
 bool useTLS = TRUE;
 string sAttachPath =  "";
 
@@ -345,7 +345,7 @@ string smtp_host = "smtp.cern.ch";
 dyn_string email1,email2,email3,email4,email5,email6,email7,email8;
 int ret;
 string smtp_user = "qc8dcs.administrator@cern.ch";
-string smtp_pass = "CafaXari7";
+string smtp_pass = "KuniBaxe85";
 bool useTLS = TRUE;
 string sAttachPath =  "";
 
@@ -470,7 +470,7 @@ string smtp_host = "smtp.cern.ch";
 dyn_string email1,email2,email3,email4,email5,email6,email7,email8;
 int ret;
 string smtp_user = "qc8dcs.administrator@cern.ch";
-string smtp_pass = "CafaXari7";
+string smtp_pass = "KuniBaxe85";
 bool useTLS = TRUE;
 string sAttachPath =  "";
 
@@ -596,7 +596,7 @@ string smtp_host = "smtp.cern.ch";
 dyn_string email1,email2,email3,email4,email5,email6,email7,email8;
 int ret;
 string smtp_user = "qc8dcs.administrator@cern.ch";
-string smtp_pass = "CafaXari7";
+string smtp_pass = "KuniBaxe85";
 bool useTLS = TRUE;
 string sAttachPath =  "";
 

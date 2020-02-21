@@ -38,14 +38,14 @@
   <target>
     <system_name>cms_gem_dcs_1:</system_name>
     <configuration>
-      <tag>904_mainframes_V001</tag>
+      <tag>904_mainframes_V002</tag>
       <hardware>true</hardware>
       <logical>false</logical>
       <pattern>*</pattern>
       <force_reinstall>false</force_reinstall>
     </configuration>
     <configuration>
-      <tag>904_multichannel_dp_V002</tag>
+      <tag>904_multichannel_dp_V003</tag>
       <hardware>true</hardware>
       <logical>false</logical>
       <pattern>*</pattern>
@@ -59,7 +59,7 @@
       <force_reinstall>false</force_reinstall>
     </configuration>
     <configuration>
-      <tag>904_multichannel_restart_v0</tag>
+      <tag>904_multichannel_restart_v0001</tag>
       <hardware>true</hardware>
       <logical>false</logical>
       <pattern>*</pattern>

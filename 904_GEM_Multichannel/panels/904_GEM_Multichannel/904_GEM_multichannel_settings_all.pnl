@@ -59,6 +59,7 @@ void setOperatorRights()
   set_all_i0_button.enabled(set);
   ALL_ON_BUTTON.enabled(set);
   ALL_OFF_BUTTON.enabled(set);
+  setboardmode_button.enabled(set);
 }
 
 
@@ -166,7 +167,7 @@ boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00\",
                        \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13\");
   
 
-for(int i=1; i< dynlen(boards); i++){
+for(int i=1; i< dynlen(boards)+1; i++){
 
   dyn_errClass err;
 
@@ -262,7 +263,7 @@ boards = makeDynString(\"cms_gem_dcs_1:CAEN/904_HV_mainframe/board00\",
                        \"cms_gem_dcs_1:CAEN/904_Shared_mainframe/board13\");
   
 
-for(int i=1; i< dynlen(boards); i++){
+for(int i=1; i< dynlen(boards)+1; i++){
 
   dyn_errClass err;
 
@@ -566,6 +567,7 @@ float VG2top=550*i*0.001;
 float VG1bot=438*i*0.001;
 float VG1top=560*i*0.001;
 float Vdrift=1125*i*0.001;
+
 float VG3bot_2=625*i*0.001;
 float VG3top_2=525*i*0.001;
 float VG2bot_2=875*i*0.001;
@@ -628,8 +630,9 @@ int j=1;
                                   );
 
         // textfields = makeDynString(\"TEXT_DriftV0\",\"TEXT_G3TopV0\",\"TEXT_G3BotV0\",\"TEXT_G2TopV0\",\"TEXT_G2BotV0\",\"TEXT_G1TopV0\",\"TEXT_G1BotV0\" );
-         floats = makeDynFloat(Vdrift,VG3top,VG3bot,VG2top,VG2bot,VG1top,VG1bot,Vdrift_2,VG3top_2,VG3bot_2,VG2top_2,VG2bot_2,VG1top_2,VG1bot_2);
-
+        // floats = makeDynFloat(Vdrift,VG3top,VG3bot,VG2top,VG2bot,VG1top,VG1bot,Vdrift_2,VG3top_2,VG3bot_2,VG2top_2,VG2bot_2,VG1top_2,VG1bot_2);
+         floats = makeDynFloat(Vdrift, VG1top, VG1bot, VG2top, VG2bot, VG3top, VG3bot,Vdrift_2, VG1top_2, VG1bot_2, VG2top_2, VG2bot_2, VG3top_2, VG3bot_2);
+         
          int i=1;
          if (dynlen(texts)==dynlen(dp_texts))
          {
@@ -2975,7 +2978,7 @@ dyn_string dp_texts, texts, textfields, boards;
 dyn_bool floats;
 //string texts;
 bool opmode_bool;
-getValue(\"TEXT_rdwn\",\"text\",opmode_bool);
+getValue(\"TEXT_opMode\",\"text\",opmode_bool);
 //texts = makeDynString( \"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\",\"TEXT_AllI0\" );
 floats = makeDynFloat(opmode_bool,opmode_bool,opmode_bool,opmode_bool,opmode_bool,opmode_bool,opmode_bool,opmode_bool,opmode_bool,opmode_bool,opmode_bool,opmode_bool,opmode_bool,opmode_bool);
 
